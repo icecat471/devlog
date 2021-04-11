@@ -8,6 +8,16 @@
       <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://icecat471.github.io/devlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 11 Apr 2021 12:11:05 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>test_category</title>
+      <link>https://icecat471.github.io/devlog/categories/test_category/</link>
+      <pubDate>Sun, 11 Apr 2021 12:11:05 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/categories/test_category/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

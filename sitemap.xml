@@ -3,13 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://icecat471.github.io/devlog/categories/</loc>
+    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/</loc>
+    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/</loc>
+    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/</loc>
+    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/test/</loc>
+    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/test_category/</loc>
+    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/test_tag/</loc>
+    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/search/</loc>
   </url><url>
     <loc>https://icecat471.github.io/devlog/series/</loc>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/</loc>
   </url>
 </urlset>
