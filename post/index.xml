@@ -16,7 +16,7 @@
       <pubDate>Sun, 11 Apr 2021 16:35:36 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/post/docker/docker_memory_limit/</guid>
-      <description>// 512MB의 메모리와 50%의 CPU 할당 docker run -m 512m --cpu-quota=50000 {image name} // stat 확인 docker stats {container id} </description>
+      <description>// 512MB의 메모리와 50%의 CPU 할당 docker run -m 512m --cpu-quota=50000 &amp;lt;image name&amp;gt; // stat 확인 docker stats &amp;lt;container id&amp;gt; </description>
     </item>
     
     <item>
