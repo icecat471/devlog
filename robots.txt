@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://icecat471.github.io/devlog/sitemap.xml
