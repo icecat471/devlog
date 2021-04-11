@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/categories/docker/</link>
+    <description>Recent content in docker on icecat471&#39;s Devlog</description>
+    <image>
+      <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
+      <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 11 Apr 2021 16:35:36 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker 컨테이너 메모리 및 CPU 제한하기</title>
+      <link>https://icecat471.github.io/devlog/post/docker/docker_memory_limit/</link>
+      <pubDate>Sun, 11 Apr 2021 16:35:36 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/docker/docker_memory_limit/</guid>
+      <description>// 512MB의 메모리와 50%의 CPU 할당 docker run -m 512m --cpu-quota=50000 {image name} // stat 확인 docker stats {container id} </description>
+    </item>
+    
+  </channel>
+</rss>

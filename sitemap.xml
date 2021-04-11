@@ -2,10 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://icecat471.github.io/devlog/tags/blog/</loc>
-    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/categories/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/container/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/devops/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/docker/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/docker/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/docker/docker_memory_limit/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/blog/</loc>
     <lastmod>2021-04-11T12:11:05+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/hugo/</loc>
@@ -15,15 +39,6 @@
     <lastmod>2021-04-11T12:11:05+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/hugo/start_hugo/</loc>
-    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/</loc>
-    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/post/</loc>
-    <lastmod>2021-04-11T12:11:05+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/</loc>
     <lastmod>2021-04-11T12:11:05+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/search/</loc>
