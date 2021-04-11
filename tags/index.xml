@@ -11,11 +11,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 11 Apr 2021 12:11:05 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>test_tag</title>
-      <link>https://icecat471.github.io/devlog/tags/test_tag/</link>
+      <title>blog</title>
+      <link>https://icecat471.github.io/devlog/tags/blog/</link>
       <pubDate>Sun, 11 Apr 2021 12:11:05 +0900</pubDate>
       
-      <guid>https://icecat471.github.io/devlog/tags/test_tag/</guid>
+      <guid>https://icecat471.github.io/devlog/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://icecat471.github.io/devlog/tags/hugo/</link>
+      <pubDate>Sun, 11 Apr 2021 12:11:05 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/hugo/</guid>
       <description></description>
     </item>
     

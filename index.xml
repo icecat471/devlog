@@ -11,12 +11,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 11 Apr 2021 12:11:05 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test</title>
-      <link>https://icecat471.github.io/devlog/post/test/</link>
+      <title>Hugo로 블로그 시작하기</title>
+      <link>https://icecat471.github.io/devlog/post/hugo/start_hugo/</link>
       <pubDate>Sun, 11 Apr 2021 12:11:05 +0900</pubDate>
       
-      <guid>https://icecat471.github.io/devlog/post/test/</guid>
-      <description>테스트 포스트 테스트 문서입니다</description>
+      <guid>https://icecat471.github.io/devlog/post/hugo/start_hugo/</guid>
+      <description>출처: IALY&amp;rsquo;s BLOG
+1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0+extended darwin/amd64 BuildDate=unknown 
+2. Hugo Project 생성 hugo new site &amp;lt;프로젝트명&amp;gt; 
+3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
+원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
+$ git clone &amp;lt;테마 깃허브 주소&amp;gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.</description>
     </item>
     
     
