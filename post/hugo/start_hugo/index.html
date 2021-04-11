@@ -80,8 +80,8 @@ $ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (�
   "keywords": [
     "hugo", "blog"
   ],
-  "articleBody": "출처: IALY’s BLOG\n1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0+extended darwin/amd64 BuildDate=unknown \n2. Hugo Project 생성 hugo new site  \n3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.\n원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운\n$ git clone 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)\nconfig 파일 예시는 각 테마 깃허브에서 확인 가능.\n# config.yml baseURL: \"https:////\" title: \"블로그 타이틀\" theme: \"테마명\" # /themes 폴더에 다운 받은 테마폴더명 \n## 4. 포스팅 하기 프로젝트 내에서 ~~~bash $ hugo new  ~~~ ex) hugo new post/test.md 라고 입력하면\ncontent 폴더내부에 content/post/test.md 경로로 파일 생성.\n5. 로컬서버에서 블로그 확인 $ hugo server -D -D 옵션을 주면 draft: true인 글도 확인가능하다.\n기본적으로 http://localhost:1313/ 로 확인 가능. 6. build 및 push hugo project를 push할 repo와 빌드한 public 파일을 push할 repo를 따로 만든다.\n프로젝트 루트에서\n$ git init $ git remote add origin // 두번째 repo를 첫번째 repo의 submodule로 지정 $ git submodule add -b master public // build $ hugo // push $ cd public $ git add . $ git commit -m \"\" $ git push origin master $ cd .. $ git add . $ git commit -m \"\" $ git push origin master ",
-  "wordCount" : "220",
+  "articleBody": "출처: IALY’s BLOG\n1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0+extended darwin/amd64 BuildDate=unknown \n2. Hugo Project 생성 hugo new site  \n3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.\n원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운\n$ git clone 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)\nconfig 파일 예시는 각 테마 깃허브에서 확인 가능.\n# config.yml baseURL: \"https:////\" title: \"블로그 타이틀\" theme: \"테마명\" # /themes 폴더에 다운 받은 테마폴더명 \n4. 포스팅 하기 프로젝트 내에서\n$ hugo new  ex) hugo new post/test.md 라고 입력하면\ncontent 폴더내부에 content/post/test.md 경로로 파일 생성.\n5. 로컬서버에서 블로그 확인 $ hugo server -D -D 옵션을 주면 draft: true인 글도 확인가능하다.\n기본적으로 http://localhost:1313/ 로 확인 가능. 6. build 및 push hugo project를 push할 repo와 빌드한 public 파일을 push할 repo를 따로 만든다.\n프로젝트 루트에서\n$ git init $ git remote add origin // 두번째 repo를 첫번째 repo의 submodule로 지정 $ git submodule add -b master public // build $ hugo // push $ cd public $ git add . $ git commit -m \"\" $ git push origin master $ cd .. $ git add . $ git commit -m \"\" $ git push origin master ",
+  "wordCount" : "218",
   "inLanguage": "en",
   "datePublished": "2021-04-11T12:11:05+09:00",
   "dateModified": "2021-04-11T12:11:05+09:00",
@@ -223,6 +223,8 @@ $ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (�
                 <li>
                     <a href="#3-hugo-%ed%85%8c%eb%a7%88-%eb%8b%a4%ec%9a%b4%eb%a1%9c%eb%93%9c" aria-label="3. Hugo 테마 다운로드">3. Hugo 테마 다운로드</a></li>
                 <li>
+                    <a href="#4-%ed%8f%ac%ec%8a%a4%ed%8c%85-%ed%95%98%ea%b8%b0" aria-label="4. 포스팅 하기">4. 포스팅 하기</a></li>
+                <li>
                     <a href="#5-%eb%a1%9c%ec%bb%ac%ec%84%9c%eb%b2%84%ec%97%90%ec%84%9c-%eb%b8%94%eb%a1%9c%ea%b7%b8-%ed%99%95%ec%9d%b8" aria-label="5. 로컬서버에서 블로그 확인">5. 로컬서버에서 블로그 확인</a></li>
                 <li>
                     <a href="#6-build-%eb%b0%8f-push" aria-label="6. build 및 push">6. build 및 push</a>
@@ -260,13 +262,11 @@ config 파일 예시는 각 테마 깃허브에서 확인 가능.</p>
 <span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;블로그 타이틀&#34;</span>
 <span style="color:#f92672">theme</span>: <span style="color:#e6db74">&#34;테마명&#34;</span> <span style="color:#75715e"># /themes 폴더에 다운 받은 테마폴더명</span>
 </code></pre></div><br>
-## 4. 포스팅 하기
-프로젝트 내에서
-~~~bash
-$ hugo new <파일이름>
-~~~
-ex) hugo new post/test.md 라고 입력하면<br>
-content 폴더내부에 content/post/test.md 경로로 파일 생성.<br><br>
+<h2 id="4-포스팅-하기">4. 포스팅 하기<a hidden class="anchor" aria-hidden="true" href="#4-포스팅-하기">#</a></h2>
+<p>프로젝트 내에서</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new &lt;파일이름&gt;
+</code></pre></div><p>ex) hugo new post/test.md 라고 입력하면<br>
+content 폴더내부에 content/post/test.md 경로로 파일 생성.<br><br></p>
 <h2 id="5-로컬서버에서-블로그-확인">5. 로컬서버에서 블로그 확인<a hidden class="anchor" aria-hidden="true" href="#5-로컬서버에서-블로그-확인">#</a></h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo server -D
 </code></pre></div><p>-D 옵션을 주면 draft: true인 글도 확인가능하다.<br>
