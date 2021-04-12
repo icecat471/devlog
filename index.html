@@ -167,6 +167,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Go언어 flag 패키지를 통한 command-line flag 파싱</h2>
+  </header>
+  <section class="entry-content">
+    <p>golang flag package
+command-line flag를 파싱해주는 패키지.
+// flag값에 저장된 int64변수의 주소값 반환 maxValue := flag.Int64(&#34;max&#34;, 10, &#34;Defines maximum value&#34;) /* xxxVar() 함수는 반환값이 없고 첫번째 인자로 변수의 포인터를 넘겨주면 변수에 값을 할당해줌. */ var minValue int64 flag.Int64Var(&amp;minValue, &#34;min&#34;, 0, &#34;Defines minimum value&#34;) // flag에 command-line 파싱 // 꼭 호출해주어야 함 flag.Parse() 
+Boolean flag는 0, 1, t, f, T, F, true, false, TRUE, FALSE, True, False 등으로 넘겨줄 수 있음....</p>
+  </section>
+  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Go언어 flag 패키지를 통한 command-line flag 파싱" href="https://icecat471.github.io/devlog/post/golang/flag/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Go언어 프로젝트 외부의 모듈 import하기</h2>
   </header>
   <section class="entry-content">
@@ -216,19 +230,6 @@ ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</p>
   </section>
   <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to 터미널에서 command not found: dotnet 에러" href="https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>유니티 webGL 프로젝트 로컬서버에서 실행하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>webGL “build and run” 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림
-로컬에서 서버를 열어서 실행해볼 수 있다.
-http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 이동 $ http-server Starting up http-server, serving ./ Available on: http://127.0.0.1:8080 http://120.50.93.152:8080 http://192.168.2.1:8080 Hit CTRL-C to stop the server http://localhost:8080 로 접속해보면 게임이 실행된것을 확인해 볼 수 있다.</p>
-  </section>
-  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 유니티 webGL 프로젝트 로컬서버에서 실행하기" href="https://icecat471.github.io/devlog/post/unity/local_server/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
