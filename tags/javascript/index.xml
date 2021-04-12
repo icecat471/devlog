@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>webGL on icecat471&#39;s Devlog</title>
-    <link>https://icecat471.github.io/devlog/tags/webgl/</link>
-    <description>Recent content in webGL on icecat471&#39;s Devlog</description>
+    <title>javascript on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/tags/javascript/</link>
+    <description>Recent content in javascript on icecat471&#39;s Devlog</description>
     <image>
       <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 12 Apr 2021 11:28:39 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/webgl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Apr 2021 11:28:39 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>유니티 WebGL 자바스크립트 함수 호출</title>
       <link>https://icecat471.github.io/devlog/post/unity/call_javascript/</link>
@@ -19,17 +19,6 @@
       <description>참고: Unity Document WebGL
 Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
 // Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&amp;#34;Hello, world!&amp;#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &amp;lt; size; i++) console.log(HEAPF32[(array &amp;gt;&amp;gt; 2) + i]); }, AddNumbers: function (x, y) { return x + y; }, StringReturnValueFunction: function () { var returnStr = &amp;#34;bla&amp;#34;; var bufferSize = lengthBytesUTF8(returnStr) + 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx.</description>
-    </item>
-    
-    <item>
-      <title>유니티 webGL 프로젝트 로컬서버에서 실행하기</title>
-      <link>https://icecat471.github.io/devlog/post/unity/local_server/</link>
-      <pubDate>Sun, 11 Apr 2021 18:33:11 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/post/unity/local_server/</guid>
-      <description>webGL &amp;ldquo;build and run&amp;rdquo; 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림
-로컬에서 서버를 열어서 실행해볼 수 있다.
-http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 이동 $ http-server Starting up http-server, serving ./ Available on: http://127.0.0.1:8080 http://120.50.93.152:8080 http://192.168.2.1:8080 Hit CTRL-C to stop the server http://localhost:8080 로 접속해보면 게임이 실행된것을 확인해 볼 수 있다.</description>
     </item>
     
   </channel>

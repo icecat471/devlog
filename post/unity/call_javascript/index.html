@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>유니티 WebGL 자바스크립트 함수 호출 | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="unity, javascript, webGL" />
+<meta name="description" content="참고: Unity Document WebGL
+Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
+// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&#34;Hello, world!&#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &lt; size; i&#43;&#43;) console.log(HEAPF32[(array &gt;&gt; 2) &#43; i]); }, AddNumbers: function (x, y) { return x &#43; y; }, StringReturnValueFunction: function () { var returnStr = &#34;bla&#34;; var bufferSize = lengthBytesUTF8(returnStr) &#43; 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx.">
+<meta name="author" content="icecat471">
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/unity/call_javascript/" />
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.84cc6e7cd97516a4d4e877c6bebe5a4529afdf61f4d009e2c8bbec3a876fff4e.css" integrity="sha256-hMxufNl1FqTU6HfGvr5aRSmv32H00AniyLvsOodv/04=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://icecat471.github.io/devlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta property="og:title" content="유니티 WebGL 자바스크립트 함수 호출" />
+<meta property="og:description" content="참고: Unity Document WebGL
+Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
+// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&#34;Hello, world!&#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &lt; size; i&#43;&#43;) console.log(HEAPF32[(array &gt;&gt; 2) &#43; i]); }, AddNumbers: function (x, y) { return x &#43; y; }, StringReturnValueFunction: function () { var returnStr = &#34;bla&#34;; var bufferSize = lengthBytesUTF8(returnStr) &#43; 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/unity/call_javascript/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-12T11:28:39&#43;09:00" />
+<meta property="article:modified_time" content="2021-04-12T11:28:39&#43;09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="유니티 WebGL 자바스크립트 함수 호출"/>
+<meta name="twitter:description" content="참고: Unity Document WebGL
+Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
+// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&#34;Hello, world!&#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &lt; size; i&#43;&#43;) console.log(HEAPF32[(array &gt;&gt; 2) &#43; i]); }, AddNumbers: function (x, y) { return x &#43; y; }, StringReturnValueFunction: function () { var returnStr = &#34;bla&#34;; var bufferSize = lengthBytesUTF8(returnStr) &#43; 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "유니티 WebGL 자바스크립트 함수 호출",
+      "item": "https://icecat471.github.io/devlog/post/unity/call_javascript/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "유니티 WebGL 자바스크립트 함수 호출",
+  "name": "유니티 WebGL 자바스크립트 함수 호출",
+  "description": "참고: Unity Document WebGL\nAssets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다\n// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(\u0026#34;Hello, world!\u0026#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i \u0026lt; size; i++) console.log(HEAPF32[(array \u0026gt;\u0026gt; 2) + i]); }, AddNumbers: function (x, y) { return x + y; }, StringReturnValueFunction: function () { var returnStr = \u0026#34;bla\u0026#34;; var bufferSize = lengthBytesUTF8(returnStr) + 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx.",
+  "keywords": [
+    "unity", "javascript", "webGL"
+  ],
+  "articleBody": "참고: Unity Document WebGL\nAssets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다\n// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(\"Hello, world!\"); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i  size; i++) console.log(HEAPF32[(array  2) + i]); }, AddNumbers: function (x, y) { return x + y; }, StringReturnValueFunction: function () { var returnStr = \"bla\"; var bufferSize = lengthBytesUTF8(returnStr) + 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx.bindTexture(GLctx.TEXTURE_2D, GL.textures[texture]); }, }); \n그 후 C#에서 JS함수 호출 가능. using UnityEngine; using System.Runtime.InteropServices; public class NewBehaviourScript : MonoBehaviour { [DllImport(\"__Internal\")] private static extern void Hello(); [DllImport(\"__Internal\")] private static extern void HelloString(string str); [DllImport(\"__Internal\")] private static extern void PrintFloatArray(float[] array, int size); [DllImport(\"__Internal\")] private static extern int AddNumbers(int x, int y); [DllImport(\"__Internal\")] private static extern string StringReturnValueFunction(); [DllImport(\"__Internal\")] private static extern void BindWebGLTexture(int texture); void Start() { Hello(); HelloString(\"This is a string.\"); float[] myArray = new float[10]; PrintFloatArray(myArray, myArray.Length); int result = AddNumbers(5, 7); Debug.Log(result); Debug.Log(StringReturnValueFunction()); var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false); BindWebGLTexture(texture.GetNativeTextureID()); } } \n웹브라우저상에서만 호출하고 싶을때는 조건을 걸어준다. if(Application.platform == RuntimePlatform.WebGLPlayer) { Hello(); } ",
+  "wordCount" : "192",
+  "inLanguage": "en",
+  "datePublished": "2021-04-12T11:28:39+09:00",
+  "dateModified": "2021-04-12T11:28:39+09:00",
+  "author":{
+    "@type": "Person",
+    "name": "icecat471"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://icecat471.github.io/devlog/post/unity/call_javascript/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "icecat471's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://icecat471.github.io/devlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://icecat471.github.io/devlog/" accesskey="h" title="icecat471&#39;s Devlog (Alt + H)">icecat471&#39;s Devlog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://icecat471.github.io/devlog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
+    <h1 class="post-title">
+      유니티 WebGL 자바스크립트 함수 호출
+    </h1>
+    <div class="post-meta">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner">
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><a href="https://docs.unity3d.com/kr/2018.4/Manual/webgl-interactingwithbrowserscripting.html">참고: Unity Document WebGL</a></p>
+<br>
+<p>Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// Plugin.jslib
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">mergeInto</span>(<span style="color:#a6e22e">LibraryManager</span>.<span style="color:#a6e22e">library</span>, {
+
+  <span style="color:#a6e22e">Hello</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+    window.<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>);
+  },
+
+  <span style="color:#a6e22e">HelloString</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">str</span>) {
+    window.<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">Pointer_stringify</span>(<span style="color:#a6e22e">str</span>));
+  },
+
+  <span style="color:#a6e22e">PrintFloatArray</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">array</span>, <span style="color:#a6e22e">size</span>) {
+    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">size</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>)
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">HEAPF32</span>[(<span style="color:#a6e22e">array</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span>]);
+  },
+
+  <span style="color:#a6e22e">AddNumbers</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>;
+  },
+
+  <span style="color:#a6e22e">StringReturnValueFunction</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">returnStr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bla&#34;</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bufferSize</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lengthBytesUTF8</span>(<span style="color:#a6e22e">returnStr</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">buffer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_malloc</span>(<span style="color:#a6e22e">bufferSize</span>);
+    <span style="color:#a6e22e">stringToUTF8</span>(<span style="color:#a6e22e">returnStr</span>, <span style="color:#a6e22e">buffer</span>, <span style="color:#a6e22e">bufferSize</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">buffer</span>;
+  },
+
+  <span style="color:#a6e22e">BindWebGLTexture</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">texture</span>) {
+    <span style="color:#a6e22e">GLctx</span>.<span style="color:#a6e22e">bindTexture</span>(<span style="color:#a6e22e">GLctx</span>.<span style="color:#a6e22e">TEXTURE_2D</span>, <span style="color:#a6e22e">GL</span>.<span style="color:#a6e22e">textures</span>[<span style="color:#a6e22e">texture</span>]);
+  },
+
+});
+</code></pre></div><br>
+그 후 C#에서 JS함수 호출 가능.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> UnityEngine;
+<span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewBehaviourScript</span> : MonoBehaviour {
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> Hello();
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> HelloString(<span style="color:#66d9ef">string</span> str);
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> PrintFloatArray(<span style="color:#66d9ef">float</span>[] array, <span style="color:#66d9ef">int</span> size);
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> AddNumbers(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y);
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">string</span> StringReturnValueFunction();
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> BindWebGLTexture(<span style="color:#66d9ef">int</span> texture);
+
+    <span style="color:#66d9ef">void</span> Start() {
+        Hello();
+        
+        HelloString(<span style="color:#e6db74">&#34;This is a string.&#34;</span>);
+        
+        <span style="color:#66d9ef">float</span>[] myArray = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span>[<span style="color:#ae81ff">10</span>];
+        PrintFloatArray(myArray, myArray.Length);
+        
+        <span style="color:#66d9ef">int</span> result = AddNumbers(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>);
+        Debug.Log(result);
+        
+        Debug.Log(StringReturnValueFunction());
+        
+        <span style="color:#66d9ef">var</span> texture = <span style="color:#66d9ef">new</span> Texture2D(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, TextureFormat.ARGB32, <span style="color:#66d9ef">false</span>);
+        BindWebGLTexture(texture.GetNativeTextureID());
+    }
+}
+</code></pre></div><br>
+웹브라우저상에서만 호출하고 싶을때는 조건을 걸어준다.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">if</span>(Application.platform == RuntimePlatform.WebGLPlayer) {
+    Hello();
+}
+</code></pre></div>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://icecat471.github.io/devlog/tags/unity/">unity</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/javascript/">javascript</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/webgl/">webGL</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>터미널에서 command not found: dotnet 에러</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        container.appendChild(copybutton);
+    });
+</script>
+</body>
+
+</html>
