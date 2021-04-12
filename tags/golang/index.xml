@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/tags/golang/</link>
+    <description>Recent content in golang on icecat471&#39;s Devlog</description>
+    <image>
+      <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
+      <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 12 Apr 2021 22:14:23 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go언어 프로젝트 외부의 모듈 import하기</title>
+      <link>https://icecat471.github.io/devlog/post/golang/external_module/</link>
+      <pubDate>Mon, 12 Apr 2021 22:14:23 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/golang/external_module/</guid>
+      <description>go.mod 파일에서
+require ( &amp;lt;모듈명&amp;gt; v0.0.0 ) replace &amp;lt;모듈명&amp;gt; v0.0.0 =&amp;gt; ../module // 이런 형태로 경로를 지정해줌 </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -9,7 +9,17 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 12 Apr 2021 12:36:10 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Apr 2021 22:14:23 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go언어 프로젝트 외부의 모듈 import하기</title>
+      <link>https://icecat471.github.io/devlog/post/golang/external_module/</link>
+      <pubDate>Mon, 12 Apr 2021 22:14:23 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/golang/external_module/</guid>
+      <description>go.mod 파일에서
+require ( &amp;lt;모듈명&amp;gt; v0.0.0 ) replace &amp;lt;모듈명&amp;gt; v0.0.0 =&amp;gt; ../module // 이런 형태로 경로를 지정해줌 </description>
+    </item>
+    
     <item>
       <title>브라우저에서 유니티 함수 호출하기</title>
       <link>https://icecat471.github.io/devlog/post/unity/call_unity_func_in_js/</link>

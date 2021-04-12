@@ -5,12 +5,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>icecat471&#39;s Devlog</title>
-
-<meta name="description" content="">
+<title>Go언어 프로젝트 외부의 모듈 import하기 | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="go, golang" />
+<meta name="description" content="go.mod 파일에서
+require ( &lt;모듈명&gt; v0.0.0 ) replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌 ">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/golang/external_module/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.84cc6e7cd97516a4d4e877c6bebe5a4529afdf61f4d009e2c8bbec3a876fff4e.css" integrity="sha256-hMxufNl1FqTU6HfGvr5aRSmv32H00AniyLvsOodv/04=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
@@ -19,35 +22,78 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/index.xml">
-<link rel="alternate" type="application/json" href="https://icecat471.github.io/devlog/index.json">
-<meta property="og:title" content="icecat471&#39;s Devlog" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:title" content="Go언어 프로젝트 외부의 모듈 import하기" />
+<meta property="og:description" content="go.mod 파일에서
+require ( &lt;모듈명&gt; v0.0.0 ) replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/golang/external_module/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-12T22:14:23&#43;09:00" />
+<meta property="article:modified_time" content="2021-04-12T22:14:23&#43;09:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="icecat471&#39;s Devlog"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Go언어 프로젝트 외부의 모듈 import하기"/>
+<meta name="twitter:description" content="go.mod 파일에서
+require ( &lt;모듈명&gt; v0.0.0 ) replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌 "/>
+
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "icecat471's Devlog",
-  "url": "https://icecat471.github.io/devlog/",
-  "description": "",
-  "thumbnailUrl": "https://icecat471.github.io/devlog/favicon.ico",
-  "sameAs": [
-      "https://github.com/icecat471"
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Go언어 프로젝트 외부의 모듈 import하기",
+      "item": "https://icecat471.github.io/devlog/post/golang/external_module/"
+    }
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Go언어 프로젝트 외부의 모듈 import하기",
+  "name": "Go언어 프로젝트 외부의 모듈 import하기",
+  "description": "go.mod 파일에서\nrequire ( \u0026lt;모듈명\u0026gt; v0.0.0 ) replace \u0026lt;모듈명\u0026gt; v0.0.0 =\u0026gt; ../module // 이런 형태로 경로를 지정해줌 ",
+  "keywords": [
+    "go", "golang"
+  ],
+  "articleBody": "go.mod 파일에서\nrequire (  v0.0.0 ) replace  v0.0.0 = ../module // 이런 형태로 경로를 지정해줌 ",
+  "wordCount" : "17",
+  "inLanguage": "en",
+  "datePublished": "2021-04-12T22:14:23+09:00",
+  "dateModified": "2021-04-12T22:14:23+09:00",
+  "author":{
+    "@type": "Person",
+    "name": "icecat471"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://icecat471.github.io/devlog/post/golang/external_module/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "icecat471's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://icecat471.github.io/devlog/favicon.ico"
+    }
+  }
 }
 </script>
 </head>
 
-<body class="list" id="top">
+<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -142,99 +188,49 @@
         </ul>
     </nav>
 </header>
-<main class="main"> 
-<article class="first-entry home-info">
-    <header class="entry-header">
-        <h1>icecat471의 개발블로그입니다.</h1>
-    </header>
-    <section class="entry-content">
-        <p>신입 백엔드 개발자 icecat471의 개발블로그입니다.</p>
-    </section>
-    <footer class="entry-footer">
-        <div class="social-icons">
-    <a href="https://github.com/icecat471" target="_blank" rel="noopener noreferrer me" title="Github">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-    </path>
-</svg>
-    </a>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
+    <h1 class="post-title">
+      Go언어 프로젝트 외부의 모듈 import하기
+    </h1>
+    <div class="post-meta">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner">
+        </div>
+    </details>
 </div>
 
-    </footer>
-</article>
+  <div class="post-content"><p>go.mod 파일에서</p>
+<pre><code>require (
+    &lt;모듈명&gt; v0.0.0
+)
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 프로젝트 외부의 모듈 import하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>go.mod 파일에서
-require ( &lt;모듈명&gt; v0.0.0 ) replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌 </p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 프로젝트 외부의 모듈 import하기" href="https://icecat471.github.io/devlog/post/golang/external_module/"></a>
-</article>
+replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌
+</code></pre>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://icecat471.github.io/devlog/tags/go/">go</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/golang/">golang</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://icecat471.github.io/devlog/post/unity/call_unity_func_in_js/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>브라우저에서 유니티 함수 호출하기</span>
+  </a>
+</nav>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>브라우저에서 유니티 함수 호출하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>참고: Unity Document WebGL
-build시 생성되는 unityInstance에 메세지를 보내서 호출.
-unityInstace.SendMessage(&#39;오브젝트명&#39;, &#39;함수명&#39;); </p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 브라우저에서 유니티 함수 호출하기" href="https://icecat471.github.io/devlog/post/unity/call_unity_func_in_js/"></a>
+  </footer>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>유니티 WebGL 자바스크립트 함수 호출</h2>
-  </header>
-  <section class="entry-content">
-    <p>참고: Unity Document WebGL
-Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
-// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&#34;Hello, world!&#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &lt; size; i&#43;&#43;) console.log(HEAPF32[(array &gt;&gt; 2) &#43; i]); }, AddNumbers: function (x, y) { return x &#43; y; }, StringReturnValueFunction: function () { var returnStr = &#34;bla&#34;; var bufferSize = lengthBytesUTF8(returnStr) &#43; 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx....</p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 유니티 WebGL 자바스크립트 함수 호출" href="https://icecat471.github.io/devlog/post/unity/call_javascript/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>터미널에서 command not found: dotnet 에러</h2>
-  </header>
-  <section class="entry-content">
-    <p>아래처럼 나올 때
-zsh: command not found: dotnet dotnet package를 설치했다면
-/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인.
-/usr/local/bin 경로에 링크를 만들어주면 된다.
-ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 터미널에서 command not found: dotnet 에러" href="https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>유니티 webGL 프로젝트 로컬서버에서 실행하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>webGL “build and run” 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림
-로컬에서 서버를 열어서 실행해볼 수 있다.
-http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 이동 $ http-server Starting up http-server, serving ./ Available on: http://127.0.0.1:8080 http://120.50.93.152:8080 http://192.168.2.1:8080 Hit CTRL-C to stop the server http://localhost:8080 로 접속해보면 게임이 실행된것을 확인해 볼 수 있다.</p>
-  </section>
-  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 유니티 webGL 프로젝트 로컬서버에서 실행하기" href="https://icecat471.github.io/devlog/post/unity/local_server/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="next" href="https://icecat471.github.io/devlog/page/2/">Next Page »</a>
-  </nav>
-</footer>
     </main>
     <footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
@@ -306,6 +302,43 @@ http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 �
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        container.appendChild(copybutton);
+    });
 </script>
 </body>
 
