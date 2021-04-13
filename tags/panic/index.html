@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>golang | icecat471&#39;s Devlog</title>
+<title>panic | icecat471&#39;s Devlog</title>
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/tags/golang/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/tags/panic/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.84cc6e7cd97516a4d4e877c6bebe5a4529afdf61f4d009e2c8bbec3a876fff4e.css" integrity="sha256-hMxufNl1FqTU6HfGvr5aRSmv32H00AniyLvsOodv/04=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
@@ -19,16 +19,16 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/tags/golang/index.xml">
-<meta property="og:title" content="golang" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/tags/panic/index.xml">
+<meta property="og:title" content="panic" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/tags/golang/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:url" content="https://icecat471.github.io/devlog/tags/panic/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="golang"/>
+<meta name="twitter:title" content="panic"/>
 <meta name="twitter:description" content=""/>
 
 </head>
@@ -130,7 +130,7 @@
 </header>
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/tags/">Tags</a></div>
-  <h1>golang</h1>
+  <h1>panic</h1>
 </header>
 
 <article class="post-entry tag-entry"> 
@@ -146,32 +146,6 @@ package main import &#34;os&#34; func main() { f, err := os.Open(&#34;1.txt&#34;
   </section>
   <footer class="entry-footer">April 13, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to Go언어 defer와 panic" href="https://icecat471.github.io/devlog/post/golang/defer_and_panic/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 flag 패키지를 통한 command-line flag 파싱</h2>
-  </header>
-  <section class="entry-content">
-    <p>golang flag package
-command-line flag를 파싱해주는 패키지.
-// flag값에 저장된 int64변수의 주소값 반환 maxValue := flag.Int64(&#34;max&#34;, 10, &#34;Defines maximum value&#34;) /* xxxVar() 함수는 반환값이 없고 첫번째 인자로 변수의 포인터를 넘겨주면 변수에 값을 할당해줌. */ var minValue int64 flag.Int64Var(&amp;minValue, &#34;min&#34;, 0, &#34;Defines minimum value&#34;) // flag에 command-line 파싱 // 꼭 호출해주어야 함 flag.Parse() 
-Boolean flag는 0, 1, t, f, T, F, true, false, TRUE, FALSE, True, False 등으로 넘겨줄 수 있음....</p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 flag 패키지를 통한 command-line flag 파싱" href="https://icecat471.github.io/devlog/post/golang/flag/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 프로젝트 외부의 모듈 import하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>go.mod 파일에서
-require ( &lt;모듈명&gt; v0.0.0 ) replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌 </p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 프로젝트 외부의 모듈 import하기" href="https://icecat471.github.io/devlog/post/golang/external_module/"></a>
 </article>
     </main>
     <footer class="footer">
