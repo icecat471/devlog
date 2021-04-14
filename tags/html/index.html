@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>icecat471&#39;s Devlog</title>
-
+<title>html | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/tags/html/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.84cc6e7cd97516a4d4e877c6bebe5a4529afdf61f4d009e2c8bbec3a876fff4e.css" integrity="sha256-hMxufNl1FqTU6HfGvr5aRSmv32H00AniyLvsOodv/04=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
@@ -19,32 +19,18 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/index.xml">
-<link rel="alternate" type="application/json" href="https://icecat471.github.io/devlog/index.json">
-<meta property="og:title" content="icecat471&#39;s Devlog" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/tags/html/index.xml">
+<meta property="og:title" content="html" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:url" content="https://icecat471.github.io/devlog/tags/html/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="icecat471&#39;s Devlog"/>
+<meta name="twitter:title" content="html"/>
 <meta name="twitter:description" content=""/>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "icecat471's Devlog",
-  "url": "https://icecat471.github.io/devlog/",
-  "description": "",
-  "thumbnailUrl": "https://icecat471.github.io/devlog/favicon.ico",
-  "sameAs": [
-      "https://github.com/icecat471"
-  ]
-}
-</script>
 </head>
 
 <body class="list" id="top">
@@ -143,79 +129,22 @@
     </nav>
 </header>
 <main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/tags/">Tags</a></div>
+  <h1>html</h1>
+</header>
 
-<article class="post-entry"> 
+<article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>유니티 WebGL 자바스크립트 함수 호출</h2>
+    <h2>html 캔버스에 이미지 그리기</h2>
   </header>
   <section class="entry-content">
-    <p>참고: Unity Document WebGL
-Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
-// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&#34;Hello, world!&#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &lt; size; i&#43;&#43;) console.log(HEAPF32[(array &gt;&gt; 2) &#43; i]); }, AddNumbers: function (x, y) { return x &#43; y; }, StringReturnValueFunction: function () { var returnStr = &#34;bla&#34;; var bufferSize = lengthBytesUTF8(returnStr) &#43; 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx....</p>
+    <p>&lt;canvas id=&#34;myCanvas&#34; width=&#34;500&#34; height=&#34;800&#34;&gt;&lt;/canvas&gt; let canvas = document.querySelector(&#39;#myCanvas&#39;); let context = canvas.getContext(&#39;2d&#39;); // 이미지 로딩 let dragon = new Image(); dragon.src = &#39;이미지 경로&#39;; context.drawImage(dragon, x좌표, y좌표, width, height); 
+setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있다.
+// 1초마다 새로 그림 setInterval(()=&gt; { context.drawImage(dragon, x좌표, y좌표, width, height); }, 1000); // 1000ms </p>
   </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 유니티 WebGL 자바스크립트 함수 호출" href="https://icecat471.github.io/devlog/post/unity/call_javascript/"></a>
+  <footer class="entry-footer">April 14, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to html 캔버스에 이미지 그리기" href="https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>터미널에서 command not found: dotnet 에러</h2>
-  </header>
-  <section class="entry-content">
-    <p>아래처럼 나올 때
-zsh: command not found: dotnet dotnet package를 설치했다면
-/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인.
-/usr/local/bin 경로에 링크를 만들어주면 된다.
-ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 터미널에서 command not found: dotnet 에러" href="https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>유니티 webGL 프로젝트 로컬서버에서 실행하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>webGL “build and run” 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림
-로컬에서 서버를 열어서 실행해볼 수 있다.
-http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 이동 $ http-server Starting up http-server, serving ./ Available on: http://127.0.0.1:8080 http://120.50.93.152:8080 http://192.168.2.1:8080 Hit CTRL-C to stop the server http://localhost:8080 로 접속해보면 게임이 실행된것을 확인해 볼 수 있다.</p>
-  </section>
-  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 유니티 webGL 프로젝트 로컬서버에서 실행하기" href="https://icecat471.github.io/devlog/post/unity/local_server/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Docker 컨테이너 메모리 및 CPU 제한하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>// 512MB의 메모리와 50%의 CPU 할당 docker run -m 512m --cpu-quota=50000 &lt;image name&gt; // stat 확인 docker stats &lt;container id&gt; </p>
-  </section>
-  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Docker 컨테이너 메모리 및 CPU 제한하기" href="https://icecat471.github.io/devlog/post/docker/docker_memory_limit/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Hugo로 블로그 시작하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>출처: IALY’s BLOG
-1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0&#43;extended darwin/amd64 BuildDate=unknown 
-2. Hugo Project 생성 hugo new site &lt;프로젝트명&gt; 
-3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
-원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
-$ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다....</p>
-  </section>
-  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Hugo로 블로그 시작하기" href="https://icecat471.github.io/devlog/post/hugo/start_hugo/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="https://icecat471.github.io/devlog/">« Prev Page</a>
-  </nav>
-</footer>
     </main>
     <footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>

@@ -9,7 +9,18 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 13 Apr 2021 22:13:26 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Apr 2021 22:40:37 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>html 캔버스에 이미지 그리기</title>
+      <link>https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/</link>
+      <pubDate>Wed, 14 Apr 2021 22:40:37 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/</guid>
+      <description>&amp;lt;canvas id=&amp;#34;myCanvas&amp;#34; width=&amp;#34;500&amp;#34; height=&amp;#34;800&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; let canvas = document.querySelector(&amp;#39;#myCanvas&amp;#39;); let context = canvas.getContext(&amp;#39;2d&amp;#39;); // 이미지 로딩 let dragon = new Image(); dragon.src = &amp;#39;이미지 경로&amp;#39;; context.drawImage(dragon, x좌표, y좌표, width, height); 
+setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있다.
+// 1초마다 새로 그림 setInterval(()=&amp;gt; { context.drawImage(dragon, x좌표, y좌표, width, height); }, 1000); // 1000ms </description>
+    </item>
+    
     <item>
       <title>Go언어 defer와 panic</title>
       <link>https://icecat471.github.io/devlog/post/golang/defer_and_panic/</link>
