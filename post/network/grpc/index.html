@@ -65,8 +65,8 @@
   "keywords": [
     "network", "gRPC", "microservice", "MSA"
   ],
-  "articleBody": "gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling         gRPC의 장점 1. 다양한 언어와 플랫폼 지원 ProtoBuf의 IDL을 활용한 서비스 정의 한개로 다양한 언어와 플랫폼에서 동작.공식지원하는 언어 및 플랫폼 목록2. HTTP/2 기반  양방향 스트리밍. 높은 메시지 압축률과 성능.  3. MSA(microservice architecture)에 적합  gRPC를 활용하면 비지니스 로직에 집중하여 빠른 서비스 개발이 가능. MSA의 다양한 기술 스택의 공존으로 인한 중복 발생의 단점 보완 및 수많은 서비스간의 API 호출로 인한 성능저하 개선. ProtoBuf에 의한 높은 메시지 압축률은 시스템 전체의 네트워크 트래픽을 획기적으로 줄여줌.  [출처]1. Microsoft Docs 2. 네이버 클라우드 플랫폼 기술 블로그\n",
-  "wordCount" : "153",
+  "articleBody": "gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling         gRPC의 장점 1. 다양한 언어와 플랫폼 지원 ProtoBuf의 IDL을 활용한 서비스 정의 한개로 다양한 언어와 플랫폼에서 동작.공식지원하는 언어 및 플랫폼 목록2. HTTP/2 기반  양방향 스트리밍. 높은 메시지 압축률과 성능.  3. MSA(microservice architecture)에 적합  gRPC를 활용하면 비지니스 로직에 집중하여 빠른 서비스 개발이 가능. MSA의 다양한 기술 스택의 공존으로 인한 중복 발생의 단점 보완 및 수많은 서비스간의 API 호출로 인한 성능저하 개선. ProtoBuf에 의한 높은 메시지 압축률은 시스템 전체의 네트워크 트래픽을 획기적으로 줄여줌.  출처 1. Microsoft Docs 2. 네이버 클라우드 플랫폼 기술 블로그\n",
+  "wordCount" : "154",
   "inLanguage": "en",
   "datePublished": "2021-04-15T22:50:49+09:00",
   "dateModified": "2021-04-15T22:50:49+09:00",
@@ -213,8 +213,13 @@
                 <li>
                     <a href="#2-http2-%ea%b8%b0%eb%b0%98" aria-label="2. HTTP/2 기반">2. HTTP/2 기반</a></li>
                 <li>
-                    <a href="#3-msamicroservice-architecture%ec%97%90-%ec%a0%81%ed%95%a9" aria-label="3. MSA(microservice architecture)에 적합">3. MSA(microservice architecture)에 적합</a>
+                    <a href="#3-msamicroservice-architecture%ec%97%90-%ec%a0%81%ed%95%a9" aria-label="3. MSA(microservice architecture)에 적합">3. MSA(microservice architecture)에 적합</a><ul>
+                        
+                <li>
+                    <a href="#%ec%b6%9c%ec%b2%98" aria-label="출처">출처</a>
                 </li>
+            </ul>
+            </li>
             </ul>
             </li>
             </ul>
@@ -299,10 +304,10 @@ ProtoBuf의 IDL을 활용한 서비스 정의 한개로 다양한 언어와 플�
 <li>MSA의 다양한 기술 스택의 공존으로 인한 중복 발생의 단점 보완 및 수많은 서비스간의 API 호출로 인한 성능저하 개선.</li>
 <li>ProtoBuf에 의한 높은 메시지 압축률은 시스템 전체의 네트워크 트래픽을 획기적으로 줄여줌.</li>
 </ul>
-<p>[출처]<!-- raw HTML omitted -->
-<a href="https://docs.microsoft.com/ko-kr/aspnet/core/grpc/comparison?view=aspnetcore-5.0">1. Microsoft Docs</a>
-<!-- raw HTML omitted -->
-<a href="https://medium.com/naver-cloud-platform/nbp-%EA%B8%B0%EC%88%A0-%EA%B2%BD%ED%97%98-%EC%8B%9C%EB%8C%80%EC%9D%98-%ED%9D%90%EB%A6%84-grpc-%EA%B9%8A%EA%B2%8C-%ED%8C%8C%EA%B3%A0%EB%93%A4%EA%B8%B0-1-39e97cb3460">2. 네이버 클라우드 플랫폼 기술 블로그</a></p>
+<h3 id="출처">출처<a hidden class="anchor" aria-hidden="true" href="#출처">#</a></h3>
+<p><a href="https://docs.microsoft.com/ko-kr/aspnet/core/grpc/comparison?view=aspnetcore-5.0">1. Microsoft Docs</a>
+<!-- raw HTML omitted --></p>
+<p><a href="https://medium.com/naver-cloud-platform/nbp-%EA%B8%B0%EC%88%A0-%EA%B2%BD%ED%97%98-%EC%8B%9C%EB%8C%80%EC%9D%98-%ED%9D%90%EB%A6%84-grpc-%EA%B9%8A%EA%B2%8C-%ED%8C%8C%EA%B3%A0%EB%93%A4%EA%B8%B0-1-39e97cb3460">2. 네이버 클라우드 플랫폼 기술 블로그</a></p>
 
 </div>
   <footer class="post-footer">
