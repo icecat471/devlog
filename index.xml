@@ -9,7 +9,16 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 16 Apr 2021 02:00:08 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 03:11:45 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo syntax highlight 변경</title>
+      <link>https://icecat471.github.io/devlog/post/hugo/syntax_highlight/</link>
+      <pubDate>Fri, 16 Apr 2021 03:11:45 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/hugo/syntax_highlight/</guid>
+      <description>1. 원하는 테마 찾기 highlightjs.org에서 원하는 테마를 찾는다.2. css 찾기 highlightjs github에서 원하는 테마의 css파일 내용을 복사한다.3. 테마 변경 config.yml에 아래의 내용을 추가한다.pygmentsUseClasses:true(Hugo PaperMod 테마 기준)/themes/PaperMod/assests/css/hljs/an-old-hope.min.css 의 내용을 복사한 내용으로 바꾼다.=&amp;gt; 임시적으로 설정한것으로 theme overriding으로 변경 가능한지 찾아봐야 함.</description>
+    </item>
+    
     <item>
       <title>Hugo 블로그 댓글 기능 추가하기</title>
       <link>https://icecat471.github.io/devlog/post/hugo/comment/</link>

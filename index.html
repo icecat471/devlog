@@ -167,6 +167,17 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Hugo syntax highlight 변경</h2>
+  </header>
+  <section class="entry-content">
+    <p>1. 원하는 테마 찾기 highlightjs.org에서 원하는 테마를 찾는다.2. css 찾기 highlightjs github에서 원하는 테마의 css파일 내용을 복사한다.3. 테마 변경 config.yml에 아래의 내용을 추가한다.pygmentsUseClasses:true(Hugo PaperMod 테마 기준)/themes/PaperMod/assests/css/hljs/an-old-hope.min.css 의 내용을 복사한 내용으로 바꾼다.=&gt; 임시적으로 설정한것으로 theme overriding으로 변경 가능한지 찾아봐야 함.</p>
+  </section>
+  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Hugo syntax highlight 변경" href="https://icecat471.github.io/devlog/post/hugo/syntax_highlight/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Hugo 블로그 댓글 기능 추가하기</h2>
   </header>
   <section class="entry-content">
@@ -210,19 +221,6 @@ test Blockchain: 2021/04/15 15:04:03 test </p>
   </section>
   <footer class="entry-footer">April 14, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to html 캔버스에 이미지 그리기" href="https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 defer와 panic</h2>
-  </header>
-  <section class="entry-content">
-    <p>출처: 예제로 배우는 Go 프로그래밍
-1. defer 특정 문장 혹은 함수를 defer를 호출하는 함수가 return하기 직전에 실행하게 한다.
-package main import &#34;os&#34; func main() { f, err := os.Open(&#34;1.txt&#34;) if err != nil { panic(err) } // main 마지막에 파일 close 실행  defer f.Close() // 파일 읽기  bytes := make([]byte, 1024) f.Read(bytes) println(len(bytes)) } 2. panic 함수를 즉시 멈추고 defer를 모두 실행한 뒤 즉시 리턴.이것은 콜스택을 따라 상위함수에도 모두 적용....</p>
-  </section>
-  <footer class="entry-footer">April 13, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 defer와 panic" href="https://icecat471.github.io/devlog/post/golang/defer_and_panic/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
