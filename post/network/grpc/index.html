@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>gRPC란? | icecat471&#39;s Devlog</title>
-<meta name="keywords" content="network, gRPC" />
+<meta name="keywords" content="network, gRPC, microservice, MSA" />
 <meta name="description" content="gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.
 HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.
 HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI &#43; third-party tooling">
@@ -69,7 +69,7 @@ HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto
   "name": "gRPC란?",
   "description": "gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.\nHTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.\nHTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling",
   "keywords": [
-    "network", "gRPC"
+    "network", "gRPC", "microservice", "MSA"
   ],
   "articleBody": "gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.\nHTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.\nHTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling   \n      gRPC의 장점 1. 다양한 언어와 플랫폼 지원 ProtoBuf의 IDL을 활용한 서비스 정의 한개로 다양한 언어와 플랫폼에서 동작.\n공식지원하는 언어 및 플랫폼 목록\n2. HTTP/2 기반  양방향 스트리밍.\n 높은 메시지 압축률과 성능.\n  3. MSA(microservice architecture)에 적합  gRPC를 활용하면 비지니스 로직에 집중하여 빠른 서비스 개발이 가능. MSA의 다양한 기술 스택의 공존으로 인한 중복 발생의 단점 보완 및 수많은 서비스간의 API 호출로 인한 성능저하 개선. ProtoBuf에 의한 높은 메시지 압축률은 시스템 전체의 네트워크 트래픽을 획기적으로 줄여줌.  [출처]\n1. Microsoft Docs 2. 네이버 클라우드 플랫폼 기술 블로그\n",
   "wordCount" : "158",
@@ -315,6 +315,8 @@ ProtoBuf의 IDL을 활용한 서비스 정의 한개로 다양한 언어와 플�
     <ul class="post-tags">
       <li><a href="https://icecat471.github.io/devlog/tags/network/">network</a></li>
       <li><a href="https://icecat471.github.io/devlog/tags/grpc/">gRPC</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/microservice/">microservice</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/msa/">MSA</a></li>
     </ul>
 <nav class="paginav">
   <a class="next" href="https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/">
