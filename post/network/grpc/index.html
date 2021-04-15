@@ -71,8 +71,8 @@ HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto
   "keywords": [
     "network", "gRPC"
   ],
-  "articleBody": "gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.\nHTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.\nHTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling   \n      gRPC의 장점 작성중…\n",
-  "wordCount" : "78",
+  "articleBody": "gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.\nHTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.\nHTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling   \n      gRPC의 장점 1. 다양한 언어와 플랫폼 지원 ProtoBuf의 IDL을 활용한 서비스 정의 한개로 다양한 언어와 플랫폼에서 동작.\n공식지원하는 언어 및 플랫폼 목록\n2. HTTP/2 기반  양방향 스트리밍.\n 높은 메시지 압축률과 성능.\n  3. MSA(microservice architecture)에 적합  gRPC를 활용하면 비지니스 로직에 집중하여 빠른 서비스 개발이 가능. MSA의 다양한 기술 스택의 공존으로 인한 중복 발생의 단점 보완 및 수많은 서비스간의 API 호출로 인한 성능저하 개선. ProtoBuf에 의한 높은 메시지 압축률은 시스템 전체의 네트워크 트래픽을 획기적으로 줄여줌.  [출처]\n1. Microsoft Docs 2. 네이버 클라우드 플랫폼 기술 블로그\n",
+  "wordCount" : "158",
   "inLanguage": "en",
   "datePublished": "2021-04-15T22:50:49+09:00",
   "dateModified": "2021-04-15T22:50:49+09:00",
@@ -212,8 +212,17 @@ HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto
                 <li>
                     <a href="#http%ec%99%80-%eb%b9%84%ea%b5%90" aria-label="HTTP와 비교">HTTP와 비교</a></li>
                 <li>
-                    <a href="#grpc%ec%9d%98-%ec%9e%a5%ec%a0%90" aria-label="gRPC의 장점">gRPC의 장점</a>
+                    <a href="#grpc%ec%9d%98-%ec%9e%a5%ec%a0%90" aria-label="gRPC의 장점">gRPC의 장점</a><ul>
+                        
+                <li>
+                    <a href="#1-%eb%8b%a4%ec%96%91%ed%95%9c-%ec%96%b8%ec%96%b4%ec%99%80-%ed%94%8c%eb%9e%ab%ed%8f%bc-%ec%a7%80%ec%9b%90" aria-label="1. 다양한 언어와 플랫폼 지원">1. 다양한 언어와 플랫폼 지원</a></li>
+                <li>
+                    <a href="#2-http2-%ea%b8%b0%eb%b0%98" aria-label="2. HTTP/2 기반">2. HTTP/2 기반</a></li>
+                <li>
+                    <a href="#3-msamicroservice-architecture%ec%97%90-%ec%a0%81%ed%95%a9" aria-label="3. MSA(microservice architecture)에 적합">3. MSA(microservice architecture)에 적합</a>
                 </li>
+            </ul>
+            </li>
             </ul>
         </div>
     </details>
@@ -280,7 +289,26 @@ HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.<br><br>
 </tbody>
 </table>
 <h1 id="grpc의-장점">gRPC의 장점<a hidden class="anchor" aria-hidden="true" href="#grpc의-장점">#</a></h1>
-<p>작성중&hellip;</p>
+<h2 id="1-다양한-언어와-플랫폼-지원">1. 다양한 언어와 플랫폼 지원<a hidden class="anchor" aria-hidden="true" href="#1-다양한-언어와-플랫폼-지원">#</a></h2>
+<p><img loading="lazy" src="../../../img/network/gRPC.png" alt="gRPG 이미지"  />
+
+ProtoBuf의 IDL을 활용한 서비스 정의 한개로 다양한 언어와 플랫폼에서 동작.<br>
+<a href="https://www.grpc.io/about/#osp">공식지원하는 언어 및 플랫폼 목록</a><br><br></p>
+<h2 id="2-http2-기반">2. HTTP/2 기반<a hidden class="anchor" aria-hidden="true" href="#2-http2-기반">#</a></h2>
+<ul>
+<li>양방향 스트리밍.<br></li>
+<li>높은 메시지 압축률과 성능.<br><br></li>
+</ul>
+<h2 id="3-msamicroservice-architecture에-적합">3. MSA(microservice architecture)에 적합<a hidden class="anchor" aria-hidden="true" href="#3-msamicroservice-architecture에-적합">#</a></h2>
+<ul>
+<li>gRPC를 활용하면 비지니스 로직에 집중하여 빠른 서비스 개발이 가능.</li>
+<li>MSA의 다양한 기술 스택의 공존으로 인한 중복 발생의 단점 보완 및 수많은 서비스간의 API 호출로 인한 성능저하 개선.</li>
+<li>ProtoBuf에 의한 높은 메시지 압축률은 시스템 전체의 네트워크 트래픽을 획기적으로 줄여줌.</li>
+</ul>
+<p>[출처]<br>
+<a href="https://docs.microsoft.com/ko-kr/aspnet/core/grpc/comparison?view=aspnetcore-5.0">1. Microsoft Docs</a>
+<br>
+<a href="https://medium.com/naver-cloud-platform/nbp-%EA%B8%B0%EC%88%A0-%EA%B2%BD%ED%97%98-%EC%8B%9C%EB%8C%80%EC%9D%98-%ED%9D%90%EB%A6%84-grpc-%EA%B9%8A%EA%B2%8C-%ED%8C%8C%EA%B3%A0%EB%93%A4%EA%B8%B0-1-39e97cb3460">2. 네이버 클라우드 플랫폼 기술 블로그</a></p>
 
 </div>
   <footer class="post-footer">
