@@ -12,7 +12,7 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
 // Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&#34;Hello, world!&#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &lt; size; i&#43;&#43;) console.log(HEAPF32[(array &gt;&gt; 2) &#43; i]); }, AddNumbers: function (x, y) { return x &#43; y; }, StringReturnValueFunction: function () { var returnStr = &#34;bla&#34;; var bufferSize = lengthBytesUTF8(returnStr) &#43; 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx.">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/post/unity/call_javascript/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.84cc6e7cd97516a4d4e877c6bebe5a4529afdf61f4d009e2c8bbec3a876fff4e.css" integrity="sha256-hMxufNl1FqTU6HfGvr5aRSmv32H00AniyLvsOodv/04=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
@@ -214,85 +214,85 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
   <div class="post-content"><p><a href="https://docs.unity3d.com/kr/2018.4/Manual/webgl-interactingwithbrowserscripting.html">참고: Unity Document WebGL</a></p>
 <!-- raw HTML omitted -->
 <p>Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// Plugin.jslib
-</span><span style="color:#75715e"></span>
-<span style="color:#a6e22e">mergeInto</span>(<span style="color:#a6e22e">LibraryManager</span>.<span style="color:#a6e22e">library</span>, {
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Plugin.jslib
+</span><span class="c1"></span>
+<span class="nx">mergeInto</span><span class="p">(</span><span class="nx">LibraryManager</span><span class="p">.</span><span class="nx">library</span><span class="p">,</span> <span class="p">{</span>
 
-  <span style="color:#a6e22e">Hello</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
-    window.<span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;Hello, world!&#34;</span>);
-  },
+  <span class="nx">Hello</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Hello, world!&#34;</span><span class="p">);</span>
+  <span class="p">},</span>
 
-  <span style="color:#a6e22e">HelloString</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">str</span>) {
-    window.<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">Pointer_stringify</span>(<span style="color:#a6e22e">str</span>));
-  },
+  <span class="nx">HelloString</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="nx">Pointer_stringify</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
+  <span class="p">},</span>
 
-  <span style="color:#a6e22e">PrintFloatArray</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">array</span>, <span style="color:#a6e22e">size</span>) {
-    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">size</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>)
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">HEAPF32</span>[(<span style="color:#a6e22e">array</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span>]);
-  },
+  <span class="nx">PrintFloatArray</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">size</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">HEAPF32</span><span class="p">[(</span><span class="nx">array</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nx">i</span><span class="p">]);</span>
+  <span class="p">},</span>
 
-  <span style="color:#a6e22e">AddNumbers</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>;
-  },
+  <span class="nx">AddNumbers</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+  <span class="p">},</span>
 
-  <span style="color:#a6e22e">StringReturnValueFunction</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () {
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">returnStr</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bla&#34;</span>;
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bufferSize</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lengthBytesUTF8</span>(<span style="color:#a6e22e">returnStr</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">buffer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_malloc</span>(<span style="color:#a6e22e">bufferSize</span>);
-    <span style="color:#a6e22e">stringToUTF8</span>(<span style="color:#a6e22e">returnStr</span>, <span style="color:#a6e22e">buffer</span>, <span style="color:#a6e22e">bufferSize</span>);
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">buffer</span>;
-  },
+  <span class="nx">StringReturnValueFunction</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">returnStr</span> <span class="o">=</span> <span class="s2">&#34;bla&#34;</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">bufferSize</span> <span class="o">=</span> <span class="nx">lengthBytesUTF8</span><span class="p">(</span><span class="nx">returnStr</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">buffer</span> <span class="o">=</span> <span class="nx">_malloc</span><span class="p">(</span><span class="nx">bufferSize</span><span class="p">);</span>
+    <span class="nx">stringToUTF8</span><span class="p">(</span><span class="nx">returnStr</span><span class="p">,</span> <span class="nx">buffer</span><span class="p">,</span> <span class="nx">bufferSize</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">buffer</span><span class="p">;</span>
+  <span class="p">},</span>
 
-  <span style="color:#a6e22e">BindWebGLTexture</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">texture</span>) {
-    <span style="color:#a6e22e">GLctx</span>.<span style="color:#a6e22e">bindTexture</span>(<span style="color:#a6e22e">GLctx</span>.<span style="color:#a6e22e">TEXTURE_2D</span>, <span style="color:#a6e22e">GL</span>.<span style="color:#a6e22e">textures</span>[<span style="color:#a6e22e">texture</span>]);
-  },
+  <span class="nx">BindWebGLTexture</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">texture</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">GLctx</span><span class="p">.</span><span class="nx">bindTexture</span><span class="p">(</span><span class="nx">GLctx</span><span class="p">.</span><span class="nx">TEXTURE_2D</span><span class="p">,</span> <span class="nx">GL</span><span class="p">.</span><span class="nx">textures</span><span class="p">[</span><span class="nx">texture</span><span class="p">]);</span>
+  <span class="p">},</span>
 
-});
+<span class="p">});</span>
 </code></pre></div><!-- raw HTML omitted -->
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> UnityEngine;
-<span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
+<div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
 
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewBehaviourScript</span> : MonoBehaviour {
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> Hello();
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> HelloString(<span style="color:#66d9ef">string</span> str);
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> PrintFloatArray(<span style="color:#66d9ef">float</span>[] array, <span style="color:#66d9ef">int</span> size);
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> AddNumbers(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y);
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">string</span> StringReturnValueFunction();
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">    [DllImport(&#34;__Internal&#34;)]</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> BindWebGLTexture(<span style="color:#66d9ef">int</span> texture);
+<span class="k">public</span> <span class="k">class</span> <span class="nc">NewBehaviourScript</span> <span class="p">:</span> <span class="n">MonoBehaviour</span> <span class="p">{</span>
+<span class="na">
+</span><span class="na">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="k">void</span> <span class="n">Hello</span><span class="p">();</span>
+<span class="na">
+</span><span class="na">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="k">void</span> <span class="n">HelloString</span><span class="p">(</span><span class="kt">string</span> <span class="n">str</span><span class="p">);</span>
+<span class="na">
+</span><span class="na">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="k">void</span> <span class="n">PrintFloatArray</span><span class="p">(</span><span class="kt">float</span><span class="p">[]</span> <span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+<span class="na">
+</span><span class="na">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="n">AddNumbers</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">);</span>
+<span class="na">
+</span><span class="na">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">string</span> <span class="n">StringReturnValueFunction</span><span class="p">();</span>
+<span class="na">
+</span><span class="na">    [DllImport(&#34;__Internal&#34;)]</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="k">void</span> <span class="n">BindWebGLTexture</span><span class="p">(</span><span class="kt">int</span> <span class="n">texture</span><span class="p">);</span>
 
-    <span style="color:#66d9ef">void</span> Start() {
-        Hello();
+    <span class="k">void</span> <span class="n">Start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Hello</span><span class="p">();</span>
         
-        HelloString(<span style="color:#e6db74">&#34;This is a string.&#34;</span>);
+        <span class="n">HelloString</span><span class="p">(</span><span class="s">&#34;This is a string.&#34;</span><span class="p">);</span>
         
-        <span style="color:#66d9ef">float</span>[] myArray = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">float</span>[<span style="color:#ae81ff">10</span>];
-        PrintFloatArray(myArray, myArray.Length);
+        <span class="kt">float</span><span class="p">[]</span> <span class="n">myArray</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">float</span><span class="p">[</span><span class="m">10</span><span class="p">];</span>
+        <span class="n">PrintFloatArray</span><span class="p">(</span><span class="n">myArray</span><span class="p">,</span> <span class="n">myArray</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
         
-        <span style="color:#66d9ef">int</span> result = AddNumbers(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>);
-        Debug.Log(result);
+        <span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="n">AddNumbers</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">);</span>
+        <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
         
-        Debug.Log(StringReturnValueFunction());
+        <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">StringReturnValueFunction</span><span class="p">());</span>
         
-        <span style="color:#66d9ef">var</span> texture = <span style="color:#66d9ef">new</span> Texture2D(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, TextureFormat.ARGB32, <span style="color:#66d9ef">false</span>);
-        BindWebGLTexture(texture.GetNativeTextureID());
-    }
-}
+        <span class="kt">var</span> <span class="n">texture</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Texture2D</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">TextureFormat</span><span class="p">.</span><span class="n">ARGB32</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+        <span class="n">BindWebGLTexture</span><span class="p">(</span><span class="n">texture</span><span class="p">.</span><span class="n">GetNativeTextureID</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div><!-- raw HTML omitted -->
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">if</span>(Application.platform == RuntimePlatform.WebGLPlayer) {
-    Hello();
-}
+<div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">if</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="n">platform</span> <span class="p">==</span> <span class="n">RuntimePlatform</span><span class="p">.</span><span class="n">WebGLPlayer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Hello</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
 </div>
   <footer class="post-footer">

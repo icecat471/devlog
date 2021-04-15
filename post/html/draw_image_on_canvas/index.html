@@ -11,7 +11,7 @@
 // 1초마다 새로 그림 setInterval(()=&gt; { context.drawImage(dragon, x좌표, y좌표, width, height); }, 1000); // 1000ms ">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.84cc6e7cd97516a4d4e877c6bebe5a4529afdf61f4d009e2c8bbec3a876fff4e.css" integrity="sha256-hMxufNl1FqTU6HfGvr5aRSmv32H00AniyLvsOodv/04=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
@@ -208,21 +208,21 @@
     </details>
 </div>
 
-  <div class="post-content"><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;myCanvas&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;500&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;800&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">canvas</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#myCanvas&#39;</span>);
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">getContext</span>(<span style="color:#e6db74">&#39;2d&#39;</span>);
+  <div class="post-content"><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;myCanvas&#34;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;500&#34;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#34;800&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#myCanvas&#39;</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">context</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
 
-<span style="color:#75715e">// 이미지 로딩
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dragon</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>();
-<span style="color:#a6e22e">dragon</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;이미지 경로&#39;</span>;
+<span class="c1">// 이미지 로딩
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">dragon</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+<span class="nx">dragon</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;이미지 경로&#39;</span><span class="p">;</span>
 
-<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">dragon</span>, <span style="color:#a6e22e">x좌표</span>, <span style="color:#a6e22e">y좌표</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>);
+<span class="nx">context</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">dragon</span><span class="p">,</span> <span class="nx">x좌표</span><span class="p">,</span> <span class="nx">y좌표</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">);</span>
 </code></pre></div><!-- raw HTML omitted -->
 <p>setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 1초마다 새로 그림
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">setInterval</span>(()=&gt; {
-    <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">dragon</span>, <span style="color:#a6e22e">x좌표</span>, <span style="color:#a6e22e">y좌표</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>);
-}, <span style="color:#ae81ff">1000</span>); <span style="color:#75715e">// 1000ms
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 1초마다 새로 그림
+</span><span class="c1"></span><span class="nx">setInterval</span><span class="p">(()=&gt;</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">dragon</span><span class="p">,</span> <span class="nx">x좌표</span><span class="p">,</span> <span class="nx">y좌표</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// 1000ms
 </span></code></pre></div>
 </div>
   <footer class="post-footer">
