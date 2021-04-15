@@ -9,7 +9,17 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 14 Apr 2021 22:40:37 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Apr 2021 15:04:43 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go언어 log.SetPrefix()</title>
+      <link>https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/</link>
+      <pubDate>Thu, 15 Apr 2021 15:04:43 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/</guid>
+      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; ) func init() { log.SetPrefix(&amp;#34;Blockchain: &amp;#34;) } func main() { fmt.Println(&amp;#34;test&amp;#34;) log.Println(&amp;#34;test&amp;#34;) } 실행시켜보면
+test Blockchain: 2021/04/15 15:04:03 test </description>
+    </item>
+    
     <item>
       <title>html 캔버스에 이미지 그리기</title>
       <link>https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/</link>

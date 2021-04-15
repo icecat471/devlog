@@ -2,10 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://icecat471.github.io/devlog/tags/canvas/</loc>
-    <lastmod>2021-04-14T22:40:37+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/categories/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/go/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/golang/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/log/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/</loc>
+    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/canvas/</loc>
     <lastmod>2021-04-14T22:40:37+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/html/</loc>
@@ -17,25 +41,7 @@
     <loc>https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/</loc>
     <lastmod>2021-04-14T22:40:37+09:00</lastmod>
   </url><url>
-    <loc>https://icecat471.github.io/devlog/</loc>
-    <lastmod>2021-04-14T22:40:37+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/post/</loc>
-    <lastmod>2021-04-14T22:40:37+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/</loc>
-    <lastmod>2021-04-14T22:40:37+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/tags/defer/</loc>
-    <lastmod>2021-04-13T22:13:26+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/go/</loc>
-    <lastmod>2021-04-13T22:13:26+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
-    <lastmod>2021-04-13T22:13:26+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/golang/</loc>
     <lastmod>2021-04-13T22:13:26+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/golang/defer_and_panic/</loc>

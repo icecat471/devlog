@@ -9,7 +9,34 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 14 Apr 2021 22:40:37 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Apr 2021 15:04:43 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go</title>
+      <link>https://icecat471.github.io/devlog/tags/go/</link>
+      <pubDate>Thu, 15 Apr 2021 15:04:43 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://icecat471.github.io/devlog/tags/golang/</link>
+      <pubDate>Thu, 15 Apr 2021 15:04:43 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>log</title>
+      <link>https://icecat471.github.io/devlog/tags/log/</link>
+      <pubDate>Thu, 15 Apr 2021 15:04:43 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/log/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>canvas</title>
       <link>https://icecat471.github.io/devlog/tags/canvas/</link>
@@ -34,24 +61,6 @@
       <pubDate>Tue, 13 Apr 2021 22:13:26 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/defer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://icecat471.github.io/devlog/tags/go/</link>
-      <pubDate>Tue, 13 Apr 2021 22:13:26 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://icecat471.github.io/devlog/tags/golang/</link>
-      <pubDate>Tue, 13 Apr 2021 22:13:26 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/tags/golang/</guid>
       <description></description>
     </item>
     
