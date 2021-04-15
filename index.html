@@ -167,6 +167,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>gRPC란?</h2>
+  </header>
+  <section class="entry-content">
+    <p>gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.
+HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.
+HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI &#43; third-party tooling...</p>
+  </section>
+  <footer class="entry-footer">April 15, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to gRPC란?" href="https://icecat471.github.io/devlog/post/network/grpc/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Go언어 log.SetPrefix()</h2>
   </header>
   <section class="entry-content">
@@ -217,18 +230,6 @@ Boolean flag는 0, 1, t, f, T, F, true, false, TRUE, FALSE, True, False 등으�
   </section>
   <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to Go언어 flag 패키지를 통한 command-line flag 파싱" href="https://icecat471.github.io/devlog/post/golang/flag/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 프로젝트 외부의 모듈 import하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>go.mod 파일에서
-require ( &lt;모듈명&gt; v0.0.0 ) replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌 </p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 프로젝트 외부의 모듈 import하기" href="https://icecat471.github.io/devlog/post/golang/external_module/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

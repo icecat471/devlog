@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>network on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/categories/network/</link>
+    <description>Recent content in network on icecat471&#39;s Devlog</description>
+    <image>
+      <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
+      <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 15 Apr 2021 22:50:49 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gRPC란?</title>
+      <link>https://icecat471.github.io/devlog/post/network/grpc/</link>
+      <pubDate>Thu, 15 Apr 2021 22:50:49 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/network/grpc/</guid>
+      <description>gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.
+HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.
+HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling</description>
+    </item>
+    
+  </channel>
+</rss>
