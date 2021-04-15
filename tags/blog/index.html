@@ -135,17 +135,28 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>Hugo 블로그 댓글 기능 추가하기</h2>
+  </header>
+  <section class="entry-content">
+    <p>1. 세팅하기 이곳을 클릭 하여 utterances 사이트로 이동한다.configuration 부분을 따라 utterances app을 설치하고 repository설정을 한다.그 외 Blog Post &lt;=&gt; Issue Mapping, Theme 설정등을 한다.설정을 끝내면 Enalble Utterances 부분에 코드가 생성된다
+&lt;script src=&#34;https://utteranc.es/client.js&#34; repo=&#34;(account)/(repo)&#34; issue-term=&#34;pathname&#34; theme=&#34;github-dark&#34; crossorigin=&#34;anonymous&#34; async&gt; &lt;/script&gt; 2. hugo에 적용하기 테마마다 설정 방법이 다른데 내가 사용중인 PaperMod 기준 설정방법이다.ParperMod 깃허브 에서도 확인 가능하다./layouts/partials/comments.html 파일을 만들고 위에서 생성된 코드를 붙여넣기한다.그 후 config.yml 파일에 아래부분을 추가해준다.
+params: comments: true </p>
+  </section>
+  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Hugo 블로그 댓글 기능 추가하기" href="https://icecat471.github.io/devlog/post/hugo/comment/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>Hugo로 블로그 시작하기</h2>
   </header>
   <section class="entry-content">
     <p>출처: IALY’s BLOG
-1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0&#43;extended darwin/amd64 BuildDate=unknown 
-2. Hugo Project 생성 hugo new site &lt;프로젝트명&gt; 
-3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
+1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0&#43;extended darwin/amd64 BuildDate=unknown 2. Hugo Project 생성 hugo new site &lt;프로젝트명&gt; 3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
 원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
-$ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다....</p>
+$ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)config 파일 예시는 각 테마 깃허브에서 확인 가능....</p>
   </section>
-  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to Hugo로 블로그 시작하기" href="https://icecat471.github.io/devlog/post/hugo/start_hugo/"></a>
 </article>
     </main>

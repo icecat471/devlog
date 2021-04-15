@@ -140,9 +140,7 @@
   <section class="entry-content">
     <p>출처: 예제로 배우는 Go 프로그래밍
 1. defer 특정 문장 혹은 함수를 defer를 호출하는 함수가 return하기 직전에 실행하게 한다.
-package main import &#34;os&#34; func main() { f, err := os.Open(&#34;1.txt&#34;) if err != nil { panic(err) } // main 마지막에 파일 close 실행  defer f.Close() // 파일 읽기  bytes := make([]byte, 1024) f.Read(bytes) println(len(bytes)) } 
-2. panic 함수를 즉시 멈추고 defer를 모두 실행한 뒤 즉시 리턴.
-이것은 콜스택을 따라 상위함수에도 모두 적용....</p>
+package main import &#34;os&#34; func main() { f, err := os.Open(&#34;1.txt&#34;) if err != nil { panic(err) } // main 마지막에 파일 close 실행  defer f.Close() // 파일 읽기  bytes := make([]byte, 1024) f.Read(bytes) println(len(bytes)) } 2. panic 함수를 즉시 멈추고 defer를 모두 실행한 뒤 즉시 리턴.이것은 콜스택을 따라 상위함수에도 모두 적용....</p>
   </section>
   <footer class="entry-footer">April 13, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to Go언어 defer와 panic" href="https://icecat471.github.io/devlog/post/golang/defer_and_panic/"></a>

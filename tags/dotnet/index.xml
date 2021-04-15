@@ -17,10 +17,7 @@
       
       <guid>https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/</guid>
       <description>아래처럼 나올 때
-zsh: command not found: dotnet dotnet package를 설치했다면
-/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인.
-/usr/local/bin 경로에 링크를 만들어주면 된다.
-ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</description>
+zsh: command not found: dotnet dotnet package를 설치했다면/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인./usr/local/bin 경로에 링크를 만들어주면 된다.ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</description>
     </item>
     
   </channel>

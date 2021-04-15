@@ -9,16 +9,25 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 15 Apr 2021 22:50:49 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 02:00:08 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo 블로그 댓글 기능 추가하기</title>
+      <link>https://icecat471.github.io/devlog/post/hugo/comment/</link>
+      <pubDate>Fri, 16 Apr 2021 02:00:08 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/hugo/comment/</guid>
+      <description>1. 세팅하기 이곳을 클릭 하여 utterances 사이트로 이동한다.configuration 부분을 따라 utterances app을 설치하고 repository설정을 한다.그 외 Blog Post &amp;lt;=&amp;gt; Issue Mapping, Theme 설정등을 한다.설정을 끝내면 Enalble Utterances 부분에 코드가 생성된다
+&amp;lt;script src=&amp;#34;https://utteranc.es/client.js&amp;#34; repo=&amp;#34;(account)/(repo)&amp;#34; issue-term=&amp;#34;pathname&amp;#34; theme=&amp;#34;github-dark&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; async&amp;gt; &amp;lt;/script&amp;gt; 2. hugo에 적용하기 테마마다 설정 방법이 다른데 내가 사용중인 PaperMod 기준 설정방법이다.ParperMod 깃허브 에서도 확인 가능하다./layouts/partials/comments.html 파일을 만들고 위에서 생성된 코드를 붙여넣기한다.그 후 config.yml 파일에 아래부분을 추가해준다.
+params: comments: true </description>
+    </item>
+    
     <item>
       <title>gRPC란?</title>
       <link>https://icecat471.github.io/devlog/post/network/grpc/</link>
       <pubDate>Thu, 15 Apr 2021 22:50:49 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/post/network/grpc/</guid>
-      <description>gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.
-HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.
-HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling</description>
+      <description>gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI + third-party tooling         gRPC의 장점 1.</description>
     </item>
     
     <item>
@@ -37,8 +46,7 @@ test Blockchain: 2021/04/15 15:04:03 test </description>
       <pubDate>Wed, 14 Apr 2021 22:40:37 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/</guid>
-      <description>&amp;lt;canvas id=&amp;#34;myCanvas&amp;#34; width=&amp;#34;500&amp;#34; height=&amp;#34;800&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; let canvas = document.querySelector(&amp;#39;#myCanvas&amp;#39;); let context = canvas.getContext(&amp;#39;2d&amp;#39;); // 이미지 로딩 let dragon = new Image(); dragon.src = &amp;#39;이미지 경로&amp;#39;; context.drawImage(dragon, x좌표, y좌표, width, height); 
-setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있다.
+      <description>&amp;lt;canvas id=&amp;#34;myCanvas&amp;#34; width=&amp;#34;500&amp;#34; height=&amp;#34;800&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; let canvas = document.querySelector(&amp;#39;#myCanvas&amp;#39;); let context = canvas.getContext(&amp;#39;2d&amp;#39;); // 이미지 로딩 let dragon = new Image(); dragon.src = &amp;#39;이미지 경로&amp;#39;; context.drawImage(dragon, x좌표, y좌표, width, height); setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있다.
 // 1초마다 새로 그림 setInterval(()=&amp;gt; { context.drawImage(dragon, x좌표, y좌표, width, height); }, 1000); // 1000ms </description>
     </item>
     
@@ -50,9 +58,7 @@ setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있
       <guid>https://icecat471.github.io/devlog/post/golang/defer_and_panic/</guid>
       <description>출처: 예제로 배우는 Go 프로그래밍
 1. defer 특정 문장 혹은 함수를 defer를 호출하는 함수가 return하기 직전에 실행하게 한다.
-package main import &amp;#34;os&amp;#34; func main() { f, err := os.Open(&amp;#34;1.txt&amp;#34;) if err != nil { panic(err) } // main 마지막에 파일 close 실행  defer f.Close() // 파일 읽기  bytes := make([]byte, 1024) f.Read(bytes) println(len(bytes)) } 
-2. panic 함수를 즉시 멈추고 defer를 모두 실행한 뒤 즉시 리턴.
-이것은 콜스택을 따라 상위함수에도 모두 적용.</description>
+package main import &amp;#34;os&amp;#34; func main() { f, err := os.Open(&amp;#34;1.txt&amp;#34;) if err != nil { panic(err) } // main 마지막에 파일 close 실행  defer f.Close() // 파일 읽기  bytes := make([]byte, 1024) f.Read(bytes) println(len(bytes)) } 2. panic 함수를 즉시 멈추고 defer를 모두 실행한 뒤 즉시 리턴.이것은 콜스택을 따라 상위함수에도 모두 적용.</description>
     </item>
     
     <item>
@@ -63,8 +69,7 @@ package main import &amp;#34;os&amp;#34; func main() { f, err := os.Open(&amp;#3
       <guid>https://icecat471.github.io/devlog/post/golang/flag/</guid>
       <description>golang flag package
 command-line flag를 파싱해주는 패키지.
-// flag값에 저장된 int64변수의 주소값 반환 maxValue := flag.Int64(&amp;#34;max&amp;#34;, 10, &amp;#34;Defines maximum value&amp;#34;) /* xxxVar() 함수는 반환값이 없고 첫번째 인자로 변수의 포인터를 넘겨주면 변수에 값을 할당해줌. */ var minValue int64 flag.Int64Var(&amp;amp;minValue, &amp;#34;min&amp;#34;, 0, &amp;#34;Defines minimum value&amp;#34;) // flag에 command-line 파싱 // 꼭 호출해주어야 함 flag.Parse() 
-Boolean flag는 0, 1, t, f, T, F, true, false, TRUE, FALSE, True, False 등으로 넘겨줄 수 있음.</description>
+// flag값에 저장된 int64변수의 주소값 반환 maxValue := flag.Int64(&amp;#34;max&amp;#34;, 10, &amp;#34;Defines maximum value&amp;#34;) /* xxxVar() 함수는 반환값이 없고 첫번째 인자로 변수의 포인터를 넘겨주면 변수에 값을 할당해줌. */ var minValue int64 flag.Int64Var(&amp;amp;minValue, &amp;#34;min&amp;#34;, 0, &amp;#34;Defines minimum value&amp;#34;) // flag에 command-line 파싱 // 꼭 호출해주어야 함 flag.Parse() </description>
     </item>
     
     <item>
@@ -106,10 +111,7 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
       
       <guid>https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/</guid>
       <description>아래처럼 나올 때
-zsh: command not found: dotnet dotnet package를 설치했다면
-/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인.
-/usr/local/bin 경로에 링크를 만들어주면 된다.
-ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</description>
+zsh: command not found: dotnet dotnet package를 설치했다면/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인./usr/local/bin 경로에 링크를 만들어주면 된다.ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</description>
     </item>
     
     <item>
@@ -118,8 +120,7 @@ ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</descr
       <pubDate>Sun, 11 Apr 2021 18:33:11 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/post/unity/local_server/</guid>
-      <description>webGL &amp;ldquo;build and run&amp;rdquo; 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림
-로컬에서 서버를 열어서 실행해볼 수 있다.
+      <description>webGL &amp;ldquo;build and run&amp;rdquo; 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림로컬에서 서버를 열어서 실행해볼 수 있다.
 http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 이동 $ http-server Starting up http-server, serving ./ Available on: http://127.0.0.1:8080 http://120.50.93.152:8080 http://192.168.2.1:8080 Hit CTRL-C to stop the server http://localhost:8080 로 접속해보면 게임이 실행된것을 확인해 볼 수 있다.</description>
     </item>
     
@@ -139,11 +140,9 @@ http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 �
       
       <guid>https://icecat471.github.io/devlog/post/hugo/start_hugo/</guid>
       <description>출처: IALY&amp;rsquo;s BLOG
-1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0+extended darwin/amd64 BuildDate=unknown 
-2. Hugo Project 생성 hugo new site &amp;lt;프로젝트명&amp;gt; 
-3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
+1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0+extended darwin/amd64 BuildDate=unknown 2. Hugo Project 생성 hugo new site &amp;lt;프로젝트명&amp;gt; 3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
 원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
-$ git clone &amp;lt;테마 깃허브 주소&amp;gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.</description>
+$ git clone &amp;lt;테마 깃허브 주소&amp;gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)config 파일 예시는 각 테마 깃허브에서 확인 가능.</description>
     </item>
     
   </channel>

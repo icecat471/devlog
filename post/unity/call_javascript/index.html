@@ -71,8 +71,8 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
   "keywords": [
     "unity", "javascript", "webGL"
   ],
-  "articleBody": "참고: Unity Document WebGL\nAssets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다\n// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(\"Hello, world!\"); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i  size; i++) console.log(HEAPF32[(array  2) + i]); }, AddNumbers: function (x, y) { return x + y; }, StringReturnValueFunction: function () { var returnStr = \"bla\"; var bufferSize = lengthBytesUTF8(returnStr) + 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx.bindTexture(GLctx.TEXTURE_2D, GL.textures[texture]); }, }); \n그 후 C#에서 JS함수 호출 가능. using UnityEngine; using System.Runtime.InteropServices; public class NewBehaviourScript : MonoBehaviour { [DllImport(\"__Internal\")] private static extern void Hello(); [DllImport(\"__Internal\")] private static extern void HelloString(string str); [DllImport(\"__Internal\")] private static extern void PrintFloatArray(float[] array, int size); [DllImport(\"__Internal\")] private static extern int AddNumbers(int x, int y); [DllImport(\"__Internal\")] private static extern string StringReturnValueFunction(); [DllImport(\"__Internal\")] private static extern void BindWebGLTexture(int texture); void Start() { Hello(); HelloString(\"This is a string.\"); float[] myArray = new float[10]; PrintFloatArray(myArray, myArray.Length); int result = AddNumbers(5, 7); Debug.Log(result); Debug.Log(StringReturnValueFunction()); var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false); BindWebGLTexture(texture.GetNativeTextureID()); } } \n웹브라우저상에서만 호출하고 싶을때는 조건을 걸어준다. if(Application.platform == RuntimePlatform.WebGLPlayer) { Hello(); } ",
-  "wordCount" : "192",
+  "articleBody": "참고: Unity Document WebGL\nAssets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다\n// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(\"Hello, world!\"); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i  size; i++) console.log(HEAPF32[(array  2) + i]); }, AddNumbers: function (x, y) { return x + y; }, StringReturnValueFunction: function () { var returnStr = \"bla\"; var bufferSize = lengthBytesUTF8(returnStr) + 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx.bindTexture(GLctx.TEXTURE_2D, GL.textures[texture]); }, }); using UnityEngine; using System.Runtime.InteropServices; public class NewBehaviourScript : MonoBehaviour { [DllImport(\"__Internal\")] private static extern void Hello(); [DllImport(\"__Internal\")] private static extern void HelloString(string str); [DllImport(\"__Internal\")] private static extern void PrintFloatArray(float[] array, int size); [DllImport(\"__Internal\")] private static extern int AddNumbers(int x, int y); [DllImport(\"__Internal\")] private static extern string StringReturnValueFunction(); [DllImport(\"__Internal\")] private static extern void BindWebGLTexture(int texture); void Start() { Hello(); HelloString(\"This is a string.\"); float[] myArray = new float[10]; PrintFloatArray(myArray, myArray.Length); int result = AddNumbers(5, 7); Debug.Log(result); Debug.Log(StringReturnValueFunction()); var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false); BindWebGLTexture(texture.GetNativeTextureID()); } } if(Application.platform == RuntimePlatform.WebGLPlayer) { Hello(); } ",
+  "wordCount" : "181",
   "inLanguage": "en",
   "datePublished": "2021-04-12T11:28:39+09:00",
   "dateModified": "2021-04-12T11:28:39+09:00",
@@ -212,7 +212,7 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
 </div>
 
   <div class="post-content"><p><a href="https://docs.unity3d.com/kr/2018.4/Manual/webgl-interactingwithbrowserscripting.html">참고: Unity Document WebGL</a></p>
-<br>
+<!-- raw HTML omitted -->
 <p>Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// Plugin.jslib
 </span><span style="color:#75715e"></span>
@@ -248,8 +248,7 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
   },
 
 });
-</code></pre></div><br>
-그 후 C#에서 JS함수 호출 가능.
+</code></pre></div><!-- raw HTML omitted -->
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">using</span> UnityEngine;
 <span style="color:#66d9ef">using</span> System.Runtime.InteropServices;
 
@@ -290,8 +289,7 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
         BindWebGLTexture(texture.GetNativeTextureID());
     }
 }
-</code></pre></div><br>
-웹브라우저상에서만 호출하고 싶을때는 조건을 걸어준다.
+</code></pre></div><!-- raw HTML omitted -->
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cs" data-lang="cs"><span style="color:#66d9ef">if</span>(Application.platform == RuntimePlatform.WebGLPlayer) {
     Hello();
 }
@@ -316,7 +314,13 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
   </a>
 </nav>
 
-  </footer>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="icecat471/devlog"
+        issue-term="pathname"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
 </article>
     </main>
     <footer class="footer">

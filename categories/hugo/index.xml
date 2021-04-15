@@ -9,7 +9,18 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 11 Apr 2021 12:11:05 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 02:00:08 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo 블로그 댓글 기능 추가하기</title>
+      <link>https://icecat471.github.io/devlog/post/hugo/comment/</link>
+      <pubDate>Fri, 16 Apr 2021 02:00:08 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/hugo/comment/</guid>
+      <description>1. 세팅하기 이곳을 클릭 하여 utterances 사이트로 이동한다.configuration 부분을 따라 utterances app을 설치하고 repository설정을 한다.그 외 Blog Post &amp;lt;=&amp;gt; Issue Mapping, Theme 설정등을 한다.설정을 끝내면 Enalble Utterances 부분에 코드가 생성된다
+&amp;lt;script src=&amp;#34;https://utteranc.es/client.js&amp;#34; repo=&amp;#34;(account)/(repo)&amp;#34; issue-term=&amp;#34;pathname&amp;#34; theme=&amp;#34;github-dark&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34; async&amp;gt; &amp;lt;/script&amp;gt; 2. hugo에 적용하기 테마마다 설정 방법이 다른데 내가 사용중인 PaperMod 기준 설정방법이다.ParperMod 깃허브 에서도 확인 가능하다./layouts/partials/comments.html 파일을 만들고 위에서 생성된 코드를 붙여넣기한다.그 후 config.yml 파일에 아래부분을 추가해준다.
+params: comments: true </description>
+    </item>
+    
     <item>
       <title>Hugo로 블로그 시작하기</title>
       <link>https://icecat471.github.io/devlog/post/hugo/start_hugo/</link>
@@ -17,11 +28,9 @@
       
       <guid>https://icecat471.github.io/devlog/post/hugo/start_hugo/</guid>
       <description>출처: IALY&amp;rsquo;s BLOG
-1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0+extended darwin/amd64 BuildDate=unknown 
-2. Hugo Project 생성 hugo new site &amp;lt;프로젝트명&amp;gt; 
-3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
+1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0+extended darwin/amd64 BuildDate=unknown 2. Hugo Project 생성 hugo new site &amp;lt;프로젝트명&amp;gt; 3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
 원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
-$ git clone &amp;lt;테마 깃허브 주소&amp;gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.</description>
+$ git clone &amp;lt;테마 깃허브 주소&amp;gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)config 파일 예시는 각 테마 깃허브에서 확인 가능.</description>
     </item>
     
   </channel>

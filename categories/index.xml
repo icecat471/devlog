@@ -9,7 +9,16 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 15 Apr 2021 22:50:49 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 02:00:08 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo</title>
+      <link>https://icecat471.github.io/devlog/categories/hugo/</link>
+      <pubDate>Fri, 16 Apr 2021 02:00:08 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>network</title>
       <link>https://icecat471.github.io/devlog/categories/network/</link>
@@ -52,15 +61,6 @@
       <pubDate>Sun, 11 Apr 2021 16:35:36 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/categories/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://icecat471.github.io/devlog/categories/hugo/</link>
-      <pubDate>Sun, 11 Apr 2021 12:11:05 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/categories/hugo/</guid>
       <description></description>
     </item>
     

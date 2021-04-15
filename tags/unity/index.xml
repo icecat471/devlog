@@ -39,10 +39,7 @@ Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
       
       <guid>https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/</guid>
       <description>아래처럼 나올 때
-zsh: command not found: dotnet dotnet package를 설치했다면
-/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인.
-/usr/local/bin 경로에 링크를 만들어주면 된다.
-ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</description>
+zsh: command not found: dotnet dotnet package를 설치했다면/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인./usr/local/bin 경로에 링크를 만들어주면 된다.ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</description>
     </item>
     
     <item>
@@ -51,8 +48,7 @@ ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</descr
       <pubDate>Sun, 11 Apr 2021 18:33:11 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/post/unity/local_server/</guid>
-      <description>webGL &amp;ldquo;build and run&amp;rdquo; 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림
-로컬에서 서버를 열어서 실행해볼 수 있다.
+      <description>webGL &amp;ldquo;build and run&amp;rdquo; 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림로컬에서 서버를 열어서 실행해볼 수 있다.
 http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 이동 $ http-server Starting up http-server, serving ./ Available on: http://127.0.0.1:8080 http://120.50.93.152:8080 http://192.168.2.1:8080 Hit CTRL-C to stop the server http://localhost:8080 로 접속해보면 게임이 실행된것을 확인해 볼 수 있다.</description>
     </item>
     

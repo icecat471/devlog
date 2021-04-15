@@ -167,12 +167,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Hugo 블로그 댓글 기능 추가하기</h2>
+  </header>
+  <section class="entry-content">
+    <p>1. 세팅하기 이곳을 클릭 하여 utterances 사이트로 이동한다.configuration 부분을 따라 utterances app을 설치하고 repository설정을 한다.그 외 Blog Post &lt;=&gt; Issue Mapping, Theme 설정등을 한다.설정을 끝내면 Enalble Utterances 부분에 코드가 생성된다
+&lt;script src=&#34;https://utteranc.es/client.js&#34; repo=&#34;(account)/(repo)&#34; issue-term=&#34;pathname&#34; theme=&#34;github-dark&#34; crossorigin=&#34;anonymous&#34; async&gt; &lt;/script&gt; 2. hugo에 적용하기 테마마다 설정 방법이 다른데 내가 사용중인 PaperMod 기준 설정방법이다.ParperMod 깃허브 에서도 확인 가능하다./layouts/partials/comments.html 파일을 만들고 위에서 생성된 코드를 붙여넣기한다.그 후 config.yml 파일에 아래부분을 추가해준다.
+params: comments: true </p>
+  </section>
+  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Hugo 블로그 댓글 기능 추가하기" href="https://icecat471.github.io/devlog/post/hugo/comment/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>gRPC란?</h2>
   </header>
   <section class="entry-content">
-    <p>gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.
-HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.
-HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI &#43; third-party tooling...</p>
+    <p>gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI &#43; third-party tooling         gRPC의 장점 1....</p>
   </section>
   <footer class="entry-footer">April 15, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to gRPC란?" href="https://icecat471.github.io/devlog/post/network/grpc/"></a>
@@ -195,8 +206,7 @@ test Blockchain: 2021/04/15 15:04:03 test </p>
     <h2>html 캔버스에 이미지 그리기</h2>
   </header>
   <section class="entry-content">
-    <p>&lt;canvas id=&#34;myCanvas&#34; width=&#34;500&#34; height=&#34;800&#34;&gt;&lt;/canvas&gt; let canvas = document.querySelector(&#39;#myCanvas&#39;); let context = canvas.getContext(&#39;2d&#39;); // 이미지 로딩 let dragon = new Image(); dragon.src = &#39;이미지 경로&#39;; context.drawImage(dragon, x좌표, y좌표, width, height); 
-setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있다.
+    <p>&lt;canvas id=&#34;myCanvas&#34; width=&#34;500&#34; height=&#34;800&#34;&gt;&lt;/canvas&gt; let canvas = document.querySelector(&#39;#myCanvas&#39;); let context = canvas.getContext(&#39;2d&#39;); // 이미지 로딩 let dragon = new Image(); dragon.src = &#39;이미지 경로&#39;; context.drawImage(dragon, x좌표, y좌표, width, height); setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있다.
 // 1초마다 새로 그림 setInterval(()=&gt; { context.drawImage(dragon, x좌표, y좌표, width, height); }, 1000); // 1000ms </p>
   </section>
   <footer class="entry-footer">April 14, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
@@ -210,26 +220,10 @@ setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있
   <section class="entry-content">
     <p>출처: 예제로 배우는 Go 프로그래밍
 1. defer 특정 문장 혹은 함수를 defer를 호출하는 함수가 return하기 직전에 실행하게 한다.
-package main import &#34;os&#34; func main() { f, err := os.Open(&#34;1.txt&#34;) if err != nil { panic(err) } // main 마지막에 파일 close 실행  defer f.Close() // 파일 읽기  bytes := make([]byte, 1024) f.Read(bytes) println(len(bytes)) } 
-2. panic 함수를 즉시 멈추고 defer를 모두 실행한 뒤 즉시 리턴.
-이것은 콜스택을 따라 상위함수에도 모두 적용....</p>
+package main import &#34;os&#34; func main() { f, err := os.Open(&#34;1.txt&#34;) if err != nil { panic(err) } // main 마지막에 파일 close 실행  defer f.Close() // 파일 읽기  bytes := make([]byte, 1024) f.Read(bytes) println(len(bytes)) } 2. panic 함수를 즉시 멈추고 defer를 모두 실행한 뒤 즉시 리턴.이것은 콜스택을 따라 상위함수에도 모두 적용....</p>
   </section>
   <footer class="entry-footer">April 13, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to Go언어 defer와 panic" href="https://icecat471.github.io/devlog/post/golang/defer_and_panic/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 flag 패키지를 통한 command-line flag 파싱</h2>
-  </header>
-  <section class="entry-content">
-    <p>golang flag package
-command-line flag를 파싱해주는 패키지.
-// flag값에 저장된 int64변수의 주소값 반환 maxValue := flag.Int64(&#34;max&#34;, 10, &#34;Defines maximum value&#34;) /* xxxVar() 함수는 반환값이 없고 첫번째 인자로 변수의 포인터를 넘겨주면 변수에 값을 할당해줌. */ var minValue int64 flag.Int64Var(&amp;minValue, &#34;min&#34;, 0, &#34;Defines minimum value&#34;) // flag에 command-line 파싱 // 꼭 호출해주어야 함 flag.Parse() 
-Boolean flag는 0, 1, t, f, T, F, true, false, TRUE, FALSE, True, False 등으로 넘겨줄 수 있음....</p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 flag 패키지를 통한 command-line flag 파싱" href="https://icecat471.github.io/devlog/post/golang/flag/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
