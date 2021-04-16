@@ -2,10 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://icecat471.github.io/devlog/tags/blog/</loc>
-    <lastmod>2021-04-16T03:11:45+09:00</lastmod>
+    <loc>https://icecat471.github.io/devlog/post/golang/gopls_error/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/categories/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/error/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/go/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/golang/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/gopls/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/blog/</loc>
     <lastmod>2021-04-16T03:11:45+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/hugo/</loc>
@@ -17,16 +44,7 @@
     <loc>https://icecat471.github.io/devlog/post/hugo/syntax_highlight/</loc>
     <lastmod>2021-04-16T03:11:45+09:00</lastmod>
   </url><url>
-    <loc>https://icecat471.github.io/devlog/</loc>
-    <lastmod>2021-04-16T03:11:45+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/post/</loc>
-    <lastmod>2021-04-16T03:11:45+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/tags/syntax-highlight/</loc>
-    <lastmod>2021-04-16T03:11:45+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/</loc>
     <lastmod>2021-04-16T03:11:45+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/hugo/comment/</loc>
@@ -49,15 +67,6 @@
   </url><url>
     <loc>https://icecat471.github.io/devlog/categories/network/</loc>
     <lastmod>2021-04-15T22:50:49+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/go/</loc>
-    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
-    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/golang/</loc>
-    <lastmod>2021-04-15T15:04:43+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/</loc>
     <lastmod>2021-04-15T15:04:43+09:00</lastmod>

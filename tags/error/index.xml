@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>error on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/tags/error/</link>
+    <description>Recent content in error on icecat471&#39;s Devlog</description>
+    <image>
+      <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
+      <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 16 Apr 2021 10:12:06 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/error/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Go언어] VSCode에서 gopls 에러가 날때</title>
+      <link>https://icecat471.github.io/devlog/post/golang/gopls_error/</link>
+      <pubDate>Fri, 16 Apr 2021 10:12:06 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/golang/gopls_error/</guid>
+      <description>vscode에서 아래와 같은 에러 발생시
+ gopls requires a module at the root of your workspace. You can work with multiple modules by opening each one as a workspace folder.
+ settings.json 파일에 아래와 같이 추가하고 vscode를 재실행한다.
+&amp;#34;gopls&amp;#34;: { &amp;#34;experimentalWorkspaceModule&amp;#34;: true, }, </description>
+    </item>
+    
+  </channel>
+</rss>
