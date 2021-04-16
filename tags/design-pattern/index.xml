@@ -9,7 +9,17 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 16 Apr 2021 12:08:15 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 17:50:07 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[디자인패턴] Factory 패턴</title>
+      <link>https://icecat471.github.io/devlog/post/design_pattern/factory/</link>
+      <pubDate>Fri, 16 Apr 2021 17:50:07 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/design_pattern/factory/</guid>
+      <description>Factory Pattern 1. factory method pattern 객체를 생성하기 위한 인터페이스를 정의하는데, 어떤 클래스의 인스턴스를 만들지는 서브클래스에서 결정한다.
+package main import ( &amp;#34;errors&amp;#34; &amp;#34;fmt&amp;#34; ) type Character interface { Attack() } const ( warrior = iota mage ) type Warrior struct { } func (w *Warrior) Attack() { fmt.Println(&amp;#34;sword attack&amp;#34;) } type Mage struct { } func (m *Mage) Attack() { fmt.Println(&amp;#34;magic attack&amp;#34;) }  Factory struct  type CharacterFactory struct { } func (f *CharacterFactory) Create(job int) (Character, error) { switch job { case warrior: return &amp;amp;Warrior{}, nil case mage: return &amp;amp;Mage{}, nil default: return nil, errors.</description>
+    </item>
+    
     <item>
       <title>[디자인패턴] Builder 패턴</title>
       <link>https://icecat471.github.io/devlog/post/design_pattern/bulilder/</link>
