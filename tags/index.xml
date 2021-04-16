@@ -9,20 +9,29 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 16 Apr 2021 10:12:06 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 12:08:15 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>error</title>
-      <link>https://icecat471.github.io/devlog/tags/error/</link>
-      <pubDate>Fri, 16 Apr 2021 10:12:06 +0900</pubDate>
+      <title>builder pattern</title>
+      <link>https://icecat471.github.io/devlog/tags/builder-pattern/</link>
+      <pubDate>Fri, 16 Apr 2021 12:08:15 +0900</pubDate>
       
-      <guid>https://icecat471.github.io/devlog/tags/error/</guid>
+      <guid>https://icecat471.github.io/devlog/tags/builder-pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>design pattern</title>
+      <link>https://icecat471.github.io/devlog/tags/design-pattern/</link>
+      <pubDate>Fri, 16 Apr 2021 12:08:15 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/design-pattern/</guid>
       <description></description>
     </item>
     
     <item>
       <title>go</title>
       <link>https://icecat471.github.io/devlog/tags/go/</link>
-      <pubDate>Fri, 16 Apr 2021 10:12:06 +0900</pubDate>
+      <pubDate>Fri, 16 Apr 2021 12:08:15 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/go/</guid>
       <description></description>
@@ -31,9 +40,18 @@
     <item>
       <title>golang</title>
       <link>https://icecat471.github.io/devlog/tags/golang/</link>
-      <pubDate>Fri, 16 Apr 2021 10:12:06 +0900</pubDate>
+      <pubDate>Fri, 16 Apr 2021 12:08:15 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>error</title>
+      <link>https://icecat471.github.io/devlog/tags/error/</link>
+      <pubDate>Fri, 16 Apr 2021 10:12:06 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/error/</guid>
       <description></description>
     </item>
     
