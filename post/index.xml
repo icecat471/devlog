@@ -17,7 +17,7 @@
       
       <guid>https://icecat471.github.io/devlog/post/design_pattern/bulilder/</guid>
       <description>1. Builder Pattern Person 객체를 예로 들어보자
-type Person struct { name string age int job string height float32 weight float32 } func NewPerson(name string, age int, job string, height float32, weight float32) *Person { return &amp;amp;Person{ name, age, job, height, weight } } func main() { p := NewPerson(&amp;#34;홍길동&amp;#34;, 22, &amp;#34;developer&amp;#34;, 177.2, 72.9) } 위처럼 모든 정보를 입력하지 않아도 될때도 있고, 가독성도 좋지않으며 parameter의 순서도 맞춰주어야한다.또 객체에 새로운 정보가 추가된다면 NewPerson()을 계속 수정해주어야 한다.</description>
+type Person struct { name string age int job string height float32 weight float32 } func NewPerson(name string, age int, job string, height float32, weight float32) *Person { return &amp;amp;Person{ name, age, job, height, weight, } } func main() { p := NewPerson(&amp;#34;홍길동&amp;#34;, 22, &amp;#34;developer&amp;#34;, 177.2, 72.9) } 위처럼 모든 정보를 입력하지 않아도 될때도 있고, 가독성도 좋지않으며 parameter의 순서도 맞춰주어야한다.또 객체에 새로운 정보가 추가된다면 NewPerson()을 계속 수정해주어야 한다.</description>
     </item>
     
     <item>
