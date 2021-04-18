@@ -9,11 +9,11 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 17 Apr 2021 21:18:19 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Apr 2021 11:53:14 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>design pattern</title>
       <link>https://icecat471.github.io/devlog/tags/design-pattern/</link>
-      <pubDate>Sat, 17 Apr 2021 21:18:19 +0900</pubDate>
+      <pubDate>Sun, 18 Apr 2021 11:53:14 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/design-pattern/</guid>
       <description></description>
@@ -22,7 +22,7 @@
     <item>
       <title>go</title>
       <link>https://icecat471.github.io/devlog/tags/go/</link>
-      <pubDate>Sat, 17 Apr 2021 21:18:19 +0900</pubDate>
+      <pubDate>Sun, 18 Apr 2021 11:53:14 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/go/</guid>
       <description></description>
@@ -31,9 +31,18 @@
     <item>
       <title>golang</title>
       <link>https://icecat471.github.io/devlog/tags/golang/</link>
-      <pubDate>Sat, 17 Apr 2021 21:18:19 +0900</pubDate>
+      <pubDate>Sun, 18 Apr 2021 11:53:14 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>singleton pattern</title>
+      <link>https://icecat471.github.io/devlog/tags/singleton-pattern/</link>
+      <pubDate>Sun, 18 Apr 2021 11:53:14 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/singleton-pattern/</guid>
       <description></description>
     </item>
     

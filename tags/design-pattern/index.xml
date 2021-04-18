@@ -9,7 +9,17 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 17 Apr 2021 21:18:19 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Apr 2021 11:53:14 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[디자인패턴] Singleton 패턴</title>
+      <link>https://icecat471.github.io/devlog/post/design_pattern/singleton/</link>
+      <pubDate>Sun, 18 Apr 2021 11:53:14 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/design_pattern/singleton/</guid>
+      <description>Singleton 패턴 하나의 클래스에 대해 하나의 인스턴스만 존재하는 패턴go에서는 sync.Once를 통해 구현 가능하다.
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) type User struct { uid int name string level int } type userDatabase struct { users map[int]*User } var once sync.Once var instance *userDatabase func (d *userDatabase) GetUser(uid int) (*User, bool) { user, ok := d.users[uid] return user, ok } func GetUserDatabase() *userDatabase { // sync.Once.Do()는 딱 한번만 실행  once.</description>
+    </item>
+    
     <item>
       <title>[디자인패턴] Prototype 패턴</title>
       <link>https://icecat471.github.io/devlog/post/design_pattern/prototype_pattern/</link>

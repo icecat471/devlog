@@ -140,6 +140,18 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[디자인패턴] Singleton 패턴</h2>
+  </header>
+  <section class="entry-content">
+    <p>Singleton 패턴 하나의 클래스에 대해 하나의 인스턴스만 존재하는 패턴go에서는 sync.Once를 통해 구현 가능하다.
+package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int name string level int } type userDatabase struct { users map[int]*User } var once sync.Once var instance *userDatabase func (d *userDatabase) GetUser(uid int) (*User, bool) { user, ok := d.users[uid] return user, ok } func GetUserDatabase() *userDatabase { // sync.Once.Do()는 딱 한번만 실행  once....</p>
+  </section>
+  <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Singleton 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/singleton/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[디자인패턴] Prototype 패턴</h2>
   </header>
   <section class="entry-content">
