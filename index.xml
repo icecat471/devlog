@@ -9,7 +9,18 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 18 Apr 2021 11:53:14 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Apr 2021 23:24:18 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[디자인패턴] Adapter 패턴</title>
+      <link>https://icecat471.github.io/devlog/post/design_pattern/adapter/</link>
+      <pubDate>Sun, 18 Apr 2021 23:24:18 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/design_pattern/adapter/</guid>
+      <description>Adapter Pattern 한 클래스의 인터페이스를 클라이언트에서 사용하고자하는 다른 인터페이스로 변환한다.어댑터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있다.코드 출처: https://refactoring.guru/design-patterns/adapter/go/example 윈도우에는 USB, 맥북에는 thunderbolt 포트가 있다.윈도우 PC에 thunderbolt포트를 연결하기 위해 adapter가 필요하다client.go
+package main import &amp;#34;fmt&amp;#34; type client struct { } func (c *client) insertLightningConnectorIntoComputer(com computer) { fmt.Println(&amp;#34;Client inserts Lightning connector into computer.&amp;#34;) com.insertIntoLightningPort() } computer.go
+package main type computer interface { insertIntoLightningPort() } mac.</description>
+    </item>
+    
     <item>
       <title>[디자인패턴] Singleton 패턴</title>
       <link>https://icecat471.github.io/devlog/post/design_pattern/singleton/</link>
