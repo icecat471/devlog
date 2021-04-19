@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>design pattern | icecat471&#39;s Devlog</title>
+<title>Posts | icecat471&#39;s Devlog</title>
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/tags/design-pattern/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
@@ -19,18 +19,33 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/tags/design-pattern/index.xml">
-<meta property="og:title" content="design pattern" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/post/index.xml">
+<meta property="og:title" content="Posts" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/tags/design-pattern/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="design pattern"/>
+<meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content=""/>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -134,76 +149,26 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/tags/">Tags</a></div>
-  <h1>design pattern</h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a></div>
+  <h1>Posts</h1>
 </header>
 
-<article class="post-entry tag-entry"> 
+<article class="post-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Bridge 패턴</h2>
+    <h2>Hugo로 블로그 시작하기</h2>
   </header>
   <section class="entry-content">
-    <p>Bridge Pattern 출처: https://golangbyexample.com/bridge-design-pattern-in-go/
-개요 구현부에서 추상층을 분리하여 각자 독립적으로 변형할 수 있게 하는 패턴이다.이 패턴은 큰 클래스를 두개의 개별 계층으로 나누는것을 제안한다.
- Abstraction: interface. Implementation에 대한 참조가 포함됨.
-Abstraction의 자식을 Refined Abstraction 이라고 부름. Implementation: interface.
-Implementation의 자식을 Concrete Implementation 이라고 부름.  UML 다이어그램 2가지 유형의 컴퓨터 Mac과 Windows가 있다고 가정. 2가지 유형의 프린터 epson과 hp가 있다고 가정. 2*2의 조합의 4개의 구조체를 만드는 대신 2개의 계층을 만든다....</p>
+    <p>출처: IALY’s BLOG
+1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0&#43;extended darwin/amd64 BuildDate=unknown 2. Hugo Project 생성 hugo new site &lt;프로젝트명&gt; 3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
+원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
+$ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)config 파일 예시는 각 테마 깃허브에서 확인 가능....</p>
   </section>
-  <footer class="entry-footer">April 19, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Bridge 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bridge/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Adapter 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Adapter Pattern 한 클래스의 인터페이스를 클라이언트에서 사용하고자하는 다른 인터페이스로 변환한다.어댑터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있다.코드 출처: https://refactoring.guru/design-patterns/adapter/go/example 윈도우에는 USB, 맥북에는 thunderbolt 포트가 있다.윈도우 PC에 thunderbolt포트를 연결하기 위해 adapter가 필요하다client.go
-package main import &#34;fmt&#34; type client struct { } func (c *client) insertLightningConnectorIntoComputer(com computer) { fmt.Println(&#34;Client inserts Lightning connector into computer.&#34;) com.insertIntoLightningPort() } computer.go
-package main type computer interface { insertIntoLightningPort() } mac....</p>
-  </section>
-  <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Adapter 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/adapter/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Singleton 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Singleton 패턴 하나의 클래스에 대해 하나의 인스턴스만 존재하는 패턴go에서는 sync.Once를 통해 구현 가능하다.
-package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int name string level int } type userDatabase struct { users map[int]*User } var once sync.Once var instance *userDatabase func (d *userDatabase) GetUser(uid int) (*User, bool) { user, ok := d.users[uid] return user, ok } func GetUserDatabase() *userDatabase { // sync.Once.Do()는 딱 한번만 실행  once....</p>
-  </section>
-  <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Singleton 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/singleton/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Prototype 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>프로토타입 패턴 프로토타입 패턴(prototype pattern)은 생성할 객체들의 타입이 프로토타입인 인스턴스로부터 결정되도록 하며, 인스턴스는 새 객체를 만들기 위해 자신을 복제(clone)하게 된다.얕은 복사(shallow copy) vs 깊은 복사(deep copy) 얕은 복사 객체를 복사할때 참조값을 가진 멤버는 참조값만 복사 됨.
-type Status struct { str int dex int wis int } type Monster struct { Name string Status *Status } func main() { slime := Monster{ &#34;slime&#34;, &amp;Status{1,1,1}, } goblin := slime goblin.Name = &#34;goblin&#34; goblin....</p>
-  </section>
-  <footer class="entry-footer">April 17, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Prototype 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/prototype_pattern/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Factory 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Factory Pattern 1. factory method pattern 객체를 생성하기 위한 인터페이스를 정의하는데, 어떤 클래스의 인스턴스를 만들지는 서브클래스에서 결정한다.
-package main import ( &#34;errors&#34; &#34;fmt&#34; ) type Character interface { Attack() } const ( warrior = iota mage ) type Warrior struct { } func (w *Warrior) Attack() { fmt.Println(&#34;sword attack&#34;) } type Mage struct { } func (m *Mage) Attack() { fmt.Println(&#34;magic attack&#34;) }  Factory struct  type CharacterFactory struct { } func (f *CharacterFactory) Create(job int) (Character, error) { switch job { case warrior: return &amp;Warrior{}, nil case mage: return &amp;Mage{}, nil default: return nil, errors....</p>
-  </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Factory 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/factory/"></a>
+  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Hugo로 블로그 시작하기" href="https://icecat471.github.io/devlog/post/hugo/start_hugo/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="next" href="https://icecat471.github.io/devlog/tags/design-pattern/page/2/">Next Page »</a>
+    <a class="prev" href="https://icecat471.github.io/devlog/post/page/4/">« Prev Page</a>
   </nav>
 </footer>
     </main>

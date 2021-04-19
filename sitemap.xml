@@ -2,34 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://icecat471.github.io/devlog/post/design_pattern/bridge/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/bridge-pattern/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/design-pattern/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/design-pattern/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/go/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/</loc>
+    <lastmod>2021-04-19T22:34:13+09:00</lastmod>
+  </url><url>
     <loc>https://icecat471.github.io/devlog/post/design_pattern/adapter/</loc>
     <lastmod>2021-04-18T23:24:18+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/adapter-pattern/</loc>
-    <lastmod>2021-04-18T23:24:18+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/</loc>
-    <lastmod>2021-04-18T23:24:18+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/design-pattern/</loc>
-    <lastmod>2021-04-18T23:24:18+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/design-pattern/</loc>
-    <lastmod>2021-04-18T23:24:18+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/go/</loc>
-    <lastmod>2021-04-18T23:24:18+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
-    <lastmod>2021-04-18T23:24:18+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/</loc>
-    <lastmod>2021-04-18T23:24:18+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/post/</loc>
-    <lastmod>2021-04-18T23:24:18+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/</loc>
     <lastmod>2021-04-18T23:24:18+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/design_pattern/singleton/</loc>
