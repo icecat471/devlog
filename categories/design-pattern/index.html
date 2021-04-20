@@ -140,6 +140,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[디자인패턴] Composite 패턴</h2>
+  </header>
+  <section class="entry-content">
+    <p>Composite Pattern 출처: https://golangbyexample.com/composite-design-pattern-golang/
+개요 ‘composite’라고 불리는 개체그룹이 단일개체와 유사한 방식으로 처리되기를 원할때 사용.
+트리구조로 객체들을 엮는다. UML 다이어그램 OS의 파일시스템에는 폴더와 파일 두가지 유형의 개체가 있는데, 폴더와 파일은 동일하게 취급받는 경우가 있다.
+Mapping          Component interface component.go   Composite folder.go   Leaf file.go   client main.go    코드 component.go
+package main type component interface { search(string) } folder....</p>
+  </section>
+  <footer class="entry-footer">April 20, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Composite 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/composite/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[디자인패턴] Bridge 패턴</h2>
   </header>
   <section class="entry-content">
@@ -189,18 +204,11 @@ package main import ( &#34;errors&#34; &#34;fmt&#34; ) type Character interface 
   <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [디자인패턴] Factory 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/factory/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Builder 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>1. Builder Pattern Person 객체를 예로 들어보자
-type Person struct { name string age int job string height float32 weight float32 } func NewPerson(name string, age int, job string, height float32, weight float32) *Person { return &amp;Person{ name, age, job, height, weight, } } func main() { p := NewPerson(&#34;홍길동&#34;, 22, &#34;developer&#34;, 177.2, 72.9) } 위처럼 모든 정보를 입력하지 않아도 될때도 있고, 가독성도 좋지않으며 parameter의 순서도 맞춰주어야한다.또 객체에 새로운 정보가 추가된다면 NewPerson()을 계속 수정해주어야 한다....</p>
-  </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Builder 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bulilder/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://icecat471.github.io/devlog/categories/design-pattern/page/2/">Next Page »</a>
+  </nav>
+</footer>
     </main>
     <footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>

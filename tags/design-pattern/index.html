@@ -140,6 +140,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[디자인패턴] Composite 패턴</h2>
+  </header>
+  <section class="entry-content">
+    <p>Composite Pattern 출처: https://golangbyexample.com/composite-design-pattern-golang/
+개요 ‘composite’라고 불리는 개체그룹이 단일개체와 유사한 방식으로 처리되기를 원할때 사용.
+트리구조로 객체들을 엮는다. UML 다이어그램 OS의 파일시스템에는 폴더와 파일 두가지 유형의 개체가 있는데, 폴더와 파일은 동일하게 취급받는 경우가 있다.
+Mapping          Component interface component.go   Composite folder.go   Leaf file.go   client main.go    코드 component.go
+package main type component interface { search(string) } folder....</p>
+  </section>
+  <footer class="entry-footer">April 20, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Composite 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/composite/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[디자인패턴] Bridge 패턴</h2>
   </header>
   <section class="entry-content">
@@ -188,18 +203,6 @@ type Status struct { str int dex int wis int } type Monster struct { Name string
   </section>
   <footer class="entry-footer">April 17, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [디자인패턴] Prototype 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/prototype_pattern/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Factory 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Factory Pattern 1. factory method pattern 객체를 생성하기 위한 인터페이스를 정의하는데, 어떤 클래스의 인스턴스를 만들지는 서브클래스에서 결정한다.
-package main import ( &#34;errors&#34; &#34;fmt&#34; ) type Character interface { Attack() } const ( warrior = iota mage ) type Warrior struct { } func (w *Warrior) Attack() { fmt.Println(&#34;sword attack&#34;) } type Mage struct { } func (m *Mage) Attack() { fmt.Println(&#34;magic attack&#34;) }  Factory struct  type CharacterFactory struct { } func (f *CharacterFactory) Create(job int) (Character, error) { switch job { case warrior: return &amp;Warrior{}, nil case mage: return &amp;Mage{}, nil default: return nil, errors....</p>
-  </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Factory 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/factory/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

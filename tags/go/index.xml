@@ -9,7 +9,20 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 19 Apr 2021 22:34:13 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Apr 2021 23:28:31 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[디자인패턴] Composite 패턴</title>
+      <link>https://icecat471.github.io/devlog/post/design_pattern/composite/</link>
+      <pubDate>Tue, 20 Apr 2021 23:28:31 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/design_pattern/composite/</guid>
+      <description>Composite Pattern 출처: https://golangbyexample.com/composite-design-pattern-golang/
+개요 &amp;lsquo;composite&amp;rsquo;라고 불리는 개체그룹이 단일개체와 유사한 방식으로 처리되기를 원할때 사용.
+트리구조로 객체들을 엮는다. UML 다이어그램 OS의 파일시스템에는 폴더와 파일 두가지 유형의 개체가 있는데, 폴더와 파일은 동일하게 취급받는 경우가 있다.
+Mapping          Component interface component.go   Composite folder.go   Leaf file.go   client main.go    코드 component.go
+package main type component interface { search(string) } folder.</description>
+    </item>
+    
     <item>
       <title>[디자인패턴] Bridge 패턴</title>
       <link>https://icecat471.github.io/devlog/post/design_pattern/bridge/</link>
