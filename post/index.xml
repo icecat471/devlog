@@ -9,7 +9,22 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 20 Apr 2021 23:28:31 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Apr 2021 22:18:34 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[디자인패턴] Decorator 패턴</title>
+      <link>https://icecat471.github.io/devlog/post/design_pattern/decorator/</link>
+      <pubDate>Wed, 21 Apr 2021 22:18:34 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/design_pattern/decorator/</guid>
+      <description>Decorator Pattern 출처: https://golangbyexample.com/decorator-pattern-golang/
+개요 개체를 변경하지 않고 기능을 추가할 수 있음.
+=&amp;gt; 이미 테스트가 끝난 코드를 수정하면 안됨 (Open-Closed Principle에 위배됨) 두가지 피자가 존재한다고 가정해보자.
+ vegge mania pizza peppy tofu pizza  UML 다이어그램 코드 pizza.go
+package main type pizza interface { getPrice() int } peppyPaneer.go
+package main type peppyPaneer struct { } func (p *peppyPaneer) getPrice() int { return 20 } veggeMania.go
+package main type veggeMania struct { } func (p *veggeMania) getPrice() int { return 15 } 토핑을 추가하기 위해 위쪽에 만들어진 구조체들은 더 이상 수정하면 안됨.</description>
+    </item>
+    
     <item>
       <title>[디자인패턴] Composite 패턴</title>
       <link>https://icecat471.github.io/devlog/post/design_pattern/composite/</link>
