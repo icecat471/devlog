@@ -53,9 +53,6 @@
     <loc>https://icecat471.github.io/devlog/post/design_pattern/singleton/</loc>
     <lastmod>2021-04-18T11:53:14+09:00</lastmod>
   </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/golang/</loc>
-    <lastmod>2021-04-18T11:53:14+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/tags/singleton-pattern/</loc>
     <lastmod>2021-04-18T11:53:14+09:00</lastmod>
   </url><url>
@@ -81,6 +78,9 @@
     <lastmod>2021-04-16T10:12:06+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/error/</loc>
+    <lastmod>2021-04-16T10:12:06+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/golang/</loc>
     <lastmod>2021-04-16T10:12:06+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/gopls/</loc>
