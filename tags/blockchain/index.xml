@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blockchain on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/tags/blockchain/</link>
+    <description>Recent content in blockchain on icecat471&#39;s Devlog</description>
+    <image>
+      <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
+      <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 22 Apr 2021 16:04:05 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ECDSA 알고리즘</title>
+      <link>https://icecat471.github.io/devlog/post/encryption/ecdsa/</link>
+      <pubDate>Thu, 22 Apr 2021 16:04:05 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/encryption/ecdsa/</guid>
+      <description>ECDSA (Elliptic Curve Digital Signature Algorithm) 타원곡선암호(ECC)를 전자서명에 접목시킨 암호 알고리즘.타원곡선의 정의 일반적으로 타원 곡선 방정식은 아래와 같다.
+ y2+ b1xy + b2y = x3+ a1x2+ a2x + a3 그러나, 실수상의 타원 곡선은 아래와 같은 특별한 타원 곡선을 사용한다.
+ y2= x3+ ax + b
+ 타원곡선의 특징은 x축을 중심으로 대칭되며, 비 수직선에 대해 최대 3개 지점에서 곡선과 교차.
+타원곡선상의 연산 타원곡선상의 점 P와 Q의 덧셈연산은 P와 Q를 지나는 직선이 타원과 만나는 교점(-R)을 x축으로 대칭시킨 점 R에 대해</description>
+    </item>
+    
+  </channel>
+</rss>
