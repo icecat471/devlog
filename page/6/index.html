@@ -151,67 +151,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Builder 패턴</h2>
+    <h2>Hugo로 블로그 시작하기</h2>
   </header>
   <section class="entry-content">
-    <p>1. Builder Pattern Person 객체를 예로 들어보자
-type Person struct { name string age int job string height float32 weight float32 } func NewPerson(name string, age int, job string, height float32, weight float32) *Person { return &amp;Person{ name, age, job, height, weight, } } func main() { p := NewPerson(&#34;홍길동&#34;, 22, &#34;developer&#34;, 177.2, 72.9) } 위처럼 모든 정보를 입력하지 않아도 될때도 있고, 가독성도 좋지않으며 parameter의 순서도 맞춰주어야한다.또 객체에 새로운 정보가 추가된다면 NewPerson()을 계속 수정해주어야 한다....</p>
+    <p>출처: IALY’s BLOG
+1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0&#43;extended darwin/amd64 BuildDate=unknown 2. Hugo Project 생성 hugo new site &lt;프로젝트명&gt; 3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
+원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
+$ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)config 파일 예시는 각 테마 깃허브에서 확인 가능....</p>
   </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Builder 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bulilder/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[Go언어] VSCode에서 gopls 에러가 날때</h2>
-  </header>
-  <section class="entry-content">
-    <p>vscode에서 아래와 같은 에러 발생시
- gopls requires a module at the root of your workspace. You can work with multiple modules by opening each one as a workspace folder.
- settings.json 파일에 아래와 같이 추가하고 vscode를 재실행한다.
-&#34;gopls&#34;: { &#34;experimentalWorkspaceModule&#34;: true, }, </p>
-  </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [Go언어] VSCode에서 gopls 에러가 날때" href="https://icecat471.github.io/devlog/post/golang/gopls_error/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Hugo syntax highlight 변경</h2>
-  </header>
-  <section class="entry-content">
-    <p>1. 원하는 테마 찾기 highlightjs.org에서 원하는 테마를 찾는다.2. css 찾기 highlightjs github에서 원하는 테마의 css파일 내용을 복사한다.3. 테마 변경 config.yml에 아래의 내용을 추가한다.pygmentsUseClasses:true(Hugo PaperMod 테마 기준)/themes/PaperMod/assests/css/hljs/an-old-hope.min.css 의 내용을 복사한 내용으로 바꾼다.=&gt; 임시적으로 설정한것으로 theme overriding으로 변경 가능한지 찾아봐야 함.</p>
-  </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Hugo syntax highlight 변경" href="https://icecat471.github.io/devlog/post/hugo/syntax_highlight/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Hugo 블로그 댓글 기능 추가하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>1. 세팅하기 이곳을 클릭 하여 utterances 사이트로 이동한다.configuration 부분을 따라 utterances app을 설치하고 repository설정을 한다.그 외 Blog Post &lt;=&gt; Issue Mapping, Theme 설정등을 한다.설정을 끝내면 Enalble Utterances 부분에 코드가 생성된다
-&lt;script src=&#34;https://utteranc.es/client.js&#34; repo=&#34;(account)/(repo)&#34; issue-term=&#34;pathname&#34; theme=&#34;github-dark&#34; crossorigin=&#34;anonymous&#34; async&gt; &lt;/script&gt; 2. hugo에 적용하기 테마마다 설정 방법이 다른데 내가 사용중인 PaperMod 기준 설정방법이다.ParperMod 깃허브 에서도 확인 가능하다./layouts/partials/comments.html 파일을 만들고 위에서 생성된 코드를 붙여넣기한다.그 후 config.yml 파일에 아래부분을 추가해준다....</p>
-  </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Hugo 블로그 댓글 기능 추가하기" href="https://icecat471.github.io/devlog/post/hugo/comment/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>gRPC란?</h2>
-  </header>
-  <section class="entry-content">
-    <p>gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI &#43; third-party tooling         gRPC의 장점 1....</p>
-  </section>
-  <footer class="entry-footer">April 15, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to gRPC란?" href="https://icecat471.github.io/devlog/post/network/grpc/"></a>
+  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Hugo로 블로그 시작하기" href="https://icecat471.github.io/devlog/post/hugo/start_hugo/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="https://icecat471.github.io/devlog/page/2/">« Prev Page</a>
-    <a class="next" href="https://icecat471.github.io/devlog/page/4/">Next Page »</a>
+    <a class="prev" href="https://icecat471.github.io/devlog/page/5/">« Prev Page</a>
   </nav>
 </footer>
     </main>

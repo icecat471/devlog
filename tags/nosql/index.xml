@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker on icecat471&#39;s Devlog</title>
-    <link>https://icecat471.github.io/devlog/categories/docker/</link>
-    <description>Recent content in docker on icecat471&#39;s Devlog</description>
+    <title>NoSQL on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/tags/nosql/</link>
+    <description>Recent content in NoSQL on icecat471&#39;s Devlog</description>
     <image>
       <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 28 Apr 2021 17:19:07 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Apr 2021 17:19:07 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/nosql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Docker] 몽고db 컨테이너 설치</title>
       <link>https://icecat471.github.io/devlog/post/docker/install_mongo_db/</link>
@@ -17,15 +17,6 @@
       
       <guid>https://icecat471.github.io/devlog/post/docker/install_mongo_db/</guid>
       <description>docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &amp;gt; use admin # admin 계정 생성 &amp;gt; db.</description>
-    </item>
-    
-    <item>
-      <title>Docker 컨테이너 메모리 및 CPU 제한하기</title>
-      <link>https://icecat471.github.io/devlog/post/docker/docker_memory_limit/</link>
-      <pubDate>Sun, 11 Apr 2021 16:35:36 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/post/docker/docker_memory_limit/</guid>
-      <description>// 512MB의 메모리와 50%의 CPU 할당 docker run -m 512m --cpu-quota=50000 &amp;lt;image name&amp;gt; // stat 확인 docker stats &amp;lt;container id&amp;gt; </description>
     </item>
     
   </channel>

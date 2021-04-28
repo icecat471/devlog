@@ -9,7 +9,16 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 22 Apr 2021 23:36:47 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Apr 2021 17:19:07 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Docker] 몽고db 컨테이너 설치</title>
+      <link>https://icecat471.github.io/devlog/post/docker/install_mongo_db/</link>
+      <pubDate>Wed, 28 Apr 2021 17:19:07 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/docker/install_mongo_db/</guid>
+      <description>docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &amp;gt; use admin # admin 계정 생성 &amp;gt; db.</description>
+    </item>
+    
     <item>
       <title>[프로젝트1] 웹 캐치마인드 만들기 1</title>
       <link>https://icecat471.github.io/devlog/post/project/project1_01/</link>

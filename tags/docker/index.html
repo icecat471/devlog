@@ -140,6 +140,17 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[Docker] 몽고db 컨테이너 설치</h2>
+  </header>
+  <section class="entry-content">
+    <p>docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db....</p>
+  </section>
+  <footer class="entry-footer">April 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Docker] 몽고db 컨테이너 설치" href="https://icecat471.github.io/devlog/post/docker/install_mongo_db/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>Docker 컨테이너 메모리 및 CPU 제한하기</h2>
   </header>
   <section class="entry-content">
