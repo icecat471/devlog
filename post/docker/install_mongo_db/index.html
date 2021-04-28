@@ -65,8 +65,8 @@
   "keywords": [
     "docker", "mongoDB", "database", "NoSQL"
   ],
-  "articleBody": "docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \\ # background 실행 --name mongo_db \\ # container name -v /Users/docker/mongodb/data/db:/data/db \\ # volume 설정 -p 27017:27017 \\ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택  use admin # admin 계정 생성  db.createUser({ user: \"admin\", # admin name pwd: \"password\", # admin password roles: [{role: \"userAdminAnyDatabase\", db: \"admin\"}] # admin role }) # admin 계정 접속 $ mongo -u \"admin\" -p --authenticationDatabase \"admin\" (password 입력) ",
-  "wordCount" : "107",
+  "articleBody": "docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \\ # background 실행 --name mongo_db \\ # container name -v /Users/docker/mongodb/data/db:/data/db \\ # volume 설정 -p 27017:27017 \\ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택  use admin # admin 계정 생성  db.createUser({ user: \"admin\", # admin name pwd: \"password\", # admin password roles: [ {role: \"userAdminAnyDatabase\", db: \"admin\"}, {role: \"dbAdminAnyDatabase\", db: \"admin\"}, {role: \"readWriteAnyDatabase\", db: \"admin\"} ] # admin role }) # admin 계정 접속 $ mongo -u \"admin\" -p --authenticationDatabase \"admin\" (password 입력) user 추가 # 유저 생성  db.createUser({ user: 'username', pwd: 'password', roles: [{role: 'readWrite', db: 'test'}, {role: 'read', db: 'reporting'}] }) # 로그인 db.auth('username', 'password'); ",
+  "wordCount" : "142",
   "inLanguage": "en",
   "datePublished": "2021-04-28T17:19:07+09:00",
   "dateModified": "2021-04-28T17:19:07+09:00",
@@ -216,7 +216,9 @@
                 <li>
                     <a href="#%ec%bb%a8%ed%85%8c%ec%9d%b4%eb%84%88-%ec%a0%91%ec%86%8d" aria-label="컨테이너 접속">컨테이너 접속</a></li>
                 <li>
-                    <a href="#mongo-db" aria-label="mongo db">mongo db</a>
+                    <a href="#mongo-db" aria-label="mongo db">mongo db</a></li>
+                <li>
+                    <a href="#user-%ec%b6%94%ea%b0%80" aria-label="user 추가">user 추가</a>
                 </li>
             </ul>
             </li>
@@ -248,11 +250,26 @@ $ mongo
 &gt; db.createUser<span class="o">({</span>
     user: <span class="s2">&#34;admin&#34;</span>, <span class="c1"># admin name</span>
     pwd: <span class="s2">&#34;password&#34;</span>, <span class="c1"># admin password</span>
-    roles: <span class="o">[{</span>role: <span class="s2">&#34;userAdminAnyDatabase&#34;</span>, db: <span class="s2">&#34;admin&#34;</span><span class="o">}]</span> <span class="c1"># admin role</span>
+    roles: <span class="o">[</span>
+        <span class="o">{</span>role: <span class="s2">&#34;userAdminAnyDatabase&#34;</span>, db: <span class="s2">&#34;admin&#34;</span><span class="o">}</span>,
+        <span class="o">{</span>role: <span class="s2">&#34;dbAdminAnyDatabase&#34;</span>, db: <span class="s2">&#34;admin&#34;</span><span class="o">}</span>,
+        <span class="o">{</span>role: <span class="s2">&#34;readWriteAnyDatabase&#34;</span>, db: <span class="s2">&#34;admin&#34;</span><span class="o">}</span>
+    <span class="o">]</span> <span class="c1"># admin role</span>
 <span class="o">})</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># admin 계정 접속</span>
 $ mongo -u <span class="s2">&#34;admin&#34;</span> -p --authenticationDatabase <span class="s2">&#34;admin&#34;</span>
 <span class="o">(</span>password 입력<span class="o">)</span>
+</code></pre></div><h2 id="user-추가">user 추가<a hidden class="anchor" aria-hidden="true" href="#user-추가">#</a></h2>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 유저 생성</span>
+&gt; db.createUser<span class="o">({</span>
+    user: <span class="s1">&#39;username&#39;</span>,
+    pwd: <span class="s1">&#39;password&#39;</span>,
+    roles: <span class="o">[{</span>role: <span class="s1">&#39;readWrite&#39;</span>, db: <span class="s1">&#39;test&#39;</span><span class="o">}</span>,
+        <span class="o">{</span>role: <span class="s1">&#39;read&#39;</span>, db: <span class="s1">&#39;reporting&#39;</span><span class="o">}]</span>
+<span class="o">})</span>
+
+<span class="c1"># 로그인</span>
+db.auth<span class="o">(</span><span class="s1">&#39;username&#39;</span>, <span class="s1">&#39;password&#39;</span><span class="o">)</span><span class="p">;</span>
 </code></pre></div>
 </div>
   <footer class="post-footer">
