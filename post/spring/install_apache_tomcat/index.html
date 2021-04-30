@@ -5,11 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>[Docker] 몽고db 컨테이너 설치 | icecat471&#39;s Devlog</title>
-<meta name="keywords" content="docker, mongoDB, database, NoSQL" />
-<meta name="description" content="docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db.">
+<title>맥북 Tomcat9 설치 | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="tomcat, apache tomcat, spring" />
+<meta name="description" content="톰캣 홈페이지
+http://tomcat.apache.org/
+받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)
+# 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R &lt;userName&gt; /Library/Tomcat # 실행권한 추가 $ sudo chmod &#43;x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/post/docker/install_mongo_db/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -21,18 +24,24 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<meta property="og:title" content="[Docker] 몽고db 컨테이너 설치" />
-<meta property="og:description" content="docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db." />
+<meta property="og:title" content="맥북 Tomcat9 설치" />
+<meta property="og:description" content="톰캣 홈페이지
+http://tomcat.apache.org/
+받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)
+# 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R &lt;userName&gt; /Library/Tomcat # 실행권한 추가 $ sudo chmod &#43;x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/post/docker/install_mongo_db/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-04-28T17:19:07&#43;09:00" />
-<meta property="article:modified_time" content="2021-04-28T17:19:07&#43;09:00" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-30T09:23:18&#43;09:00" />
+<meta property="article:modified_time" content="2021-04-30T09:23:18&#43;09:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="[Docker] 몽고db 컨테이너 설치"/>
-<meta name="twitter:description" content="docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db."/>
+<meta name="twitter:title" content="맥북 Tomcat9 설치"/>
+<meta name="twitter:description" content="톰캣 홈페이지
+http://tomcat.apache.org/
+받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)
+# 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R &lt;userName&gt; /Library/Tomcat # 실행권한 추가 $ sudo chmod &#43;x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인"/>
 
 
 <script type="application/ld+json">
@@ -49,8 +58,8 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "[Docker] 몽고db 컨테이너 설치",
-      "item": "https://icecat471.github.io/devlog/post/docker/install_mongo_db/"
+      "name": "맥북 Tomcat9 설치",
+      "item": "https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/"
     }
   ]
 }
@@ -59,24 +68,24 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "[Docker] 몽고db 컨테이너 설치",
-  "name": "[Docker] 몽고db 컨테이너 설치",
-  "description": "docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \\ # background 실행 --name mongo_db \\ # container name -v /Users/docker/mongodb/data/db:/data/db \\ # volume 설정 -p 27017:27017 \\ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 \u0026gt; use admin # admin 계정 생성 \u0026gt; db.",
+  "headline": "맥북 Tomcat9 설치",
+  "name": "맥북 Tomcat9 설치",
+  "description": "톰캣 홈페이지\nhttp://tomcat.apache.org/\n받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)\n# 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R \u0026lt;userName\u0026gt; /Library/Tomcat # 실행권한 추가 $ sudo chmod +x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인",
   "keywords": [
-    "docker", "mongoDB", "database", "NoSQL"
+    "tomcat", "apache tomcat", "spring"
   ],
-  "articleBody": "docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \\ # background 실행 --name mongo_db \\ # container name -v /Users/docker/mongodb/data/db:/data/db \\ # volume 설정 -p 27017:27017 \\ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택  use admin # admin 계정 생성  db.createUser({ user: \"admin\", # admin name pwd: \"password\", # admin password roles: [ {role: \"userAdminAnyDatabase\", db: \"admin\"}, {role: \"dbAdminAnyDatabase\", db: \"admin\"}, {role: \"readWriteAnyDatabase\", db: \"admin\"} ] # admin role }) # admin 계정 접속 $ mongo -u \"admin\" -p --authenticationDatabase \"admin\" (password 입력) user 추가 # 유저 생성  db.createUser({ user: 'username', pwd: 'password', roles: [{role: 'readWrite', db: 'test'}, {role: 'read', db: 'reporting'}] }) # 로그인 db.auth('username', 'password'); ",
-  "wordCount" : "142",
+  "articleBody": "톰캣 홈페이지\nhttp://tomcat.apache.org/\n받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)\n# 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R  /Library/Tomcat # 실행권한 추가 $ sudo chmod +x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인\nhttp://localhost:8080\n",
+  "wordCount" : "73",
   "inLanguage": "en",
-  "datePublished": "2021-04-28T17:19:07+09:00",
-  "dateModified": "2021-04-28T17:19:07+09:00",
+  "datePublished": "2021-04-30T09:23:18+09:00",
+  "dateModified": "2021-04-30T09:23:18+09:00",
   "author":{
     "@type": "Person",
     "name": "icecat471"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://icecat471.github.io/devlog/post/docker/install_mongo_db/"
+    "@id": "https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/"
   },
   "publisher": {
     "@type": "Organization",
@@ -196,99 +205,57 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
     <h1 class="post-title">
-      [Docker] 몽고db 컨테이너 설치
+      맥북 Tomcat9 설치
     </h1>
-    <div class="post-meta">April 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471
+    <div class="post-meta">April 30, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471
 </div>
   </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <div class="details">Table of Contents</div>
         </summary>
-        <div class="inner"><ul>
-                <li>
-                    <a href="#docker%eb%a1%9c-mongodb-%ec%84%a4%ec%b9%98" aria-label="docker로 mongoDB 설치">docker로 mongoDB 설치</a><ul>
-                        
-                <li>
-                    <a href="#pull" aria-label="pull">pull</a></li>
-                <li>
-                    <a href="#run" aria-label="run">run</a></li>
-                <li>
-                    <a href="#%ec%bb%a8%ed%85%8c%ec%9d%b4%eb%84%88-%ec%a0%91%ec%86%8d" aria-label="컨테이너 접속">컨테이너 접속</a></li>
-                <li>
-                    <a href="#mongo-db" aria-label="mongo db">mongo db</a></li>
-                <li>
-                    <a href="#user-%ec%b6%94%ea%b0%80" aria-label="user 추가">user 추가</a>
-                </li>
-            </ul>
-            </li>
-            </ul>
+        <div class="inner">
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h1 id="docker로-mongodb-설치">docker로 mongoDB 설치<a hidden class="anchor" aria-hidden="true" href="#docker로-mongodb-설치">#</a></h1>
-<h2 id="pull">pull<a hidden class="anchor" aria-hidden="true" href="#pull">#</a></h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 최신버전 받아오기</span>
-$ docker pull mongo
-</code></pre></div><h2 id="run">run<a hidden class="anchor" aria-hidden="true" href="#run">#</a></h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker run -d <span class="se">\ </span><span class="c1"># background 실행</span>
-    --name mongo_db <span class="se">\ </span><span class="c1"># container name</span>
-    -v /Users/docker/mongodb/data/db:/data/db <span class="se">\ </span><span class="c1"># volume 설정</span>
-    -p 27017:27017 <span class="se">\ </span><span class="c1"># port 설정</span>
-    mongo -auth 
-</code></pre></div><h2 id="컨테이너-접속">컨테이너 접속<a hidden class="anchor" aria-hidden="true" href="#컨테이너-접속">#</a></h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it mongo_db /bin/bash
-</code></pre></div><h2 id="mongo-db">mongo db<a hidden class="anchor" aria-hidden="true" href="#mongo-db">#</a></h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># mongo db 접속. 권한이 없는 상태라 바로 접속 됨.</span>
-$ mongo
+  <div class="post-content"><p>톰캣 홈페이지<br>
+<a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a></p>
+<p><img loading="lazy" src="../../../img/spring/install_tomcat_01.png" alt="connect to tomcat homepage to download tomcat9"  />
+</p>
+<p>받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 폴더를 /usr/local 경로로 이동</span>
+$ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/
 
-<span class="c1"># admin db 선택</span>
-&gt; use admin
+<span class="c1"># 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함 </span>
+$ sudo rm -f /Library/Tomcat
+$ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat
 
-<span class="c1"># admin 계정 생성</span>
-&gt; db.createUser<span class="o">({</span>
-    user: <span class="s2">&#34;admin&#34;</span>, <span class="c1"># admin name</span>
-    pwd: <span class="s2">&#34;password&#34;</span>, <span class="c1"># admin password</span>
-    roles: <span class="o">[</span>
-        <span class="o">{</span>role: <span class="s2">&#34;userAdminAnyDatabase&#34;</span>, db: <span class="s2">&#34;admin&#34;</span><span class="o">}</span>,
-        <span class="o">{</span>role: <span class="s2">&#34;dbAdminAnyDatabase&#34;</span>, db: <span class="s2">&#34;admin&#34;</span><span class="o">}</span>,
-        <span class="o">{</span>role: <span class="s2">&#34;readWriteAnyDatabase&#34;</span>, db: <span class="s2">&#34;admin&#34;</span><span class="o">}</span>
-    <span class="o">]</span> <span class="c1"># admin role</span>
-<span class="o">})</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># admin 계정 접속</span>
-$ mongo -u <span class="s2">&#34;admin&#34;</span> -p --authenticationDatabase <span class="s2">&#34;admin&#34;</span>
-<span class="o">(</span>password 입력<span class="o">)</span>
-</code></pre></div><h2 id="user-추가">user 추가<a hidden class="anchor" aria-hidden="true" href="#user-추가">#</a></h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 유저 생성</span>
-&gt; db.createUser<span class="o">({</span>
-    user: <span class="s1">&#39;username&#39;</span>,
-    pwd: <span class="s1">&#39;password&#39;</span>,
-    roles: <span class="o">[{</span>role: <span class="s1">&#39;readWrite&#39;</span>, db: <span class="s1">&#39;test&#39;</span><span class="o">}</span>,
-        <span class="o">{</span>role: <span class="s1">&#39;read&#39;</span>, db: <span class="s1">&#39;reporting&#39;</span><span class="o">}]</span>
-<span class="o">})</span>
+<span class="c1"># 소유자를 본인으로 변경</span>
+$ sudo chown -R &lt;userName&gt; /Library/Tomcat
 
-<span class="c1"># 로그인</span>
-db.auth<span class="o">(</span><span class="s1">&#39;username&#39;</span>, <span class="s1">&#39;password&#39;</span><span class="o">)</span><span class="p">;</span>
-</code></pre></div>
+<span class="c1"># 실행권한 추가</span>
+$ sudo chmod +x /Library/Tomcat/bin/*.sh 
+
+<span class="c1"># Tomcat 실행</span>
+$ /Library/Tomcat/bin/startup.sh
+<span class="c1"># Tomcat 종료</span>
+$ /Library/Tomcat/bin/shutdown.sh
+</code></pre></div><p>톰캣 실행 확인<br>
+http://localhost:8080</p>
+
 </div>
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://icecat471.github.io/devlog/tags/docker/">docker</a></li>
-      <li><a href="https://icecat471.github.io/devlog/tags/mongodb/">mongoDB</a></li>
-      <li><a href="https://icecat471.github.io/devlog/tags/database/">database</a></li>
-      <li><a href="https://icecat471.github.io/devlog/tags/nosql/">NoSQL</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/tomcat/">tomcat</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/apache-tomcat/">apache tomcat</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/spring/">spring</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/">
-    <span class="title">« Prev Page</span>
-    <br>
-    <span>맥북 Tomcat9 설치</span>
-  </a>
-  <a class="next" href="https://icecat471.github.io/devlog/post/project/project1_01/">
+  <a class="next" href="https://icecat471.github.io/devlog/post/docker/install_mongo_db/">
     <span class="title">Next Page »</span>
     <br>
-    <span>[프로젝트1] 웹 캐치마인드 만들기 1</span>
+    <span>[Docker] 몽고db 컨테이너 설치</span>
   </a>
 </nav>
 

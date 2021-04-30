@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tomcat on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/tags/tomcat/</link>
+    <description>Recent content in tomcat on icecat471&#39;s Devlog</description>
+    <image>
+      <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
+      <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 30 Apr 2021 09:23:18 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/tomcat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>맥북 Tomcat9 설치</title>
+      <link>https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/</link>
+      <pubDate>Fri, 30 Apr 2021 09:23:18 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/</guid>
+      <description>톰캣 홈페이지
+http://tomcat.apache.org/
+받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)
+# 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R &amp;lt;userName&amp;gt; /Library/Tomcat # 실행권한 추가 $ sudo chmod +x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인</description>
+    </item>
+    
+  </channel>
+</rss>

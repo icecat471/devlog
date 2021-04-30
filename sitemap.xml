@@ -2,10 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://icecat471.github.io/devlog/post/docker/install_mongo_db/</loc>
-    <lastmod>2021-04-28T17:19:07+09:00</lastmod>
+    <loc>https://icecat471.github.io/devlog/tags/apache-tomcat/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/categories/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/spring/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/spring/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/tomcat/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/</loc>
+    <lastmod>2021-04-30T09:23:18+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/docker/install_mongo_db/</loc>
     <lastmod>2021-04-28T17:19:07+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/database/</loc>
@@ -17,19 +41,10 @@
     <loc>https://icecat471.github.io/devlog/categories/docker/</loc>
     <lastmod>2021-04-28T17:19:07+09:00</lastmod>
   </url><url>
-    <loc>https://icecat471.github.io/devlog/</loc>
-    <lastmod>2021-04-28T17:19:07+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/tags/mongodb/</loc>
     <lastmod>2021-04-28T17:19:07+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/nosql/</loc>
-    <lastmod>2021-04-28T17:19:07+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/post/</loc>
-    <lastmod>2021-04-28T17:19:07+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/</loc>
     <lastmod>2021-04-28T17:19:07+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/project/project1_01/</loc>
