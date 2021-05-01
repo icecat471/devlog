@@ -172,6 +172,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[NestJS] (공식문서 번역) Controllers</h2>
+  </header>
+  <section class="entry-content">
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/controllers
+Controllers Controllers Controller는 들어오는 request를 핸들링하고 클라이언트에게 response를 반환하는 역할.
+routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.Routing 아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다....</p>
+  </section>
+  <footer class="entry-footer">May 1, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Controllers" href="https://icecat471.github.io/devlog/post/nestjs/controllers/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>맥북 Tomcat9 설치</h2>
   </header>
   <section class="entry-content">
@@ -227,23 +242,6 @@ Kubernetes &#43; Docekr</p>
   </section>
   <footer class="entry-footer">April 22, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to ECDSA 알고리즘" href="https://icecat471.github.io/devlog/post/encryption/ecdsa/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Decorator 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Decorator Pattern 출처: https://golangbyexample.com/decorator-pattern-golang/
-개요 개체를 변경하지 않고 기능을 추가할 수 있음.
-=&gt; 이미 테스트가 끝난 코드를 수정하면 안됨 (Open-Closed Principle에 위배됨) 두가지 피자가 존재한다고 가정해보자.
- vegge mania pizza peppy tofu pizza  UML 다이어그램 코드 pizza.go
-package main type pizza interface { getPrice() int } peppyPaneer.go
-package main type peppyPaneer struct { } func (p *peppyPaneer) getPrice() int { return 20 } veggeMania.go
-package main type veggeMania struct { } func (p *veggeMania) getPrice() int { return 15 } 토핑을 추가하기 위해 위쪽에 만들어진 구조체들은 더 이상 수정하면 안됨....</p>
-  </section>
-  <footer class="entry-footer">April 21, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Decorator 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/decorator/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
