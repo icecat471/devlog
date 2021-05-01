@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>docker | icecat471&#39;s Devlog</title>
+<title>postgres | icecat471&#39;s Devlog</title>
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/categories/docker/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/tags/postgres/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
@@ -19,16 +19,16 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/categories/docker/index.xml">
-<meta property="og:title" content="docker" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/tags/postgres/index.xml">
+<meta property="og:title" content="postgres" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/categories/docker/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:url" content="https://icecat471.github.io/devlog/tags/postgres/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="docker"/>
+<meta name="twitter:title" content="postgres"/>
 <meta name="twitter:description" content=""/>
 
 </head>
@@ -134,8 +134,8 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/categories/">Categories</a></div>
-  <h1>docker</h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/tags/">Tags</a></div>
+  <h1>postgres</h1>
 </header>
 
 <article class="post-entry tag-entry"> 
@@ -149,28 +149,6 @@ $ docker run -p 5432:5432 --name postgres \  -e POSTGRES_PASSWORD=password \  -d
   </section>
   <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [Docker] PostgresSQL 설치" href="https://icecat471.github.io/devlog/post/docker/install_postgres/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[Docker] 몽고db 컨테이너 설치</h2>
-  </header>
-  <section class="entry-content">
-    <p>docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db....</p>
-  </section>
-  <footer class="entry-footer">April 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [Docker] 몽고db 컨테이너 설치" href="https://icecat471.github.io/devlog/post/docker/install_mongo_db/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>Docker 컨테이너 메모리 및 CPU 제한하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>// 512MB의 메모리와 50%의 CPU 할당 docker run -m 512m --cpu-quota=50000 &lt;image name&gt; // stat 확인 docker stats &lt;container id&gt; </p>
-  </section>
-  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Docker 컨테이너 메모리 및 CPU 제한하기" href="https://icecat471.github.io/devlog/post/docker/docker_memory_limit/"></a>
 </article>
     </main>
     <footer class="footer">

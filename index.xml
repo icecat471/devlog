@@ -9,7 +9,18 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 01 May 2021 20:48:45 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 May 2021 00:44:00 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Docker] PostgresSQL 설치</title>
+      <link>https://icecat471.github.io/devlog/post/docker/install_postgres/</link>
+      <pubDate>Sun, 02 May 2021 00:44:00 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/docker/install_postgres/</guid>
+      <description>pull &amp;amp; run
+$ docker run -p 5432:5432 --name postgres \  -e POSTGRES_PASSWORD=password \  -d postgres 컨테이너 접속 및 사용자 생성
+# 접속 $ docker exec -it postgres /bin/bash # postgres 접속 $ psql - U postgres # 사용자 생성 $ CREATE USER username PASSWORD &amp;#39;password&amp;#39; SUPERUSER; CREATE ROLE $ CREATE DATABASE test OWNER username CREATE DATABASE </description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Controllers</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/controllers/</link>

@@ -140,6 +140,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[Docker] PostgresSQL 설치</h2>
+  </header>
+  <section class="entry-content">
+    <p>pull &amp; run
+$ docker run -p 5432:5432 --name postgres \  -e POSTGRES_PASSWORD=password \  -d postgres 컨테이너 접속 및 사용자 생성
+# 접속 $ docker exec -it postgres /bin/bash # postgres 접속 $ psql - U postgres # 사용자 생성 $ CREATE USER username PASSWORD &#39;password&#39; SUPERUSER; CREATE ROLE $ CREATE DATABASE test OWNER username CREATE DATABASE </p>
+  </section>
+  <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Docker] PostgresSQL 설치" href="https://icecat471.github.io/devlog/post/docker/install_postgres/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[Docker] 몽고db 컨테이너 설치</h2>
   </header>
   <section class="entry-content">

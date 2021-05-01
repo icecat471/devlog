@@ -172,6 +172,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[Docker] PostgresSQL 설치</h2>
+  </header>
+  <section class="entry-content">
+    <p>pull &amp; run
+$ docker run -p 5432:5432 --name postgres \  -e POSTGRES_PASSWORD=password \  -d postgres 컨테이너 접속 및 사용자 생성
+# 접속 $ docker exec -it postgres /bin/bash # postgres 접속 $ psql - U postgres # 사용자 생성 $ CREATE USER username PASSWORD &#39;password&#39; SUPERUSER; CREATE ROLE $ CREATE DATABASE test OWNER username CREATE DATABASE </p>
+  </section>
+  <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Docker] PostgresSQL 설치" href="https://icecat471.github.io/devlog/post/docker/install_postgres/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[NestJS] (공식문서 번역) Controllers</h2>
   </header>
   <section class="entry-content">
@@ -227,21 +240,6 @@ Kubernetes &#43; Docekr</p>
   </section>
   <footer class="entry-footer">April 22, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [프로젝트1] 웹 캐치마인드 만들기 1" href="https://icecat471.github.io/devlog/post/project/project1_01/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>ECDSA 알고리즘</h2>
-  </header>
-  <section class="entry-content">
-    <p>ECDSA (Elliptic Curve Digital Signature Algorithm) 타원곡선암호(ECC)를 전자서명에 접목시킨 암호 알고리즘.타원곡선의 정의 일반적으로 타원 곡선 방정식은 아래와 같다.
- y2&#43; b1xy &#43; b2y = x3&#43; a1x2&#43; a2x &#43; a3 그러나, 실수상의 타원 곡선은 아래와 같은 특별한 타원 곡선을 사용한다.
- y2= x3&#43; ax &#43; b
- 타원곡선의 특징은 x축을 중심으로 대칭되며, 비 수직선에 대해 최대 3개 지점에서 곡선과 교차.
-타원곡선상의 연산 타원곡선상의 점 P와 Q의 덧셈연산은 P와 Q를 지나는 직선이 타원과 만나는 교점(-R)을 x축으로 대칭시킨 점 R에 대해...</p>
-  </section>
-  <footer class="entry-footer">April 22, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to ECDSA 알고리즘" href="https://icecat471.github.io/devlog/post/encryption/ecdsa/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
