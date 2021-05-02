@@ -9,7 +9,25 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 02 May 2021 00:44:00 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 May 2021 15:36:48 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>backend</title>
+      <link>https://icecat471.github.io/devlog/tags/backend/</link>
+      <pubDate>Sun, 02 May 2021 15:36:48 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/backend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NestJS</title>
+      <link>https://icecat471.github.io/devlog/tags/nestjs/</link>
+      <pubDate>Sun, 02 May 2021 15:36:48 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/nestjs/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>database</title>
       <link>https://icecat471.github.io/devlog/tags/database/</link>
@@ -34,24 +52,6 @@
       <pubDate>Sun, 02 May 2021 00:44:00 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/postgres/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>backend</title>
-      <link>https://icecat471.github.io/devlog/tags/backend/</link>
-      <pubDate>Sat, 01 May 2021 20:48:45 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/tags/backend/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NestJS</title>
-      <link>https://icecat471.github.io/devlog/tags/nestjs/</link>
-      <pubDate>Sat, 01 May 2021 20:48:45 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/tags/nestjs/</guid>
       <description></description>
     </item>
     

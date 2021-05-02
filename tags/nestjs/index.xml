@@ -9,7 +9,21 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 01 May 2021 20:48:45 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 May 2021 15:36:48 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NestJS] (공식문서 번역) Providers</title>
+      <link>https://icecat471.github.io/devlog/post/nestjs/providers/</link>
+      <pubDate>Sun, 02 May 2021 15:36:48 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/nestjs/providers/</guid>
+      <description>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/providers
+Providers Providers provider는 Nest에서 가장 근본적인 개념이다. 대부분의 기본 Nest class는 provider로 취급된다(예를 들어, service, repository, factory, helper 등등). provider는 의존성을 주입할 수 있다. 이것은 오브젝트간의 서로 다양한 관계들을 만들 수 있음을 뜻한다.
+앞선 챕터에서, 우리는 CatsController를 만들었고, controller는 HTTP request를 핸들링하고 복잡한 일을 provider에게 맡긴다.
+Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 저장하고 불러오는 역할을 담당할 것이며, CatsController가 이를 시용할 것이다.</description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Controllers</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/controllers/</link>

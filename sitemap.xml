@@ -2,10 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://icecat471.github.io/devlog/post/docker/install_postgres/</loc>
-    <lastmod>2021-05-02T00:44:00+09:00</lastmod>
+    <loc>https://icecat471.github.io/devlog/post/nestjs/providers/</loc>
+    <lastmod>2021-05-02T15:36:48+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/backend/</loc>
+    <lastmod>2021-05-02T15:36:48+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/categories/</loc>
+    <lastmod>2021-05-02T15:36:48+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/</loc>
+    <lastmod>2021-05-02T15:36:48+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/nestjs/</loc>
+    <lastmod>2021-05-02T15:36:48+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/nestjs/</loc>
+    <lastmod>2021-05-02T15:36:48+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/</loc>
+    <lastmod>2021-05-02T15:36:48+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/</loc>
+    <lastmod>2021-05-02T15:36:48+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/docker/install_postgres/</loc>
     <lastmod>2021-05-02T00:44:00+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/database/</loc>
@@ -17,28 +38,10 @@
     <loc>https://icecat471.github.io/devlog/categories/docker/</loc>
     <lastmod>2021-05-02T00:44:00+09:00</lastmod>
   </url><url>
-    <loc>https://icecat471.github.io/devlog/</loc>
-    <lastmod>2021-05-02T00:44:00+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/tags/postgres/</loc>
     <lastmod>2021-05-02T00:44:00+09:00</lastmod>
   </url><url>
-    <loc>https://icecat471.github.io/devlog/post/</loc>
-    <lastmod>2021-05-02T00:44:00+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/</loc>
-    <lastmod>2021-05-02T00:44:00+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/post/nestjs/controllers/</loc>
-    <lastmod>2021-05-01T20:48:45+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/backend/</loc>
-    <lastmod>2021-05-01T20:48:45+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/nestjs/</loc>
-    <lastmod>2021-05-01T20:48:45+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/nestjs/</loc>
     <lastmod>2021-05-01T20:48:45+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/apache-tomcat/</loc>

@@ -151,6 +151,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[디자인패턴] Adapter 패턴</h2>
+  </header>
+  <section class="entry-content">
+    <p>Adapter Pattern 한 클래스의 인터페이스를 클라이언트에서 사용하고자하는 다른 인터페이스로 변환한다.어댑터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있다.코드 출처: https://refactoring.guru/design-patterns/adapter/go/example 윈도우에는 USB, 맥북에는 thunderbolt 포트가 있다.윈도우 PC에 thunderbolt포트를 연결하기 위해 adapter가 필요하다client.go
+package main import &#34;fmt&#34; type client struct { } func (c *client) insertLightningConnectorIntoComputer(com computer) { fmt.Println(&#34;Client inserts Lightning connector into computer.&#34;) com.insertIntoLightningPort() } computer.go
+package main type computer interface { insertIntoLightningPort() } mac....</p>
+  </section>
+  <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Adapter 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/adapter/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[디자인패턴] Singleton 패턴</h2>
   </header>
   <section class="entry-content">
@@ -195,20 +208,6 @@ type Person struct { name string age int job string height float32 weight float3
   </section>
   <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [디자인패턴] Builder 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bulilder/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[Go언어] VSCode에서 gopls 에러가 날때</h2>
-  </header>
-  <section class="entry-content">
-    <p>vscode에서 아래와 같은 에러 발생시
- gopls requires a module at the root of your workspace. You can work with multiple modules by opening each one as a workspace folder.
- settings.json 파일에 아래와 같이 추가하고 vscode를 재실행한다.
-&#34;gopls&#34;: { &#34;experimentalWorkspaceModule&#34;: true, }, </p>
-  </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [Go언어] VSCode에서 gopls 에러가 날때" href="https://icecat471.github.io/devlog/post/golang/gopls_error/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
