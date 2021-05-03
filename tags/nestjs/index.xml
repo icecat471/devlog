@@ -9,7 +9,20 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 02 May 2021 15:36:48 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 May 2021 01:45:13 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NestJS] (공식문서 번역) Modules</title>
+      <link>https://icecat471.github.io/devlog/post/nestjs/modules/</link>
+      <pubDate>Mon, 03 May 2021 01:45:13 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/nestjs/modules/</guid>
+      <description>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/providers
+Modules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.
+각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다.</description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Providers</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/providers/</link>

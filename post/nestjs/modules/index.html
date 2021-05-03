@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[NestJS] (공식문서 번역) Modules | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="NestJS, backend" />
+<meta name="description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/providers
+Modules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.
+각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다.">
+<meta name="author" content="icecat471">
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/modules/" />
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://icecat471.github.io/devlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta property="og:title" content="[NestJS] (공식문서 번역) Modules" />
+<meta property="og:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/providers
+Modules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.
+각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/nestjs/modules/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-03T01:45:13&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-03T01:45:13&#43;09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="[NestJS] (공식문서 번역) Modules"/>
+<meta name="twitter:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/providers
+Modules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.
+각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[NestJS] (공식문서 번역) Modules",
+      "item": "https://icecat471.github.io/devlog/post/nestjs/modules/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[NestJS] (공식문서 번역) Modules",
+  "name": "[NestJS] (공식문서 번역) Modules",
+  "description": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/providers\nModules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.\n각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다.",
+  "keywords": [
+    "NestJS", "backend"
+  ],
+  "articleBody": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/providers\nModules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.\n각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다. Nest에서는 component를 구성하는데 module을 사용할 것을 강력하게 권장한다. 따라서, 대부분의 애플리케이션은 여러개의 module을 갖는 구조이다.@Module() 데코레이터는 아래의 property들을 갖는 하나의 오브젝트를 인자로 받는다.         providers provider는 Nest injector에 의해 인스턴스화 되고, 최소한 이 module안에서 공유된다.   controllers 이 module에서 인스턴스화 될 controller의 set   imports 이 module에 필요한 provider들을 export하는 module의 리스트   exports 다른 module에서 사용할 수 있도록 이 module에서 제공하는 provider의 subset    module은 provider를 캡슐화한다. 이것은 현재 module의 part가 아니거나, import된 module에서 export되자 않은 provider는 injection 할 수 없다는 의미이다. 따라서 module에서 제공하는 public interface(또는 API)를 고려해야 한다.\nFeature modules CatsService와 CatsController는 같은 도메인에 속해있다. 이 둘은 크게 관련되어 있고 따라서 feature module로 옮기는 것이 타당하다. feature module은 특정한 특성을 가진 코드를 관련성에 의해 조직하고, 명확한 경계를 구축한다. 이는 우리가 SOLID 원칙에 따라 개발을 할 수 있게 도와준다.아래처럼 CatsModule을 만들었다.\n// cats/cats.module.ts  import { Module } from '@nestjs/common'; import { CatsController } from './cats.controller'; import { CatsService } from './cats.service'; @Module({ controllers: [CatsController], providers: [CatsService], }) export class CatsModule {} 위처럼 cats.module.ts 파일에 CatsModule을 정의하고 관련된 파일들을 cats 디렉토리로 이동시켰다. 추가로 CatsModule을 root module에 등록한다.\n// app.module.ts  import { Module } from '@nestjs/common'; import { CatsModule } from './cats/cats.module'; @Module({ imports: [CatsModule], }) export class AppModule {} 따라서 디렉토리 구조가 아래처럼 변경되었다.\nsrc | +-- cats | | | +-- dto | | | | | +-- create-cat.dto.ts | | | +-- interfaces | | | | | +-- cat.interface.ts | | | +-- cats.controller.ts | | | +-- cats.module.ts | | | +-- cats.service.ts | +-- app.module.ts | +-- main.ts Shared modules Nest에서 module은 기본적으로 singleton이다. 따라서 여러 module간 같은 provider 인스턴스를 공유하여 사용할 수 있다.\n모든 module은 자동으로 shared module이 된다. 한번 생성되면 다른 module들에 의해 재사용 된다. CatsService 인스턴스를 다른 여러개의 module간에 공유하고싶다고 해보자. 이것을 위해 먼저 module의 export 배열에 CatsService를 추가하여 export 해주어야 한다.\n// cats.module.ts  import { Module } from '@nestjs/common'; import { CatsController } from './cats.controller'; import { CatsService } from './cats.service'; @Module({ controllers: [CatsController], providers: [CatsService], exports: [CatsService] }) export class CatsModule {} 이제 CatModule을 import하는 module에서는 CatsService에 접근하고 다른 module과 CatService 인스턴스를 공유하게 되었다.\nModule re-exporting 위에서 보았듯, module은 내부의 provider를 export 할 수 있다. 또한 외부에서 import한 module을 re-export 할 수 있다. 아래 예제처럼, CatsModule은 import 되고 export 되어 CoreModule을 import 하는 다른 module에서 사용할 수 있게 되었다.\n@Module({ imports: [CommonModule], exports: [CommonModule], }) export class CoreModule {} Dependency injection module class 역시 provider를 injection 받을 수 있다.\nimport { Module } from '@nestjs/common'; import { CatsController } from './cats.controller'; import { CatsService } from './cats.service'; @Module({ controllers: [CatsController], providers: [CatsService], }) export class CatsModule { constructor(private catsService: CatsService) {} } 그러나, module 클래스끼리 서로 provider로써 injection 될 수 없다. 이것은 circular dependency 때문이다.\nGlobal modules 같은 module set를 모든곳에 import 할 수 있지만, 이것은 좋은 방법은 아니다. Angular 에서는 provider는 전역으로 등록된다. Nest에서는 provider는 module scope로 캡슐화 된다. 따라서 module을 import 하지 않으면 module의 provider를 사용할 수 없다.모든곳에서 전역으로 module을 사용하고 싶으면 @Global() 데코레이터를 사용할 수 있다.\nimport { Module, Global } from '@nestjs/common'; import { CatsController } from './cats.controller'; import { CatsService } from './cats.service'; @Global() @Module({ controllers: [CatsController], providers: [CatsService], exports: [CatsService], }) export class CatsModule {} @Global() 데코레이터는 module을 global-scope로 만들어준다. global module은 root module 또는 core module에 의해 단 한번만 등록되어야 한다. 위 예제의 CatsModule은 import하지 않고 어디에서나 injection 될 수 있다.\n 모든 module을 global로 만드는 것은 좋은 디자인이 아니다. global module은 반복되는 코드를 줄이기 위해 사용된다. 그러나 imports 배열을 만들어 API를 사용가능하게 만드는 것이 일반적이다.\n Dynamic modules Nest module system은 dynamic modules라는 강력한 특성을 갖고 있다. 이 특성은 provider를 동적으로 등록하고 설정할 수 있는 커스터마이징 가능한 module을 쉽게 만들 수 있게 해준다. dynamic modules에 관한 상세한 설명은 여기에서 볼 수 있다.아래는 dynamic module를 정의하는 예제이다.\nimport { Module, DynamicModule } from '@nestjs/common'; import { createDatabaseProviders } from './database.providers'; import { Connection } from './connection.provider'; @Module({ providers: [Connection], }) export class DatabaseModule { static forRoot(entities = [], options?): DynamicModule { const providers = createDatabaseProviders(options, entities); return { module: DatabaseModule, providers: providers, exports: providers, }; } }  forRoot() method는 dynamic module을 동기 혹은 비동기로 반환한다.\n 이 module은 Connection provider를 정의하고 있다. 그러나 추가로, forRoot() method를 통해 provider 콜렉션을 노출하고 있다(예를 들어 repository). dynamic module은 @Module() 데코레이터에 정의된 기본 module의 메타데이터를 확장하여 리턴된다.만약 dynamic module을 전역으로 사용하고 싶으면 global 프로퍼티를 true로 설정한다.\n{ global: true, module: DatabaseModule, providers: providers, exports: providers, } DatabaseModule은 아래와 같은 방법으로 설정하고 import 할 수 있다.\nimport { Module } from '@nestjs/common'; import { DatabaseModule } from './database/database.module'; import { User } from './users/entities/user.entity'; @Module({ imports: [DatabaseModule.forRoot([User])], }) export class AppModule {} dynamic module을 re-export 할 때에는 forRoot() method는 생략한다.\nimport { Module } from '@nestjs/common'; import { DatabaseModule } from './database/database.module'; import { User } from './users/entities/user.entity'; @Module({ imports: [DatabaseModule.forRoot([User])], exports: [DatabaseModule], }) export class AppModule {} ",
+  "wordCount" : "856",
+  "inLanguage": "en",
+  "datePublished": "2021-05-03T01:45:13+09:00",
+  "dateModified": "2021-05-03T01:45:13+09:00",
+  "author":{
+    "@type": "Person",
+    "name": "icecat471"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://icecat471.github.io/devlog/post/nestjs/modules/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "icecat471's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://icecat471.github.io/devlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://icecat471.github.io/devlog/" accesskey="h" title="icecat471&#39;s Devlog (Alt + H)">icecat471&#39;s Devlog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
+    <h1 class="post-title">
+      [NestJS] (공식문서 번역) Modules
+    </h1>
+    <div class="post-meta">May 3, 2021&nbsp;·&nbsp;5 min&nbsp;·&nbsp;icecat471
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#modules" aria-label="Modules">Modules</a><ul>
+                        
+                <li>
+                    <a href="#modules-1" aria-label="Modules">Modules</a></li>
+                <li>
+                    <a href="#feature-modules" aria-label="Feature modules">Feature modules</a></li>
+                <li>
+                    <a href="#shared-modules" aria-label="Shared modules">Shared modules</a></li>
+                <li>
+                    <a href="#module-re-exporting" aria-label="Module re-exporting">Module re-exporting</a></li>
+                <li>
+                    <a href="#dependency-injection" aria-label="Dependency injection">Dependency injection</a></li>
+                <li>
+                    <a href="#global-modules" aria-label="Global modules">Global modules</a></li>
+                <li>
+                    <a href="#dynamic-modules" aria-label="Dynamic modules">Dynamic modules</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>NestJS 공식문서 번역 겸 공부하는 글 입니다.<br>
+의역 및 오역이 있을 수 있습니다.<br>
+<a href="https://docs.nestjs.com/providers">https://docs.nestjs.com/providers</a></p>
+<h1 id="modules">Modules<a hidden class="anchor" aria-hidden="true" href="#modules">#</a></h1>
+<h2 id="modules-1">Modules<a hidden class="anchor" aria-hidden="true" href="#modules-1">#</a></h2>
+<p>module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.</p>
+<p><img loading="lazy" src="../../../img/nestjs/modules01.png" alt="application graph"  />
+</p>
+<p>각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다. Nest에서는 component를 구성하는데 module을 사용할 것을 강력하게 권장한다. 따라서, 대부분의 애플리케이션은 여러개의 module을 갖는 구조이다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>@Module() 데코레이터는 아래의 property들을 갖는 하나의 오브젝트를 인자로 받는다.<!-- raw HTML omitted --></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>providers</td>
+<td>provider는 Nest injector에 의해 인스턴스화 되고, 최소한 이 module안에서 공유된다.</td>
+</tr>
+<tr>
+<td>controllers</td>
+<td>이 module에서 인스턴스화 될 controller의 set</td>
+</tr>
+<tr>
+<td>imports</td>
+<td>이 module에 필요한 provider들을 export하는 module의 리스트</td>
+</tr>
+<tr>
+<td>exports</td>
+<td>다른 module에서 사용할 수 있도록 이 module에서 제공하는 provider의 subset</td>
+</tr>
+</tbody>
+</table>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>module은 provider를 캡슐화한다. 이것은 현재 module의 part가 아니거나, import된 module에서 export되자 않은 provider는 injection 할 수 없다는 의미이다. 따라서 module에서 제공하는 public interface(또는 API)를 고려해야 한다.</p>
+<h2 id="feature-modules">Feature modules<a hidden class="anchor" aria-hidden="true" href="#feature-modules">#</a></h2>
+<p>CatsService와 CatsController는 같은 도메인에 속해있다. 이 둘은 크게 관련되어 있고 따라서 feature module로 옮기는 것이 타당하다. feature module은 특정한 특성을 가진 코드를 관련성에 의해 조직하고, 명확한 경계를 구축한다. 이는 우리가 SOLID 원칙에 따라 개발을 할 수 있게 도와준다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>아래처럼 CatsModule을 만들었다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats/cats.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsController</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.controller&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsModule</span> <span class="p">{}</span>
+</code></pre></div><p>위처럼 cats.module.ts 파일에 CatsModule을 정의하고 관련된 파일들을 cats 디렉토리로 이동시켰다. 추가로 CatsModule을 root module에 등록한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><p>따라서 디렉토리 구조가 아래처럼 변경되었다.</p>
+<pre><code>src
+ |
+ +-- cats
+ |    |
+ |    +-- dto
+ |    |    |
+ |    |    +-- create-cat.dto.ts
+ |    |
+ |    +-- interfaces
+ |    |    |
+ |    |    +-- cat.interface.ts
+ |    |
+ |    +-- cats.controller.ts
+ |    |
+ |    +-- cats.module.ts
+ |    |
+ |    +-- cats.service.ts
+ |
+ +-- app.module.ts
+ |
+ +-- main.ts
+</code></pre><h2 id="shared-modules">Shared modules<a hidden class="anchor" aria-hidden="true" href="#shared-modules">#</a></h2>
+<p>Nest에서 module은 기본적으로 singleton이다. 따라서 여러 module간 같은 provider 인스턴스를 공유하여 사용할 수 있다.</p>
+<p><img loading="lazy" src="../../../img/nestjs/modules02.png" alt="application graph"  />
+</p>
+<p>모든 module은 자동으로 shared module이 된다. 한번 생성되면 다른 module들에 의해 재사용 된다. CatsService 인스턴스를 다른 여러개의 module간에 공유하고싶다고 해보자. 이것을 위해 먼저 module의 export 배열에 CatsService를 추가하여 export 해주어야 한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsController</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.controller&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+  <span class="nx">exports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsModule</span> <span class="p">{}</span>
+</code></pre></div><p>이제 CatModule을 import하는 module에서는 CatsService에 접근하고 다른 module과 CatService 인스턴스를 공유하게 되었다.</p>
+<h2 id="module-re-exporting">Module re-exporting<a hidden class="anchor" aria-hidden="true" href="#module-re-exporting">#</a></h2>
+<p>위에서 보았듯, module은 내부의 provider를 export 할 수 있다. 또한 외부에서 import한 module을 re-export 할 수 있다. 아래 예제처럼, CatsModule은 import 되고 export 되어 CoreModule을 import 하는 다른 module에서 사용할 수 있게 되었다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CommonModule</span><span class="p">],</span>
+  <span class="nx">exports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CommonModule</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CoreModule</span> <span class="p">{}</span>
+</code></pre></div><h2 id="dependency-injection">Dependency injection<a hidden class="anchor" aria-hidden="true" href="#dependency-injection">#</a></h2>
+<p>module class 역시 provider를 injection 받을 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsController</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.controller&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsModule</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">catsService</span>: <span class="kt">CatsService</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div><p>그러나, module 클래스끼리 서로 provider로써 injection 될 수 없다. 이것은 <a href="https://docs.nestjs.com/fundamentals/circular-dependency">circular dependency</a> 때문이다.</p>
+<h2 id="global-modules">Global modules<a hidden class="anchor" aria-hidden="true" href="#global-modules">#</a></h2>
+<p>같은 module set를 모든곳에 import 할 수 있지만, 이것은 좋은 방법은 아니다. Angular 에서는 provider는 전역으로 등록된다. Nest에서는 provider는 module scope로 캡슐화 된다. 따라서 module을 import 하지 않으면 module의 provider를 사용할 수 없다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>모든곳에서 전역으로 module을 사용하고 싶으면 <code>@Global()</code> 데코레이터를 사용할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span><span class="p">,</span> <span class="nx">Global</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsController</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.controller&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Global</span><span class="p">()</span>
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+  <span class="nx">exports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsModule</span> <span class="p">{}</span>
+</code></pre></div><p>@Global() 데코레이터는 module을 global-scope로 만들어준다. global module은 root module 또는 core module에 의해 단 한번만 등록되어야 한다. 위 예제의 CatsModule은 import하지 않고 어디에서나 injection 될 수 있다.</p>
+<blockquote>
+<p>모든 module을 global로 만드는 것은 좋은 디자인이 아니다. global module은 반복되는 코드를 줄이기 위해 사용된다. 그러나 imports 배열을 만들어 API를 사용가능하게 만드는 것이 일반적이다.</p>
+</blockquote>
+<h2 id="dynamic-modules">Dynamic modules<a hidden class="anchor" aria-hidden="true" href="#dynamic-modules">#</a></h2>
+<p>Nest module system은 dynamic modules라는 강력한 특성을 갖고 있다. 이 특성은 provider를 동적으로 등록하고 설정할 수 있는 커스터마이징 가능한 module을 쉽게 만들 수 있게 해준다. dynamic modules에 관한 상세한 설명은 <a href="https://docs.nestjs.com/fundamentals/dynamic-modules">여기</a>에서 볼 수 있다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>아래는 dynamic module를 정의하는 예제이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span><span class="p">,</span> <span class="nx">DynamicModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">createDatabaseProviders</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./database.providers&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Connection</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./connection.provider&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">Connection</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">DatabaseModule</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">forRoot</span><span class="p">(</span><span class="nx">entities</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">options</span><span class="o">?</span><span class="p">)</span><span class="o">:</span> <span class="nx">DynamicModule</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">providers</span> <span class="o">=</span> <span class="nx">createDatabaseProviders</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">entities</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">module</span>: <span class="kt">DatabaseModule</span><span class="p">,</span>
+      <span class="nx">providers</span>: <span class="kt">providers</span><span class="p">,</span>
+      <span class="nx">exports</span>: <span class="kt">providers</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>forRoot() method는 dynamic module을 동기 혹은 비동기로 반환한다.</p>
+</blockquote>
+<p>이 module은 Connection provider를 정의하고 있다. 그러나 추가로, forRoot() method를 통해 provider 콜렉션을 노출하고 있다(예를 들어 repository). dynamic module은 @Module() 데코레이터에 정의된 기본 module의 메타데이터를 확장하여 리턴된다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>만약 dynamic module을 전역으로 사용하고 싶으면 global 프로퍼티를 true로 설정한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="p">{</span>
+  <span class="kr">global</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">module</span>: <span class="kt">DatabaseModule</span><span class="p">,</span>
+  <span class="nx">providers</span>: <span class="kt">providers</span><span class="p">,</span>
+  <span class="nx">exports</span>: <span class="kt">providers</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div><p>DatabaseModule은 아래와 같은 방법으로 설정하고 import 할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">DatabaseModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./database/database.module&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">User</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./users/entities/user.entity&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">DatabaseModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">([</span><span class="nx">User</span><span class="p">])],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><p>dynamic module을 re-export 할 때에는 forRoot() method는 생략한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">DatabaseModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./database/database.module&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">User</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./users/entities/user.entity&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">DatabaseModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">([</span><span class="nx">User</span><span class="p">])],</span>
+  <span class="nx">exports</span><span class="o">:</span> <span class="p">[</span><span class="nx">DatabaseModule</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/backend/">backend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://icecat471.github.io/devlog/post/nestjs/providers/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>[NestJS] (공식문서 번역) Providers</span>
+  </a>
+</nav>
+
+  </footer><script src="https://utteranc.es/client.js"
+        repo="icecat471/devlog"
+        issue-term="pathname"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        container.appendChild(copybutton);
+    });
+</script>
+</body>
+
+</html>

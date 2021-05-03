@@ -172,6 +172,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[NestJS] (공식문서 번역) Modules</h2>
+  </header>
+  <section class="entry-content">
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/providers
+Modules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.
+각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다....</p>
+  </section>
+  <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;5 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Modules" href="https://icecat471.github.io/devlog/post/nestjs/modules/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[NestJS] (공식문서 번역) Providers</h2>
   </header>
   <section class="entry-content">
@@ -226,17 +241,6 @@ http://tomcat.apache.org/
   </section>
   <footer class="entry-footer">April 30, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to 맥북 Tomcat9 설치" href="https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[Docker] 몽고db 컨테이너 설치</h2>
-  </header>
-  <section class="entry-content">
-    <p>docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db....</p>
-  </section>
-  <footer class="entry-footer">April 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [Docker] 몽고db 컨테이너 설치" href="https://icecat471.github.io/devlog/post/docker/install_mongo_db/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

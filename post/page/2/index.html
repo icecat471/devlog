@@ -155,6 +155,17 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[Docker] 몽고db 컨테이너 설치</h2>
+  </header>
+  <section class="entry-content">
+    <p>docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db....</p>
+  </section>
+  <footer class="entry-footer">April 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Docker] 몽고db 컨테이너 설치" href="https://icecat471.github.io/devlog/post/docker/install_mongo_db/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[프로젝트1] 웹 캐치마인드 만들기 1</h2>
   </header>
   <section class="entry-content">
@@ -217,21 +228,6 @@ package main type component interface { search(string) } folder....</p>
   </section>
   <footer class="entry-footer">April 20, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [디자인패턴] Composite 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/composite/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Bridge 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Bridge Pattern 출처: https://golangbyexample.com/bridge-design-pattern-in-go/
-개요 구현부에서 추상층을 분리하여 각자 독립적으로 변형할 수 있게 하는 패턴이다.이 패턴은 큰 클래스를 두개의 개별 계층으로 나누는것을 제안한다.
- Abstraction: interface. Implementation에 대한 참조가 포함됨.
-Abstraction의 자식을 Refined Abstraction 이라고 부름. Implementation: interface.
-Implementation의 자식을 Concrete Implementation 이라고 부름.  UML 다이어그램 2가지 유형의 컴퓨터 Mac과 Windows가 있다고 가정. 2가지 유형의 프린터 epson과 hp가 있다고 가정. 2*2의 조합의 4개의 구조체를 만드는 대신 2개의 계층을 만든다....</p>
-  </section>
-  <footer class="entry-footer">April 19, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Bridge 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bridge/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
