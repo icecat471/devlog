@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[NestJS] (공식문서 번역) Middleware | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="NestJS, backend" />
+<meta name="description" content="Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
+Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.
+ 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다.   함수나 @Injectable() 데코레이터를 사용한 class로 Nest custom middleware를 구현할 수 있다.">
+<meta name="author" content="icecat471">
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/middleware/" />
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://icecat471.github.io/devlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta property="og:title" content="[NestJS] (공식문서 번역) Middleware" />
+<meta property="og:description" content="Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
+Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.
+ 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다.   함수나 @Injectable() 데코레이터를 사용한 class로 Nest custom middleware를 구현할 수 있다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/nestjs/middleware/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-03T22:48:57&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-03T22:48:57&#43;09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="[NestJS] (공식문서 번역) Middleware"/>
+<meta name="twitter:description" content="Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
+Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.
+ 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다.   함수나 @Injectable() 데코레이터를 사용한 class로 Nest custom middleware를 구현할 수 있다."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[NestJS] (공식문서 번역) Middleware",
+      "item": "https://icecat471.github.io/devlog/post/nestjs/middleware/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[NestJS] (공식문서 번역) Middleware",
+  "name": "[NestJS] (공식문서 번역) Middleware",
+  "description": "Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.\nNest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.\n 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다.   함수나 @Injectable() 데코레이터를 사용한 class로 Nest custom middleware를 구현할 수 있다.",
+  "keywords": [
+    "NestJS", "backend"
+  ],
+  "articleBody": "Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.\nNest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.\n 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다.   함수나 @Injectable() 데코레이터를 사용한 class로 Nest custom middleware를 구현할 수 있다. 함수는 특별한 요구사항이 없지만, class는 NestMiddleware interface를 implements 해야한다.\n// logger.middleware.ts  import { Injectable, NestMiddleware } from '@nestjs/common'; import { Request, Response, NextFunction } from 'express'; @Injectable() export class LoggerMiddleware implements NestMiddleware { use(req: Request, res: Response, next: NextFunction) { console.log('Request...'); next(); } } Dependency injection Nest middleware는 dependency injection을 지원한다. controller나 provider와 마찬가지로 생성자를 통해 의존성을 주입할 수 있다.\nApplying middleware @Module() 데코레이터 인자에는 middleware를 받는 부분이 없다. 대신, module class에 configure() method를 사용하여 적용한다. middleware를 포함하는 module은 NestModule interface를 implements해야 한다.\n// app.module.ts  import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common'; import { LoggerMiddleware } from './common/middleware/logger.middleware'; import { CatsModule } from './cats/cats.module'; @Module({ imports: [CatsModule], }) export class AppModule implements NestModule { configure(consumer: MiddlewareConsumer) { consumer .apply(LoggerMiddleware) .forRoutes('cats'); } } 위 예제에서 LoggerMiddleware를 /cats route handler에 적용시켰다. 또한 path와 method를 가진 오브젝트를 forRoutes()의 인자로 받아 http method도 제한 가능히다. 아래의 예제처럼 RequestMethod enum을 사용하는 것을 추천한다.\n// app.module.ts  import { Module, NestModule, RequestMethod, MiddlewareConsumer } from '@nestjs/common'; import { LoggerMiddleware } from './common/middleware/logger.middleware'; import { CatsModule } from './cats/cats.module'; @Module({ imports: [CatsModule], }) export class AppModule implements NestModule { configure(consumer: MiddlewareConsumer) { consumer .apply(LoggerMiddleware) .forRoutes({ path: 'cats', method: RequestMethod.GET }); } }  configure() method는 async/await를 사용해 비동기로 만들수 있다.\n Route wildcards wildcard로 별표(*)를 사용한 패턴도 제공한다.\n@Get('ab*cd') findAll() { return 'This route uses a wildcard'; } 'ab*cd' route path는 abcd, ab_cd, abecd등과 match된다. ?, +, *, () 같은 문자도 정규식의 부분으로 route path에 사용가능하다. '-', '.'은 string기반 path에 의해 문자 그대로 번역된다.\n fastify는 최신버전의 path-to-regexp 패키지를 사용하는데, 이 패키지는 더이상 *을 와일드카드로 지원하지 않는다. 대신, parameter를 사용한다(e.g, (.*), :splat*).\n Middleware consumer middleware consumer는 helper class이다. 이것은 middleware를 관리하는 method들을 제공하며, fluent style chain으로 구성되어 있다. forRoutes() method는 단일 string, 여러개의 string, RouteInfo 오브젝트, 하나의 controller, 여러개의 controller 클래스를 인자로 받을 수 있다. 대부분의 경우 controller의 목록을 콤마(,)로 구분한다. 아래는 단일 controller의 예제이다.\n// app.module.ts  import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common'; import { LoggerMiddleware } from './common/middleware/logger.middleware'; import { CatsModule } from './cats/cats.module'; import { CatsController } from './cats/cats.controller.ts'; @Module({ imports: [CatsModule], }) export class AppModule implements NestModule { configure(consumer: MiddlewareConsumer) { consumer .apply(LoggerMiddleware) .forRoutes(CatsController); } }  apply() method는 단일 middleware 또는 여러개의 middleware를 인자로 받을 수 있다. (multiple middleware)\n Excluding routes 특정 route만 middleware 적용에서 제외하고 싶은 경우가 있다. exclude() method를 사용해 특정 route를 제외할 수 있다. 해당 method는 단일 string, 여러개의 string, RouteInfo 오브젝트를 인자로 받을 수 있다.\nconsumer .apply(LoggerMiddleware) .exclude( { path: 'cats', method: RequestMethod.GET }, { path: 'cats', method: RequestMethod.POST }, 'cats/(.*)', ) .forRoutes(CatsController);  exclude() method는 path-to-regexp 패키지를 적용해, whildcard parameter를 지원한다.\n Functional middleware 위에서 본 LoggerMiddleware는 멤버변수, 추가 method, 의존성도 없이 심플하다. 이렇게 심플한 경우는 함수형 middleware로 정의 가능하다. LoggerMiddleware를 함수형으로 변경해보자.\n// logger.middleware.ts  import { Request, Response, NextFunction } from 'express'; export function logger(req: Request, res: Response, next: NextFunction) { console.log(`Request...`); next(); }; Multiple middleware 위에서 언급했듯이, 여러개의 middleware를 bind하기 위해서는 apply() method에 콤마(,)로 구분하여 리스트로 제공할 수 있다.\nconsumer.apply(cors(), helmet(), logger).forRoutes(CatsController); Global middleware 모든 route에 한번에 middleware를 bind하고 싶을 때에는, \u0008INestApplication 인스턴스에서 제공하는 use() method를 통해 등록가능하다.\nconst app = await NestFactory.create(AppModule); app.use(logger); await app.listen(3000);  global middleware에서 DI container에 접근하는 것은 불가능히다. app.use()를 사용하는 대신 함수형 middleware를 사용할 수 있다. 또는 class middleware를 AppModule(또는 다른 module)에 .forRoutes('*')을 사용하여 등록할 수 있다.\n ",
+  "wordCount" : "606",
+  "inLanguage": "en",
+  "datePublished": "2021-05-03T22:48:57+09:00",
+  "dateModified": "2021-05-03T22:48:57+09:00",
+  "author":{
+    "@type": "Person",
+    "name": "icecat471"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://icecat471.github.io/devlog/post/nestjs/middleware/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "icecat471's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://icecat471.github.io/devlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://icecat471.github.io/devlog/" accesskey="h" title="icecat471&#39;s Devlog (Alt + H)">icecat471&#39;s Devlog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
+    <h1 class="post-title">
+      [NestJS] (공식문서 번역) Middleware
+    </h1>
+    <div class="post-meta">May 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;icecat471
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#middleware" aria-label="Middleware">Middleware</a><ul>
+                        
+                <li>
+                    <a href="#middelware" aria-label="Middelware">Middelware</a></li>
+                <li>
+                    <a href="#dependency-injection" aria-label="Dependency injection">Dependency injection</a></li>
+                <li>
+                    <a href="#applying-middleware" aria-label="Applying middleware">Applying middleware</a></li>
+                <li>
+                    <a href="#route-wildcards" aria-label="Route wildcards">Route wildcards</a></li>
+                <li>
+                    <a href="#middleware-consumer" aria-label="Middleware consumer">Middleware consumer</a></li>
+                <li>
+                    <a href="#excluding-routes" aria-label="Excluding routes">Excluding routes</a></li>
+                <li>
+                    <a href="#functional-middleware" aria-label="Functional middleware">Functional middleware</a></li>
+                <li>
+                    <a href="#multiple-middleware" aria-label="Multiple middleware">Multiple middleware</a></li>
+                <li>
+                    <a href="#global-middleware" aria-label="Global middleware">Global middleware</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="middleware">Middleware<a hidden class="anchor" aria-hidden="true" href="#middleware">#</a></h1>
+<h2 id="middelware">Middelware<a hidden class="anchor" aria-hidden="true" href="#middelware">#</a></h2>
+<p>middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.</p>
+<p><img loading="lazy" src="../../../img/nestjs/middleware01.png" alt="middleware"  />
+</p>
+<p>Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.</p>
+<ul>
+<li>어떠한 코드도 실행한다.</li>
+<li>request와 response object를 변형한다.</li>
+<li>request-response cycle을 끝낸다.</li>
+<li>stack에서 다음 middleware를 호출한다.</li>
+<li>현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다.
+<!-- raw HTML omitted --><!-- raw HTML omitted --></li>
+</ul>
+<p>함수나 @Injectable() 데코레이터를 사용한 class로 Nest custom middleware를 구현할 수 있다. 함수는 특별한 요구사항이 없지만, class는 NestMiddleware interface를 implements 해야한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// logger.middleware.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">NestMiddleware</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Request</span><span class="p">,</span> <span class="nx">Response</span><span class="p">,</span> <span class="nx">NextFunction</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoggerMiddleware</span> <span class="kr">implements</span> <span class="nx">NestMiddleware</span> <span class="p">{</span>
+  <span class="nx">use</span><span class="p">(</span><span class="nx">req</span>: <span class="kt">Request</span><span class="p">,</span> <span class="nx">res</span>: <span class="kt">Response</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">NextFunction</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Request...&#39;</span><span class="p">);</span>
+    <span class="nx">next</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="dependency-injection">Dependency injection<a hidden class="anchor" aria-hidden="true" href="#dependency-injection">#</a></h2>
+<p>Nest middleware는 dependency injection을 지원한다. controller나 provider와 마찬가지로 생성자를 통해 의존성을 주입할 수 있다.</p>
+<h2 id="applying-middleware">Applying middleware<a hidden class="anchor" aria-hidden="true" href="#applying-middleware">#</a></h2>
+<p>@Module() 데코레이터 인자에는 middleware를 받는 부분이 없다. 대신, module class에 configure() method를 사용하여 적용한다. middleware를 포함하는 module은 NestModule interface를 implements해야 한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span><span class="p">,</span> <span class="nx">NestModule</span><span class="p">,</span> <span class="nx">MiddlewareConsumer</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">LoggerMiddleware</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="kr">implements</span> <span class="nx">NestModule</span> <span class="p">{</span>
+  <span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span>: <span class="kt">MiddlewareConsumer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">consumer</span>
+      <span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>위 예제에서 LoggerMiddleware를 /cats route handler에 적용시켰다. 또한 path와 method를 가진 오브젝트를 forRoutes()의 인자로 받아 http method도 제한 가능히다. 아래의 예제처럼 RequestMethod enum을 사용하는 것을 추천한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span><span class="p">,</span> <span class="nx">NestModule</span><span class="p">,</span> <span class="nx">RequestMethod</span><span class="p">,</span> <span class="nx">MiddlewareConsumer</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">LoggerMiddleware</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="kr">implements</span> <span class="nx">NestModule</span> <span class="p">{</span>
+  <span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span>: <span class="kt">MiddlewareConsumer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">consumer</span>
+      <span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">forRoutes</span><span class="p">({</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="nx">method</span>: <span class="kt">RequestMethod.GET</span> <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>configure() method는 async/await를 사용해 비동기로 만들수 있다.</p>
+</blockquote>
+<h2 id="route-wildcards">Route wildcards<a hidden class="anchor" aria-hidden="true" href="#route-wildcards">#</a></h2>
+<p>wildcard로 별표(*)를 사용한 패턴도 제공한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;ab*cd&#39;</span><span class="p">)</span>
+<span class="nx">findAll() {</span>
+  <span class="k">return</span> <span class="s1">&#39;This route uses a wildcard&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p><code>'ab*cd'</code> route path는 <code>abcd</code>, <code>ab_cd</code>, <code>abecd</code>등과 match된다. <code>?</code>, <code>+</code>, <code>*</code>, <code>()</code> 같은 문자도 정규식의 부분으로 route path에 사용가능하다. <code>'-'</code>, <code>'.'</code>은 string기반 path에 의해 문자 그대로 번역된다.</p>
+<blockquote>
+<p>fastify는 최신버전의 path-to-regexp 패키지를 사용하는데, 이 패키지는 더이상 *을 와일드카드로 지원하지 않는다. 대신, parameter를 사용한다(e.g, (.*), :splat*).</p>
+</blockquote>
+<h2 id="middleware-consumer">Middleware consumer<a hidden class="anchor" aria-hidden="true" href="#middleware-consumer">#</a></h2>
+<p>middleware consumer는 helper class이다. 이것은 middleware를 관리하는 method들을 제공하며, <a href="https://en.wikipedia.org/wiki/Fluent_interface">fluent style</a> chain으로 구성되어 있다. forRoutes() method는 단일 string, 여러개의 string, RouteInfo 오브젝트, 하나의 controller, 여러개의 controller 클래스를 인자로 받을 수 있다. 대부분의 경우 controller의 목록을 콤마(,)로 구분한다. 아래는 단일 controller의 예제이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span><span class="p">,</span> <span class="nx">NestModule</span><span class="p">,</span> <span class="nx">MiddlewareConsumer</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">LoggerMiddleware</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsController</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.controller.ts&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="kr">implements</span> <span class="nx">NestModule</span> <span class="p">{</span>
+  <span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span>: <span class="kt">MiddlewareConsumer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">consumer</span>
+      <span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>apply() method는 단일 middleware 또는 여러개의 middleware를 인자로 받을 수 있다. (<a href="#multiple-middleware">multiple middleware</a>)</p>
+</blockquote>
+<h2 id="excluding-routes">Excluding routes<a hidden class="anchor" aria-hidden="true" href="#excluding-routes">#</a></h2>
+<p>특정 route만 middleware 적용에서 제외하고 싶은 경우가 있다. exclude() method를 사용해 특정 route를 제외할 수 있다. 해당 method는 단일 string, 여러개의 string, RouteInfo 오브젝트를 인자로 받을 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="nx">consumer</span>
+  <span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">exclude</span><span class="p">(</span>
+    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="nx">method</span>: <span class="kt">RequestMethod.GET</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="nx">method</span>: <span class="kt">RequestMethod.POST</span> <span class="p">},</span>
+    <span class="s1">&#39;cats/(.*)&#39;</span><span class="p">,</span>
+  <span class="p">)</span>
+  <span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span>
+</code></pre></div><blockquote>
+<p>exclude() method는 path-to-regexp 패키지를 적용해, whildcard parameter를 지원한다.</p>
+</blockquote>
+<h2 id="functional-middleware">Functional middleware<a hidden class="anchor" aria-hidden="true" href="#functional-middleware">#</a></h2>
+<p>위에서 본 LoggerMiddleware는 멤버변수, 추가 method, 의존성도 없이 심플하다. 이렇게 심플한 경우는 함수형 middleware로 정의 가능하다. LoggerMiddleware를 함수형으로 변경해보자.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// logger.middleware.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Request</span><span class="p">,</span> <span class="nx">Response</span><span class="p">,</span> <span class="nx">NextFunction</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kd">function</span> <span class="nx">logger</span><span class="p">(</span><span class="nx">req</span>: <span class="kt">Request</span><span class="p">,</span> <span class="nx">res</span>: <span class="kt">Response</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">NextFunction</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Request...`</span><span class="p">);</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div><h2 id="multiple-middleware">Multiple middleware<a hidden class="anchor" aria-hidden="true" href="#multiple-middleware">#</a></h2>
+<p>위에서 언급했듯이, 여러개의 middleware를 bind하기 위해서는 apply() method에 콤마(,)로 구분하여 리스트로 제공할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="nx">consumer</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">cors</span><span class="p">(),</span> <span class="nx">helmet</span><span class="p">(),</span> <span class="nx">logger</span><span class="p">).</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span>
+</code></pre></div><h2 id="global-middleware">Global middleware<a hidden class="anchor" aria-hidden="true" href="#global-middleware">#</a></h2>
+<p>모든 route에 한번에 middleware를 bind하고 싶을 때에는, INestApplication 인스턴스에서 제공하는 use() method를 통해 등록가능하다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">logger</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+</code></pre></div><blockquote>
+<p>global middleware에서 DI container에 접근하는 것은 불가능히다. app.use()를 사용하는 대신 함수형 middleware를 사용할 수 있다. 또는 class middleware를 AppModule(또는 다른 module)에 .forRoutes('*')을 사용하여 등록할 수 있다.</p>
+</blockquote>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/backend/">backend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://icecat471.github.io/devlog/post/nestjs/modules/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>[NestJS] (공식문서 번역) Modules</span>
+  </a>
+</nav>
+
+  </footer><script src="https://utteranc.es/client.js"
+        repo="icecat471/devlog"
+        issue-term="pathname"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        container.appendChild(copybutton);
+    });
+</script>
+</body>
+
+</html>

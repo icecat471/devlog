@@ -9,7 +9,18 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 03 May 2021 01:45:13 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 May 2021 22:48:57 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NestJS] (공식문서 번역) Middleware</title>
+      <link>https://icecat471.github.io/devlog/post/nestjs/middleware/</link>
+      <pubDate>Mon, 03 May 2021 22:48:57 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/nestjs/middleware/</guid>
+      <description>Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
+Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.
+ 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다.   함수나 @Injectable() 데코레이터를 사용한 class로 Nest custom middleware를 구현할 수 있다.</description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Modules</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/modules/</link>
