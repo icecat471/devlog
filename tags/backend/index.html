@@ -140,12 +140,31 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[NestJS] (공식문서 번역) Exception Filters</h2>
+  </header>
+  <section class="entry-content">
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/exception-filters
+Exception filters Exception filters Nest에는 핸들링 되지 않은 예외를 처리해주는 exception layer가 내장되어 있다. 코드에서 예외를 처리해주지 않았다면 이 layer에서 예외를 캐치하여 자동으로 유저친화적인 response를 전송한다.
+특히, 이것은 HttpException과 서브클래스들을 핸들링하는 global exception filter에 의해 수행된다. 예외가 인식되지 않을 때(HttpException과 그 서브클래스가 아닌 경우), exception filter는 자동으로 아래의 데이터를 JSON 형식으로 response한다.
+{ &#34;statusCode&#34;: 500, &#34;message&#34;: &#34;Internal server error&#34; } Throwing standard exceptions Nest는 @nestjs/common 패키지를 통해, HttpException class를 제공한다....</p>
+  </section>
+  <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;5 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Exception Filters" href="https://icecat471.github.io/devlog/post/nestjs/exception_filters/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[NestJS] (공식문서 번역) Middleware</h2>
   </header>
   <section class="entry-content">
-    <p>Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/middleware
+Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
 Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.
- 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다.   함수나 @Injectable() 데코레이터를 사용한 class로 Nest custom middleware를 구현할 수 있다....</p>
+ 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다....</p>
   </section>
   <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Middleware" href="https://icecat471.github.io/devlog/post/nestjs/middleware/"></a>

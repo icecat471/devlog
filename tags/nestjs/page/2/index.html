@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Posts | icecat471&#39;s Devlog</title>
+<title>NestJS | icecat471&#39;s Devlog</title>
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/post/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/tags/nestjs/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
@@ -19,33 +19,18 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/post/index.xml">
-<meta property="og:title" content="Posts" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/tags/nestjs/index.xml">
+<meta property="og:title" content="NestJS" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/post/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:url" content="https://icecat471.github.io/devlog/tags/nestjs/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:title" content="NestJS"/>
 <meta name="twitter:description" content=""/>
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://icecat471.github.io/devlog/post/"
-    }
-  ]
-}
-</script>
 </head>
 
 <body class="list" id="top">
@@ -149,51 +134,11 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a></div>
-  <h1>Posts</h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/tags/">Tags</a></div>
+  <h1>NestJS</h1>
 </header>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Controllers</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/controllers
-Controllers Controllers Controller는 들어오는 request를 핸들링하고 클라이언트에게 response를 반환하는 역할.
-routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.Routing 아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다....</p>
-  </section>
-  <footer class="entry-footer">May 1, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Controllers" href="https://icecat471.github.io/devlog/post/nestjs/controllers/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>맥북 Tomcat9 설치</h2>
-  </header>
-  <section class="entry-content">
-    <p>톰캣 홈페이지
-http://tomcat.apache.org/
-받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)
-# 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R &lt;userName&gt; /Library/Tomcat # 실행권한 추가 $ sudo chmod &#43;x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인...</p>
-  </section>
-  <footer class="entry-footer">April 30, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 맥북 Tomcat9 설치" href="https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[Docker] 몽고db 컨테이너 설치</h2>
-  </header>
-  <section class="entry-content">
-    <p>docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db....</p>
-  </section>
-  <footer class="entry-footer">April 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [Docker] 몽고db 컨테이너 설치" href="https://icecat471.github.io/devlog/post/docker/install_mongo_db/"></a>
-</article>
-
-<article class="post-entry"> 
+<article class="post-entry tag-entry"> 
   <header class="entry-header">
     <h2>[프로젝트1] 웹 캐치마인드 만들기 1</h2>
   </header>
@@ -211,25 +156,9 @@ Kubernetes &#43; Docekr</p>
   <footer class="entry-footer">April 22, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [프로젝트1] 웹 캐치마인드 만들기 1" href="https://icecat471.github.io/devlog/post/project/project1_01/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>ECDSA 알고리즘</h2>
-  </header>
-  <section class="entry-content">
-    <p>ECDSA (Elliptic Curve Digital Signature Algorithm) 타원곡선암호(ECC)를 전자서명에 접목시킨 암호 알고리즘.타원곡선의 정의 일반적으로 타원 곡선 방정식은 아래와 같다.
- y2&#43; b1xy &#43; b2y = x3&#43; a1x2&#43; a2x &#43; a3 그러나, 실수상의 타원 곡선은 아래와 같은 특별한 타원 곡선을 사용한다.
- y2= x3&#43; ax &#43; b
- 타원곡선의 특징은 x축을 중심으로 대칭되며, 비 수직선에 대해 최대 3개 지점에서 곡선과 교차.
-타원곡선상의 연산 타원곡선상의 점 P와 Q의 덧셈연산은 P와 Q를 지나는 직선이 타원과 만나는 교점(-R)을 x축으로 대칭시킨 점 R에 대해...</p>
-  </section>
-  <footer class="entry-footer">April 22, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to ECDSA 알고리즘" href="https://icecat471.github.io/devlog/post/encryption/ecdsa/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="https://icecat471.github.io/devlog/post/">« Prev Page</a>
-    <a class="next" href="https://icecat471.github.io/devlog/post/page/3/">Next Page »</a>
+    <a class="prev" href="https://icecat471.github.io/devlog/tags/nestjs/">« Prev Page</a>
   </nav>
 </footer>
     </main>
