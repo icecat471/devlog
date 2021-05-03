@@ -78,22 +78,5 @@ Controllers Controllers Controller는 들어오는 request를 핸들링하고 �
 routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.Routing 아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다.</description>
     </item>
     
-    <item>
-      <title>[프로젝트1] 웹 캐치마인드 만들기 1</title>
-      <link>https://icecat471.github.io/devlog/post/project/project1_01/</link>
-      <pubDate>Thu, 22 Apr 2021 23:36:47 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/post/project/project1_01/</guid>
-      <description>대략적인 구성 잡아보기
-front vue.js + axios(api 서버 연동)
-(HTML 기본 canvas를 이용할지 유니티 WebGL을 이용할지 고민중..)
-back typescript(nest.js) - API server
-golang(gorilla/websocket) - Web Socket Server
-mongoDB
-redis - session 관리 CI/CD Terraform(AWS) - IaC
-Jenkins
-Kubernetes + Docekr</description>
-    </item>
-    
   </channel>
 </rss>

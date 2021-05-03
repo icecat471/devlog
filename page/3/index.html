@@ -151,23 +151,6 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Decorator 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Decorator Pattern 출처: https://golangbyexample.com/decorator-pattern-golang/
-개요 개체를 변경하지 않고 기능을 추가할 수 있음.
-=&gt; 이미 테스트가 끝난 코드를 수정하면 안됨 (Open-Closed Principle에 위배됨) 두가지 피자가 존재한다고 가정해보자.
- vegge mania pizza peppy tofu pizza  UML 다이어그램 코드 pizza.go
-package main type pizza interface { getPrice() int } peppyPaneer.go
-package main type peppyPaneer struct { } func (p *peppyPaneer) getPrice() int { return 20 } veggeMania.go
-package main type veggeMania struct { } func (p *veggeMania) getPrice() int { return 15 } 토핑을 추가하기 위해 위쪽에 만들어진 구조체들은 더 이상 수정하면 안됨....</p>
-  </section>
-  <footer class="entry-footer">April 21, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Decorator 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/decorator/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
     <h2>[디자인패턴] Composite 패턴</h2>
   </header>
   <section class="entry-content">
@@ -219,6 +202,18 @@ package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int 
   </section>
   <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [디자인패턴] Singleton 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/singleton/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>[디자인패턴] Prototype 패턴</h2>
+  </header>
+  <section class="entry-content">
+    <p>프로토타입 패턴 프로토타입 패턴(prototype pattern)은 생성할 객체들의 타입이 프로토타입인 인스턴스로부터 결정되도록 하며, 인스턴스는 새 객체를 만들기 위해 자신을 복제(clone)하게 된다.얕은 복사(shallow copy) vs 깊은 복사(deep copy) 얕은 복사 객체를 복사할때 참조값을 가진 멤버는 참조값만 복사 됨.
+type Status struct { str int dex int wis int } type Monster struct { Name string Status *Status } func main() { slime := Monster{ &#34;slime&#34;, &amp;Status{1,1,1}, } goblin := slime goblin.Name = &#34;goblin&#34; goblin....</p>
+  </section>
+  <footer class="entry-footer">April 17, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Prototype 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/prototype_pattern/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

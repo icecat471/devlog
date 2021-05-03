@@ -77,39 +77,6 @@
     <loc>https://icecat471.github.io/devlog/tags/nosql/</loc>
     <lastmod>2021-04-28T17:19:07+09:00</lastmod>
   </url><url>
-    <loc>https://icecat471.github.io/devlog/post/project/project1_01/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/devops/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/game/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/go/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/project1/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/restapi/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/typescript/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/vue/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/web-game/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/web-socket/</loc>
-    <lastmod>2021-04-22T23:36:47+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/tags/blockchain/</loc>
     <lastmod>2021-04-22T16:04:05+09:00</lastmod>
   </url><url>
@@ -135,6 +102,12 @@
     <lastmod>2021-04-21T22:18:34+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/categories/design-pattern/</loc>
+    <lastmod>2021-04-21T22:18:34+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/go/</loc>
+    <lastmod>2021-04-21T22:18:34+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
     <lastmod>2021-04-21T22:18:34+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/design_pattern/composite/</loc>
@@ -294,6 +267,9 @@
     <lastmod>2021-04-11T18:33:11+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/tags/container/</loc>
+    <lastmod>2021-04-11T16:35:36+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/devops/</loc>
     <lastmod>2021-04-11T16:35:36+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/docker/docker_memory_limit/</loc>
