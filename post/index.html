@@ -155,6 +155,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[Vue] dotenv 환경변수를 undefined로 불러올 때</h2>
+  </header>
+  <section class="entry-content">
+    <p>참고: https://cli.vuejs.org/guide/mode-and-env.html
+mode vue-cli에서는 기본적으로 3가지 모드가 있다.
+ development: vue-cli-service serve test: vue-cli-service test:unit production: vue-cli-service build 또는 vue-cli-service test:e2e   또는 –mode 옵션을 전달하여 기본모드를 덮어 쓸 수 있다.
+vue-cli-service build --mode dev 환경변수 프로젝트 루트에 다음 파일을 추가하여 환경변수 지정 가능
+.env # loaded in all cases .env.local # loaded in all cases, ignored by git .env.[mode] # only loaded in specified mode .env.[mode].local # only loaded in specified mode, ignored by git  주의할점vue에서는 NODE_ENV, BASE_URL 또는 VUE_APP_ 으로 시작하는 변수만 불러올 수 있음....</p>
+  </section>
+  <footer class="entry-footer">May 5, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Vue] dotenv 환경변수를 undefined로 불러올 때" href="https://icecat471.github.io/devlog/post/vuejs/dotenv_undefined/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[NestJS] (공식문서 번역) Exception Filters</h2>
   </header>
   <section class="entry-content">
@@ -214,19 +229,6 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
   </section>
   <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Providers" href="https://icecat471.github.io/devlog/post/nestjs/providers/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[Docker] PostgresSQL 설치</h2>
-  </header>
-  <section class="entry-content">
-    <p>pull &amp; run
-$ docker run -p 5432:5432 --name postgres \  -e POSTGRES_PASSWORD=password \  -d postgres 컨테이너 접속 및 사용자 생성
-# 접속 $ docker exec -it postgres /bin/bash # postgres 접속 $ psql - U postgres # 사용자 생성 $ CREATE USER username PASSWORD &#39;password&#39; SUPERUSER; CREATE ROLE $ CREATE DATABASE test OWNER username CREATE DATABASE </p>
-  </section>
-  <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [Docker] PostgresSQL 설치" href="https://icecat471.github.io/devlog/post/docker/install_postgres/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

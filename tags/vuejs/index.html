@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Posts | icecat471&#39;s Devlog</title>
+<title>vuejs | icecat471&#39;s Devlog</title>
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/post/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/tags/vuejs/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
@@ -19,33 +19,18 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/post/index.xml">
-<meta property="og:title" content="Posts" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/tags/vuejs/index.xml">
+<meta property="og:title" content="vuejs" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/post/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:url" content="https://icecat471.github.io/devlog/tags/vuejs/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:title" content="vuejs"/>
 <meta name="twitter:description" content=""/>
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://icecat471.github.io/devlog/post/"
-    }
-  ]
-}
-</script>
 </head>
 
 <body class="list" id="top">
@@ -149,78 +134,24 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a></div>
-  <h1>Posts</h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/tags/">Tags</a></div>
+  <h1>vuejs</h1>
 </header>
 
-<article class="post-entry"> 
+<article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>Go언어 flag 패키지를 통한 command-line flag 파싱</h2>
+    <h2>[Vue] dotenv 환경변수를 undefined로 불러올 때</h2>
   </header>
   <section class="entry-content">
-    <p>golang flag package
-command-line flag를 파싱해주는 패키지.
-// flag값에 저장된 int64변수의 주소값 반환 maxValue := flag.Int64(&#34;max&#34;, 10, &#34;Defines maximum value&#34;) /* xxxVar() 함수는 반환값이 없고 첫번째 인자로 변수의 포인터를 넘겨주면 변수에 값을 할당해줌. */ var minValue int64 flag.Int64Var(&amp;minValue, &#34;min&#34;, 0, &#34;Defines minimum value&#34;) // flag에 command-line 파싱 // 꼭 호출해주어야 함 flag.Parse() </p>
+    <p>참고: https://cli.vuejs.org/guide/mode-and-env.html
+mode vue-cli에서는 기본적으로 3가지 모드가 있다.
+ development: vue-cli-service serve test: vue-cli-service test:unit production: vue-cli-service build 또는 vue-cli-service test:e2e   또는 –mode 옵션을 전달하여 기본모드를 덮어 쓸 수 있다.
+vue-cli-service build --mode dev 환경변수 프로젝트 루트에 다음 파일을 추가하여 환경변수 지정 가능
+.env # loaded in all cases .env.local # loaded in all cases, ignored by git .env.[mode] # only loaded in specified mode .env.[mode].local # only loaded in specified mode, ignored by git  주의할점vue에서는 NODE_ENV, BASE_URL 또는 VUE_APP_ 으로 시작하는 변수만 불러올 수 있음....</p>
   </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 flag 패키지를 통한 command-line flag 파싱" href="https://icecat471.github.io/devlog/post/golang/flag/"></a>
+  <footer class="entry-footer">May 5, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Vue] dotenv 환경변수를 undefined로 불러올 때" href="https://icecat471.github.io/devlog/post/vuejs/dotenv_undefined/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 프로젝트 외부의 모듈 import하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>go.mod 파일에서
-require ( &lt;모듈명&gt; v0.0.0 ) replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌 </p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 프로젝트 외부의 모듈 import하기" href="https://icecat471.github.io/devlog/post/golang/external_module/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>브라우저에서 유니티 함수 호출하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>참고: Unity Document WebGL
-build시 생성되는 unityInstance에 메세지를 보내서 호출.
-unityInstace.SendMessage(&#39;오브젝트명&#39;, &#39;함수명&#39;); </p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 브라우저에서 유니티 함수 호출하기" href="https://icecat471.github.io/devlog/post/unity/call_unity_func_in_js/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>유니티 WebGL 자바스크립트 함수 호출</h2>
-  </header>
-  <section class="entry-content">
-    <p>참고: Unity Document WebGL
-Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
-// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&#34;Hello, world!&#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &lt; size; i&#43;&#43;) console.log(HEAPF32[(array &gt;&gt; 2) &#43; i]); }, AddNumbers: function (x, y) { return x &#43; y; }, StringReturnValueFunction: function () { var returnStr = &#34;bla&#34;; var bufferSize = lengthBytesUTF8(returnStr) &#43; 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx....</p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 유니티 WebGL 자바스크립트 함수 호출" href="https://icecat471.github.io/devlog/post/unity/call_javascript/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>터미널에서 command not found: dotnet 에러</h2>
-  </header>
-  <section class="entry-content">
-    <p>아래처럼 나올 때
-zsh: command not found: dotnet dotnet package를 설치했다면/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인./usr/local/bin 경로에 링크를 만들어주면 된다.ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 터미널에서 command not found: dotnet 에러" href="https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="https://icecat471.github.io/devlog/post/page/5/">« Prev Page</a>
-    <a class="next" href="https://icecat471.github.io/devlog/post/page/7/">Next Page »</a>
-  </nav>
-</footer>
     </main>
     <footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
