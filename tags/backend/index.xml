@@ -9,7 +9,20 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 12 May 2021 15:48:44 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 May 2021 22:45:30 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NestJS] (공식문서 번역) Guards</title>
+      <link>https://icecat471.github.io/devlog/post/nestjs/guards/</link>
+      <pubDate>Wed, 12 May 2021 22:45:30 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/nestjs/guards/</guid>
+      <description>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/guards
+Guards Guards guard는 @Injectable() 데코레이터로 주석된 클래스이다. 모든 guard는 CanActivate 인터페이스를 구현해야 한다.
+guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역할, ACL 등)에 따라 request가 route handler에 의해 수행될지 아닐지를 결정한다. 이것은 종종 authorization을 가리킨다. 전통적인 express 애플리케이션에서 authorization(혹은 authentication)은 미들웨어에서 처리된다. 토큰의 유효성을 검사하고, request 오브젝트에 프로퍼티를 추가할 수 있기때문에 미들웨어에서 인증을 구현하는 것은 좋은 선택이다.</description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Pipe</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/pipe/</link>
