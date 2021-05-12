@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[NestJS] (공식문서 번역) Pipe | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="NestJS, backend" />
+<meta name="description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/pipes
+Pipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.
+pipe는 두가지 사용방법이 있다.
+ transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다.">
+<meta name="author" content="icecat471">
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/pipe/" />
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://icecat471.github.io/devlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta property="og:title" content="[NestJS] (공식문서 번역) Pipe" />
+<meta property="og:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/pipes
+Pipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.
+pipe는 두가지 사용방법이 있다.
+ transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/nestjs/pipe/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-12T15:48:44&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-12T15:48:44&#43;09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="[NestJS] (공식문서 번역) Pipe"/>
+<meta name="twitter:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/pipes
+Pipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.
+pipe는 두가지 사용방법이 있다.
+ transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[NestJS] (공식문서 번역) Pipe",
+      "item": "https://icecat471.github.io/devlog/post/nestjs/pipe/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[NestJS] (공식문서 번역) Pipe",
+  "name": "[NestJS] (공식문서 번역) Pipe",
+  "description": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/pipes\nPipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.\npipe는 두가지 사용방법이 있다.\n transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다.",
+  "keywords": [
+    "NestJS", "backend"
+  ],
+  "articleBody": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/pipes\nPipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.\npipe는 두가지 사용방법이 있다.\n transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다.Nest는 여러개의 내장 pipe를 갖고 있다. 또한, custom pipe를 만드는 것도 가능하다. 해당 챕터에서는, 내장 pipe에 대한 소개와, route handler에 pipe를 binding하는 방법에 대해 알아 볼 것이다. 그리고 custom pipe를 만드는 법에 대해서도 알아 볼 것이다.\n pipe는 exception zone에서 동작한다. 이것은, pipe가 예외를 throw하면 exception layer에서 처리된다는 뜻이다. 따라서 pipe에서 예외가 발생하면, 뒤에 연결된 method는 동작하지 않는다. 이것은 외부에서 애플리케이션으로 들어오는 데이터에 대해 시스템상으로 처리할 수 있는 가장 좋은 방법을 제공한다.\n Built-in pipes Nest는 6가지의 내장 pipe를 제공한다.\n ValidationPipe ParseIntPipe ParseBoolPipe ParseArrayPipe ParseUUIDPipe DefaultValuePipe  위 pipe들은 @nestjs/common 패키지에 의해 제공된다.ParseIntPipe를 통해 pipe에 대해 알아보자. 이것은 transformation의 예로, pipe는 method handler의 매개변수를 int로 변환해준다(변환 실패시 예외를 throw한다). 챕터 뒤에서, 간단한 custom ParseIntPipe를 볼 것이다. 아래에서 보게 될 예제는, 다른 내장 transformation pipe(ParseBoolPipe, ParseArrayPipe, ParseUUIDPipe)에도 동일하게 적용 될 것이다.\nBinding pipes pipe를 사용하기 위해서는, pipe 인스턴스를 bind 해야 한다. ParseIntPipe 예제에서, pipe를 특정 route handler method와 연관시켜, method가 호출되기전에 작동하게 하고싶다. 아래와 같은 구조로, pipe를 parameter level에서 binding 할 수 있다.\n@Get(':id') async findOne(@Param('id', ParseIntPipe) id: number) { return this.catsService.findOne(id); } 이것은 다음 두 조건중 하나를 만족함을 보장해준다. findOne()의 파라미터는 number이거나, route handler가 호출되기 전에 예외가 발생한다.예를 들어, router가 아래와 같이 호출 되었다고 가정하면\nGET localhost:3000/abc Nest는 아래와 같은 예외를 throw 할 것이다.\n{ \"statusCode\": 400, \"message\": \"Validation failed (numeric string is expected)\", \"error\": \"Bad Request\" } 예외가 발생하면서, findOne()는 수행되지 않는다.위 예제에서, ParseIntPipe 클래스는 프레임워크에 의해 의존성 주입되어 인스턴스화 된다. 대신, 인스턴스를 직접 사용할수도 있다. pipe에 옵션을 추가하고 싶을 때 이러한 방식이 유용하다.\n@Get(':id') async findOne( @Param('id', new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) id: number, ) { return this.catsService.findOne(id); } 다른 transformation pipe도 비슷한 방식으로 동작한다. 이 pipe들은 모두 validating route parameter, query string parameter, request body의 context에서 작동한다.query string paramter에 대한 예제이다.\n@Get() async findOne(@Query('id', ParseIntPipe) id: number) { return this.catsService.findOne(id); } 아래는 ParseUUIDPipte를 이용한 예제이다.\n@Get(':uuid') async findOne(@Param('uuid', new ParseUUIDPipe()) uuid: string) { return this.catsService.findOne(uuid); }  ParseUUIDPipe를 사용하여 uuid 3, 4, 5 버전을 파싱할 때, 특정 버전의 uuid만 요구하도록 옵션을 추가할 수 있다.\n 위에서 다양한 Parse* 내장 pipe(transformation pipe)의 binding을 보았다. validation pipe의 binding은 조금 다르다. 다음 섹션에서 해당 내용을 볼 것이다.\nCustom pipes 위에서 말했듯, custom pipe를 만들수 있다. validation pipe로 시작해보자. 간단하게, 항등함수처럼 input value를 받아 그대로 반환하게 만들었다.\n// validation.pipe.ts  import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common'; @Injectable() export class ValidationPipe implements PipeTransform { transform(value: any, metadata: ArgumentMetadata) { return value; } }  PipeTransform은 pipe에서 항상 구현되어야하는 제네릭 인터페이스이다. T는 value의 타입, R은 transform()의 리턴타입이다.\n 모든 pipe는 PipeTransform 인터페이스를 충족하기 위해 transform() method를 구현해야 한다. 이 method는 두개의 매개변수를 받는다.\n value metadata  value는 현재 가공중인 method argument이고, metadata는 현재 가공중인 method argument의 metadata이다. meatadata 오브젝트는 아래와 같은 프로퍼티를 갖는다.\nexport interface ArgumentMetadata { type: 'body' | 'query' | 'param' | 'custom'; metatype?: Typeunknown; data?: string; }          type argument가 body @Body(), query @Query(), param @Param, 또는 custom parameter중 어느 것인지를 가리킨다.   metatype argument의 메타타입을 제공한다(예를 들어, String). route handler method에 타입선언을 생략하거나, 바닐라 자바스크립트 사용시 value는 undefined 이다.   data 데코레이터에서 받은 string(예를 들어 @Body(‘string’)). 데코레이터를 비워두면 undefined 이다.     타입스크립트 인터페이스는 transpilation 도중 사라진다. 따라서, method parameter의 타입이 클래스 대신 인터페이스로 선언되었다면, metadata의 value는 object가 된다.\n Scheme based validation validation pipe를 좀 더 유용하게 만들어보자.\n@Post() async create(@Body() createCatDto: CreateCatDto) { this.catsService.create(createCatDto); } body parameter인 createCatDto에 집중해보자. 이것의 타입은 CreateCatDto이다.\n// create-cat.dto.ts  export class CreateCatDto { name: string; age: number; breed: string; } 우리는 create()로 들어오는 어떠한 request도 유효한 body를 갖고있음을 보장하기를 원한다. 따라서 createCatDto 오브젝트는 3개의 멤버를 갖고 있는지 유효성을 검사해야한다. 이것을 route handler method 내부에서 할 수도 있지만, 이것은 SRP(단일 책임 원칙)을 어기는 것이 된다.다른 접근방법은 validator class를 만들어, 유효성 검사를 위임하는 것이다. 이것은 우리가 각 method의 시작부분에 이 validator를 호출해야한다는 단점이 있다.validation 미들웨어를 만드는 것은 어떨까? 동작은 하겠지만, 애플리케이션 내의 모든 context에 적용할 수 있는 제네릭 미들웨어를 만드는 것은 불가능하다.\nObject scheme validation DRY한 방법으로 깔끔하게 object validation을 하는 방법은 여러가지가 있다. 그 중 한가지 일반적인 방법은 scheme-based validation 이다. 이 방법을 사용해보자.joi 라이브러리는 스키마를 간단하게 생성하게 해준다. joi-based 스키마로 validation pipe를 만들어보자.먼저, 아래의 패키지를 설치해야한다.\n$ npm install --save joi $ npm install --save-dev @types/joi 아래의 예제에서, 생성자에서 간단한 스키마 클래스를 만들었다. scheme.validate() method를 통해, 들어오는 argument를 확인할 수 있다.위에서 얘기했듯, validation pipe는 값을 그대로 리턴하거나, 예외를 throw 한다.다음 섹션에서, @UsePipe() 데코레이트를 사용해 컨트롤러에 적절한 스키마를 적용하는 방법에 대해 알아볼 것이다. 그렇게 함으로써, validation pipe를 컨텐스트간 재사용 가능하게 만들것이다.\nimport { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common'; import { ObjectSchema } from 'joi'; @Injectable() export class JoiValidationPipe implements PipeTransform { constructor(private schema: ObjectSchema) {} transform(value: any, metadata: ArgumentMetadata) { const { error } = this.schema.validate(value); if (error) { throw new BadRequestException('Validation failed'); } return value; } } Binding validation pipes validation pipe를 binding하는 것은 매우 간단하다.method call level에서 pipe를 bind 하기를 원한다. 아래 예제에서, JoiValidationPipe를 사용할 것이다.\n JoiValidationPipe 인스턴스를 만든다. pipe의 생성자를 통해 context-specific joi 스키마를 보낸다. pipe를 method에 bind 한다.  아래처럼 @UsePipe() 데코레이터를 사용한다.\n@Post() @UsePipes(new JoiValidationPipe(createCatSchema)) async create(@Body() createCatDto: CreateCatDto) { this.catsService.create(createCatDto); } Class validator  이 섹션의 테크닉은 typescript에서만 유효하다. 바닐라 자바스크립트에서는 유효하지 않다.\n class-validator 라이브러리를 사용한 다른 validation 테크닉을 알아보자. 이 라이브러리는 데코레이터 기반 validation을 할 수 있게 해준다. Nest의 pipe는 metatype에 접근할 수 있기때문에, Nest와 결합되면 데코레이터 기반 validation은 매우 강력해진다. 시작하기전에 해당 패키지를 설치해야 한다.\n$ npm i --save class-validator class-transformer 해당 라이브러리를 설치하면, CreateCatDto에 몇몇 데코레이터를 붙일 수 있다. 이러한 방법의 여러가지 장점을 보게 될 것이다. CreateCatDto는 post body의 유효성 검사를 위한 단일 소스로 사용할 수 있다(여러개의 validation class를 만들지 않아도 된다).\n// create-cat.dto.ts  import { IsString, IsInt } from 'class-validator'; export class CreateCatDto { @IsString() name: string; @IsInt() age: number; @IsString() breed: string; } 이제 우리는 ValidationPipe 클래스를 만들 수 있다.\n// validation.pipe.ts  import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common'; import { validate } from 'class-validator'; import { plainToClass } from 'class-transformer'; @Injectable() export class ValidationPipe implements PipeTransformany { async transform(value: any, { metatype }: ArgumentMetadata) { if (!metatype || !this.toValidate(metatype)) { return value; } const object = plainToClass(metatype, value); const errors = await validate(object); if (errors.length  0) { throw new BadRequestException('Validation failed'); } return value; } private toValidate(metatype: Function): boolean { const types: Function[] = [String, Boolean, Number, Array, Object]; return !types.includes(metatype); } } 위 코드를 살펴보자. 첫쩨로, transform() method는 async이다. 이것은 Nest가 동기, 비동기 pipe를 모두 지원하기 때문에 가능하다. 일부 class validator는 비동기이기 때문에 비동기 방식을 사용할 것이다.(참고:utilize Promises)다음으로, ArgumentMetadata로부터 metatype 필드를 추출한다는 것이다. 이것은 ArgumentMetadata 전체에 대한 요약본이며, metatype 변수에 대한 추가적인 상태를 포함하고 있다.다음으로, class-transformer 함수인 plainToClass()를 사용하고 있다. 이는 자바스크립트 오브젝트에 타입을 부여하여 validation을 하기 위함이다. 또한 네트워크 request를 역직렬화하여 얻은 오브젝트는 타입에 대한 정보가 없기 때문이다. class-validator는 앞서 우리가 dto에 정의한 validation 데코레이터가 필요하다.마지막으로, 앞서 말했듯, validation pipe는 value를 변경하지 않고 그대로 리턴하거나, 예외를 throw 한다.마지막 스텝은 ValidationPipe를 bind 하는 것이다. pipe는 parameter-scope, method-scope, controller-scope 또는 global-scope이다. 앞서 본 joi-based validation pipe는 method level의\u0008에서 binding 된 pipe 였다. 아래의 예제처럼, validation pipe 인스턴스를 route hadler의 @Body() 데코레이터에 bind 할 수 있다.\n// cats.controller.ts  @Post() async create( @Body(new ValidationPipe()) createCatDto: CreateCatDto, ) { this.catsService.create(createCatDto); } parameter-scope pipe는 validation 로직이 하나의 파라미터와만 연관되어 있을 때 유용하다.\nGlobal scoped pipes ValidationPipe는 제네릭으로 만들수 있기때문에, global-scope로 만들어 모든 route handler에 적용할 수 있다.\n// main.ts  async function bootstrap() { const app = await NestFactory.create(AppModule); app.useGlobalPipes(new ValidationPipe()); await app.listen(3000); } bootstrap();  [주의] 하이브리드앱에서는 UseGlobalPipes()는 게이트웨이와 마이크로서비스 모두에 적용이 되지 않는다.\n 모듈 외부에서 useGlobalPipes()를 통해 등록된 global pipe는 의존성 주입이 아닌, 모듈 context 외부에서 bind 되어 있다. 이것을 해결하기 위해 global pipe를 모듈에 직접 bind 할 수도 있다.\n// app.module.ts  import { Module } from '@nestjs/common'; import { APP_PIPE } from '@nestjs/core'; @Module({ providers: [ { provide: APP_PIPE, useClass: ValidationPipe, }, ], }) export class AppModule {}  [Hint] 이러한 접근 방식으로 의존성 주입을 한 pipe는 어떠한 모듈에서 생성이 되었듯 global이다.\n The built-in ValidationPipe 내장 ValidationPipe가 Nest에서 제공되기 때문에 제네릭 validation pipe를 직접 만들 필요는 없다. 내장 ValidationPipe는 이 챕터에서 본것보다 더 많은 옵션을 제공하지만, custom pipe의 메커니즘을 설명하기 위한 간단한 예제만 보여주었다. 더 상세한 내용과 예제는 여기에서 볼 수 있다.\nTransformation use case custom pipe는 validation의 경우에만 있는 것은 아니다. 챕터에 시작에서 말했듯, pipe는 input data를 원하는 포맷으로 가공할 수 있다고 하였다. 이것은 transform() 함수에서 리턴되는 값은 기존 argument 값을 덮어쓰기 때문에 가능하다.이것은 언제 유용할까? 종종 클라이언트로부터 받은 데이터는 router handler method에서 처리되기전에 가공될 필요가 있다(예를 들어, string에서 integer로 변환). 또한, 일부 필수 필드가 없는 경우 기본값을 제공해야 하는 경우도 있다. transformation pipe는 client request와 request handler 사이에서 이런 역할을 한다.아래는 string을 int로 바꿔주는 간단한 예제이다. (위에서 말했듯, Nest가 제공하는 내장 pipe가 더 세련되었지만, custom pipe의 간단한 예제를 보여주기 위해 포함하였다)\n// parse-int.pipe.ts  import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common'; @Injectable() export class ParseIntPipe implements PipeTransformstring, number { transform(value: string, metadata: ArgumentMetadata): number { const val = parseInt(value, 10); if (isNaN(val)) { throw new BadRequestException('Validation failed'); } return val; } } pipe는 아래와 같은 방법으로 특정 파라미터에 bind 할 수 있다.\n@Get(':id') async findOne(@Param('id', new ParseIntPipe()) id) { return this.catsService.findOne(id); } 또 다른 transformation의 좋은 예는, request에서 id를 받아 데이터베이스로부터 존재하는 사용자를 가져오는 경우이다.\n@Get(':id') findOne(@Param('id', UserByIdPipe) userEntity: UserEntity) { return userEntity; } 위와 같은 경우, input value로 id를 받지만 return value는 UserEntity 오브젝트 이다. 이것은 pipe를 통해 handler 외부에서 반복되는 코드를 줄여, 코드를 더욱 DRY하게 만드는 방법이다.\nProviding defaults Parse* pipe들은 파라미터가 정의되어 있기를 기대한다. null 또는 undefined를 받으면 예외를 throw 할 것이다. 생략된 query string value를 처리하기 위해서는, 미리 기본값을 주입해두어야 한다. DefaultValuePipe가 이러한 역할을 수행한다.\n@Get() async findAll( @Query('activeOnly', new DefaultValuePipe(false), ParseBoolPipe) activeOnly: boolean, @Query('page', new DefaultValuePipe(0), ParseIntPipe) page: number, ) { return this.catsService.findAll({ activeOnly, page }); } ",
+  "wordCount" : "1621",
+  "inLanguage": "en",
+  "datePublished": "2021-05-12T15:48:44+09:00",
+  "dateModified": "2021-05-12T15:48:44+09:00",
+  "author":{
+    "@type": "Person",
+    "name": "icecat471"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://icecat471.github.io/devlog/post/nestjs/pipe/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "icecat471's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://icecat471.github.io/devlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://icecat471.github.io/devlog/" accesskey="h" title="icecat471&#39;s Devlog (Alt + H)">icecat471&#39;s Devlog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
+    <h1 class="post-title">
+      [NestJS] (공식문서 번역) Pipe
+    </h1>
+    <div class="post-meta">May 12, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#pipe" aria-label="Pipe">Pipe</a><ul>
+                        
+                <li>
+                    <a href="#pipe-1" aria-label="Pipe">Pipe</a></li>
+                <li>
+                    <a href="#built-in-pipes" aria-label="Built-in pipes">Built-in pipes</a></li>
+                <li>
+                    <a href="#binding-pipes" aria-label="Binding pipes">Binding pipes</a></li>
+                <li>
+                    <a href="#custom-pipes" aria-label="Custom pipes">Custom pipes</a></li>
+                <li>
+                    <a href="#scheme-based-validation" aria-label="Scheme based validation">Scheme based validation</a></li>
+                <li>
+                    <a href="#object-scheme-validation" aria-label="Object scheme validation">Object scheme validation</a></li>
+                <li>
+                    <a href="#binding-validation-pipes" aria-label="Binding validation pipes">Binding validation pipes</a></li>
+                <li>
+                    <a href="#class-validator" aria-label="Class validator">Class validator</a></li>
+                <li>
+                    <a href="#global-scoped-pipes" aria-label="Global scoped pipes">Global scoped pipes</a></li>
+                <li>
+                    <a href="#the-built-in-validationpipe" aria-label="The built-in ValidationPipe">The built-in ValidationPipe</a></li>
+                <li>
+                    <a href="#transformation-use-case" aria-label="Transformation use case">Transformation use case</a></li>
+                <li>
+                    <a href="#providing-defaults" aria-label="Providing defaults">Providing defaults</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>NestJS 공식문서 번역 겸 공부하는 글 입니다.<br>
+의역 및 오역이 있을 수 있습니다.<br>
+<a href="https://docs.nestjs.com/pipes">https://docs.nestjs.com/pipes</a></p>
+<h1 id="pipe">Pipe<a hidden class="anchor" aria-hidden="true" href="#pipe">#</a></h1>
+<h2 id="pipe-1">Pipe<a hidden class="anchor" aria-hidden="true" href="#pipe-1">#</a></h2>
+<p>pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.</p>
+<p><img loading="lazy" src="../../../img/nestjs/pipe01.png" alt="pipe"  />
+</p>
+<p>pipe는 두가지 사용방법이 있다.</p>
+<ul>
+<li>transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로).</li>
+<li>validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.</li>
+</ul>
+<p>두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>Nest는 여러개의 내장 pipe를 갖고 있다. 또한, custom pipe를 만드는 것도 가능하다. 해당 챕터에서는, 내장 pipe에 대한 소개와, route handler에 pipe를 binding하는 방법에 대해 알아 볼 것이다. 그리고 custom pipe를 만드는 법에 대해서도 알아 볼 것이다.</p>
+<blockquote>
+<p>pipe는 exception zone에서 동작한다. 이것은, pipe가 예외를 throw하면 exception layer에서 처리된다는 뜻이다. 따라서 pipe에서 예외가 발생하면, 뒤에 연결된 method는 동작하지 않는다. 이것은 외부에서 애플리케이션으로 들어오는 데이터에 대해 시스템상으로 처리할 수 있는 가장 좋은 방법을 제공한다.</p>
+</blockquote>
+<h2 id="built-in-pipes">Built-in pipes<a hidden class="anchor" aria-hidden="true" href="#built-in-pipes">#</a></h2>
+<p>Nest는 6가지의 내장 pipe를 제공한다.</p>
+<ul>
+<li>ValidationPipe</li>
+<li>ParseIntPipe</li>
+<li>ParseBoolPipe</li>
+<li>ParseArrayPipe</li>
+<li>ParseUUIDPipe</li>
+<li>DefaultValuePipe</li>
+</ul>
+<p>위 pipe들은 @nestjs/common 패키지에 의해 제공된다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>ParseIntPipe를 통해 pipe에 대해 알아보자. 이것은 transformation의 예로, pipe는 method handler의 매개변수를 int로 변환해준다(변환 실패시 예외를 throw한다). 챕터 뒤에서, 간단한 custom ParseIntPipe를 볼 것이다. 아래에서 보게 될 예제는, 다른 내장 transformation pipe(ParseBoolPipe, ParseArrayPipe, ParseUUIDPipe)에도 동일하게 적용 될 것이다.</p>
+<h2 id="binding-pipes">Binding pipes<a hidden class="anchor" aria-hidden="true" href="#binding-pipes">#</a></h2>
+<p>pipe를 사용하기 위해서는, pipe 인스턴스를 bind 해야 한다. ParseIntPipe 예제에서, pipe를 특정 route handler method와 연관시켜, method가 호출되기전에 작동하게 하고싶다. 아래와 같은 구조로, pipe를 parameter level에서 binding 할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
+<span class="kr">async</span> <span class="nx">findOne</span><span class="p">(</span><span class="kd">@Param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">ParseIntPipe</span><span class="p">)</span> <span class="nx">id</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>이것은 다음 두 조건중 하나를 만족함을 보장해준다. findOne()의 파라미터는 number이거나, route handler가 호출되기 전에 예외가 발생한다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>예를 들어, router가 아래와 같이 호출 되었다고 가정하면</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">GET localhost:3000/abc
+</code></pre></div><p>Nest는 아래와 같은 예외를 throw 할 것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;statusCode&#34;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+  <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Validation failed (numeric string is expected)&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Bad Request&#34;</span>
+<span class="p">}</span>
+</code></pre></div><p>예외가 발생하면서, findOne()는 수행되지 않는다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>위 예제에서, ParseIntPipe 클래스는 프레임워크에 의해 의존성 주입되어 인스턴스화 된다. 대신, 인스턴스를 직접 사용할수도 있다. pipe에 옵션을 추가하고 싶을 때 이러한 방식이 유용하다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
+<span class="kr">async</span> <span class="nx">findOne</span><span class="p">(</span>
+  <span class="kd">@Param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">ParseIntPipe</span><span class="p">({</span> <span class="nx">errorHttpStatusCode</span>: <span class="kt">HttpStatus.NOT_ACCEPTABLE</span> <span class="p">}))</span>
+  <span class="nx">id</span>: <span class="kt">number</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>다른 transformation pipe도 비슷한 방식으로 동작한다. 이 pipe들은 모두 validating route parameter, query string parameter, request body의 context에서 작동한다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>query string paramter에 대한 예제이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
+<span class="kr">async</span> <span class="nx">findOne</span><span class="p">(</span><span class="kd">@Query</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">ParseIntPipe</span><span class="p">)</span> <span class="nx">id</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>아래는 ParseUUIDPipte를 이용한 예제이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:uuid&#39;</span><span class="p">)</span>
+<span class="kr">async</span> <span class="nx">findOne</span><span class="p">(</span><span class="kd">@Param</span><span class="p">(</span><span class="s1">&#39;uuid&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">ParseUUIDPipe</span><span class="p">())</span> <span class="nx">uuid</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">uuid</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>ParseUUIDPipe를 사용하여 uuid 3, 4, 5 버전을 파싱할 때, 특정 버전의 uuid만 요구하도록 옵션을 추가할 수 있다.</p>
+</blockquote>
+<p>위에서 다양한 Parse* 내장 pipe(transformation pipe)의 binding을 보았다. validation pipe의 binding은 조금 다르다. 다음 섹션에서 해당 내용을 볼 것이다.</p>
+<h2 id="custom-pipes">Custom pipes<a hidden class="anchor" aria-hidden="true" href="#custom-pipes">#</a></h2>
+<p>위에서 말했듯, custom pipe를 만들수 있다. validation pipe로 시작해보자. 간단하게, 항등함수처럼 input value를 받아 그대로 반환하게 만들었다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// validation.pipe.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">PipeTransform</span><span class="p">,</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">ArgumentMetadata</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">ValidationPipe</span> <span class="kr">implements</span> <span class="nx">PipeTransform</span> <span class="p">{</span>
+  <span class="nx">transform</span><span class="p">(</span><span class="nx">value</span>: <span class="kt">any</span><span class="p">,</span> <span class="nx">metadata</span>: <span class="kt">ArgumentMetadata</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>PipeTransform&lt;T, R&gt;은 pipe에서 항상 구현되어야하는 제네릭 인터페이스이다. T는 value의 타입, R은 transform()의 리턴타입이다.</p>
+</blockquote>
+<p>모든 pipe는 PipeTransform 인터페이스를 충족하기 위해 transform() method를 구현해야 한다. 이 method는 두개의 매개변수를 받는다.</p>
+<ul>
+<li>value</li>
+<li>metadata</li>
+</ul>
+<p>value는 현재 가공중인 method argument이고, metadata는 현재 가공중인 method argument의 metadata이다. meatadata 오브젝트는 아래와 같은 프로퍼티를 갖는다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">ArgumentMetadata</span> <span class="p">{</span>
+  <span class="kr">type</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span> <span class="o">|</span> <span class="s1">&#39;query&#39;</span> <span class="o">|</span> <span class="s1">&#39;param&#39;</span> <span class="o">|</span> <span class="s1">&#39;custom&#39;</span><span class="p">;</span>
+  <span class="nx">metatype?</span>: <span class="kt">Type</span><span class="p">&lt;</span><span class="nt">unknown</span><span class="p">&gt;;</span>
+  <span class="nx">data?</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>argument가 body @Body(), query @Query(), param @Param, 또는 custom parameter중 어느 것인지를 가리킨다.</td>
+</tr>
+<tr>
+<td>metatype</td>
+<td>argument의 메타타입을 제공한다(예를 들어, String). route handler method에 타입선언을 생략하거나, 바닐라 자바스크립트 사용시 value는 undefined 이다.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>데코레이터에서 받은 string(예를 들어 @Body(&lsquo;string&rsquo;)). 데코레이터를 비워두면 undefined 이다.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>타입스크립트 인터페이스는 transpilation 도중 사라진다. 따라서, method parameter의 타입이 클래스 대신 인터페이스로 선언되었다면, metadata의 value는 object가 된다.</p>
+</blockquote>
+<h2 id="scheme-based-validation">Scheme based validation<a hidden class="anchor" aria-hidden="true" href="#scheme-based-validation">#</a></h2>
+<p>validation pipe를 좀 더 유용하게 만들어보자.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Post</span><span class="p">()</span>
+<span class="kr">async</span> <span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>body parameter인 createCatDto에 집중해보자. 이것의 타입은 CreateCatDto이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// create-cat.dto.ts
+</span><span class="c1"></span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CreateCatDto</span> <span class="p">{</span>
+  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+  <span class="nx">age</span>: <span class="kt">number</span><span class="p">;</span>
+  <span class="nx">breed</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>우리는 create()로 들어오는 어떠한 request도 유효한 body를 갖고있음을 보장하기를 원한다. 따라서 createCatDto 오브젝트는 3개의 멤버를 갖고 있는지 유효성을 검사해야한다. 이것을 route handler method 내부에서 할 수도 있지만, 이것은 SRP(단일 책임 원칙)을 어기는 것이 된다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>다른 접근방법은 validator class를 만들어, 유효성 검사를 위임하는 것이다. 이것은 우리가 각 method의 시작부분에 이 validator를 호출해야한다는 단점이 있다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>validation 미들웨어를 만드는 것은 어떨까? 동작은 하겠지만, 애플리케이션 내의 모든 context에 적용할 수 있는 제네릭 미들웨어를 만드는 것은 불가능하다.</p>
+<h2 id="object-scheme-validation">Object scheme validation<a hidden class="anchor" aria-hidden="true" href="#object-scheme-validation">#</a></h2>
+<p>DRY한 방법으로 깔끔하게 object validation을 하는 방법은 여러가지가 있다. 그 중 한가지 일반적인 방법은 scheme-based validation 이다. 이 방법을 사용해보자.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>joi 라이브러리는 스키마를 간단하게 생성하게 해준다. joi-based 스키마로 validation pipe를 만들어보자.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>먼저, 아래의 패키지를 설치해야한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ npm install --save joi
+$ npm install --save-dev @types/joi
+</code></pre></div><p>아래의 예제에서, 생성자에서 간단한 스키마 클래스를 만들었다. scheme.validate() method를 통해, 들어오는 argument를 확인할 수 있다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>위에서 얘기했듯, validation pipe는 값을 그대로 리턴하거나, 예외를 throw 한다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>다음 섹션에서, @UsePipe() 데코레이트를 사용해 컨트롤러에 적절한 스키마를 적용하는 방법에 대해 알아볼 것이다. 그렇게 함으로써, validation pipe를 컨텐스트간 재사용 가능하게 만들것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">PipeTransform</span><span class="p">,</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">ArgumentMetadata</span><span class="p">,</span> <span class="nx">BadRequestException</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">ObjectSchema</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;joi&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">JoiValidationPipe</span> <span class="kr">implements</span> <span class="nx">PipeTransform</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">schema</span>: <span class="kt">ObjectSchema</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="nx">transform</span><span class="p">(</span><span class="nx">value</span>: <span class="kt">any</span><span class="p">,</span> <span class="nx">metadata</span>: <span class="kt">ArgumentMetadata</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="p">{</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">schema</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">BadRequestException</span><span class="p">(</span><span class="s1">&#39;Validation failed&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="binding-validation-pipes">Binding validation pipes<a hidden class="anchor" aria-hidden="true" href="#binding-validation-pipes">#</a></h2>
+<p>validation pipe를 binding하는 것은 매우 간단하다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>method call level에서 pipe를 bind 하기를 원한다. 아래 예제에서, JoiValidationPipe를 사용할 것이다.</p>
+<ol>
+<li>JoiValidationPipe 인스턴스를 만든다.</li>
+<li>pipe의 생성자를 통해 context-specific joi 스키마를 보낸다.</li>
+<li>pipe를 method에 bind 한다.</li>
+</ol>
+<p>아래처럼 @UsePipe() 데코레이터를 사용한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Post</span><span class="p">()</span>
+<span class="kd">@UsePipes</span><span class="p">(</span><span class="k">new</span> <span class="nx">JoiValidationPipe</span><span class="p">(</span><span class="nx">createCatSchema</span><span class="p">))</span>
+<span class="kr">async</span> <span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="class-validator">Class validator<a hidden class="anchor" aria-hidden="true" href="#class-validator">#</a></h2>
+<blockquote>
+<p>이 섹션의 테크닉은 typescript에서만 유효하다. 바닐라 자바스크립트에서는 유효하지 않다.</p>
+</blockquote>
+<p>class-validator 라이브러리를 사용한 다른 validation 테크닉을 알아보자. 이 라이브러리는 데코레이터 기반 validation을 할 수 있게 해준다. Nest의 pipe는 metatype에 접근할 수 있기때문에, Nest와 결합되면 데코레이터 기반 validation은 매우 강력해진다. 시작하기전에 해당 패키지를 설치해야 한다.</p>
+<pre><code class="language-vash" data-lang="vash">$ npm i --save class-validator class-transformer
+</code></pre><p>해당 라이브러리를 설치하면, CreateCatDto에 몇몇 데코레이터를 붙일 수 있다. 이러한 방법의 여러가지 장점을 보게 될 것이다. CreateCatDto는 post body의 유효성 검사를 위한 단일 소스로 사용할 수 있다(여러개의 validation class를 만들지 않아도 된다).</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// create-cat.dto.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">IsString</span><span class="p">,</span> <span class="nx">IsInt</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;class-validator&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CreateCatDto</span> <span class="p">{</span>
+  <span class="kd">@IsString</span><span class="p">()</span>
+  <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
+
+  <span class="kd">@IsInt</span><span class="p">()</span>
+  <span class="nx">age</span>: <span class="kt">number</span><span class="p">;</span>
+
+  <span class="kd">@IsString</span><span class="p">()</span>
+  <span class="nx">breed</span>: <span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>이제 우리는 ValidationPipe 클래스를 만들 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// validation.pipe.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">PipeTransform</span><span class="p">,</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">ArgumentMetadata</span><span class="p">,</span> <span class="nx">BadRequestException</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">validate</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;class-validator&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">plainToClass</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;class-transformer&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">ValidationPipe</span> <span class="kr">implements</span> <span class="nx">PipeTransform</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;</span> <span class="p">{</span>
+  <span class="kr">async</span> <span class="nx">transform</span><span class="p">(</span><span class="nx">value</span>: <span class="kt">any</span><span class="p">,</span> <span class="p">{</span> <span class="nx">metatype</span> <span class="p">}</span><span class="o">:</span> <span class="nx">ArgumentMetadata</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">metatype</span> <span class="o">||</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">toValidate</span><span class="p">(</span><span class="nx">metatype</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kr">const</span> <span class="kt">object</span> <span class="o">=</span> <span class="nx">plainToClass</span><span class="p">(</span><span class="nx">metatype</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+    <span class="kr">const</span> <span class="nx">errors</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">validate</span><span class="p">(</span><span class="kt">object</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">BadRequestException</span><span class="p">(</span><span class="s1">&#39;Validation failed&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kr">private</span> <span class="nx">toValidate</span><span class="p">(</span><span class="nx">metatype</span>: <span class="kt">Function</span><span class="p">)</span><span class="o">:</span> <span class="kr">boolean</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">types</span>: <span class="kt">Function</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Boolean</span><span class="p">,</span> <span class="nb">Number</span><span class="p">,</span> <span class="nb">Array</span><span class="p">,</span> <span class="nb">Object</span><span class="p">];</span>
+    <span class="k">return</span> <span class="o">!</span><span class="nx">types</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">metatype</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>위 코드를 살펴보자. 첫쩨로, transform() method는 async이다. 이것은 Nest가 동기, 비동기 pipe를 모두 지원하기 때문에 가능하다. 일부 class validator는 비동기이기 때문에 비동기 방식을 사용할 것이다.(참고:<a href="https://github.com/typestack/class-validator#custom-validation-classes">utilize Promises</a>)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>다음으로, ArgumentMetadata로부터 metatype 필드를 추출한다는 것이다. 이것은 ArgumentMetadata 전체에 대한 요약본이며, metatype 변수에 대한 추가적인 상태를 포함하고 있다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>다음으로, class-transformer 함수인 plainToClass()를 사용하고 있다. 이는 자바스크립트 오브젝트에 타입을 부여하여 validation을 하기 위함이다. 또한 네트워크 request를 역직렬화하여 얻은 오브젝트는 타입에 대한 정보가 없기 때문이다. class-validator는 앞서 우리가 dto에 정의한 validation 데코레이터가 필요하다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>마지막으로, 앞서 말했듯, validation pipe는 value를 변경하지 않고 그대로 리턴하거나, 예외를 throw 한다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>마지막 스텝은 ValidationPipe를 bind 하는 것이다. pipe는 parameter-scope, method-scope, controller-scope 또는 global-scope이다. 앞서 본 joi-based validation pipe는 method level의에서 binding 된 pipe 였다. 아래의 예제처럼, validation pipe 인스턴스를 route hadler의 @Body() 데코레이터에 bind 할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
+</span><span class="c1"></span>
+<span class="kd">@Post</span><span class="p">()</span>
+<span class="kr">async</span> <span class="nx">create</span><span class="p">(</span>
+  <span class="kd">@Body</span><span class="p">(</span><span class="k">new</span> <span class="nx">ValidationPipe</span><span class="p">())</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>parameter-scope pipe는 validation 로직이 하나의 파라미터와만 연관되어 있을 때 유용하다.</p>
+<h2 id="global-scoped-pipes">Global scoped pipes<a hidden class="anchor" aria-hidden="true" href="#global-scoped-pipes">#</a></h2>
+<p>ValidationPipe는 제네릭으로 만들수 있기때문에, global-scope로 만들어 모든 route handler에 적용할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// main.ts
+</span><span class="c1"></span>
+<span class="kr">async</span> <span class="kd">function</span> <span class="nx">bootstrap() {</span>
+  <span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalPipes</span><span class="p">(</span><span class="k">new</span> <span class="nx">ValidationPipe</span><span class="p">());</span>
+  <span class="k">await</span> <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">bootstrap</span><span class="p">();</span>
+</code></pre></div><blockquote>
+<p>[주의]
+하이브리드앱에서는 UseGlobalPipes()는 게이트웨이와 마이크로서비스 모두에 적용이 되지 않는다.</p>
+</blockquote>
+<p>모듈 외부에서 useGlobalPipes()를 통해 등록된 global pipe는 의존성 주입이 아닌, 모듈 context 외부에서 bind 되어 있다. 이것을 해결하기 위해 global pipe를 모듈에 직접 bind 할 수도 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">APP_PIPE</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">provide</span>: <span class="kt">APP_PIPE</span><span class="p">,</span>
+      <span class="nx">useClass</span>: <span class="kt">ValidationPipe</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><blockquote>
+<p>[Hint]
+이러한 접근 방식으로 의존성 주입을 한 pipe는 어떠한 모듈에서 생성이 되었듯 global이다.</p>
+</blockquote>
+<h2 id="the-built-in-validationpipe">The built-in ValidationPipe<a hidden class="anchor" aria-hidden="true" href="#the-built-in-validationpipe">#</a></h2>
+<p>내장 ValidationPipe가 Nest에서 제공되기 때문에 제네릭 validation pipe를 직접 만들 필요는 없다. 내장 ValidationPipe는 이 챕터에서 본것보다 더 많은 옵션을 제공하지만, custom pipe의 메커니즘을 설명하기 위한 간단한 예제만 보여주었다. 더 상세한 내용과 예제는 <a href="https://docs.nestjs.com/techniques/validation">여기</a>에서 볼 수 있다.</p>
+<h2 id="transformation-use-case">Transformation use case<a hidden class="anchor" aria-hidden="true" href="#transformation-use-case">#</a></h2>
+<p>custom pipe는 validation의 경우에만 있는 것은 아니다. 챕터에 시작에서 말했듯, pipe는 input data를 원하는 포맷으로 가공할 수 있다고 하였다. 이것은 transform() 함수에서 리턴되는 값은 기존 argument 값을 덮어쓰기 때문에 가능하다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>이것은 언제 유용할까? 종종 클라이언트로부터 받은 데이터는 router handler method에서 처리되기전에 가공될 필요가 있다(예를 들어, string에서 integer로 변환). 또한, 일부 필수 필드가 없는 경우 기본값을 제공해야 하는 경우도 있다. transformation pipe는 client request와 request handler 사이에서 이런 역할을 한다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>아래는 string을 int로 바꿔주는 간단한 예제이다. (위에서 말했듯, Nest가 제공하는 내장 pipe가 더 세련되었지만, custom pipe의 간단한 예제를 보여주기 위해 포함하였다)</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// parse-int.pipe.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">PipeTransform</span><span class="p">,</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">ArgumentMetadata</span><span class="p">,</span> <span class="nx">BadRequestException</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">ParseIntPipe</span> <span class="kr">implements</span> <span class="nx">PipeTransform</span><span class="p">&lt;</span><span class="nt">string</span><span class="err">,</span> <span class="na">number</span><span class="p">&gt;</span> <span class="p">{</span>
+  <span class="nx">transform</span><span class="p">(</span><span class="nx">value</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">metadata</span>: <span class="kt">ArgumentMetadata</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">val</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">val</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">BadRequestException</span><span class="p">(</span><span class="s1">&#39;Validation failed&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">val</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>pipe는 아래와 같은 방법으로 특정 파라미터에 bind 할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
+<span class="kr">async</span> <span class="nx">findOne</span><span class="p">(</span><span class="kd">@Param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">ParseIntPipe</span><span class="p">())</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findOne</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>또 다른 transformation의 좋은 예는, request에서 id를 받아 데이터베이스로부터 존재하는 사용자를 가져오는 경우이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
+<span class="nx">findOne</span><span class="p">(</span><span class="kd">@Param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">UserByIdPipe</span><span class="p">)</span> <span class="nx">userEntity</span>: <span class="kt">UserEntity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">userEntity</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>위와 같은 경우, input value로 id를 받지만 return value는 UserEntity 오브젝트 이다. 이것은 pipe를 통해 handler 외부에서 반복되는 코드를 줄여, 코드를 더욱 DRY하게 만드는 방법이다.</p>
+<h2 id="providing-defaults">Providing defaults<a hidden class="anchor" aria-hidden="true" href="#providing-defaults">#</a></h2>
+<p>Parse* pipe들은 파라미터가 정의되어 있기를 기대한다. null 또는 undefined를 받으면 예외를 throw 할 것이다. 생략된 query string value를 처리하기 위해서는, 미리 기본값을 주입해두어야 한다. DefaultValuePipe가 이러한 역할을 수행한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
+<span class="kr">async</span> <span class="nx">findAll</span><span class="p">(</span>
+  <span class="kd">@Query</span><span class="p">(</span><span class="s1">&#39;activeOnly&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">DefaultValuePipe</span><span class="p">(</span><span class="kc">false</span><span class="p">),</span> <span class="nx">ParseBoolPipe</span><span class="p">)</span> <span class="nx">activeOnly</span>: <span class="kt">boolean</span><span class="p">,</span>
+  <span class="kd">@Query</span><span class="p">(</span><span class="s1">&#39;page&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">DefaultValuePipe</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nx">ParseIntPipe</span><span class="p">)</span> <span class="nx">page</span>: <span class="kt">number</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span> <span class="nx">activeOnly</span><span class="p">,</span> <span class="nx">page</span> <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/backend/">backend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://icecat471.github.io/devlog/post/vuejs/dotenv_undefined/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>[Vue] dotenv 환경변수를 undefined로 불러올 때</span>
+  </a>
+</nav>
+
+  </footer><script src="https://utteranc.es/client.js"
+        repo="icecat471/devlog"
+        issue-term="pathname"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        container.appendChild(copybutton);
+    });
+</script>
+</body>
+
+</html>

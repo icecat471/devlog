@@ -140,6 +140,22 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[NestJS] (공식문서 번역) Pipe</h2>
+  </header>
+  <section class="entry-content">
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/pipes
+Pipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.
+pipe는 두가지 사용방법이 있다.
+ transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다....</p>
+  </section>
+  <footer class="entry-footer">May 12, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Pipe" href="https://icecat471.github.io/devlog/post/nestjs/pipe/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[NestJS] (공식문서 번역) Exception Filters</h2>
   </header>
   <section class="entry-content">
@@ -200,21 +216,11 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
   <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Providers" href="https://icecat471.github.io/devlog/post/nestjs/providers/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Controllers</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/controllers
-Controllers Controllers Controller는 들어오는 request를 핸들링하고 클라이언트에게 response를 반환하는 역할.
-routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.Routing 아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다....</p>
-  </section>
-  <footer class="entry-footer">May 1, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Controllers" href="https://icecat471.github.io/devlog/post/nestjs/controllers/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://icecat471.github.io/devlog/tags/nestjs/page/2/">Next Page »</a>
+  </nav>
+</footer>
     </main>
     <footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>

@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Posts | icecat471&#39;s Devlog</title>
+<title>NestJS | icecat471&#39;s Devlog</title>
 <meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/post/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/categories/nestjs/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
@@ -19,33 +19,18 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/post/index.xml">
-<meta property="og:title" content="Posts" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/categories/nestjs/index.xml">
+<meta property="og:title" content="NestJS" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/post/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:url" content="https://icecat471.github.io/devlog/categories/nestjs/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:title" content="NestJS"/>
 <meta name="twitter:description" content=""/>
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://icecat471.github.io/devlog/post/"
-    }
-  ]
-}
-</script>
 </head>
 
 <body class="list" id="top">
@@ -149,71 +134,27 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a></div>
-  <h1>Posts</h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/categories/">Categories</a></div>
+  <h1>NestJS</h1>
 </header>
 
-<article class="post-entry"> 
+<article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>Hugo syntax highlight 변경</h2>
+    <h2>[NestJS] (공식문서 번역) Controllers</h2>
   </header>
   <section class="entry-content">
-    <p>1. 원하는 테마 찾기 highlightjs.org에서 원하는 테마를 찾는다.2. css 찾기 highlightjs github에서 원하는 테마의 css파일 내용을 복사한다.3. 테마 변경 config.yml에 아래의 내용을 추가한다.pygmentsUseClasses:true(Hugo PaperMod 테마 기준)/themes/PaperMod/assests/css/hljs/an-old-hope.min.css 의 내용을 복사한 내용으로 바꾼다.=&gt; 임시적으로 설정한것으로 theme overriding으로 변경 가능한지 찾아봐야 함.</p>
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/controllers
+Controllers Controllers Controller는 들어오는 request를 핸들링하고 클라이언트에게 response를 반환하는 역할.
+routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.Routing 아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다....</p>
   </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Hugo syntax highlight 변경" href="https://icecat471.github.io/devlog/post/hugo/syntax_highlight/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Hugo 블로그 댓글 기능 추가하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>1. 세팅하기 이곳을 클릭 하여 utterances 사이트로 이동한다.configuration 부분을 따라 utterances app을 설치하고 repository설정을 한다.그 외 Blog Post &lt;=&gt; Issue Mapping, Theme 설정등을 한다.설정을 끝내면 Enalble Utterances 부분에 코드가 생성된다
-&lt;script src=&#34;https://utteranc.es/client.js&#34; repo=&#34;(account)/(repo)&#34; issue-term=&#34;pathname&#34; theme=&#34;github-dark&#34; crossorigin=&#34;anonymous&#34; async&gt; &lt;/script&gt; 2. hugo에 적용하기 테마마다 설정 방법이 다른데 내가 사용중인 PaperMod 기준 설정방법이다.ParperMod 깃허브 에서도 확인 가능하다./layouts/partials/comments.html 파일을 만들고 위에서 생성된 코드를 붙여넣기한다.그 후 config.yml 파일에 아래부분을 추가해준다....</p>
-  </section>
-  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Hugo 블로그 댓글 기능 추가하기" href="https://icecat471.github.io/devlog/post/hugo/comment/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>gRPC란?</h2>
-  </header>
-  <section class="entry-content">
-    <p>gRPC란? 구글에서 개발한 RPC 시스템. 기본 개념은 RPC와 동일하지만 HTTP/2 기반으로 양방향 스트리밍 지원.HTTP/2를 사용함으로써 메세지의 압축률과 성능이 좋음.HTTP와 비교    Feature gRPC HTTP APIs with JSON     Contract Required (.proto) Optional (OpenAPI)   Protocol HTTP/2 HTTP   Payload Protobuf (small, binary) JSON (large, human readable)   Prescriptiveness Strict specification Loose. Any HTTP is valid.   Streaming Client, server, bi-directional Client, server   Browser support No (requires grpc-web) Yes   Security Transport (TLS) Transport (TLS)   Clientcode-generation Yes OpenAPI &#43; third-party tooling         gRPC의 장점 1....</p>
-  </section>
-  <footer class="entry-footer">April 15, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to gRPC란?" href="https://icecat471.github.io/devlog/post/network/grpc/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 log.SetPrefix()</h2>
-  </header>
-  <section class="entry-content">
-    <p>package main import ( &#34;fmt&#34; &#34;log&#34; ) func init() { log.SetPrefix(&#34;Blockchain: &#34;) } func main() { fmt.Println(&#34;test&#34;) log.Println(&#34;test&#34;) } 실행시켜보면
-test Blockchain: 2021/04/15 15:04:03 test </p>
-  </section>
-  <footer class="entry-footer">April 15, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 log.SetPrefix()" href="https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>html 캔버스에 이미지 그리기</h2>
-  </header>
-  <section class="entry-content">
-    <p>&lt;canvas id=&#34;myCanvas&#34; width=&#34;500&#34; height=&#34;800&#34;&gt;&lt;/canvas&gt; let canvas = document.querySelector(&#39;#myCanvas&#39;); let context = canvas.getContext(&#39;2d&#39;); // 이미지 로딩 let dragon = new Image(); dragon.src = &#39;이미지 경로&#39;; context.drawImage(dragon, x좌표, y좌표, width, height); setInterval()을 사용해서 특정시간마다 화면을 새로 그릴 수 있다.
-// 1초마다 새로 그림 setInterval(()=&gt; { context.drawImage(dragon, x좌표, y좌표, width, height); }, 1000); // 1000ms </p>
-  </section>
-  <footer class="entry-footer">April 14, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to html 캔버스에 이미지 그리기" href="https://icecat471.github.io/devlog/post/html/draw_image_on_canvas/"></a>
+  <footer class="entry-footer">May 1, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Controllers" href="https://icecat471.github.io/devlog/post/nestjs/controllers/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="https://icecat471.github.io/devlog/post/page/4/">« Prev Page</a>
-    <a class="next" href="https://icecat471.github.io/devlog/post/page/6/">Next Page »</a>
+    <a class="prev" href="https://icecat471.github.io/devlog/categories/nestjs/">« Prev Page</a>
   </nav>
 </footer>
     </main>

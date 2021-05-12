@@ -9,7 +9,21 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 03 May 2021 23:49:12 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 May 2021 15:48:44 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NestJS] (공식문서 번역) Pipe</title>
+      <link>https://icecat471.github.io/devlog/post/nestjs/pipe/</link>
+      <pubDate>Wed, 12 May 2021 15:48:44 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/nestjs/pipe/</guid>
+      <description>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/pipes
+Pipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.
+pipe는 두가지 사용방법이 있다.
+ transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다.</description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Exception Filters</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/exception_filters/</link>
