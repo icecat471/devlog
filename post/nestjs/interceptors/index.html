@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[NestJS] (공식문서 번역) Interceptors | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="NestJS, backend" />
+<meta name="description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/interceptors
+Interceptors Interceptors interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.
+interceptor는 Aspect Oriented Programming(AOP)에서 영감을 받은 여러가지 기능을 갖고 있다.
+ method 수행 전/후 추가 로직을 bind 함수로부터 반환된 값을 변형 함수로부터 throw된 예외를 변형 기본 함수를 확장 특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)  Basics 각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다.">
+<meta name="author" content="icecat471">
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/interceptors/" />
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://icecat471.github.io/devlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta property="og:title" content="[NestJS] (공식문서 번역) Interceptors" />
+<meta property="og:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/interceptors
+Interceptors Interceptors interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.
+interceptor는 Aspect Oriented Programming(AOP)에서 영감을 받은 여러가지 기능을 갖고 있다.
+ method 수행 전/후 추가 로직을 bind 함수로부터 반환된 값을 변형 함수로부터 throw된 예외를 변형 기본 함수를 확장 특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)  Basics 각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/nestjs/interceptors/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-14T13:51:10&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-14T13:51:10&#43;09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="[NestJS] (공식문서 번역) Interceptors"/>
+<meta name="twitter:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/interceptors
+Interceptors Interceptors interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.
+interceptor는 Aspect Oriented Programming(AOP)에서 영감을 받은 여러가지 기능을 갖고 있다.
+ method 수행 전/후 추가 로직을 bind 함수로부터 반환된 값을 변형 함수로부터 throw된 예외를 변형 기본 함수를 확장 특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)  Basics 각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[NestJS] (공식문서 번역) Interceptors",
+      "item": "https://icecat471.github.io/devlog/post/nestjs/interceptors/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[NestJS] (공식문서 번역) Interceptors",
+  "name": "[NestJS] (공식문서 번역) Interceptors",
+  "description": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/interceptors\nInterceptors Interceptors interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.\ninterceptor는 Aspect Oriented Programming(AOP)에서 영감을 받은 여러가지 기능을 갖고 있다.\n method 수행 전/후 추가 로직을 bind 함수로부터 반환된 값을 변형 함수로부터 throw된 예외를 변형 기본 함수를 확장 특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)  Basics 각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다.",
+  "keywords": [
+    "NestJS", "backend"
+  ],
+  "articleBody": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/interceptors\nInterceptors Interceptors interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.\ninterceptor는 Aspect Oriented Programming(AOP)에서 영감을 받은 여러가지 기능을 갖고 있다.\n method 수행 전/후 추가 로직을 bind 함수로부터 반환된 값을 변형 함수로부터 throw된 예외를 변형 기본 함수를 확장 특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)  Basics 각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다. 첫번째는 ExecutionContext 인스턴스(guards에서 받는것과 같음)이다. ExecutionContext는 ArgumentsHost를 상속받았다. ArgumentsHost는 exception filter 챕터에서 이미 보았으며, 거기서 ArgumentsHost는 original handler로 가는 인자들의 wrapper이며, 애플리케이션 타입에 따라 다른 종류의 인자 배열을 포함하고 있음을 보았다. 좀 더 자세한 내용은 exception filters 챕터에서 볼 수 있다.\nExecution context ExecutionContext는 ArgumentsHost를 상속받아 몇개의 helper method를 추가하였다. 이 helper method는 현재 실행중인 프로세스에 몇가지 추가 세부사항을 제공한다. 이 세부사항들은 controller, method, execution context를 가로질러 작동할 수 있는 제네릭 interceptor를 구축하는데 도움을 준다. ExecutionContext에 대해 더 알고 싶으면 여기에서 확인하자.\nCall handler 두번째 인자는 CallHandler이다. CallHandler 인터페이스는 handle() method를 구현한다. handle() method는 특정 시점에서 route handler method를 실행하기 위해 사용된다. 만약 intercept() mehotd에서 handle() method를 호출하지 않으면 route handler method도 실행되지 않는다.이러한 접근법은 intercept() method가 효과적으로 request/response 스트림을 래핑하게 한다. 결과적으로, 최종 route handler 앞/뒤로 custom logic을 구현할 수 있다. intercept() method 내에서 handle()을 호출하기전에 코드를 작성 할 수 있지만, 그 후에는 어떻게 영향을 줄 수 있을까? handle() method는 Observable을 리턴하기때문에, 우리는 RxJS 오퍼레이터를 사용하여 추후에도 response를 가공할 수 있다. AOP 용어를 사용하면, handle()을 호출하여 route handler를 실행하는 것은 Pointcut이라고 부르며, 이것은 우리의 추가 로직이 삽입되는 지점을 가리킨다.예를 들어, POST /cats로 들어오는 request를 생각해보자. 이 request는 CatsController에 정의된 create() handler를 목적지로 지정하고 있다. 도중에 handle() method를 호출하지 않는 interceptor가 호출되었다면, create() method는 실행되지 않을 것이다. handle() method가 호출되면 create() handler는 실행될 것이다. 그리고 response 스트림을 Observable로 받아, 추가적인 오퍼레이션을 수행하고 최종 결과를 caller에게 리턴할 수 있다.\nAspect interception 첫번째 이용사례는 사용자 상호작용을 로깅하기 위해 interceptor를 사용한 것이다.\n// logging.interceptor.ts  import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common'; import { Observable } from 'rxjs'; import { tap } from 'rxjs/operators'; @Injectable() export class LoggingInterceptor implements NestInterceptor { intercept(context: ExecutionContext, next: CallHandler): Observableany { console.log('Before...'); const now = Date.now(); return next .handle() .pipe( tap(() = console.log(`After... ${Date.now() - now}ms`)), ); } }  [hint]\nNestInterceptor의 T는 Observable의 타입, R은 Observable에 의해 래핑된 값의 타입을 가리킨다.\n  [Notice]\ninterceptor도 controller, provider, guard 등과 마찬가지로, 생성자를 통해 의존성을 주입할 수 있다.\n handle()이 RxJS Observable을 리턴하기 때문에, 스트림을 가공하기 위해 어떠한 오퍼레이터를 사용할지에 대해 많은 선택지를 갖고있다. 위의 예제에서는, tap() 오퍼레이터를 사용하여 observable stream의 정상적 혹은 예외적인 종료시 익명 logging 함수를 실행하였다. 그렇지 않은 경우 response cycle에 방해가 된다.\nBinding interceptors interceptor를 세팅하기 위해서는 @UseInterceptors() 데코리어터를 사용한다. pipe, gaurd와 마찬가지로 interceptor도 controller-scope, method-scope, global-scope 일 수 있다.\n// cats.controller.ts  @UseInterceptors(LoggingInterceptor) export class CatsController {} 위의 예제에서 CatsController에 정의된 각각의 route handler는 LoggingInterceptor를 사용한다. 누군가 GET /cats 엔드포인트를 호출하면, standard ouput에서 아래의 output을 보게 될것이다.\nBefore... After... 1ms LoggingInterceptor 인스턴스가 아닌, LoggingInterceptor 타입을 전달하여 프레임워크가 의존성 주입을 하도록 하였는데, pipe, guard, exception filter와 마찬가지로 인스턴스를 직접 전달할 수도 있다.\n// cats.controllers.ts  @UseInterceptors(new LoggingInterceptor()) export class CatsController {} 앞서 말했듯, 위의 구조에서 해당 controller에 정의된 모든 handler에 interceptor가 붙는다. 단일 method로 interceptor를 제한하고 싶다면 데코레이터를 method level로 적용하면 된다.global interceptor를 사용하기 위해서는 useGlobalInterceptors() method를 사용한다.\nconst app = await NestFactory.create(AppModule); app.useGlobalInterceptors(new LoggingInterceptor()); global interceptor는 애플리케이션 전체를 통해 모든 controller와 route handler에 사용된다. 이 경우 의존성 주입을 통한 것은 아니기때문에, 이를 해결하기 위해서는 module에 직접 interceptor를 세팅한다.\n// app.module.ts  import { Module } from '@nestjs/common'; import { APP_INTERCEPTOR } from '@nestjs/core'; @Module({ providers: [ { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor, }, ], }) export class AppModule {} Response mapping 우리는 이미 handle() method가 Observable을 리턴하는것을 알고 있다. 이 스트림은 route handler로부터 반환된 값을 포함하고 있어서, RxJS map() 오퍼레이터를 사용해 쉽게 변형 가능하다.\n [warning]\nresponse mapping 특성은 library-specific strategy에서는 동작하지 않는다.\n TransformInterceptor를 만들어보자. 이는 각각의 response를 가볍게 수정하여 프로세스를 보여준다. 이것은 RxJS의 map() 오퍼레이터를 사용하여 response 오브젝트를 새로운 오브젝트의 data 프로퍼티에 할당하고, 그 새로운 오브젝트를 클라이언트에 리턴한다.\n// transform.interceptor.ts  import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common'; import { Observable } from 'rxjs'; import { map } from 'rxjs/operators'; export interface ResponseT { data: T; } @Injectable() export class TransformInterceptorT implements NestInterceptorT, ResponseT { intercept(context: ExecutionContext, next: CallHandler): ObservableResponseT { return next.handle().pipe(map(data = ({ data }))); } }  [hint]\nintercept() method는 동기 혹은 비동기일 수 있다.\n 위의 구조에서 GET /cats 엔드포인트가 호출되면, response는 아래와 같은 형태가 될 것이다.\n{ \"data\": [] } interceptor는 애플리케이션 전체에 걸쳐 요구사항에 대한 재사용 가능한 해결책을 만들수 있다는 것에서 큰 가치를 가진다. 예를 들어, null 값에 대해 항상 ‘'(빈 string 값)으로 변환하고 싶다고 생각해보자. 우리는 단 한줄의 코드를 전역 interceptor에 사용하여 각각의 handler에 적용할 수 있다.\nimport { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common'; import { Observable } from 'rxjs'; import { map } from 'rxjs/operators'; @Injectable() export class ExcludeNullInterceptor implements NestInterceptor { intercept(context: ExecutionContext, next: CallHandler): Observableany { return next .handle() .pipe(map(value = value === null ? '' : value )); } } Exception mapping 또 다른 흥미로운 사용사례는 RxJS의 catchError() 오퍼레이터를 사용한 예외를 override 하는 것이다.\n// errors.interceptor.ts  import { Injectable, NestInterceptor, ExecutionContext, BadGatewayException, CallHandler, } from '@nestjs/common'; import { Observable, throwError } from 'rxjs'; import { catchError } from 'rxjs/operators'; @Injectable() export class ErrorsInterceptor implements NestInterceptor { intercept(context: ExecutionContext, next: CallHandler): Observableany { return next .handle() .pipe( catchError(err = throwError(new BadGatewayException())), ); } } Stream overriding 가끔 handler의 호출을 완전히 막고 대신해서 다른 값을 리턴해야 하는 경우가 있다. 하나의 명확한 예로 response time을 개선하기 위해 캐시를 구현하는 것이다. 캐시로부터 값을 리턴하는 간단한 cache interceptor를 살펴보자. 실제로는, TTL, cache invalidation, cache size 등등 여러가지 변수를 고려해야 하지만, 이번에는 무시하기로 한다.\n// cache.interceptor.ts  import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common'; import { Observable, of } from 'rxjs'; @Injectable() export class CacheInterceptor implements NestInterceptor { intercept(context: ExecutionContext, next: CallHandler): Observableany { const isCached = true; if (isCached) { return of([]); } return next.handle(); } } 위의 예에서는 isCahced와 리턴값 []를 하드코딩 하였다. 여기서 주요 포인트는 RxJS의 of() 오퍼레이터로 새로운 스트림이 리턴되고, route handler는 호출되지 않았다. 누군가 CacheInterceptor를 사용하는 엔드포인트를 호출하면 하드코딩된 빈 배열이 즉시 response 된다. 제네릭한 솔루션을 만들기 위해, Reflector를 사용하거나 커스텀 데코레이터를 만들 수 있다. Reflector는 Guards챕터에 잘 설명되어 있다.\nMore operators RxJS 오퍼레이터를 사용해 스트림을 조작할 수 있다는 것은 많은 기능을 가져온다. 또 다른 사용사례를 생각해보자. route request에 timeout을 설정하고 싶다고 생각해보자. 특정 시간동안 response를 반환하지 못하면, 대신 에러를 반환할 것이다.\n// timeout.interceptor.ts  import { Injectable, NestInterceptor, ExecutionContext, CallHandler, RequestTimeoutException } from '@nestjs/common'; import { Observable, throwError, TimeoutError } from 'rxjs'; import { catchError, timeout } from 'rxjs/operators'; @Injectable() export class TimeoutInterceptor implements NestInterceptor { intercept(context: ExecutionContext, next: CallHandler): Observableany { return next.handle().pipe( timeout(5000), catchError(err = { if (err instanceof TimeoutError) { return throwError(new RequestTimeoutException()); } return throwError(err); }), ); }; }; 5초가 지나면, request 프로세스는 종료된다. 또한 RequestTimeoutException을 throw 하기전 커스텀 로직을 추가할 수도 있다.\n",
+  "wordCount" : "1122",
+  "inLanguage": "en",
+  "datePublished": "2021-05-14T13:51:10+09:00",
+  "dateModified": "2021-05-14T13:51:10+09:00",
+  "author":{
+    "@type": "Person",
+    "name": "icecat471"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://icecat471.github.io/devlog/post/nestjs/interceptors/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "icecat471's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://icecat471.github.io/devlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://icecat471.github.io/devlog/" accesskey="h" title="icecat471&#39;s Devlog (Alt + H)">icecat471&#39;s Devlog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
+    <h1 class="post-title">
+      [NestJS] (공식문서 번역) Interceptors
+    </h1>
+    <div class="post-meta">May 14, 2021&nbsp;·&nbsp;6 min&nbsp;·&nbsp;icecat471
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#interceptors" aria-label="Interceptors">Interceptors</a><ul>
+                        
+                <li>
+                    <a href="#interceptors-1" aria-label="Interceptors">Interceptors</a></li>
+                <li>
+                    <a href="#basics" aria-label="Basics">Basics</a></li>
+                <li>
+                    <a href="#execution-context" aria-label="Execution context">Execution context</a></li>
+                <li>
+                    <a href="#call-handler" aria-label="Call handler">Call handler</a></li>
+                <li>
+                    <a href="#aspect-interception" aria-label="Aspect interception">Aspect interception</a></li>
+                <li>
+                    <a href="#binding-interceptors" aria-label="Binding interceptors">Binding interceptors</a></li>
+                <li>
+                    <a href="#response-mapping" aria-label="Response mapping">Response mapping</a></li>
+                <li>
+                    <a href="#exception-mapping" aria-label="Exception mapping">Exception mapping</a></li>
+                <li>
+                    <a href="#stream-overriding" aria-label="Stream overriding">Stream overriding</a></li>
+                <li>
+                    <a href="#more-operators" aria-label="More operators">More operators</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>NestJS 공식문서 번역 겸 공부하는 글 입니다.<br>
+의역 및 오역이 있을 수 있습니다.<br>
+<a href="https://docs.nestjs.com/interceptors">https://docs.nestjs.com/interceptors</a></p>
+<h1 id="interceptors">Interceptors<a hidden class="anchor" aria-hidden="true" href="#interceptors">#</a></h1>
+<h2 id="interceptors-1">Interceptors<a hidden class="anchor" aria-hidden="true" href="#interceptors-1">#</a></h2>
+<p>interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.</p>
+<p><img loading="lazy" src="../../../img/nestjs/interceptor01.png" alt="interceptors"  />
+</p>
+<p>interceptor는 <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">Aspect Oriented Programming(AOP)</a>에서 영감을 받은 여러가지 기능을 갖고 있다.</p>
+<ul>
+<li>method 수행 전/후 추가 로직을 bind</li>
+<li>함수로부터 반환된 값을 변형</li>
+<li>함수로부터 throw된 예외를 변형</li>
+<li>기본 함수를 확장</li>
+<li>특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)</li>
+</ul>
+<h2 id="basics">Basics<a hidden class="anchor" aria-hidden="true" href="#basics">#</a></h2>
+<p>각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다. 첫번째는 ExecutionContext 인스턴스(guards에서 받는것과 같음)이다. ExecutionContext는 ArgumentsHost를 상속받았다. ArgumentsHost는 exception filter 챕터에서 이미 보았으며, 거기서 ArgumentsHost는 original handler로 가는 인자들의 wrapper이며, 애플리케이션 타입에 따라 다른 종류의 인자 배열을 포함하고 있음을 보았다. 좀 더 자세한 내용은 <a href="https://docs.nestjs.com/exception-filters#arguments-host">exception filters</a> 챕터에서 볼 수 있다.</p>
+<h2 id="execution-context">Execution context<a hidden class="anchor" aria-hidden="true" href="#execution-context">#</a></h2>
+<p>ExecutionContext는 ArgumentsHost를 상속받아 몇개의 helper method를 추가하였다. 이 helper method는 현재 실행중인 프로세스에 몇가지 추가 세부사항을 제공한다. 이 세부사항들은 controller, method, execution context를 가로질러 작동할 수 있는 제네릭 interceptor를 구축하는데 도움을 준다. ExecutionContext에 대해 더 알고 싶으면 <a href="https://docs.nestjs.com/fundamentals/execution-context">여기</a>에서 확인하자.</p>
+<h2 id="call-handler">Call handler<a hidden class="anchor" aria-hidden="true" href="#call-handler">#</a></h2>
+<p>두번째 인자는 CallHandler이다. CallHandler 인터페이스는 handle() method를 구현한다. handle() method는 특정 시점에서 route handler method를 실행하기 위해 사용된다. 만약 intercept() mehotd에서 handle() method를 호출하지 않으면 route handler method도 실행되지 않는다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>이러한 접근법은 intercept() method가 효과적으로 request/response 스트림을 래핑하게 한다. 결과적으로, 최종 route handler 앞/뒤로 custom logic을 구현할 수 있다. intercept() method 내에서 handle()을 호출하기전에 코드를 작성 할 수 있지만, 그 후에는 어떻게 영향을 줄 수 있을까? handle() method는 Observable을 리턴하기때문에, 우리는 RxJS 오퍼레이터를 사용하여 추후에도 response를 가공할 수 있다. AOP 용어를 사용하면, handle()을 호출하여 route handler를 실행하는 것은 <a href="https://en.wikipedia.org/wiki/Pointcut">Pointcut</a>이라고 부르며, 이것은 우리의 추가 로직이 삽입되는 지점을 가리킨다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>예를 들어, POST /cats로 들어오는 request를 생각해보자. 이 request는 CatsController에 정의된 create() handler를 목적지로 지정하고 있다. 도중에 handle() method를 호출하지 않는 interceptor가 호출되었다면, create() method는 실행되지 않을 것이다. handle() method가 호출되면 create() handler는 실행될 것이다. 그리고 response 스트림을 Observable로 받아, 추가적인 오퍼레이션을 수행하고 최종 결과를 caller에게 리턴할 수 있다.</p>
+<h2 id="aspect-interception">Aspect interception<a hidden class="anchor" aria-hidden="true" href="#aspect-interception">#</a></h2>
+<p>첫번째 이용사례는 사용자 상호작용을 로깅하기 위해 interceptor를 사용한 것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// logging.interceptor.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">NestInterceptor</span><span class="p">,</span> <span class="nx">ExecutionContext</span><span class="p">,</span> <span class="nx">CallHandler</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">tap</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">LoggingInterceptor</span> <span class="kr">implements</span> <span class="nx">NestInterceptor</span> <span class="p">{</span>
+  <span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span> <span class="nx">Observable</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Before...&#39;</span><span class="p">);</span>
+
+    <span class="kr">const</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">next</span>
+      <span class="p">.</span><span class="nx">handle</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+        <span class="nx">tap</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`After... </span><span class="si">${</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">now</span><span class="si">}</span><span class="sb">ms`</span><span class="p">)),</span>
+      <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>[hint]<br>
+NestInterceptor&lt;T, R&gt; 의 T는 Observable<!-- raw HTML omitted -->의 타입, R은 Observable<!-- raw HTML omitted -->에 의해 래핑된 값의 타입을 가리킨다.</p>
+</blockquote>
+<blockquote>
+<p>[Notice]<br>
+interceptor도 controller, provider, guard 등과 마찬가지로, 생성자를 통해 의존성을 주입할 수 있다.</p>
+</blockquote>
+<p>handle()이 RxJS Observable을 리턴하기 때문에, 스트림을 가공하기 위해 어떠한 오퍼레이터를 사용할지에 대해 많은 선택지를 갖고있다. 위의 예제에서는, tap() 오퍼레이터를 사용하여 observable stream의 정상적 혹은 예외적인 종료시 익명 logging 함수를 실행하였다. 그렇지 않은 경우 response cycle에 방해가 된다.</p>
+<h2 id="binding-interceptors">Binding interceptors<a hidden class="anchor" aria-hidden="true" href="#binding-interceptors">#</a></h2>
+<p>interceptor를 세팅하기 위해서는 @UseInterceptors() 데코리어터를 사용한다. pipe, gaurd와 마찬가지로 interceptor도 controller-scope, method-scope, global-scope 일 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
+</span><span class="c1"></span>
+<span class="kd">@UseInterceptors</span><span class="p">(</span><span class="nx">LoggingInterceptor</span><span class="p">)</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsController</span> <span class="p">{}</span>
+</code></pre></div><p>위의 예제에서 CatsController에 정의된 각각의 route handler는 LoggingInterceptor를 사용한다. 누군가 GET /cats 엔드포인트를 호출하면, standard ouput에서 아래의 output을 보게 될것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Before...
+After... 1ms
+</code></pre></div><p>LoggingInterceptor 인스턴스가 아닌, LoggingInterceptor 타입을 전달하여 프레임워크가 의존성 주입을 하도록 하였는데, pipe, guard, exception filter와 마찬가지로 인스턴스를 직접 전달할 수도 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controllers.ts
+</span><span class="c1"></span>
+<span class="kd">@UseInterceptors</span><span class="p">(</span><span class="k">new</span> <span class="nx">LoggingInterceptor</span><span class="p">())</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsController</span> <span class="p">{}</span>
+</code></pre></div><p>앞서 말했듯, 위의 구조에서 해당 controller에 정의된 모든 handler에 interceptor가 붙는다. 단일 method로 interceptor를 제한하고 싶다면 데코레이터를 method level로 적용하면 된다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>global interceptor를 사용하기 위해서는 useGlobalInterceptors() method를 사용한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalInterceptors</span><span class="p">(</span><span class="k">new</span> <span class="nx">LoggingInterceptor</span><span class="p">());</span>
+</code></pre></div><p>global interceptor는 애플리케이션 전체를 통해 모든 controller와 route handler에 사용된다. 이 경우 의존성 주입을 통한 것은 아니기때문에, 이를 해결하기 위해서는 module에 직접 interceptor를 세팅한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">APP_INTERCEPTOR</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">provide</span>: <span class="kt">APP_INTERCEPTOR</span><span class="p">,</span>
+      <span class="nx">useClass</span>: <span class="kt">LoggingInterceptor</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><h2 id="response-mapping">Response mapping<a hidden class="anchor" aria-hidden="true" href="#response-mapping">#</a></h2>
+<p>우리는 이미 handle() method가 Observable을 리턴하는것을 알고 있다. 이 스트림은 route handler로부터 반환된 값을 포함하고 있어서, RxJS map() 오퍼레이터를 사용해 쉽게 변형 가능하다.</p>
+<blockquote>
+<p>[warning]<br>
+response mapping 특성은 library-specific strategy에서는 동작하지 않는다.</p>
+</blockquote>
+<p>TransformInterceptor를 만들어보자. 이는 각각의 response를 가볍게 수정하여 프로세스를 보여준다. 이것은 RxJS의 map() 오퍼레이터를 사용하여 response 오브젝트를 새로운 오브젝트의 data 프로퍼티에 할당하고, 그 새로운 오브젝트를 클라이언트에 리턴한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// transform.interceptor.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">NestInterceptor</span><span class="p">,</span> <span class="nx">ExecutionContext</span><span class="p">,</span> <span class="nx">CallHandler</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">map</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">Response</span><span class="p">&lt;</span><span class="nt">T</span><span class="p">&gt;</span> <span class="p">{</span>
+  <span class="nx">data</span>: <span class="kt">T</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TransformInterceptor</span><span class="p">&lt;</span><span class="nt">T</span><span class="p">&gt;</span> <span class="kr">implements</span> <span class="nx">NestInterceptor</span><span class="p">&lt;</span><span class="nt">T</span><span class="err">,</span> <span class="na">Response</span><span class="err">&lt;</span><span class="na">T</span><span class="p">&gt;</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span> <span class="nx">Observable</span><span class="p">&lt;</span><span class="nt">Response</span><span class="err">&lt;</span><span class="na">T</span><span class="p">&gt;</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">data</span> <span class="p">})));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>[hint]<br>
+intercept() method는 동기 혹은 비동기일 수 있다.</p>
+</blockquote>
+<p>위의 구조에서 GET /cats 엔드포인트가 호출되면, response는 아래와 같은 형태가 될 것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div><p>interceptor는 애플리케이션 전체에 걸쳐 요구사항에 대한 재사용 가능한 해결책을 만들수 있다는 것에서 큰 가치를 가진다. 예를 들어, null 값에 대해 항상 &lsquo;'(빈 string 값)으로 변환하고 싶다고 생각해보자. 우리는 단 한줄의 코드를 전역 interceptor에 사용하여 각각의 handler에 적용할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">NestInterceptor</span><span class="p">,</span> <span class="nx">ExecutionContext</span><span class="p">,</span> <span class="nx">CallHandler</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">map</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">ExcludeNullInterceptor</span> <span class="kr">implements</span> <span class="nx">NestInterceptor</span> <span class="p">{</span>
+  <span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span> <span class="nx">Observable</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">next</span>
+      <span class="p">.</span><span class="nx">handle</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">value</span> <span class="o">=&gt;</span> <span class="nx">value</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">?</span> <span class="s1">&#39;&#39;</span> <span class="o">:</span> <span class="nx">value</span> <span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="exception-mapping">Exception mapping<a hidden class="anchor" aria-hidden="true" href="#exception-mapping">#</a></h2>
+<p>또 다른 흥미로운 사용사례는 RxJS의 catchError() 오퍼레이터를 사용한 예외를 override 하는 것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// errors.interceptor.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">Injectable</span><span class="p">,</span>
+  <span class="nx">NestInterceptor</span><span class="p">,</span>
+  <span class="nx">ExecutionContext</span><span class="p">,</span>
+  <span class="nx">BadGatewayException</span><span class="p">,</span>
+  <span class="nx">CallHandler</span><span class="p">,</span>
+<span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span><span class="p">,</span> <span class="nx">throwError</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">catchError</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">ErrorsInterceptor</span> <span class="kr">implements</span> <span class="nx">NestInterceptor</span> <span class="p">{</span>
+  <span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span> <span class="nx">Observable</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">next</span>
+      <span class="p">.</span><span class="nx">handle</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+        <span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">throwError</span><span class="p">(</span><span class="k">new</span> <span class="nx">BadGatewayException</span><span class="p">())),</span>
+      <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="stream-overriding">Stream overriding<a hidden class="anchor" aria-hidden="true" href="#stream-overriding">#</a></h2>
+<p>가끔 handler의 호출을 완전히 막고 대신해서 다른 값을 리턴해야 하는 경우가 있다. 하나의 명확한 예로 response time을 개선하기 위해 캐시를 구현하는 것이다. 캐시로부터 값을 리턴하는 간단한 cache interceptor를 살펴보자. 실제로는, TTL, cache invalidation, cache size 등등 여러가지 변수를 고려해야 하지만, 이번에는 무시하기로 한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cache.interceptor.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">NestInterceptor</span><span class="p">,</span> <span class="nx">ExecutionContext</span><span class="p">,</span> <span class="nx">CallHandler</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span><span class="p">,</span> <span class="k">of</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CacheInterceptor</span> <span class="kr">implements</span> <span class="nx">NestInterceptor</span> <span class="p">{</span>
+  <span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span> <span class="nx">Observable</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">isCached</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isCached</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">of</span><span class="p">([]);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>위의 예에서는 isCahced와 리턴값 []를 하드코딩 하였다. 여기서 주요 포인트는 RxJS의 of() 오퍼레이터로 새로운 스트림이 리턴되고, route handler는 호출되지 않았다. 누군가 CacheInterceptor를 사용하는 엔드포인트를 호출하면 하드코딩된 빈 배열이 즉시 response 된다. 제네릭한 솔루션을 만들기 위해, Reflector를 사용하거나 커스텀 데코레이터를 만들 수 있다. Reflector는 <a href="https://docs.nestjs.com/guards">Guards</a>챕터에 잘 설명되어 있다.</p>
+<h2 id="more-operators">More operators<a hidden class="anchor" aria-hidden="true" href="#more-operators">#</a></h2>
+<p>RxJS 오퍼레이터를 사용해 스트림을 조작할 수 있다는 것은 많은 기능을 가져온다. 또 다른 사용사례를 생각해보자. route request에 timeout을 설정하고 싶다고 생각해보자. 특정 시간동안 response를 반환하지 못하면, 대신 에러를 반환할 것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// timeout.interceptor.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">NestInterceptor</span><span class="p">,</span> <span class="nx">ExecutionContext</span><span class="p">,</span> <span class="nx">CallHandler</span><span class="p">,</span> <span class="nx">RequestTimeoutException</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span><span class="p">,</span> <span class="nx">throwError</span><span class="p">,</span> <span class="nx">TimeoutError</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">catchError</span><span class="p">,</span> <span class="nx">timeout</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">TimeoutInterceptor</span> <span class="kr">implements</span> <span class="nx">NestInterceptor</span> <span class="p">{</span>
+  <span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span>: <span class="kt">ExecutionContext</span><span class="p">,</span> <span class="nx">next</span>: <span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span> <span class="nx">Observable</span><span class="p">&lt;</span><span class="nt">any</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span>
+      <span class="nx">timeout</span><span class="p">(</span><span class="mi">5000</span><span class="p">),</span>
+      <span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="k">instanceof</span> <span class="nx">TimeoutError</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">throwError</span><span class="p">(</span><span class="k">new</span> <span class="nx">RequestTimeoutException</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">throwError</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="p">}),</span>
+    <span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div><p>5초가 지나면, request 프로세스는 종료된다. 또한 RequestTimeoutException을 throw 하기전 커스텀 로직을 추가할 수도 있다.</p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/backend/">backend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://icecat471.github.io/devlog/post/nestjs/guards/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>[NestJS] (공식문서 번역) Guards</span>
+  </a>
+</nav>
+
+  </footer><script src="https://utteranc.es/client.js"
+        repo="icecat471/devlog"
+        issue-term="pathname"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        container.appendChild(copybutton);
+    });
+</script>
+</body>
+
+</html>

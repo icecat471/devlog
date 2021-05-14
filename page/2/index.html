@@ -151,6 +151,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[NestJS] (공식문서 번역) Middleware</h2>
+  </header>
+  <section class="entry-content">
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/middleware
+Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
+Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.
+ 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다....</p>
+  </section>
+  <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Middleware" href="https://icecat471.github.io/devlog/post/nestjs/middleware/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[NestJS] (공식문서 번역) Modules</h2>
   </header>
   <section class="entry-content">
@@ -206,20 +222,6 @@ routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤�
   </section>
   <footer class="entry-footer">May 1, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Controllers" href="https://icecat471.github.io/devlog/post/nestjs/controllers/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>맥북 Tomcat9 설치</h2>
-  </header>
-  <section class="entry-content">
-    <p>톰캣 홈페이지
-http://tomcat.apache.org/
-받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)
-# 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R &lt;userName&gt; /Library/Tomcat # 실행권한 추가 $ sudo chmod &#43;x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인...</p>
-  </section>
-  <footer class="entry-footer">April 30, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to 맥북 Tomcat9 설치" href="https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

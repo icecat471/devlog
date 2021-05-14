@@ -9,7 +9,21 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 12 May 2021 22:45:30 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 May 2021 13:51:10 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NestJS] (공식문서 번역) Interceptors</title>
+      <link>https://icecat471.github.io/devlog/post/nestjs/interceptors/</link>
+      <pubDate>Fri, 14 May 2021 13:51:10 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/nestjs/interceptors/</guid>
+      <description>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/interceptors
+Interceptors Interceptors interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.
+interceptor는 Aspect Oriented Programming(AOP)에서 영감을 받은 여러가지 기능을 갖고 있다.
+ method 수행 전/후 추가 로직을 bind 함수로부터 반환된 값을 변형 함수로부터 throw된 예외를 변형 기본 함수를 확장 특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)  Basics 각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다.</description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Guards</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/guards/</link>
