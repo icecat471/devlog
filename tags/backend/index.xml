@@ -9,7 +9,20 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 14 May 2021 13:51:10 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 May 2021 23:34:04 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/backend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NestJS] (공식문서 번역) Custom decorators</title>
+      <link>https://icecat471.github.io/devlog/post/nestjs/custom_decorators/</link>
+      <pubDate>Fri, 14 May 2021 23:34:04 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/nestjs/custom_decorators/</guid>
+      <description>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/custom-decorators
+Custom decorators Custom router decorators Nest는 데코레이터라는 특성을 중심으로 만들어졌다. 데코레이터는 많은 프로그래밍 언어에서 알려진 개념이지만, 자바스크립트 세계에서는 상대적으로 새로운 편이다. 데코레이터가 어떻게 작동하는지 더 잘 이해하기 위해서는, 이 글을 읽어보는 것을 추천한다. 아래는 간단한 정의이다.
+ ES2016 데코레이터는 함수를 반환하고, 인자로 target, name, property, description을 받을 수 있는 expression이다. decorate하려고하는 것 맨 위에 @를 접두어로 붙인 데코레이터를 위치함으로써 데코레이터를 적용할 수 있다.</description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Interceptors</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/interceptors/</link>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[NestJS] (공식문서 번역) Custom decorators | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="NestJS, backend" />
+<meta name="description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/custom-decorators
+Custom decorators Custom router decorators Nest는 데코레이터라는 특성을 중심으로 만들어졌다. 데코레이터는 많은 프로그래밍 언어에서 알려진 개념이지만, 자바스크립트 세계에서는 상대적으로 새로운 편이다. 데코레이터가 어떻게 작동하는지 더 잘 이해하기 위해서는, 이 글을 읽어보는 것을 추천한다. 아래는 간단한 정의이다.
+ ES2016 데코레이터는 함수를 반환하고, 인자로 target, name, property, description을 받을 수 있는 expression이다. decorate하려고하는 것 맨 위에 @를 접두어로 붙인 데코레이터를 위치함으로써 데코레이터를 적용할 수 있다.">
+<meta name="author" content="icecat471">
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/custom_decorators/" />
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://icecat471.github.io/devlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta property="og:title" content="[NestJS] (공식문서 번역) Custom decorators" />
+<meta property="og:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/custom-decorators
+Custom decorators Custom router decorators Nest는 데코레이터라는 특성을 중심으로 만들어졌다. 데코레이터는 많은 프로그래밍 언어에서 알려진 개념이지만, 자바스크립트 세계에서는 상대적으로 새로운 편이다. 데코레이터가 어떻게 작동하는지 더 잘 이해하기 위해서는, 이 글을 읽어보는 것을 추천한다. 아래는 간단한 정의이다.
+ ES2016 데코레이터는 함수를 반환하고, 인자로 target, name, property, description을 받을 수 있는 expression이다. decorate하려고하는 것 맨 위에 @를 접두어로 붙인 데코레이터를 위치함으로써 데코레이터를 적용할 수 있다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/nestjs/custom_decorators/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-14T23:34:04&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-14T23:34:04&#43;09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="[NestJS] (공식문서 번역) Custom decorators"/>
+<meta name="twitter:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/custom-decorators
+Custom decorators Custom router decorators Nest는 데코레이터라는 특성을 중심으로 만들어졌다. 데코레이터는 많은 프로그래밍 언어에서 알려진 개념이지만, 자바스크립트 세계에서는 상대적으로 새로운 편이다. 데코레이터가 어떻게 작동하는지 더 잘 이해하기 위해서는, 이 글을 읽어보는 것을 추천한다. 아래는 간단한 정의이다.
+ ES2016 데코레이터는 함수를 반환하고, 인자로 target, name, property, description을 받을 수 있는 expression이다. decorate하려고하는 것 맨 위에 @를 접두어로 붙인 데코레이터를 위치함으로써 데코레이터를 적용할 수 있다."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[NestJS] (공식문서 번역) Custom decorators",
+      "item": "https://icecat471.github.io/devlog/post/nestjs/custom_decorators/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[NestJS] (공식문서 번역) Custom decorators",
+  "name": "[NestJS] (공식문서 번역) Custom decorators",
+  "description": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/custom-decorators\nCustom decorators Custom router decorators Nest는 데코레이터라는 특성을 중심으로 만들어졌다. 데코레이터는 많은 프로그래밍 언어에서 알려진 개념이지만, 자바스크립트 세계에서는 상대적으로 새로운 편이다. 데코레이터가 어떻게 작동하는지 더 잘 이해하기 위해서는, 이 글을 읽어보는 것을 추천한다. 아래는 간단한 정의이다.\n ES2016 데코레이터는 함수를 반환하고, 인자로 target, name, property, description을 받을 수 있는 expression이다. decorate하려고하는 것 맨 위에 @를 접두어로 붙인 데코레이터를 위치함으로써 데코레이터를 적용할 수 있다.",
+  "keywords": [
+    "NestJS", "backend"
+  ],
+  "articleBody": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/custom-decorators\nCustom decorators Custom router decorators Nest는 데코레이터라는 특성을 중심으로 만들어졌다. 데코레이터는 많은 프로그래밍 언어에서 알려진 개념이지만, 자바스크립트 세계에서는 상대적으로 새로운 편이다. 데코레이터가 어떻게 작동하는지 더 잘 이해하기 위해서는, 이 글을 읽어보는 것을 추천한다. 아래는 간단한 정의이다.\n ES2016 데코레이터는 함수를 반환하고, 인자로 target, name, property, description을 받을 수 있는 expression이다. decorate하려고하는 것 맨 위에 @를 접두어로 붙인 데코레이터를 위치함으로써 데코레이터를 적용할 수 있다. 데코레이터는 class, method, property에 대해 정의 할 수 있다.\n Param decorator Nest는 HTTP route handler와 함께 사용할 수 있는 유용한 param decorator들을 제공한다. 아래는 제공되는 데코레이터들과 그들이 나타내는 express(또는 fastify) 오브젝트이다.\n         @Request(), @Req() req   @Response(), @Res() res   @Next() next   @Session req.session   @Param(param?: string) req.params / req.params[param]   @Body(param?: string req.body / req.body[param]   @Query(param?: string req.query / req.query[param]   @Headers(param?: string) req.headers / req.headers[params]   @Ip() req.ip   @HostParam() req.hosts    node.js에서 request 오브젝트에 프로퍼티를 추가하는 것은 일반적이다. 그리고 각각의 route handler에서 아래와 같이 추가된 프로퍼티를 추출해 사용할 수 있다.\nconst user = req.user; 코드를 더욱 가독성있고 투명하게 만들기 위해, @User() 데코레이터를 만들고 재사용하는 방법을 사용할 수 있다.\n// user.decorator.ts  import { createParamDecorator, ExecutionContext } from '@nestjs/common'; export const User = createParamDecorator( (data: unknown, ctx: ExecutionContext) = { const request = ctx.switchToHttp().getRequest(); return request.user; }, ); 그 후, 필요한 곳 어디든 간단하게 사용할 수 있다.\n@Get() async findOne(@User() user: UserEntity) { console.log(user); } Passing data 데코레이터가 특정 조건에 의존하여 작동한다면, data 파라미터를 데코레이터의 팩토리 함수에 넘겨줄 수 있다. 하나의 사례는 request 오브젝트로부터 프로퍼티를 추출하는 데코레이터이다. 예를 들어, 우리의 authentication layer가 request를 validation하고 user entity를 request 오브젝트에 추가하였다고 가정해보자. user entity는 아래와 같은 형태이다.\n{ \"id\": 101, \"firstName\": \"Alan\", \"lastName\": \"Turing\", \"email\": \"alan@email.com\", \"roles\": [\"admin\"] } 프로퍼티명을 key값으로 받아서 값이 존재한다면 리턴해주는 데코레이터를 정의해보자(user object가 만들어지지 않았거나 해당 프로퍼티가 존재하지 않으면 undefined를 리턴할 것이다).\n// user.decorator.ts  import { createParamDecorator, ExecutionContext } from '@nestjs/common'; export const User = createParamDecorator( (data: string, ctx: ExecutionContext) = { const request = ctx.switchToHttp().getRequest(); const user = request.user; return data ? user?.[data] : user; }, ); 그리고 controller에서 @User() 데코레이터를 통해 아래와 같이 특정 프로퍼티에 접근 가능하다.\n@Get() async findOne(@User('firstName') firstName: string) { console.log(`Hello ${firstName}`); } 다른 key값을 사용하여 다른 프로퍼티에도 접근 가능하다. user 오브젝트가 deep하거나 복잡한 경우 이 방식이 좀 더 가독성 있는 request handler 구현을 도와줄 것이다.\n [hint]\n타입스크립트 사용자를 위해, createParamDecorator()는 제네릭임을 주의하라. 이것은 type safety를 강화할 수 있음을 의미한다(예를 들어, createParamDecorator((data, ctx) = …)). 또는 팩토리 함수에 특정 파라미터의 타입을 지정할 수도 있다(createParamDecorator((data: string, ctx) = …)). 만약 둘 다 생략한다면, data의 타입은 any 이다.\n Working with pipes Nest는 @Body(), @Query(), @Param() 처럼 내장된 데코레이터들과 같은 방식으로 custom param decorator를 취급한다. 이것은 custom annotated parameter에도 pipe가 작동한다는 것을 의미한다. 또한, pipe를 직접 custom decorator에 적용할 수도 있다.\n@Get() async findOne( @User(new ValidationPipe({ validateCustomDecorators: true })) user: UserEntity, ) { console.log(user); }  [hint]\nvalidateCustomDecorators 옵션이 true임에 주목하자. ValidationPipe는 기본적으로 커스텀 데코레이터로 주석된 인자는 validation하지 않는다.\n Decorator composition Nest는 multiple decorator의 구성을 도와주는 helper method를 제공한다. 예를 들어, authentication에 관련된 모든 데코레이터를 하나의 데코레이터로 합치고 싶다고 가정해보자. 이것은 아래의 예제처럼 구성할 수 있다.\n// auth.decorator.ts  import { applyDecorators } from '@nestjs/common'; export function Auth(...roles: Role[]) { return applyDecorators( SetMetadata('roles', roles), UseGuards(AuthGuard, RolesGuard), ApiBearerAuth(), ApiUnauthorizedResponse({ description: 'Unauthorized' }), ); } 그리고 이 커스텀 @Auth() 데코레이터를 사용하면 된다.\n@Get('users') @Auth('admin') findAllUsers() {} 하나의 데코레이터 선언으로 4개의 데코레이터가 적용되었다.\n [warning]\n@nestjs/swagger 패키지에서 제공되는 @ApiHideProperty() 데코레이터는 applyDecorators() method에서 작동하지 않으며, 하나로 묶을 수 없다.\n ",
+  "wordCount" : "555",
+  "inLanguage": "en",
+  "datePublished": "2021-05-14T23:34:04+09:00",
+  "dateModified": "2021-05-14T23:34:04+09:00",
+  "author":{
+    "@type": "Person",
+    "name": "icecat471"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://icecat471.github.io/devlog/post/nestjs/custom_decorators/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "icecat471's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://icecat471.github.io/devlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://icecat471.github.io/devlog/" accesskey="h" title="icecat471&#39;s Devlog (Alt + H)">icecat471&#39;s Devlog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
+    <h1 class="post-title">
+      [NestJS] (공식문서 번역) Custom decorators
+    </h1>
+    <div class="post-meta">May 14, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;icecat471
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#custom-decorators" aria-label="Custom decorators">Custom decorators</a><ul>
+                        
+                <li>
+                    <a href="#custom-router-decorators" aria-label="Custom router decorators">Custom router decorators</a></li>
+                <li>
+                    <a href="#param-decorator" aria-label="Param decorator">Param decorator</a></li>
+                <li>
+                    <a href="#passing-data" aria-label="Passing data">Passing data</a></li>
+                <li>
+                    <a href="#working-with-pipes" aria-label="Working with pipes">Working with pipes</a></li>
+                <li>
+                    <a href="#decorator-composition" aria-label="Decorator composition">Decorator composition</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>NestJS 공식문서 번역 겸 공부하는 글 입니다.<br>
+의역 및 오역이 있을 수 있습니다.<br>
+<a href="https://docs.nestjs.com/custom-decorators">https://docs.nestjs.com/custom-decorators</a></p>
+<h1 id="custom-decorators">Custom decorators<a hidden class="anchor" aria-hidden="true" href="#custom-decorators">#</a></h1>
+<h2 id="custom-router-decorators">Custom router decorators<a hidden class="anchor" aria-hidden="true" href="#custom-router-decorators">#</a></h2>
+<p>Nest는 데코레이터라는 특성을 중심으로 만들어졌다. 데코레이터는 많은 프로그래밍 언어에서 알려진 개념이지만, 자바스크립트 세계에서는 상대적으로 새로운 편이다. 데코레이터가 어떻게 작동하는지 더 잘 이해하기 위해서는, <a href="https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841">이 글</a>을 읽어보는 것을 추천한다. 아래는 간단한 정의이다.</p>
+<blockquote>
+<p>ES2016 데코레이터는 함수를 반환하고, 인자로 target, name, property, description을 받을 수 있는 expression이다. decorate하려고하는 것 맨 위에 @를 접두어로 붙인 데코레이터를 위치함으로써 데코레이터를 적용할 수 있다. 데코레이터는 class, method, property에 대해 정의 할 수 있다.</p>
+</blockquote>
+<h2 id="param-decorator">Param decorator<a hidden class="anchor" aria-hidden="true" href="#param-decorator">#</a></h2>
+<p>Nest는 HTTP route handler와 함께 사용할 수 있는 유용한 param decorator들을 제공한다. 아래는 제공되는 데코레이터들과 그들이 나타내는 express(또는 fastify) 오브젝트이다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Request(), @Req()</td>
+<td>req</td>
+</tr>
+<tr>
+<td>@Response(), @Res()</td>
+<td>res</td>
+</tr>
+<tr>
+<td>@Next()</td>
+<td>next</td>
+</tr>
+<tr>
+<td>@Session</td>
+<td>req.session</td>
+</tr>
+<tr>
+<td>@Param(param?: string)</td>
+<td>req.params / req.params[param]</td>
+</tr>
+<tr>
+<td>@Body(param?: string</td>
+<td>req.body / req.body[param]</td>
+</tr>
+<tr>
+<td>@Query(param?: string</td>
+<td>req.query / req.query[param]</td>
+</tr>
+<tr>
+<td>@Headers(param?: string)</td>
+<td>req.headers / req.headers[params]</td>
+</tr>
+<tr>
+<td>@Ip()</td>
+<td>req.ip</td>
+</tr>
+<tr>
+<td>@HostParam()</td>
+<td>req.hosts</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>node.js에서 request 오브젝트에 프로퍼티를 추가하는 것은 일반적이다. 그리고 각각의 route handler에서 아래와 같이 추가된 프로퍼티를 추출해 사용할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">;</span>
+</code></pre></div><p>코드를 더욱 가독성있고 투명하게 만들기 위해, @User() 데코레이터를 만들고 재사용하는 방법을 사용할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// user.decorator.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">createParamDecorator</span><span class="p">,</span> <span class="nx">ExecutionContext</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">createParamDecorator</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">data</span>: <span class="kt">unknown</span><span class="p">,</span> <span class="nx">ctx</span>: <span class="kt">ExecutionContext</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">().</span><span class="nx">getRequest</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">request</span><span class="p">.</span><span class="nx">user</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">);</span>
+</code></pre></div><p>그 후, 필요한 곳 어디든 간단하게 사용할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
+<span class="kr">async</span> <span class="nx">findOne</span><span class="p">(</span><span class="kd">@User</span><span class="p">()</span> <span class="nx">user</span>: <span class="kt">UserEntity</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="passing-data">Passing data<a hidden class="anchor" aria-hidden="true" href="#passing-data">#</a></h2>
+<p>데코레이터가 특정 조건에 의존하여 작동한다면, data 파라미터를 데코레이터의 팩토리 함수에 넘겨줄 수 있다. 하나의 사례는 request 오브젝트로부터 프로퍼티를 추출하는 데코레이터이다. 예를 들어, 우리의 <a href="https://docs.nestjs.com/techniques/authentication#implementing-passport-strategies">authentication layer</a>가 request를 validation하고 user entity를 request 오브젝트에 추가하였다고 가정해보자. user entity는 아래와 같은 형태이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+  <span class="nt">&#34;firstName&#34;</span><span class="p">:</span> <span class="s2">&#34;Alan&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;lastName&#34;</span><span class="p">:</span> <span class="s2">&#34;Turing&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;alan@email.com&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;roles&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;admin&#34;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div><p>프로퍼티명을 key값으로 받아서 값이 존재한다면 리턴해주는 데코레이터를 정의해보자(user object가 만들어지지 않았거나 해당 프로퍼티가 존재하지 않으면 undefined를 리턴할 것이다).</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// user.decorator.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">createParamDecorator</span><span class="p">,</span> <span class="nx">ExecutionContext</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">createParamDecorator</span><span class="p">(</span>
+  <span class="p">(</span><span class="nx">data</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">ctx</span>: <span class="kt">ExecutionContext</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">().</span><span class="nx">getRequest</span><span class="p">();</span>
+    <span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">user</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nx">data</span> <span class="o">?</span> <span class="nx">user</span><span class="o">?</span><span class="p">.[</span><span class="nx">data</span><span class="p">]</span> <span class="o">:</span> <span class="nx">user</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">);</span>
+</code></pre></div><p>그리고 controller에서 @User() 데코레이터를 통해 아래와 같이 특정 프로퍼티에 접근 가능하다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
+<span class="kr">async</span> <span class="nx">findOne</span><span class="p">(</span><span class="kd">@User</span><span class="p">(</span><span class="s1">&#39;firstName&#39;</span><span class="p">)</span> <span class="nx">firstName</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hello </span><span class="si">${</span><span class="nx">firstName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>다른 key값을 사용하여 다른 프로퍼티에도 접근 가능하다. user 오브젝트가 deep하거나 복잡한 경우 이 방식이 좀 더 가독성 있는 request handler 구현을 도와줄 것이다.</p>
+<blockquote>
+<p>[hint]<br>
+타입스크립트 사용자를 위해, createParamDecorator<!-- raw HTML omitted -->()는 제네릭임을 주의하라. 이것은 type safety를 강화할 수 있음을 의미한다(예를 들어, createParamDecorator<!-- raw HTML omitted -->((data, ctx) =&gt; &hellip;)). 또는 팩토리 함수에 특정 파라미터의 타입을 지정할 수도 있다(createParamDecorator((data: string, ctx) =&gt; &hellip;)). 만약 둘 다 생략한다면, data의 타입은 any 이다.</p>
+</blockquote>
+<h2 id="working-with-pipes">Working with pipes<a hidden class="anchor" aria-hidden="true" href="#working-with-pipes">#</a></h2>
+<p>Nest는 @Body(), @Query(), @Param() 처럼 내장된 데코레이터들과 같은 방식으로 custom param decorator를 취급한다. 이것은 custom annotated parameter에도 pipe가 작동한다는 것을 의미한다. 또한, pipe를 직접 custom decorator에 적용할 수도 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
+<span class="kr">async</span> <span class="nx">findOne</span><span class="p">(</span>
+  <span class="kd">@User</span><span class="p">(</span><span class="k">new</span> <span class="nx">ValidationPipe</span><span class="p">({</span> <span class="nx">validateCustomDecorators</span>: <span class="kt">true</span> <span class="p">}))</span>
+  <span class="nx">user</span>: <span class="kt">UserEntity</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>[hint]<br>
+validateCustomDecorators 옵션이 true임에 주목하자. ValidationPipe는 기본적으로 커스텀 데코레이터로 주석된 인자는 validation하지 않는다.</p>
+</blockquote>
+<h2 id="decorator-composition">Decorator composition<a hidden class="anchor" aria-hidden="true" href="#decorator-composition">#</a></h2>
+<p>Nest는 multiple decorator의 구성을 도와주는 helper method를 제공한다. 예를 들어, authentication에 관련된 모든 데코레이터를 하나의 데코레이터로 합치고 싶다고 가정해보자. 이것은 아래의 예제처럼 구성할 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// auth.decorator.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">applyDecorators</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kd">function</span> <span class="nx">Auth</span><span class="p">(...</span><span class="nx">roles</span>: <span class="kt">Role</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">applyDecorators</span><span class="p">(</span>
+    <span class="nx">SetMetadata</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="nx">roles</span><span class="p">),</span>
+    <span class="nx">UseGuards</span><span class="p">(</span><span class="nx">AuthGuard</span><span class="p">,</span> <span class="nx">RolesGuard</span><span class="p">),</span>
+    <span class="nx">ApiBearerAuth</span><span class="p">(),</span>
+    <span class="nx">ApiUnauthorizedResponse</span><span class="p">({</span> <span class="nx">description</span><span class="o">:</span> <span class="s1">&#39;Unauthorized&#39;</span> <span class="p">}),</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>그리고 이 커스텀 @Auth() 데코레이터를 사용하면 된다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">)</span>
+<span class="kd">@Auth</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+<span class="nx">findAllUsers() {</span><span class="p">}</span>
+</code></pre></div><p>하나의 데코레이터 선언으로 4개의 데코레이터가 적용되었다.</p>
+<blockquote>
+<p>[warning]<br>
+@nestjs/swagger 패키지에서 제공되는 @ApiHideProperty() 데코레이터는 applyDecorators() method에서 작동하지 않으며, 하나로 묶을 수 없다.</p>
+</blockquote>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/backend/">backend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://icecat471.github.io/devlog/post/nestjs/interceptors/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>[NestJS] (공식문서 번역) Interceptors</span>
+  </a>
+</nav>
+
+  </footer><script src="https://utteranc.es/client.js"
+        repo="icecat471/devlog"
+        issue-term="pathname"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        container.appendChild(copybutton);
+    });
+</script>
+</body>
+
+</html>
