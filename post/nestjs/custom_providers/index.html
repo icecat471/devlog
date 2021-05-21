@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>[NestJS] (공식문서 번역) Custom Providers | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="NestJS, backend" />
+<meta name="description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/fundamentals/custom-providers
+Custom providers 앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 생성자 기반 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.
+DI fundamentals 의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 inversion of control(IoC) 테크닉이다.">
+<meta name="author" content="icecat471">
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/custom_providers/" />
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://icecat471.github.io/devlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta property="og:title" content="[NestJS] (공식문서 번역) Custom Providers" />
+<meta property="og:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/fundamentals/custom-providers
+Custom providers 앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 생성자 기반 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.
+DI fundamentals 의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 inversion of control(IoC) 테크닉이다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/nestjs/custom_providers/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-21T19:05:20&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-21T19:05:20&#43;09:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="[NestJS] (공식문서 번역) Custom Providers"/>
+<meta name="twitter:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/fundamentals/custom-providers
+Custom providers 앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 생성자 기반 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.
+DI fundamentals 의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 inversion of control(IoC) 테크닉이다."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[NestJS] (공식문서 번역) Custom Providers",
+      "item": "https://icecat471.github.io/devlog/post/nestjs/custom_providers/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[NestJS] (공식문서 번역) Custom Providers",
+  "name": "[NestJS] (공식문서 번역) Custom Providers",
+  "description": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/fundamentals/custom-providers\nCustom providers 앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 생성자 기반 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.\nDI fundamentals 의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 inversion of control(IoC) 테크닉이다.",
+  "keywords": [
+    "NestJS", "backend"
+  ],
+  "articleBody": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/fundamentals/custom-providers\nCustom providers 앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 생성자 기반 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.\nDI fundamentals 의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 inversion of control(IoC) 테크닉이다. Providers 챕터에서 보았던 아래의 예제를 살펴보자.첫번째로, 우리는 provider를 정의하였다. @Injectable() 데코레이터는 CatsService 클래스를 provider로 마크해준다.\n// cats.service.ts  import { Injectable } from '@nestjs/common'; import { Cat } from './interfaces/cat.interface'; @Injectable() export class CatsService { private readonly cats: Cat[] = []; findAll(): Cat[] { return this.cats; } } 그 후 우리는 Nest에 controller 클래스에 provider를 주입해달라고 요청한다.\n// cats.controller.ts  import { Controller, Get } from '@nestjs/common'; import { CatsService } from './cats.service'; import { Cat } from './interfaces/cat.interface'; @Controller('cats') export class CatsController { constructor(private catsService: CatsService) {} @Get() async findAll(): PromiseCat[] { return this.catsService.findAll(); } } 마지막으로, provider를 Nest IoC container에 등록한다.\n// app.module.ts  import { Module } from '@nestjs/common'; import { CatsController } from './cats/cats.controller'; import { CatsService } from './cats/cats.service'; @Module({ controllers: [CatsController], providers: [CatsService], }) export class AppModule {} 이러한 일을 위해 정확히 어떤 일이 일어나는 것일까? 프로세스는 3가지 주요 스텝으로 나누어진다.\n  cats.service.ts 에서 @Injectable() 데코레이터가 CatsService 클래스를 Nest IoC container에게 관리되는 클래스로 선언한다.\n  cats.controllerts 에서 CatsController는 생성자 주입을 통해 CatsService에 대한 의존성을 선언한다.\n  app.module.ts 에서 CatsService 토큰을 cats.service.ts의 CatsService와 연관 짓는다. 아래에서 정확히 이러한 관련짓기(registration이라고도 부른다)가 어떻게 일어나는지 알아볼 것이다.\n  Nest IoC container가 CatsController를 인스턴스화 할 때, 의존성이 있는지를 확인한다. CatsService 의존성을 찾아서 CatsService 클래스를 리턴한다. 싱글톤(기본값이 싱글톤이다)이라고 가정해보자. Nest는 그 후 CatsService 인스턴스를 만들고, 캐싱을 하고, 그것을 리턴할 것이다 또는 이미 캐싱되어있는 경우 존재하는 인스턴스를 리턴할 것이다.이 설명은 요점을 설명하기 위해 조금 간단하게 한것이다. 중요한 점은 이러한 의존성 관련 코드를 분석하는 것이 매우 정교하며, 애플리케이션이 실행될 때 일어난다는 것이다. 한가지 중요한 특성은 의존성 분석(또는 의존성 그래프를 만드는 것)은 transitive 라는 것이다. 위의 예제에서, CatsService 스스로가 의존성을 가진다면, 이러한 점도 해결될 것이다. 의존성 그래프는 의존성이 올바른 순서(기본적으로 bottom-up)로 resolve 됨을 보장한다. 이러한 메커니즘은 개발자들이 복잡한 의존성 그래프를 직접 다루지 않아도 되게 해준다.\nStandard providers @Module() 데코레이터를 더 자세히 살펴보자. app.module 에서\n@Module({ controllers: [CatsController], providers: [CatsService], }) providers 프로퍼티는 provider 배열(class명)을 받는다. 사실, providers: [CatsService] 는 좀 더 복잡한 문법을 간단하게 작성한 것이다.\nproviders: [ { provide: CatsService, useClass: CatsService, }, ]; 더 명확한 위의 구조를 보았으므로, registration 프로세스에 대해 이해할 수 있다. CatsService 토큰과 CatsService 클래스를 관계짓고 있다. 단축문법이 토큰과 클래스의이름이 같은 경우에 더 편리하다.\nCustom providers standard providers에 제공하는 것 이외에 요구사항은 어떤식으로 처리될까? 여기에 일부의 예시가 있다.\n Nest 인스턴스화(또는 캐싱된 인스턴스의 리턴) 대신 커스텀 인스턴스를 만들고 싶을 때. second dependency를 통해 존재하는 클래스를 재사용 하고 싶을 때. 테스트를 위해 클래스를 mock 버전으로 오버라이드 하고 싶을 때.  Nest는 위와 같은 상황을 처리할 수 있도록 custom provider를 정의할 수 있게 해준다.\nValue providers: useValue useValue 문법은 외부 라이브러리로부터 Nest container로 상수값을 주입하거나, mock object로 실제 구현을 대체할 때 유용하다. Nest에게 테스트를 위해 mock CatsService를 사용하게 해보자.\nimport { CatsService } from './cats.service'; const mockCatsService = { /* mock implementation ... */ }; @Module({ imports: [CatsModule], providers: [ { provide: CatsService, useValue: mockCatsService, }, ], }) export class AppModule {} 위의 예제에서, CatsService 토큰은 mockCatsService mock object로 resolve 한다. useValue는 이 경우, CatsService 클래스를 대체하기 위해 같은 인터페이스를 가진 리터럴 오브젝트를 필요로 한다. 타입스크립트의 structural typing을 통해 호환되는 인터페이스를 가진 오브젝트(리터럴 오브젝트나 new를 통한 클래스 인스턴스화)를 사용할 수 있다.\nNon-class-based provider tokens 지금까지 클래스명을 provider 토큰으로 사용하였다. 이것은 constructor based injection을 사용한 표준 패턴이다. 때때로, 문자열이나 심볼을 DI 토큰으로 사용하고 싶을 것이다.\nimport { connection } from './connection'; @Module({ providers: [ { provide: 'CONNECTION', useValue: connection, }, ], }) export class AppModule {} 위의 예제에서, ‘CONNECTION’이라는 문자열을 외부 파일로부터 import한 이미 존재하는 connection 오브젝트와 관련짓기 위해 사용하였다.\n [notice]\n토큰 값으로 문자열 외에도 자바스크립트 symbol이나 타입스크립트 enum을 사용할 수 있다.\n standard constructor based injection 패턴으로 provide를 주입하는 방법에 대해서는 이미 보았다. 이 패턴은 의존성이 클래스명으로 선언되어야 한다. ‘CONNECTION’ custom provider는 string-value 토큰을 사용한다. 어떻게 이러한 provider를 주입하는지 알아보자. @Inject() 데코레이터를 사용하여 인자로 token을 받는다.\n@Injectable() export class CatsRepository { constructor(@Inject('CONNECTION') connection: Connection) {} } 위 예제에서 설명의 목적으로 직접 ‘CONNECTION’이라는 문자열을 사용했지만, 더 클린한 코드 구조를 위해서는 토큰을 분리된 파일(예를 들어, constants.ts)에 정의하는 것이 좋다. symbol이나 enum으로 정의하고 필요한 곳에 import 하여 사용하면 된다.\nClass providers: useClass useClass 문법은 토큰이 resolve되어야 할 곳에 동적으로 클래스가 결정되게 해준다. 예를 들어, ConfigService 클래스가 있다고 가정하자. 현재의 환경에 따라, Nest가 다른 configuration service를 구현하기를 원한다.\nconst configServiceProvider = { provide: ConfigService, useClass: process.env.NODE_ENV === 'development' ? DevelopmentConfigService : ProductionConfigService, }; @Module({ providers: [configServiceProvider], }) export class AppModule {} 위 코드를 자세히 살펴보자. 우리는 configServiceProvider를 literal object로 먼저 선언하고, 이 것을 module 데코레이터의 providers 프로퍼티에 넣어주었다. 코드 구조적으로는 조금 다르지만, 기능적으로는 이 챕터에서 위에서 봤던 예제들과 같다.또한, ConfigService 클래스명을 토큰으로 사용했다. ConfigService에 의존하는 클래스라면, Nest는 제공된 클래스(DevelopmentConfigService 또는 ProductionConfigService)의 인스턴스를 주입할 것이다.\nFactory providers: useFactory useFactory 문법은 provider를 동적으로 만들 수 있게 해준다. 실제 provider는 factory 함수에 의해 리턴되는 값이다. factory 함수는 필요에 따라 간단하거나 복잡해질 수 있다. 간단한 factory는 다른 provider에 의존하지 않을 것이며, 복잡한 factory는 자신을 다른 provider에 주입할 수도 있다. 후자의 경우, factory provider 문법은 한쌍의 관련된 메커니즘을 갖는다.\n factory 함수는 (optional) argument를 수용할 수 있다. (optional) inject property는 Nest가 인스턴스화 프로세스중 전달할 argument나 provider의 배열을 수용할 수 있다. 두 리스트는 서로 연관되어 있다. Nest는 inject list를 factory 함수의 인자로 같은 순서로 전달한다.  const connectionFactory = { provide: 'CONNECTION', useFactory: (optionsProvider: OptionsProvider) = { const options = optionsProvider.get(); return new DatabaseConnection(options); }, inject: [OptionsProvider], }; @Module({ providers: [connectionFactory], }) export class AppModule {} Alias providers: useExisting useExisting 문법은 존재하는 provider에 가명을 만들 수 있게 해준다. 이것은 같은 provider에 접근 방법을 두가지로 만들어준다. 아래의 예제에서, 문자열 토큰 ‘AliasedLoggerService’는 LoggerService의 가명이다. 두가지 다른 의존성을 가지고 있다고 가정할 수 있다. 두 의존성이 singleton scope라면, 같은 인스턴스로 resolve 될 것이다.\n@Injectable() class LoggerService { /* implementation details */ } const loggerAliasProvider = { provide: 'AliasedLoggerService', useExisting: LoggerService, }; @Module({ providers: [LoggerService, loggerAliasProvider], }) export class AppModule {} Non-service based providers provider가 종종 service를 지원하는 반면, 사용법에 제한은 없다. provider는 어떠한 값도 지원한다. 예를 들어, provider는 현재 환경에 의존하는 configuration object의 배열일수도 있다.\nconst configFactory = { provide: 'CONFIG', useFactory: () = { return process.env.NODE_ENV === 'development' ? devConfig : prodConfig; }, }; @Module({ providers: [configFactory], }) export class AppModule {} Export custom provider 다른 provider와 마찬가지로 custom provider의 scope도 provider가 선언된 module에 의존한다. 이를 다른 module에서 사용하려면 export되어야 한다. custom provider를 export하기 위해서는 provider object나 토큰을 사용하면 된다.\nconst connectionFactory = { provide: 'CONNECTION', useFactory: (optionsProvider: OptionsProvider) = { const options = optionsProvider.get(); return new DatabaseConnection(options); }, inject: [OptionsProvider], }; @Module({ providers: [connectionFactory], exports: ['CONNECTION'], }) export class AppModule {} const connectionFactory = { provide: 'CONNECTION', useFactory: (optionsProvider: OptionsProvider) = { const options = optionsProvider.get(); return new DatabaseConnection(options); }, inject: [OptionsProvider], }; @Module({ providers: [connectionFactory], exports: [connectionFactory], }) export class AppModule {} ",
+  "wordCount" : "1146",
+  "inLanguage": "en",
+  "datePublished": "2021-05-21T19:05:20+09:00",
+  "dateModified": "2021-05-21T19:05:20+09:00",
+  "author":{
+    "@type": "Person",
+    "name": "icecat471"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://icecat471.github.io/devlog/post/nestjs/custom_providers/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "icecat471's Devlog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://icecat471.github.io/devlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://icecat471.github.io/devlog/" accesskey="h" title="icecat471&#39;s Devlog (Alt + H)">icecat471&#39;s Devlog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://icecat471.github.io/devlog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
+    <h1 class="post-title">
+      [NestJS] (공식문서 번역) Custom Providers
+    </h1>
+    <div class="post-meta">May 21, 2021&nbsp;·&nbsp;6 min&nbsp;·&nbsp;icecat471
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#custom-providers" aria-label="Custom providers">Custom providers</a><ul>
+                        
+                <li>
+                    <a href="#di-fundamentals" aria-label="DI fundamentals">DI fundamentals</a></li>
+                <li>
+                    <a href="#standard-providers" aria-label="Standard providers">Standard providers</a></li>
+                <li>
+                    <a href="#custom-providers-1" aria-label="Custom providers">Custom providers</a></li>
+                <li>
+                    <a href="#value-providers-usevalue" aria-label="Value providers: useValue">Value providers: useValue</a></li>
+                <li>
+                    <a href="#non-class-based-provider-tokens" aria-label="Non-class-based provider tokens">Non-class-based provider tokens</a></li>
+                <li>
+                    <a href="#class-providers-useclass" aria-label="Class providers: useClass">Class providers: useClass</a></li>
+                <li>
+                    <a href="#factory-providers-usefactory" aria-label="Factory providers: useFactory">Factory providers: useFactory</a></li>
+                <li>
+                    <a href="#alias-providers-useexisting" aria-label="Alias providers: useExisting">Alias providers: useExisting</a></li>
+                <li>
+                    <a href="#non-service-based-providers" aria-label="Non-service based providers">Non-service based providers</a></li>
+                <li>
+                    <a href="#export-custom-provider" aria-label="Export custom provider">Export custom provider</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>NestJS 공식문서 번역 겸 공부하는 글 입니다.<br>
+의역 및 오역이 있을 수 있습니다.<br>
+<a href="https://docs.nestjs.com/fundamentals/custom-providers">https://docs.nestjs.com/fundamentals/custom-providers</a></p>
+<h1 id="custom-providers">Custom providers<a hidden class="anchor" aria-hidden="true" href="#custom-providers">#</a></h1>
+<p>앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 <a href="https://docs.nestjs.com/providers#dependency-injection">생성자 기반</a> 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.</p>
+<h2 id="di-fundamentals">DI fundamentals<a hidden class="anchor" aria-hidden="true" href="#di-fundamentals">#</a></h2>
+<p>의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 <a href="https://en.wikipedia.org/wiki/Inversion_of_control">inversion of control(IoC)</a> 테크닉이다. <a href="https://docs.nestjs.com/providers">Providers 챕터</a>에서 보았던 아래의 예제를 살펴보자.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>첫번째로, 우리는 provider를 정의하였다. @Injectable() 데코레이터는 CatsService 클래스를 provider로 마크해준다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.service.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Cat</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./interfaces/cat.interface&#39;</span><span class="p">;</span>
+
+<span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsService</span> <span class="p">{</span>
+  <span class="kr">private</span> <span class="kr">readonly</span> <span class="nx">cats</span>: <span class="kt">Cat</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="nx">findAll</span><span class="p">()</span><span class="o">:</span> <span class="nx">Cat</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">cats</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>그 후 우리는 Nest에 controller 클래스에 provider를 주입해달라고 요청한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Cat</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./interfaces/cat.interface&#39;</span><span class="p">;</span>
+
+<span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsController</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">catsService</span>: <span class="kt">CatsService</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="kd">@Get</span><span class="p">()</span>
+  <span class="kr">async</span> <span class="nx">findAll</span><span class="p">()</span><span class="o">:</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">Cat</span><span class="err">[]</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>마지막으로, provider를 Nest IoC container에 등록한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+</span><span class="c1"></span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsController</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.controller&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.service&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><p>이러한 일을 위해 정확히 어떤 일이 일어나는 것일까? 프로세스는 3가지 주요 스텝으로 나누어진다.</p>
+<ol>
+<li>
+<p>cats.service.ts 에서 @Injectable() 데코레이터가 CatsService 클래스를 Nest IoC container에게 관리되는 클래스로 선언한다.</p>
+</li>
+<li>
+<p>cats.controllerts 에서 CatsController는 생성자 주입을 통해 CatsService에 대한 의존성을 선언한다.</p>
+</li>
+<li>
+<p>app.module.ts 에서 CatsService 토큰을 cats.service.ts의 CatsService와 연관 짓는다. <a href="#standard-providers">아래에서</a> 정확히 이러한 관련짓기(registration이라고도 부른다)가 어떻게 일어나는지 알아볼 것이다.</p>
+</li>
+</ol>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>Nest IoC container가 CatsController를 인스턴스화 할 때, 의존성이 있는지를 확인한다. CatsService 의존성을 찾아서 CatsService 클래스를 리턴한다. 싱글톤(기본값이 싱글톤이다)이라고 가정해보자. Nest는 그 후 CatsService 인스턴스를 만들고, 캐싱을 하고, 그것을 리턴할 것이다 또는 이미 캐싱되어있는 경우 존재하는 인스턴스를 리턴할 것이다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>이 설명은 요점을 설명하기 위해 조금 간단하게 한것이다. 중요한 점은 이러한 의존성 관련 코드를 분석하는 것이 매우 정교하며, 애플리케이션이 실행될 때 일어난다는 것이다. 한가지 중요한 특성은 의존성 분석(또는 의존성 그래프를 만드는 것)은 transitive 라는 것이다. 위의 예제에서, CatsService 스스로가 의존성을 가진다면, 이러한 점도 해결될 것이다. 의존성 그래프는 의존성이 올바른 순서(기본적으로 bottom-up)로 resolve 됨을 보장한다. 이러한 메커니즘은 개발자들이 복잡한 의존성 그래프를 직접 다루지 않아도 되게 해준다.</p>
+<h2 id="standard-providers">Standard providers<a hidden class="anchor" aria-hidden="true" href="#standard-providers">#</a></h2>
+<p>@Module() 데코레이터를 더 자세히 살펴보자. app.module 에서</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">controllers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span>
+<span class="p">})</span>
+</code></pre></div><p>providers 프로퍼티는 provider 배열(class명)을 받는다. 사실, providers: [CatsService] 는 좀 더 복잡한 문법을 간단하게 작성한 것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="nx">providers</span><span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nx">provide</span>: <span class="kt">CatsService</span><span class="p">,</span>
+    <span class="nx">useClass</span>: <span class="kt">CatsService</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">];</span>
+</code></pre></div><p>더 명확한 위의 구조를 보았으므로, registration 프로세스에 대해 이해할 수 있다. CatsService 토큰과 CatsService 클래스를 관계짓고 있다. 단축문법이 토큰과 클래스의이름이 같은 경우에 더 편리하다.</p>
+<h2 id="custom-providers-1">Custom providers<a hidden class="anchor" aria-hidden="true" href="#custom-providers-1">#</a></h2>
+<p>standard providers에 제공하는 것 이외에 요구사항은 어떤식으로 처리될까? 여기에 일부의 예시가 있다.</p>
+<ul>
+<li>Nest 인스턴스화(또는 캐싱된 인스턴스의 리턴) 대신 커스텀 인스턴스를 만들고 싶을 때.</li>
+<li>second dependency를 통해 존재하는 클래스를 재사용 하고 싶을 때.</li>
+<li>테스트를 위해 클래스를 mock 버전으로 오버라이드 하고 싶을 때.</li>
+</ul>
+<p>Nest는 위와 같은 상황을 처리할 수 있도록 custom provider를 정의할 수 있게 해준다.</p>
+<h2 id="value-providers-usevalue">Value providers: useValue<a hidden class="anchor" aria-hidden="true" href="#value-providers-usevalue">#</a></h2>
+<p>useValue 문법은 외부 라이브러리로부터 Nest container로 상수값을 주입하거나, mock object로 실제 구현을 대체할 때 유용하다. Nest에게 테스트를 위해 mock CatsService를 사용하게 해보자.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsService</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">mockCatsService</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="cm">/* mock implementation
+</span><span class="cm">  ...
+</span><span class="cm">  */</span>
+<span class="p">};</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">provide</span>: <span class="kt">CatsService</span><span class="p">,</span>
+      <span class="nx">useValue</span>: <span class="kt">mockCatsService</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><p>위의 예제에서, CatsService 토큰은 mockCatsService mock object로 resolve 한다. useValue는 이 경우, CatsService 클래스를 대체하기 위해 같은 인터페이스를 가진 리터럴 오브젝트를 필요로 한다. 타입스크립트의 <a href="https://www.typescriptlang.org/docs/handbook/type-compatibility.html">structural typing</a>을 통해 호환되는 인터페이스를 가진 오브젝트(리터럴 오브젝트나 new를 통한 클래스 인스턴스화)를 사용할 수 있다.</p>
+<h2 id="non-class-based-provider-tokens">Non-class-based provider tokens<a hidden class="anchor" aria-hidden="true" href="#non-class-based-provider-tokens">#</a></h2>
+<p>지금까지 클래스명을 provider 토큰으로 사용하였다. 이것은 <a href="https://docs.nestjs.com/providers#dependency-injection">constructor based injection</a>을 사용한 표준 패턴이다. 때때로, 문자열이나 심볼을 DI 토큰으로 사용하고 싶을 것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">connection</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./connection&#39;</span><span class="p">;</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">provide</span><span class="o">:</span> <span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span>
+      <span class="nx">useValue</span>: <span class="kt">connection</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><p>위의 예제에서, &lsquo;CONNECTION&rsquo;이라는 문자열을 외부 파일로부터 import한 이미 존재하는 connection 오브젝트와 관련짓기 위해 사용하였다.</p>
+<blockquote>
+<p>[notice]<br>
+토큰 값으로 문자열 외에도 자바스크립트 symbol이나 타입스크립트 enum을 사용할 수 있다.</p>
+</blockquote>
+<p>standard constructor based injection 패턴으로 provide를 주입하는 방법에 대해서는 이미 보았다. 이 패턴은 의존성이 클래스명으로 선언되어야 한다. &lsquo;CONNECTION&rsquo; custom provider는 string-value 토큰을 사용한다. 어떻게 이러한 provider를 주입하는지 알아보자. @Inject() 데코레이터를 사용하여 인자로 token을 받는다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsRepository</span> <span class="p">{</span>
+  <span class="kr">constructor</span><span class="p">(</span><span class="kd">@Inject</span><span class="p">(</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">)</span> <span class="nx">connection</span>: <span class="kt">Connection</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div><p>위 예제에서 설명의 목적으로 직접 &lsquo;CONNECTION&rsquo;이라는 문자열을 사용했지만, 더 클린한 코드 구조를 위해서는 토큰을 분리된 파일(예를 들어, constants.ts)에 정의하는 것이 좋다. symbol이나 enum으로 정의하고 필요한 곳에 import 하여 사용하면 된다.</p>
+<h2 id="class-providers-useclass">Class providers: useClass<a hidden class="anchor" aria-hidden="true" href="#class-providers-useclass">#</a></h2>
+<p>useClass 문법은 토큰이 resolve되어야 할 곳에 동적으로 클래스가 결정되게 해준다. 예를 들어, ConfigService 클래스가 있다고 가정하자. 현재의 환경에 따라, Nest가 다른 configuration service를 구현하기를 원한다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">configServiceProvider</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">provide</span>: <span class="kt">ConfigService</span><span class="p">,</span>
+  <span class="nx">useClass</span>:
+    <span class="kt">process.env.NODE_ENV</span> <span class="o">===</span> <span class="s1">&#39;development&#39;</span>
+      <span class="o">?</span> <span class="nx">DevelopmentConfigService</span>
+      : <span class="kt">ProductionConfigService</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">configServiceProvider</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><p>위 코드를 자세히 살펴보자. 우리는 configServiceProvider를 literal object로 먼저 선언하고, 이 것을 module 데코레이터의 providers 프로퍼티에 넣어주었다. 코드 구조적으로는 조금 다르지만, 기능적으로는 이 챕터에서 위에서 봤던 예제들과 같다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>또한, ConfigService 클래스명을 토큰으로 사용했다. ConfigService에 의존하는 클래스라면, Nest는 제공된 클래스(DevelopmentConfigService 또는 ProductionConfigService)의 인스턴스를 주입할 것이다.</p>
+<h2 id="factory-providers-usefactory">Factory providers: useFactory<a hidden class="anchor" aria-hidden="true" href="#factory-providers-usefactory">#</a></h2>
+<p>useFactory 문법은 provider를 동적으로 만들 수 있게 해준다. 실제 provider는 factory 함수에 의해 리턴되는 값이다. factory 함수는 필요에 따라 간단하거나 복잡해질 수 있다. 간단한 factory는 다른 provider에 의존하지 않을 것이며, 복잡한 factory는 자신을 다른 provider에 주입할 수도 있다. 후자의 경우, factory provider 문법은 한쌍의 관련된 메커니즘을 갖는다.</p>
+<ol>
+<li>factory 함수는 (optional) argument를 수용할 수 있다.</li>
+<li>(optional) inject property는 Nest가 인스턴스화 프로세스중 전달할 argument나 provider의 배열을 수용할 수 있다. 두 리스트는 서로 연관되어 있다. Nest는 inject list를 factory 함수의 인자로 같은 순서로 전달한다.</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">connectionFactory</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">provide</span><span class="o">:</span> <span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span>
+  <span class="nx">useFactory</span><span class="o">:</span> <span class="p">(</span><span class="nx">optionsProvider</span>: <span class="kt">OptionsProvider</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">optionsProvider</span><span class="p">.</span><span class="kr">get</span><span class="p">();</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">inject</span><span class="o">:</span> <span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span>
+<span class="p">};</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><h2 id="alias-providers-useexisting">Alias providers: useExisting<a hidden class="anchor" aria-hidden="true" href="#alias-providers-useexisting">#</a></h2>
+<p>useExisting 문법은 존재하는 provider에 가명을 만들 수 있게 해준다. 이것은 같은 provider에 접근 방법을 두가지로 만들어준다. 아래의 예제에서, 문자열 토큰 &lsquo;AliasedLoggerService&rsquo;는 LoggerService의 가명이다. 두가지 다른 의존성을 가지고 있다고 가정할 수 있다. 두 의존성이 singleton scope라면, 같은 인스턴스로 resolve 될 것이다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Injectable</span><span class="p">()</span>
+<span class="kr">class</span> <span class="nx">LoggerService</span> <span class="p">{</span>
+  <span class="cm">/* implementation details */</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">loggerAliasProvider</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">provide</span><span class="o">:</span> <span class="s1">&#39;AliasedLoggerService&#39;</span><span class="p">,</span>
+  <span class="nx">useExisting</span>: <span class="kt">LoggerService</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">LoggerService</span><span class="p">,</span> <span class="nx">loggerAliasProvider</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><h2 id="non-service-based-providers">Non-service based providers<a hidden class="anchor" aria-hidden="true" href="#non-service-based-providers">#</a></h2>
+<p>provider가 종종 service를 지원하는 반면, 사용법에 제한은 없다. provider는 어떠한 값도 지원한다. 예를 들어, provider는 현재 환경에 의존하는 configuration object의 배열일수도 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">configFactory</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">provide</span><span class="o">:</span> <span class="s1">&#39;CONFIG&#39;</span><span class="p">,</span>
+  <span class="nx">useFactory</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="s1">&#39;development&#39;</span> <span class="o">?</span> <span class="nx">devConfig</span> : <span class="kt">prodConfig</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">configFactory</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><h2 id="export-custom-provider">Export custom provider<a hidden class="anchor" aria-hidden="true" href="#export-custom-provider">#</a></h2>
+<p>다른 provider와 마찬가지로 custom provider의 scope도 provider가 선언된 module에 의존한다. 이를 다른 module에서 사용하려면 export되어야 한다. custom provider를 export하기 위해서는 provider object나 토큰을 사용하면 된다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">connectionFactory</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">provide</span><span class="o">:</span> <span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span>
+  <span class="nx">useFactory</span><span class="o">:</span> <span class="p">(</span><span class="nx">optionsProvider</span>: <span class="kt">OptionsProvider</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">optionsProvider</span><span class="p">.</span><span class="kr">get</span><span class="p">();</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">inject</span><span class="o">:</span> <span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span>
+<span class="p">};</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span>
+  <span class="nx">exports</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">connectionFactory</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">provide</span><span class="o">:</span> <span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span>
+  <span class="nx">useFactory</span><span class="o">:</span> <span class="p">(</span><span class="nx">optionsProvider</span>: <span class="kt">OptionsProvider</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">optionsProvider</span><span class="p">.</span><span class="kr">get</span><span class="p">();</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">inject</span><span class="o">:</span> <span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span>
+<span class="p">};</span>
+
+<span class="kd">@Module</span><span class="p">({</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span>
+  <span class="nx">exports</span><span class="o">:</span> <span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/backend/">backend</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://icecat471.github.io/devlog/post/nestjs/custom_decorators/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>[NestJS] (공식문서 번역) Custom decorators</span>
+  </a>
+</nav>
+
+  </footer><script src="https://utteranc.es/client.js"
+        repo="icecat471/devlog"
+        issue-term="pathname"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        container.appendChild(copybutton);
+    });
+</script>
+</body>
+
+</html>

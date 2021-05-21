@@ -9,7 +9,20 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 14 May 2021 23:34:04 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 May 2021 19:05:20 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[NestJS] (공식문서 번역) Custom Providers</title>
+      <link>https://icecat471.github.io/devlog/post/nestjs/custom_providers/</link>
+      <pubDate>Fri, 21 May 2021 19:05:20 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/nestjs/custom_providers/</guid>
+      <description>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/fundamentals/custom-providers
+Custom providers 앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 생성자 기반 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.
+DI fundamentals 의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 inversion of control(IoC) 테크닉이다.</description>
+    </item>
+    
     <item>
       <title>[NestJS] (공식문서 번역) Custom decorators</title>
       <link>https://icecat471.github.io/devlog/post/nestjs/custom_decorators/</link>
