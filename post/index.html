@@ -155,6 +155,18 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[Go언어] 슬라이스에서 요소 삭제</h2>
+  </header>
+  <section class="entry-content">
+    <p>순서가 중요한 경우 package main import &#34;fmt&#34; func remove(slice []int, s int) []int { return append(slice[:s], slice[s&#43;1:]...) } func main() { var Slice1 = []int{1, 2, 3, 4, 5} fmt.Printf(&#34;slice1: %v\n&#34;, Slice1) Slice2 := remove(Slice1, 2) fmt.Printf(&#34;slice2: %v\n&#34;, Slice2) } 실행 결과
+slice1: [1 2 3 4 5] slice2: [1 2 4 5] 순서가 중요하지 않은 경우 package main import &#34;fmt&#34; func remove(s []int, i int) []int { s[i] = s[len(s)-1] return s[:len(s)-1] } func main() { var Slice1 = []int{1, 2, 3, 4, 5} fmt....</p>
+  </section>
+  <footer class="entry-footer">May 22, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Go언어] 슬라이스에서 요소 삭제" href="https://icecat471.github.io/devlog/post/golang/delete_item_in_slice/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[NestJS] (공식문서 번역) Custom Providers</h2>
   </header>
   <section class="entry-content">
@@ -212,22 +224,6 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
   </section>
   <footer class="entry-footer">May 12, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Guards" href="https://icecat471.github.io/devlog/post/nestjs/guards/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Pipe</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/pipes
-Pipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.
-pipe는 두가지 사용방법이 있다.
- transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다....</p>
-  </section>
-  <footer class="entry-footer">May 12, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Pipe" href="https://icecat471.github.io/devlog/post/nestjs/pipe/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

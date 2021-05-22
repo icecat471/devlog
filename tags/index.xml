@@ -9,7 +9,25 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 21 May 2021 19:05:20 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 May 2021 13:27:50 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>golang</title>
+      <link>https://icecat471.github.io/devlog/tags/golang/</link>
+      <pubDate>Sat, 22 May 2021 13:27:50 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slice</title>
+      <link>https://icecat471.github.io/devlog/tags/slice/</link>
+      <pubDate>Sat, 22 May 2021 13:27:50 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/slice/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>backend</title>
       <link>https://icecat471.github.io/devlog/tags/backend/</link>
@@ -187,15 +205,6 @@
       <pubDate>Wed, 21 Apr 2021 22:18:34 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://icecat471.github.io/devlog/tags/golang/</link>
-      <pubDate>Wed, 21 Apr 2021 22:18:34 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/tags/golang/</guid>
       <description></description>
     </item>
     
