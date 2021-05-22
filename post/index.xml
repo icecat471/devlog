@@ -12,10 +12,10 @@
     <lastBuildDate>Sat, 22 May 2021 13:27:50 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Go언어] 슬라이스에서 요소 삭제</title>
-      <link>https://icecat471.github.io/devlog/post/golang/delete_item_in_slice/</link>
+      <link>https://icecat471.github.io/devlog/post/golang/delete_item_from_slice/</link>
       <pubDate>Sat, 22 May 2021 13:27:50 +0900</pubDate>
       
-      <guid>https://icecat471.github.io/devlog/post/golang/delete_item_in_slice/</guid>
+      <guid>https://icecat471.github.io/devlog/post/golang/delete_item_from_slice/</guid>
       <description>순서가 중요한 경우 package main import &amp;#34;fmt&amp;#34; func remove(slice []int, s int) []int { return append(slice[:s], slice[s+1:]...) } func main() { var Slice1 = []int{1, 2, 3, 4, 5} fmt.Printf(&amp;#34;slice1: %v\n&amp;#34;, Slice1) Slice2 := remove(Slice1, 2) fmt.Printf(&amp;#34;slice2: %v\n&amp;#34;, Slice2) } 실행 결과
 slice1: [1 2 3 4 5] slice2: [1 2 4 5] 순서가 중요하지 않은 경우 package main import &amp;#34;fmt&amp;#34; func remove(s []int, i int) []int { s[i] = s[len(s)-1] return s[:len(s)-1] } func main() { var Slice1 = []int{1, 2, 3, 4, 5} fmt.</description>
     </item>
