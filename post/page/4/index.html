@@ -155,6 +155,17 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[Docker] 몽고db 컨테이너 설치</h2>
+  </header>
+  <section class="entry-content">
+    <p>docker로 mongoDB 설치 pull # 최신버전 받아오기 $ docker pull mongo run $ docker run -d \ # background 실행 --name mongo_db \ # container name -v /Users/docker/mongodb/data/db:/data/db \ # volume 설정 -p 27017:27017 \ # port 설정 mongo -auth 컨테이너 접속 $ docker exec -it mongo_db /bin/bash mongo db # mongo db 접속. 권한이 없는 상태라 바로 접속 됨. $ mongo # admin db 선택 &gt; use admin # admin 계정 생성 &gt; db....</p>
+  </section>
+  <footer class="entry-footer">April 28, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Docker] 몽고db 컨테이너 설치" href="https://icecat471.github.io/devlog/post/docker/install_mongo_db/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>ECDSA 알고리즘</h2>
   </header>
   <section class="entry-content">
@@ -213,19 +224,6 @@ Implementation의 자식을 Concrete Implementation 이라고 부름.  UML 다�
   </section>
   <footer class="entry-footer">April 19, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [디자인패턴] Bridge 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bridge/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Adapter 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Adapter Pattern 한 클래스의 인터페이스를 클라이언트에서 사용하고자하는 다른 인터페이스로 변환한다.어댑터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있다.코드 출처: https://refactoring.guru/design-patterns/adapter/go/example 윈도우에는 USB, 맥북에는 thunderbolt 포트가 있다.윈도우 PC에 thunderbolt포트를 연결하기 위해 adapter가 필요하다client.go
-package main import &#34;fmt&#34; type client struct { } func (c *client) insertLightningConnectorIntoComputer(com computer) { fmt.Println(&#34;Client inserts Lightning connector into computer.&#34;) com.insertIntoLightningPort() } computer.go
-package main type computer interface { insertIntoLightningPort() } mac....</p>
-  </section>
-  <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Adapter 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/adapter/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

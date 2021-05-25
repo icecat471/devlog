@@ -140,86 +140,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Pipe</h2>
+    <h2>[NestJS] (공식문서 번역) Controllers</h2>
   </header>
   <section class="entry-content">
     <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
 의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/pipes
-Pipe Pipe pipe는 @injectable() 데코레이터로 주석이 된 클래스이다. pipe는 PipeTransform 인터페이스를 구현해야 한다.
-pipe는 두가지 사용방법이 있다.
- transformation: input 데이터를 원하는 형태로 변환(예를 들면, string에서 int로). validation: input 데이터가 유효한지 확인하고, 유효하지 않은 경우 예외 발생.  두가지 경우 모두 controller route handler의 argument에 동작한다. Nest는 method가 수행되기전에 끼어들어, pipe가 argument를 먼저 받게 한다. transform이나 validation은 이때 동작한다....</p>
+https://docs.nestjs.com/controllers
+Controllers Controllers Controller는 들어오는 request를 핸들링하고 클라이언트에게 response를 반환하는 역할.
+routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.Routing 아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다....</p>
   </section>
-  <footer class="entry-footer">May 12, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Pipe" href="https://icecat471.github.io/devlog/post/nestjs/pipe/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Exception Filters</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/exception-filters
-Exception filters Exception filters Nest에는 핸들링 되지 않은 예외를 처리해주는 exception layer가 내장되어 있다. 코드에서 예외를 처리해주지 않았다면 이 layer에서 예외를 캐치하여 자동으로 유저친화적인 response를 전송한다.
-특히, 이것은 HttpException과 서브클래스들을 핸들링하는 global exception filter에 의해 수행된다. 예외가 인식되지 않을 때(HttpException과 그 서브클래스가 아닌 경우), exception filter는 자동으로 아래의 데이터를 JSON 형식으로 response한다.
-{ &#34;statusCode&#34;: 500, &#34;message&#34;: &#34;Internal server error&#34; } Throwing standard exceptions Nest는 @nestjs/common 패키지를 통해, HttpException class를 제공한다....</p>
-  </section>
-  <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;5 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Exception Filters" href="https://icecat471.github.io/devlog/post/nestjs/exception_filters/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Middleware</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/middleware
-Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
-Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.
- 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다....</p>
-  </section>
-  <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Middleware" href="https://icecat471.github.io/devlog/post/nestjs/middleware/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Modules</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/providers
-Modules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.
-각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다....</p>
-  </section>
-  <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;5 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Modules" href="https://icecat471.github.io/devlog/post/nestjs/modules/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Providers</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/providers
-Providers Providers provider는 Nest에서 가장 근본적인 개념이다. 대부분의 기본 Nest class는 provider로 취급된다(예를 들어, service, repository, factory, helper 등등). provider는 의존성을 주입할 수 있다. 이것은 오브젝트간의 서로 다양한 관계들을 만들 수 있음을 뜻한다.
-앞선 챕터에서, 우리는 CatsController를 만들었고, controller는 HTTP request를 핸들링하고 복잡한 일을 provider에게 맡긴다.
-Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 저장하고 불러오는 역할을 담당할 것이며, CatsController가 이를 시용할 것이다....</p>
-  </section>
-  <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Providers" href="https://icecat471.github.io/devlog/post/nestjs/providers/"></a>
+  <footer class="entry-footer">May 1, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Controllers" href="https://icecat471.github.io/devlog/post/nestjs/controllers/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="https://icecat471.github.io/devlog/tags/backend/">« Prev Page</a>
-    <a class="next" href="https://icecat471.github.io/devlog/tags/backend/page/3/">Next Page »</a>
+    <a class="prev" href="https://icecat471.github.io/devlog/tags/backend/page/2/">« Prev Page</a>
   </nav>
 </footer>
     </main>
