@@ -9,7 +9,25 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 23 May 2021 23:07:49 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 May 2021 18:42:01 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>closure</title>
+      <link>https://icecat471.github.io/devlog/tags/closure/</link>
+      <pubDate>Tue, 25 May 2021 18:42:01 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/closure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://icecat471.github.io/devlog/tags/golang/</link>
+      <pubDate>Tue, 25 May 2021 18:42:01 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/golang/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>backend</title>
       <link>https://icecat471.github.io/devlog/tags/backend/</link>
@@ -25,15 +43,6 @@
       <pubDate>Sun, 23 May 2021 23:07:49 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/nestjs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://icecat471.github.io/devlog/tags/golang/</link>
-      <pubDate>Sat, 22 May 2021 13:27:50 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/tags/golang/</guid>
       <description></description>
     </item>
     

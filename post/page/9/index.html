@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>icecat471&#39;s Devlog</title>
-
+<title>Posts | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
@@ -19,29 +19,30 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/index.xml">
-<link rel="alternate" type="application/json" href="https://icecat471.github.io/devlog/index.json">
-<meta property="og:title" content="icecat471&#39;s Devlog" />
+<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/post/index.xml">
+<meta property="og:title" content="Posts" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="icecat471&#39;s Devlog"/>
+<meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content=""/>
+
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "icecat471's Devlog",
-  "url": "https://icecat471.github.io/devlog/",
-  "description": "",
-  "thumbnailUrl": "https://icecat471.github.io/devlog/favicon.ico",
-  "sameAs": [
-      "https://github.com/icecat471"
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://icecat471.github.io/devlog/post/"
+    }
   ]
 }
 </script>
@@ -148,85 +149,26 @@
     </nav>
 </header>
 <main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a></div>
+  <h1>Posts</h1>
+</header>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Middleware</h2>
+    <h2>Hugo로 블로그 시작하기</h2>
   </header>
   <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/middleware
-Middleware Middelware middleware는 route handler 이전에 호출되는 함수이다. middleware는 request와 response object에 접근할 수 있으며, 애플리케이션의 request-response cycle 내에서 next() 함수에도 접근할 수 있다.
-Nest middleware는 기본적으로 express middleware와 같다. 아래는 express 공식문서에 나와있는 express middleware의 특징이다.
- 어떠한 코드도 실행한다. request와 response object를 변형한다. request-response cycle을 끝낸다. stack에서 다음 middleware를 호출한다. 현재 middleware가 request-reponse cycle을 끝내지 못하면, next() 함수를 통해 다음 middleware를 호출한다....</p>
+    <p>출처: IALY’s BLOG
+1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0&#43;extended darwin/amd64 BuildDate=unknown 2. Hugo Project 생성 hugo new site &lt;프로젝트명&gt; 3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
+원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
+$ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)config 파일 예시는 각 테마 깃허브에서 확인 가능....</p>
   </section>
-  <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Middleware" href="https://icecat471.github.io/devlog/post/nestjs/middleware/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Modules</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/providers
-Modules Modules module class는 @Module 데코레이터로 선언된다. @Module 데코레이터는 Nest가 애플리케이션 구조를 조직하기 위해 사용하는 메타데이터를 붙여준다.
-각각의 애플리케이션은 적어도 root module이라고 불리는 하나의 module을 갖는다. root module은 Nest가 애플리케이션그래프(Nest가 module과 provider의 관계들과 의존성을 결정하는데 사용하는 내부 데이터 구조)를 빌드하기 위해 사용하는 시작점이다. 보통 매우 작은 규모의 애플리케이션은 root module 단 하나만 갖는 경우도 있지만, 이러한 경우는 일반적이지는 않다....</p>
-  </section>
-  <footer class="entry-footer">May 3, 2021&nbsp;·&nbsp;5 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Modules" href="https://icecat471.github.io/devlog/post/nestjs/modules/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Providers</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/providers
-Providers Providers provider는 Nest에서 가장 근본적인 개념이다. 대부분의 기본 Nest class는 provider로 취급된다(예를 들어, service, repository, factory, helper 등등). provider는 의존성을 주입할 수 있다. 이것은 오브젝트간의 서로 다양한 관계들을 만들 수 있음을 뜻한다.
-앞선 챕터에서, 우리는 CatsController를 만들었고, controller는 HTTP request를 핸들링하고 복잡한 일을 provider에게 맡긴다.
-Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 저장하고 불러오는 역할을 담당할 것이며, CatsController가 이를 시용할 것이다....</p>
-  </section>
-  <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Providers" href="https://icecat471.github.io/devlog/post/nestjs/providers/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[Docker] PostgresSQL 설치</h2>
-  </header>
-  <section class="entry-content">
-    <p>pull &amp; run
-$ docker run -p 5432:5432 --name postgres \  -e POSTGRES_PASSWORD=password \  -d postgres 컨테이너 접속 및 사용자 생성
-# 접속 $ docker exec -it postgres /bin/bash # postgres 접속 $ psql - U postgres # 사용자 생성 $ CREATE USER username PASSWORD &#39;password&#39; SUPERUSER; CREATE ROLE $ CREATE DATABASE test OWNER username CREATE DATABASE </p>
-  </section>
-  <footer class="entry-footer">May 2, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [Docker] PostgresSQL 설치" href="https://icecat471.github.io/devlog/post/docker/install_postgres/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Controllers</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/controllers
-Controllers Controllers Controller는 들어오는 request를 핸들링하고 클라이언트에게 response를 반환하는 역할.
-routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.Routing 아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다....</p>
-  </section>
-  <footer class="entry-footer">May 1, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Controllers" href="https://icecat471.github.io/devlog/post/nestjs/controllers/"></a>
+  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Hugo로 블로그 시작하기" href="https://icecat471.github.io/devlog/post/hugo/start_hugo/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="prev" href="https://icecat471.github.io/devlog/page/2/">« Prev Page</a>
-    <a class="next" href="https://icecat471.github.io/devlog/page/4/">Next Page »</a>
+    <a class="prev" href="https://icecat471.github.io/devlog/post/page/8/">« Prev Page</a>
   </nav>
 </footer>
     </main>

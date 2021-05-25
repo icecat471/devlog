@@ -140,6 +140,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[Go언어] Closure</h2>
+  </header>
+  <section class="entry-content">
+    <p>클로저(closure) 함수를 일급객체로 취급하는 함수형 프로그래밍 언어(Erlang, Scala, Haskell 등)에서 사용되는 중요한 특성이다.클로저에 대해 MDN은 아래와 같이 정의하고 있다.
+ “A closure is the combination of a function and the lexical environment within which that function was declared.”
+“클로저는 함수와 그 함수가 선언된 렉시컬 환경의 조합이다.”
+ 아래의 예제를 먼저 확인해 보자
+package main func outerFunc() func() { x := 10 innerFunc := func() { fmt.Println(x) } return innerFunc } func main() { f := outerFunc() f() // output:  // 10 } scope는 함수를 호출할 때가 아니라 어디에 선언하였는지에 따라 결정된다....</p>
+  </section>
+  <footer class="entry-footer">May 25, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Go언어] Closure" href="https://icecat471.github.io/devlog/post/golang/closure/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[Go언어] 슬라이스에서 요소 삭제</h2>
   </header>
   <section class="entry-content">
@@ -187,19 +202,6 @@ package main import &#34;os&#34; func main() { f, err := os.Open(&#34;1.txt&#34;
   </section>
   <footer class="entry-footer">April 13, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to Go언어 defer와 panic" href="https://icecat471.github.io/devlog/post/golang/defer_and_panic/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 flag 패키지를 통한 command-line flag 파싱</h2>
-  </header>
-  <section class="entry-content">
-    <p>golang flag package
-command-line flag를 파싱해주는 패키지.
-// flag값에 저장된 int64변수의 주소값 반환 maxValue := flag.Int64(&#34;max&#34;, 10, &#34;Defines maximum value&#34;) /* xxxVar() 함수는 반환값이 없고 첫번째 인자로 변수의 포인터를 넘겨주면 변수에 값을 할당해줌. */ var minValue int64 flag.Int64Var(&amp;minValue, &#34;min&#34;, 0, &#34;Defines minimum value&#34;) // flag에 command-line 파싱 // 꼭 호출해주어야 함 flag.Parse() </p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 flag 패키지를 통한 command-line flag 파싱" href="https://icecat471.github.io/devlog/post/golang/flag/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

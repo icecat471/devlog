@@ -9,7 +9,20 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 22 May 2021 13:27:50 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 May 2021 18:42:01 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Go언어] Closure</title>
+      <link>https://icecat471.github.io/devlog/post/golang/closure/</link>
+      <pubDate>Tue, 25 May 2021 18:42:01 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/golang/closure/</guid>
+      <description>클로저(closure) 함수를 일급객체로 취급하는 함수형 프로그래밍 언어(Erlang, Scala, Haskell 등)에서 사용되는 중요한 특성이다.클로저에 대해 MDN은 아래와 같이 정의하고 있다.
+ “A closure is the combination of a function and the lexical environment within which that function was declared.”
+&amp;ldquo;클로저는 함수와 그 함수가 선언된 렉시컬 환경의 조합이다.&amp;rdquo;
+ 아래의 예제를 먼저 확인해 보자
+package main func outerFunc() func() { x := 10 innerFunc := func() { fmt.Println(x) } return innerFunc } func main() { f := outerFunc() f() // output:  // 10 } scope는 함수를 호출할 때가 아니라 어디에 선언하였는지에 따라 결정된다.</description>
+    </item>
+    
     <item>
       <title>[Go언어] 슬라이스에서 요소 삭제</title>
       <link>https://icecat471.github.io/devlog/post/golang/delete_item_from_slice/</link>

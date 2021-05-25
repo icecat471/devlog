@@ -140,6 +140,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[Go언어] Closure</h2>
+  </header>
+  <section class="entry-content">
+    <p>클로저(closure) 함수를 일급객체로 취급하는 함수형 프로그래밍 언어(Erlang, Scala, Haskell 등)에서 사용되는 중요한 특성이다.클로저에 대해 MDN은 아래와 같이 정의하고 있다.
+ “A closure is the combination of a function and the lexical environment within which that function was declared.”
+“클로저는 함수와 그 함수가 선언된 렉시컬 환경의 조합이다.”
+ 아래의 예제를 먼저 확인해 보자
+package main func outerFunc() func() { x := 10 innerFunc := func() { fmt.Println(x) } return innerFunc } func main() { f := outerFunc() f() // output:  // 10 } scope는 함수를 호출할 때가 아니라 어디에 선언하였는지에 따라 결정된다....</p>
+  </section>
+  <footer class="entry-footer">May 25, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Go언어] Closure" href="https://icecat471.github.io/devlog/post/golang/closure/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[Go언어] 슬라이스에서 요소 삭제</h2>
   </header>
   <section class="entry-content">
@@ -195,19 +210,6 @@ Implementation의 자식을 Concrete Implementation 이라고 부름.  UML 다�
   </section>
   <footer class="entry-footer">April 19, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [디자인패턴] Bridge 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bridge/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>[디자인패턴] Adapter 패턴</h2>
-  </header>
-  <section class="entry-content">
-    <p>Adapter Pattern 한 클래스의 인터페이스를 클라이언트에서 사용하고자하는 다른 인터페이스로 변환한다.어댑터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있다.코드 출처: https://refactoring.guru/design-patterns/adapter/go/example 윈도우에는 USB, 맥북에는 thunderbolt 포트가 있다.윈도우 PC에 thunderbolt포트를 연결하기 위해 adapter가 필요하다client.go
-package main import &#34;fmt&#34; type client struct { } func (c *client) insertLightningConnectorIntoComputer(com computer) { fmt.Println(&#34;Client inserts Lightning connector into computer.&#34;) com.insertIntoLightningPort() } computer.go
-package main type computer interface { insertIntoLightningPort() } mac....</p>
-  </section>
-  <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Adapter 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/adapter/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

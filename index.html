@@ -172,6 +172,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>[Go언어] Closure</h2>
+  </header>
+  <section class="entry-content">
+    <p>클로저(closure) 함수를 일급객체로 취급하는 함수형 프로그래밍 언어(Erlang, Scala, Haskell 등)에서 사용되는 중요한 특성이다.클로저에 대해 MDN은 아래와 같이 정의하고 있다.
+ “A closure is the combination of a function and the lexical environment within which that function was declared.”
+“클로저는 함수와 그 함수가 선언된 렉시컬 환경의 조합이다.”
+ 아래의 예제를 먼저 확인해 보자
+package main func outerFunc() func() { x := 10 innerFunc := func() { fmt.Println(x) } return innerFunc } func main() { f := outerFunc() f() // output:  // 10 } scope는 함수를 호출할 때가 아니라 어디에 선언하였는지에 따라 결정된다....</p>
+  </section>
+  <footer class="entry-footer">May 25, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Go언어] Closure" href="https://icecat471.github.io/devlog/post/golang/closure/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[NestJS] (공식문서 번역) Asynchronous providers</h2>
   </header>
   <section class="entry-content">
@@ -225,22 +240,6 @@ Custom decorators Custom router decorators Nest는 데코레이터라는 특성�
   </section>
   <footer class="entry-footer">May 14, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Custom decorators" href="https://icecat471.github.io/devlog/post/nestjs/custom_decorators/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Interceptors</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/interceptors
-Interceptors Interceptors interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.
-interceptor는 Aspect Oriented Programming(AOP)에서 영감을 받은 여러가지 기능을 갖고 있다.
- method 수행 전/후 추가 로직을 bind 함수로부터 반환된 값을 변형 함수로부터 throw된 예외를 변형 기본 함수를 확장 특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)  Basics 각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다....</p>
-  </section>
-  <footer class="entry-footer">May 14, 2021&nbsp;·&nbsp;6 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Interceptors" href="https://icecat471.github.io/devlog/post/nestjs/interceptors/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
