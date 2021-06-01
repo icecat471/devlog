@@ -9,7 +9,18 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 25 May 2021 18:42:01 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Jun 2021 01:54:19 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Go언어] gorilla websocket request origin 에러</title>
+      <link>https://icecat471.github.io/devlog/post/golang/websocket_error/</link>
+      <pubDate>Wed, 02 Jun 2021 01:54:19 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/golang/websocket_error/</guid>
+      <description>websocket: request origin not allowed by Upgrader.CheckOrigin 위 에러 발생시
+upgrader.CheckOrigin = func(r *http.Request) bool { return true } 위 코드를 추가해준다.
+필요에 따라 origin check 로직을 추가해주면 된다.</description>
+    </item>
+    
     <item>
       <title>[Go언어] Closure</title>
       <link>https://icecat471.github.io/devlog/post/golang/closure/</link>

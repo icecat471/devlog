@@ -2,28 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://icecat471.github.io/devlog/post/golang/websocket_error/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/categories/golang/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/gorilla-websocket/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/post/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
+    <loc>https://icecat471.github.io/devlog/tags/websocket/</loc>
+    <lastmod>2021-06-02T01:54:19+09:00</lastmod>
+  </url><url>
     <loc>https://icecat471.github.io/devlog/post/golang/closure/</loc>
     <lastmod>2021-05-25T18:42:01+09:00</lastmod>
   </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/</loc>
-    <lastmod>2021-05-25T18:42:01+09:00</lastmod>
-  </url><url>
     <loc>https://icecat471.github.io/devlog/tags/closure/</loc>
-    <lastmod>2021-05-25T18:42:01+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/golang/</loc>
-    <lastmod>2021-05-25T18:42:01+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/categories/golang/</loc>
-    <lastmod>2021-05-25T18:42:01+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/</loc>
-    <lastmod>2021-05-25T18:42:01+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/post/</loc>
-    <lastmod>2021-05-25T18:42:01+09:00</lastmod>
-  </url><url>
-    <loc>https://icecat471.github.io/devlog/tags/</loc>
     <lastmod>2021-05-25T18:42:01+09:00</lastmod>
   </url><url>
     <loc>https://icecat471.github.io/devlog/post/nestjs/asynchronous_providers/</loc>

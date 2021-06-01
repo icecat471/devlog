@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>websocket on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/tags/websocket/</link>
+    <description>Recent content in websocket on icecat471&#39;s Devlog</description>
+    <image>
+      <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
+      <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 02 Jun 2021 01:54:19 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/websocket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Go언어] gorilla websocket request origin 에러</title>
+      <link>https://icecat471.github.io/devlog/post/golang/websocket_error/</link>
+      <pubDate>Wed, 02 Jun 2021 01:54:19 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/golang/websocket_error/</guid>
+      <description>websocket: request origin not allowed by Upgrader.CheckOrigin 위 에러 발생시
+upgrader.CheckOrigin = func(r *http.Request) bool { return true } 위 코드를 추가해준다.
+필요에 따라 origin check 로직을 추가해주면 된다.</description>
+    </item>
+    
+  </channel>
+</rss>

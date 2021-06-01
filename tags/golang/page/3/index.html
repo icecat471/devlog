@@ -140,6 +140,18 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[디자인패턴] Builder 패턴</h2>
+  </header>
+  <section class="entry-content">
+    <p>1. Builder Pattern Person 객체를 예로 들어보자
+type Person struct { name string age int job string height float32 weight float32 } func NewPerson(name string, age int, job string, height float32, weight float32) *Person { return &amp;Person{ name, age, job, height, weight, } } func main() { p := NewPerson(&#34;홍길동&#34;, 22, &#34;developer&#34;, 177.2, 72.9) } 위처럼 모든 정보를 입력하지 않아도 될때도 있고, 가독성도 좋지않으며 parameter의 순서도 맞춰주어야한다.또 객체에 새로운 정보가 추가된다면 NewPerson()을 계속 수정해주어야 한다....</p>
+  </section>
+  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Builder 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bulilder/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[Go언어] VSCode에서 gopls 에러가 날때</h2>
   </header>
   <section class="entry-content">
@@ -189,21 +201,10 @@ command-line flag를 파싱해주는 패키지.
   <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to Go언어 flag 패키지를 통한 command-line flag 파싱" href="https://icecat471.github.io/devlog/post/golang/flag/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>Go언어 프로젝트 외부의 모듈 import하기</h2>
-  </header>
-  <section class="entry-content">
-    <p>go.mod 파일에서
-require ( &lt;모듈명&gt; v0.0.0 ) replace &lt;모듈명&gt; v0.0.0 =&gt; ../module // 이런 형태로 경로를 지정해줌 </p>
-  </section>
-  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to Go언어 프로젝트 외부의 모듈 import하기" href="https://icecat471.github.io/devlog/post/golang/external_module/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://icecat471.github.io/devlog/tags/golang/page/2/">« Prev Page</a>
+    <a class="next" href="https://icecat471.github.io/devlog/tags/golang/page/4/">Next Page »</a>
   </nav>
 </footer>
     </main>
