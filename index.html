@@ -172,6 +172,17 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Udemy 자막 실시간 번역</h2>
+  </header>
+  <section class="entry-content">
+    <p> Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다. 강의 자막(English)을 활성화 후, “Caption setting &gt; Display under video&#34;를 활성화한다. Transcript를 활성화 후, 구글 브라우저 “이 페이지 번역하기&#34;를 눌러 한국어로 번역한다. 우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다. F12 &gt; Console에 아래 코드를 붙여 넣고 엔터  if(typeof window.i!==&#39;undefined&#39;){clearInterval(window.i)}else{let lastText=&#39;&#39;;function check(){let toEl=$(&#39;.well--container--2edq4 span&#39;);let fromEl=$(&#39;p[data-purpose=&#34;transcript-cue-active&#34;] span&#39;);let currentText=fromEl.html();if(lastText!==currentText){toEl.html(currentText)}lastText=fromEl.html()}window.i=setInterval(check,200)} F12 창을 닫은 후 재생하여 자막 확인  </p>
+  </section>
+  <footer class="entry-footer">June 5, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Udemy 자막 실시간 번역" href="https://icecat471.github.io/devlog/post/etc/udemy_korean_caption/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>[Go언어] gorilla websocket request origin 에러</h2>
   </header>
   <section class="entry-content">
@@ -223,21 +234,6 @@ slice1: [1 2 3 4 5] slice2: [1 2 4 5] 순서가 중요하지 않은 경우 packa
   </section>
   <footer class="entry-footer">May 22, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [Go언어] 슬라이스에서 요소 삭제" href="https://icecat471.github.io/devlog/post/golang/delete_item_from_slice/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Custom Providers</h2>
-  </header>
-  <section class="entry-content">
-    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
-의역 및 오역이 있을 수 있습니다.
-https://docs.nestjs.com/fundamentals/custom-providers
-Custom providers 앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 생성자 기반 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.
-DI fundamentals 의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 inversion of control(IoC) 테크닉이다....</p>
-  </section>
-  <footer class="entry-footer">May 21, 2021&nbsp;·&nbsp;6 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Custom Providers" href="https://icecat471.github.io/devlog/post/nestjs/custom_providers/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

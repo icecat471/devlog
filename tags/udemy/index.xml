@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>udemy on icecat471&#39;s Devlog</title>
+    <link>https://icecat471.github.io/devlog/tags/udemy/</link>
+    <description>Recent content in udemy on icecat471&#39;s Devlog</description>
+    <image>
+      <url>https://icecat471.github.io/devlog/papermod-cover.png</url>
+      <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 05 Jun 2021 16:42:25 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/udemy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Udemy 자막 실시간 번역</title>
+      <link>https://icecat471.github.io/devlog/post/etc/udemy_korean_caption/</link>
+      <pubDate>Sat, 05 Jun 2021 16:42:25 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/etc/udemy_korean_caption/</guid>
+      <description> Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다. 강의 자막(English)을 활성화 후, &amp;ldquo;Caption setting &amp;gt; Display under video&amp;quot;를 활성화한다. Transcript를 활성화 후, 구글 브라우저 &amp;ldquo;이 페이지 번역하기&amp;quot;를 눌러 한국어로 번역한다. 우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다. F12 &amp;gt; Console에 아래 코드를 붙여 넣고 엔터  if(typeof window.i!==&amp;#39;undefined&amp;#39;){clearInterval(window.i)}else{let lastText=&amp;#39;&amp;#39;;function check(){let toEl=$(&amp;#39;.well--container--2edq4 span&amp;#39;);let fromEl=$(&amp;#39;p[data-purpose=&amp;#34;transcript-cue-active&amp;#34;] span&amp;#39;);let currentText=fromEl.html();if(lastText!==currentText){toEl.html(currentText)}lastText=fromEl.html()}window.i=setInterval(check,200)} F12 창을 닫은 후 재생하여 자막 확인  </description>
+    </item>
+    
+  </channel>
+</rss>
