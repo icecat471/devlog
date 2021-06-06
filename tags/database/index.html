@@ -140,6 +140,17 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>[MariaDB] 외래키 제약조건</h2>
+  </header>
+  <section class="entry-content">
+    <p>CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다....</p>
+  </section>
+  <footer class="entry-footer">June 6, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [MariaDB] 외래키 제약조건" href="https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>[Docker] PostgresSQL 설치</h2>
   </header>
   <section class="entry-content">

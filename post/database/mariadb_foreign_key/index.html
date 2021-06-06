@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Udemy 자막 실시간 번역 | icecat471&#39;s Devlog</title>
-<meta name="keywords" content="udemy" />
-<meta name="description" content=" Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다. 강의 자막(English)을 활성화 후, &ldquo;Caption setting &gt; Display under video&quot;를 활성화한다. Transcript를 활성화 후, 구글 브라우저 &ldquo;이 페이지 번역하기&quot;를 눌러 한국어로 번역한다. 우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다. F12 &gt; Console에 아래 코드를 붙여 넣고 엔터  if(typeof window.i!==&#39;undefined&#39;){clearInterval(window.i)}else{let lastText=&#39;&#39;;function check(){let toEl=$(&#39;.well--container--2edq4 span&#39;);let fromEl=$(&#39;p[data-purpose=&#34;transcript-cue-active&#34;] span&#39;);let currentText=fromEl.html();if(lastText!==currentText){toEl.html(currentText)}lastText=fromEl.html()}window.i=setInterval(check,200)} F12 창을 닫은 후 재생하여 자막 확인  ">
+<title>[MariaDB] 외래키 제약조건 | icecat471&#39;s Devlog</title>
+<meta name="keywords" content="database, mariadb" />
+<meta name="description" content="CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다.">
 <meta name="author" content="icecat471">
-<link rel="canonical" href="https://icecat471.github.io/devlog/post/etc/udemy_korean_caption/" />
+<link rel="canonical" href="https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/" />
 <link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -21,18 +21,18 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.82.0" />
-<meta property="og:title" content="Udemy 자막 실시간 번역" />
-<meta property="og:description" content=" Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다. 강의 자막(English)을 활성화 후, &ldquo;Caption setting &gt; Display under video&quot;를 활성화한다. Transcript를 활성화 후, 구글 브라우저 &ldquo;이 페이지 번역하기&quot;를 눌러 한국어로 번역한다. 우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다. F12 &gt; Console에 아래 코드를 붙여 넣고 엔터  if(typeof window.i!==&#39;undefined&#39;){clearInterval(window.i)}else{let lastText=&#39;&#39;;function check(){let toEl=$(&#39;.well--container--2edq4 span&#39;);let fromEl=$(&#39;p[data-purpose=&#34;transcript-cue-active&#34;] span&#39;);let currentText=fromEl.html();if(lastText!==currentText){toEl.html(currentText)}lastText=fromEl.html()}window.i=setInterval(check,200)} F12 창을 닫은 후 재생하여 자막 확인  " />
+<meta property="og:title" content="[MariaDB] 외래키 제약조건" />
+<meta property="og:description" content="CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://icecat471.github.io/devlog/post/etc/udemy_korean_caption/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-06-05T16:42:25&#43;09:00" />
-<meta property="article:modified_time" content="2021-06-05T16:42:25&#43;09:00" />
+<meta property="og:url" content="https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-06T22:10:28&#43;09:00" />
+<meta property="article:modified_time" content="2021-06-06T22:10:28&#43;09:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
 
-<meta name="twitter:title" content="Udemy 자막 실시간 번역"/>
-<meta name="twitter:description" content=" Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다. 강의 자막(English)을 활성화 후, &ldquo;Caption setting &gt; Display under video&quot;를 활성화한다. Transcript를 활성화 후, 구글 브라우저 &ldquo;이 페이지 번역하기&quot;를 눌러 한국어로 번역한다. 우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다. F12 &gt; Console에 아래 코드를 붙여 넣고 엔터  if(typeof window.i!==&#39;undefined&#39;){clearInterval(window.i)}else{let lastText=&#39;&#39;;function check(){let toEl=$(&#39;.well--container--2edq4 span&#39;);let fromEl=$(&#39;p[data-purpose=&#34;transcript-cue-active&#34;] span&#39;);let currentText=fromEl.html();if(lastText!==currentText){toEl.html(currentText)}lastText=fromEl.html()}window.i=setInterval(check,200)} F12 창을 닫은 후 재생하여 자막 확인  "/>
+<meta name="twitter:title" content="[MariaDB] 외래키 제약조건"/>
+<meta name="twitter:description" content="CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다."/>
 
 
 <script type="application/ld+json">
@@ -49,8 +49,8 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Udemy 자막 실시간 번역",
-      "item": "https://icecat471.github.io/devlog/post/etc/udemy_korean_caption/"
+      "name": "[MariaDB] 외래키 제약조건",
+      "item": "https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/"
     }
   ]
 }
@@ -59,24 +59,24 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Udemy 자막 실시간 번역",
-  "name": "Udemy 자막 실시간 번역",
-  "description": " Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다. 강의 자막(English)을 활성화 후, \u0026ldquo;Caption setting \u0026gt; Display under video\u0026quot;를 활성화한다. Transcript를 활성화 후, 구글 브라우저 \u0026ldquo;이 페이지 번역하기\u0026quot;를 눌러 한국어로 번역한다. 우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다. F12 \u0026gt; Console에 아래 코드를 붙여 넣고 엔터  if(typeof window.i!==\u0026#39;undefined\u0026#39;){clearInterval(window.i)}else{let lastText=\u0026#39;\u0026#39;;function check(){let toEl=$(\u0026#39;.well--container--2edq4 span\u0026#39;);let fromEl=$(\u0026#39;p[data-purpose=\u0026#34;transcript-cue-active\u0026#34;] span\u0026#39;);let currentText=fromEl.html();if(lastText!==currentText){toEl.html(currentText)}lastText=fromEl.html()}window.i=setInterval(check,200)} F12 창을 닫은 후 재생하여 자막 확인  ",
+  "headline": "[MariaDB] 외래키 제약조건",
+  "name": "[MariaDB] 외래키 제약조건",
+  "description": "CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다.",
   "keywords": [
-    "udemy"
+    "database", "mariadb"
   ],
-  "articleBody": " Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다. 강의 자막(English)을 활성화 후, “Caption setting  Display under video\"를 활성화한다. Transcript를 활성화 후, 구글 브라우저 “이 페이지 번역하기\"를 눌러 한국어로 번역한다. 우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다. F12  Console에 아래 코드를 붙여 넣고 엔터  if(typeof window.i!=='undefined'){clearInterval(window.i)}else{let lastText='';function check(){let toEl=$('.well--container--2edq4 span');let fromEl=$('p[data-purpose=\"transcript-cue-active\"] span');let currentText=fromEl.html();if(lastText!==currentText){toEl.html(currentText)}lastText=fromEl.html()}window.i=setInterval(check,200)} F12 창을 닫은 후 재생하여 자막 확인  ",
-  "wordCount" : "62",
+  "articleBody": "CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다.\nSELECT * FROM information_schema.table_constraints where table_name = 'UserItem'; ",
+  "wordCount" : "102",
   "inLanguage": "en",
-  "datePublished": "2021-06-05T16:42:25+09:00",
-  "dateModified": "2021-06-05T16:42:25+09:00",
+  "datePublished": "2021-06-06T22:10:28+09:00",
+  "dateModified": "2021-06-06T22:10:28+09:00",
   "author":{
     "@type": "Person",
     "name": "icecat471"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://icecat471.github.io/devlog/post/etc/udemy_korean_caption/"
+    "@id": "https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/"
   },
   "publisher": {
     "@type": "Organization",
@@ -196,9 +196,9 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://icecat471.github.io/devlog/">Home</a>&nbsp;»&nbsp;<a href="https://icecat471.github.io/devlog/post/">Posts</a></div>
     <h1 class="post-title">
-      Udemy 자막 실시간 번역
+      [MariaDB] 외래키 제약조건
     </h1>
-    <div class="post-meta">June 5, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471
+    <div class="post-meta">June 6, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471
 </div>
   </header> <div class="toc">
     <details >
@@ -210,33 +210,47 @@
     </details>
 </div>
 
-  <div class="post-content"><ol>
-<li>Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다.</li>
-<li>강의 자막(English)을 활성화 후, &ldquo;Caption setting &gt; Display under video&quot;를 활성화한다.</li>
-<li>Transcript를 활성화 후, 구글 브라우저 &ldquo;이 페이지 번역하기&quot;를 눌러 한국어로 번역한다.</li>
-<li>우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다.</li>
-<li>F12 &gt; Console에 아래 코드를 붙여 넣고 엔터</li>
-</ol>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nb">window</span><span class="p">.</span><span class="nx">i</span><span class="o">!==</span><span class="s1">&#39;undefined&#39;</span><span class="p">){</span><span class="nx">clearInterval</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">i</span><span class="p">)}</span><span class="k">else</span><span class="p">{</span><span class="kd">let</span> <span class="nx">lastText</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="kd">function</span> <span class="nx">check</span><span class="p">(){</span><span class="kd">let</span> <span class="nx">toEl</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.well--container--2edq4 span&#39;</span><span class="p">);</span><span class="kd">let</span> <span class="nx">fromEl</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;p[data-purpose=&#34;transcript-cue-active&#34;] span&#39;</span><span class="p">);</span><span class="kd">let</span> <span class="nx">currentText</span><span class="o">=</span><span class="nx">fromEl</span><span class="p">.</span><span class="nx">html</span><span class="p">();</span><span class="k">if</span><span class="p">(</span><span class="nx">lastText</span><span class="o">!==</span><span class="nx">currentText</span><span class="p">){</span><span class="nx">toEl</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">currentText</span><span class="p">)}</span><span class="nx">lastText</span><span class="o">=</span><span class="nx">fromEl</span><span class="p">.</span><span class="nx">html</span><span class="p">()}</span><span class="nb">window</span><span class="p">.</span><span class="nx">i</span><span class="o">=</span><span class="nx">setInterval</span><span class="p">(</span><span class="nx">check</span><span class="p">,</span><span class="mi">200</span><span class="p">)}</span> 
-</code></pre></div><ol start="6">
-<li>F12 창을 닫은 후 재생하여 자막 확인</li>
-</ol>
+  <div class="post-content"><div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql">
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">User</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">username</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="p">);</span>
 
+<span class="o">#</span> <span class="err">외래키</span> <span class="err">이름이</span> <span class="err">랜덤으로</span> <span class="err">만들어짐</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">UserItem</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">item_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">price</span> <span class="nb">INT</span> <span class="k">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">userId</span> <span class="nb">INT</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">userId</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="k">User</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="o">#</span> <span class="err">외래키</span> <span class="err">이름을</span> <span class="err">지정해서</span> <span class="err">만들기</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">UserItem</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">INT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+    <span class="n">item_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">price</span> <span class="nb">INT</span> <span class="k">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">userId</span> <span class="nb">INT</span> <span class="k">DEFAULT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="k">CONSTRAINT</span> <span class="n">FK_USER_ITEM_USER</span> <span class="k">FOREIGN</span> <span class="k">KEY</span><span class="p">(</span><span class="n">userId</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="k">User</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">);</span>
+
+</code></pre></div><p>아래의 쿼리로 제약조건을 확인해볼 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql">
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">table_constraints</span> <span class="k">where</span> <span class="k">table_name</span> <span class="o">=</span> <span class="s1">&#39;UserItem&#39;</span><span class="p">;</span>
+
+</code></pre></div>
 </div>
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://icecat471.github.io/devlog/tags/udemy/">udemy</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/database/">database</a></li>
+      <li><a href="https://icecat471.github.io/devlog/tags/mariadb/">mariadb</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/">
-    <span class="title">« Prev Page</span>
-    <br>
-    <span>[MariaDB] 외래키 제약조건</span>
-  </a>
-  <a class="next" href="https://icecat471.github.io/devlog/post/golang/websocket_error/">
+  <a class="next" href="https://icecat471.github.io/devlog/post/etc/udemy_korean_caption/">
     <span class="title">Next Page »</span>
     <br>
-    <span>[Go언어] gorilla websocket request origin 에러</span>
+    <span>Udemy 자막 실시간 번역</span>
   </a>
 </nav>
 

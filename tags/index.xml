@@ -9,7 +9,25 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 05 Jun 2021 16:42:25 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Jun 2021 22:10:28 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>database</title>
+      <link>https://icecat471.github.io/devlog/tags/database/</link>
+      <pubDate>Sun, 06 Jun 2021 22:10:28 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mariadb</title>
+      <link>https://icecat471.github.io/devlog/tags/mariadb/</link>
+      <pubDate>Sun, 06 Jun 2021 22:10:28 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>udemy</title>
       <link>https://icecat471.github.io/devlog/tags/udemy/</link>
@@ -115,15 +133,6 @@
       <pubDate>Wed, 05 May 2021 17:42:59 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/tags/vuejs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>database</title>
-      <link>https://icecat471.github.io/devlog/tags/database/</link>
-      <pubDate>Sun, 02 May 2021 00:44:00 +0900</pubDate>
-      
-      <guid>https://icecat471.github.io/devlog/tags/database/</guid>
       <description></description>
     </item>
     
