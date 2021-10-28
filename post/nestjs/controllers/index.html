@@ -14,7 +14,7 @@ Controllers Controllers Controller는 들어오는 request를 핸들링하고 �
 routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.Routing 아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다.">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/controllers/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.5ddba2377cef4826c901d6600bb403811fc5084e4de37bd1a967782b2b74485f.css" integrity="sha256-XduiN3zvSCbJAdZgC7QDgR/FCE5N43vRqWd4Kyt0SF8=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
@@ -24,8 +24,44 @@ routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤�
 <link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.82.0" />
-<meta property="og:title" content="[NestJS] (공식문서 번역) Controllers" />
+<meta name="generator" content="Hugo 0.88.1" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="[NestJS] (공식문서 번역) Controllers" />
 <meta property="og:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
 의역 및 오역이 있을 수 있습니다.
 https://docs.nestjs.com/controllers
@@ -113,43 +149,6 @@ routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤�
     }
 
 </script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: #1d1e20;
-                --entry: #2e2e33;
-                --primary: rgba(255, 255, 255, 0.84);
-                --secondary: rgba(255, 255, 255, 0.56);
-                --tertiary: rgba(255, 255, 255, 0.16);
-                --content: rgba(255, 255, 255, 0.74);
-                --hljs-bg: #2e2e33;
-                --code-bg: #37383e;
-                --border: #333;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
 
 <header class="header">
     <nav class="nav">
@@ -178,7 +177,7 @@ routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤�
                 </button>
             </span>
         </div>
-        <ul id="menu" onscroll="menu_on_scroll()">
+        <ul id="menu">
             <li>
                 <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
                     <span>Archive</span>
@@ -211,12 +210,14 @@ routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤�
       [NestJS] (공식문서 번역) Controllers
     </h1>
     <div class="post-meta">May 1, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;icecat471
+
 </div>
   </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
-            <div class="details">Table of Contents</div>
+            <span class="details">Table of Contents</span>
         </summary>
+
         <div class="inner"><ul>
                 <li>
                     <a href="#controllers" aria-label="Controllers">Controllers</a><ul>
@@ -274,9 +275,9 @@ routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤�
 <p>routing mechanism은 어떤 controller가 어떤 request를 받을지 컨트롤한다.<!-- raw HTML omitted -->
 각각의 controller는 보통 하나 이상의 route를 갖고, 서로 다른 route는 각각 다른 일을 수행힌다.<!-- raw HTML omitted --></p>
 <h2 id="routing">Routing<a hidden class="anchor" aria-hidden="true" href="#routing">#</a></h2>
-<p>아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다.
+<p>아래 예제에서는 basic controller를 정의하는데 필요한 @Controller() 데코레이터를 사용한다. 
 @Controller() 데코레이터는 관련된 route들을 쉽게 그룹화 할 수 있게 해주며, 코드의 반복을 줄여준다. 예를 들어, customer entity와 상호작용하는 route의 그룹이 있다면, /customers 라는 route로 묶을 수 있다. 이 경우, @Controller(&lsquo;customers&rsquo;) 데코레이터를 사용하여 쉽게 그룹화 가능하다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 
@@ -318,7 +319,7 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 </blockquote>
 <h2 id="request-object">Request object<a hidden class="anchor" aria-hidden="true" href="#request-object">#</a></h2>
 <p>Handler는 가끔 request 세부사항에 접근해야 하는 경우가 있다. Nest는 platform(default는 Express)에 종속된 request object를 제공한다. @Req() 데코레이터를 사용하여 request object를 injection하여 접근 가능하다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span><span class="p">,</span> <span class="nx">Req</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Request</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
@@ -388,7 +389,7 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 <p>HTTP platform(Express와 Fastify) 기반의 typing을 위해 Nest는 @Res(), @Response() 데코레이터를 제공한다. 이 데코레이터는 native platform의 response 오브젝트를 노출한다. 이것을 사용할 때, 기반 라이브러리를 import 해주어야 한다(예를 들어, @types/express). @Res(), @Response() 데코레이터를 사용하면, Nest에게 핸들러에 대해 Library-specific mode로 설정하게 하고, response를 관리할 수 있게 된다. 이를 통해, res.json()이나 res.send() 같은 response object의 method를 사용할 수 있다.</p>
 <h2 id="resources">Resources<a hidden class="anchor" aria-hidden="true" href="#resources">#</a></h2>
 <p>앞서, cats resource(GET route)를 fetch하기 위한 엔드포인트를 정의했다. 일반적으로 새로운 레코드를 만드는 엔드포인트도 제공하고 싶을것이다. 이를 위해, POST 핸들러를 사용한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span><span class="p">,</span> <span class="nx">Post</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 
@@ -408,14 +409,14 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 @Get(), @Post(), @Put(), @Delete(), @Patch(), @Options(), @Head(). 또한 @All() 을 사용하면 모든 요청에 대한 엔드포인트를 정의한다.</p>
 <h2 id="route-wildcards">Route wildcards<a hidden class="anchor" aria-hidden="true" href="#route-wildcards">#</a></h2>
 <p>wildcard로 별표(*)를 사용한 패턴도 제공한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;ab*cd&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;ab*cd&#39;</span><span class="p">)</span>
 <span class="nx">findAll() {</span>
   <span class="k">return</span> <span class="s1">&#39;This route uses a wildcard&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p><code>'ab*cd'</code> route path는 <code>abcd</code>, <code>ab_cd</code>, <code>abecd</code>등과 match된다. <code>?</code>, <code>+</code>, <code>*</code>, <code>()</code> 같은 문자도 정규식의 부분으로 route path에 사용가능하다. <code>'-'</code>, <code>'.'</code>은 string기반 path에 의해 문자 그대로 번역된다.</p>
 <h2 id="status-code">Status code<a hidden class="anchor" aria-hidden="true" href="#status-code">#</a></h2>
 <p>앞서 이야기했듯이, response status code는 기본값이 200이다(POST request의 경우 201). 이것은 @HttpCode() 데코레이터를 통해 핸들러 수준에서 쉽게 변경 가능하다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Post</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Post</span><span class="p">()</span>
 <span class="kd">@HttpCode</span><span class="p">(</span><span class="mi">204</span><span class="p">)</span>
 <span class="nx">create() {</span>
   <span class="k">return</span> <span class="s1">&#39;This action adds a new cat&#39;</span><span class="p">;</span>
@@ -423,7 +424,7 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 </code></pre></div><p>종종 status code는 static하지 않고 여러가지 변수에 의존한다. 이런 경우, @Res() 데코레이터를 통해 library-specific response를 사용할 수 있다.</p>
 <h2 id="headers">Headers<a hidden class="anchor" aria-hidden="true" href="#headers">#</a></h2>
 <p>custom response header를 특정하기 위해, @Header() 데코레이터 또는 library-specific response object에서 res.header()를 호출할 수 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Post</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Post</span><span class="p">()</span>
 <span class="kd">@Header</span><span class="p">(</span><span class="s1">&#39;Cache-Control&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
 <span class="nx">create() {</span>
   <span class="k">return</span> <span class="s1">&#39;This action adds a new cat&#39;</span><span class="p">;</span>
@@ -432,15 +433,15 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 <p>response를 특정 URL로 redirection하기 위해, @Redirect() 데코레이터 또는 library-specific response object를 통해 res.redirect()를 호출할 수 있다.
 <!-- raw HTML omitted --><!-- raw HTML omitted -->
 @Redirect()는 url과 statusCode를 인자로 받으며 둘 모두 optional이다. statusCode의 기본값은 302 이다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
 <span class="kd">@Redirect</span><span class="p">(</span><span class="s1">&#39;https://nestjs.com&#39;</span><span class="p">,</span> <span class="mi">301</span><span class="p">)</span>
 </code></pre></div><p>가끔, status code나 redirect URL을 동적으로 결정해야 할 때가 있다. route handler method로부터 object를 아래와 같은 형태로 반환하면 된다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="p">{</span>
   <span class="s2">&#34;url&#34;</span><span class="o">:</span> <span class="kt">string</span><span class="p">,</span>
   <span class="s2">&#34;statusCode&#34;</span><span class="o">:</span> <span class="kt">number</span>
 <span class="p">}</span>
 </code></pre></div><p>반환된 값은 @Redirect() 데코레이터의 인자를 override 할 것이다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;docs&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;docs&#39;</span><span class="p">)</span>
 <span class="kd">@Redirect</span><span class="p">(</span><span class="s1">&#39;https://docs.nestjs.com&#39;</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span>
 <span class="nx">getDocs</span><span class="p">(</span><span class="kd">@Query</span><span class="p">(</span><span class="s1">&#39;version&#39;</span><span class="p">)</span> <span class="nx">version</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">version</span> <span class="o">&amp;&amp;</span> <span class="nx">version</span> <span class="o">===</span> <span class="s1">&#39;5&#39;</span><span class="p">)</span> <span class="p">{</span>
@@ -449,19 +450,19 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 <span class="p">}</span>
 </code></pre></div><h2 id="route-parameters">Route parameters<a hidden class="anchor" aria-hidden="true" href="#route-parameters">#</a></h2>
 <p>정적 경로를 가진 route는 request의 일부로 dynamic data에 접근해야 할 경우에는 사용할 수 없다. parameter를 갖는 route를 정의하기 위해 route parameter token을 path에 추가하면 된다. 아래는 @Get() 데코레이터에 사용한 route parameter token에 대한 예제이다. 이렇게 선언된 route parameter는 @Param() 데코레이터를 통해 접근할 수 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
 <span class="nx">findOne</span><span class="p">(</span><span class="kd">@Param</span><span class="p">()</span> <span class="nx">params</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
   <span class="k">return</span> <span class="sb">`This action returns a #</span><span class="si">${</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb"> cat`</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p>위 예제에서 @Param()을 통해 id에 접근하려면 params.id로 접근할 수 있다. 또는 특정 parameter token을 데코레이터에서 접근 가능하다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">(</span><span class="s1">&#39;:id&#39;</span><span class="p">)</span>
 <span class="nx">findOne</span><span class="p">(</span><span class="kd">@Param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="nx">id</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
   <span class="k">return</span> <span class="sb">`This action returns a #</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb"> cat`</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><h2 id="sub-domain-routing">Sub-Domain Routing<a hidden class="anchor" aria-hidden="true" href="#sub-domain-routing">#</a></h2>
 <p>@Controller() 데코레이터는 host option을 받을 수 있다. HTTP host는 들어오는 request와 특정 값을 matching하기 위해 사용된다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Controller</span><span class="p">({</span> <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;admin.example.com&#39;</span> <span class="p">})</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Controller</span><span class="p">({</span> <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;admin.example.com&#39;</span> <span class="p">})</span>
 <span class="kr">export</span> <span class="kr">class</span> <span class="nx">AdminController</span> <span class="p">{</span>
   <span class="kd">@Get</span><span class="p">()</span>
   <span class="nx">index</span><span class="p">()</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
@@ -472,7 +473,7 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 <p>Fastify는 nested router에 대한 지원을 하지 않으므로, sub-domain routing을 사용할 떄에는, Express adpater를 사용해야 한다.(기본값으로 설정되어 있음)</p>
 </blockquote>
 <p>route path와 마찬가지로, host option의 host name의 token도 동적값으로 사용가능하다. 이 방식으로 선언된 host parameter는 @HostParam() 데코레이터를 통해 사용 할 수 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Controller</span><span class="p">({</span> <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;:account.example.com&#39;</span> <span class="p">})</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Controller</span><span class="p">({</span> <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;:account.example.com&#39;</span> <span class="p">})</span>
 <span class="kr">export</span> <span class="kr">class</span> <span class="nx">AccountController</span> <span class="p">{</span>
   <span class="kd">@Get</span><span class="p">()</span>
   <span class="nx">getInfo</span><span class="p">(</span><span class="kd">@HostParam</span><span class="p">(</span><span class="s1">&#39;account&#39;</span><span class="p">)</span> <span class="nx">account</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
@@ -483,28 +484,28 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 <p>Nest에서는 들어오는 request를 통해 거의 모든것이 공유된다. database에 대한 connection pool, global state에서의 singleton service 등을 갖고 있다. Node.js는 request/response Multi-Threaded Stateless Model을 따르지 않고, 각각의 request에 대해 분리된 thread에서 진행된다. 따라서, singleton instance를 사용하는 것이 우리의 애플리케이션에 안전한 방식이다.</p>
 <h2 id="asynchronicity">Asynchronicity<a hidden class="anchor" aria-hidden="true" href="#asynchronicity">#</a></h2>
 <p>data extraction은 대부분 비동기로 일어난다. 따라서 Nest에서는 async fuction을 지원한다. 모든 비동기 함수는 Promise를 반환한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
 </span><span class="c1"></span>
 <span class="kd">@Get</span><span class="p">()</span>
 <span class="kr">async</span> <span class="nx">findAll</span><span class="p">()</span><span class="o">:</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">any</span><span class="err">[]</span><span class="p">&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">[];</span>
 <span class="p">}</span>
 </code></pre></div><p>또한, Nest route handler는 RxJS observable stream을 반환할 수 있다. Nest는 자동으로 아래의 source를 subscribe하여 마지막으로 방출된 값을 가져올 수 있다.(stream이 끝날 때)</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
 <span class="nx">findAll</span><span class="p">()</span><span class="o">:</span> <span class="nx">Observable</span><span class="p">&lt;</span><span class="nt">any</span><span class="err">[]</span><span class="p">&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">of</span><span class="p">([]);</span>
 <span class="p">}</span>
 </code></pre></div><p>두 방식 모두 유효하며, 원하는 방식대로 사용하면 된다.</p>
 <h2 id="request-payloads">Request payloads<a hidden class="anchor" aria-hidden="true" href="#request-payloads">#</a></h2>
 <p>@Body() 데코레이터를 사용하여 POST route handler에서도 클라이언트로부터 parameter를 받아올 수 있다. 그러나 먼저 DTO(Data Transfer Object) 스키마를 정의해야 한다. DTO는 네트워크를 통해 데이터를 어떤 형식으로 주고받을지 정의하는 오브젝트이다. DTO는 TypeScript interface 또는 class로 정의할 수 있다. 하지만 class를 추천하는데, class는 JS ES6 standard한 문법이며, 따라서 컴파일된 JS에서도 real entity로 보존된다. 반면, TypeScript interface는 transpilation 도중 제거되기 때문에 Nest는 그것을 런타임에 호출할 수 없다. 이것은 Pipe와 같은 feature가 런타임에 변수의 메타타입에 접근하는 경우 중요하다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// create-cat.dto.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// create-cat.dto.ts
 </span><span class="c1"></span>
 <span class="kr">export</span> <span class="kr">class</span> <span class="nx">CreateCatDto</span> <span class="p">{</span>
   <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
   <span class="nx">age</span>: <span class="kt">number</span><span class="p">;</span>
   <span class="nx">breed</span>: <span class="kt">string</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cat.controller.ts
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cat.controller.ts
 </span><span class="c1"></span>
 <span class="kd">@Post</span><span class="p">()</span>
 <span class="kr">async</span> <span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
@@ -514,7 +515,7 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 </code></pre></div><h2 id="handling-errors">Handling errors<a hidden class="anchor" aria-hidden="true" href="#handling-errors">#</a></h2>
 <p>따로 분리된 <a href="https://docs.nestjs.com/exception-filters">에러 핸들링 페이지</a>에서 볼 수 있다.</p>
 <h2 id="full-resource-sample">Full resource sample<a hidden class="anchor" aria-hidden="true" href="#full-resource-sample">#</a></h2>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cat.controller.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cat.controller.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span><span class="p">,</span> <span class="nx">Query</span><span class="p">,</span> <span class="nx">Post</span><span class="p">,</span> <span class="nx">Body</span><span class="p">,</span> <span class="nx">Put</span><span class="p">,</span> <span class="nx">Param</span><span class="p">,</span> <span class="nx">Delete</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">CreateCatDto</span><span class="p">,</span> <span class="nx">UpdateCatDto</span><span class="p">,</span> <span class="nx">ListAllEntities</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./dto&#39;</span><span class="p">;</span>
@@ -550,7 +551,7 @@ ibrary-specific option을 사용하기 위해 @Res()와 @Next()를 모두 사용
 <p>위처럼 풀소스코드가 정의되어 있어도, Nest는 CatsController가 존재하는지 알지 못하기 때문에, 해당 클래스의 인스턴스를 생성하지 못한다.
 <!-- raw HTML omitted --><!-- raw HTML omitted -->
 Controller는 항상 module에 속해있어야 하며, @Module() 데코레이터를 통해 포함시킨다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsController</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.controller&#39;</span><span class="p">;</span>
@@ -562,7 +563,7 @@ Controller는 항상 module에 속해있어야 하며, @Module() 데코레이터
 </code></pre></div><p>module class에 @Module() 데코레이터를 통해 포함시키면, Nest는 해당 controller를 찾아 mount한다.</p>
 <h2 id="library-specific-approach">Library-specific approach<a hidden class="anchor" aria-hidden="true" href="#library-specific-approach">#</a></h2>
 <p>library-specific response object를 injection하기 위해 @Res() 또는 @Response() 데코레이터를 사용한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cat.controller.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cat.controller.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span><span class="p">,</span> <span class="nx">Post</span><span class="p">,</span> <span class="nx">Res</span><span class="p">,</span> <span class="nx">HttpStatus</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Response</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
@@ -582,13 +583,15 @@ Controller는 항상 module에 속해있어야 하며, @Module() 데코레이터
 </code></pre></div><p>이 방식을 통해, response object를 더 유연한 방식으로 컨트롤 할 수 있다. 일반적으로 이러한 접근 방식은 덜 clear하며, disadvantage를 가져올 수 있으므로 조심해서 다루어야 한다. 가장 주요한 disadvantage는 코드가 platform 의존적(기반 플랫폼들은 response object에 대해 서로 다른 API를 갖고 있다.)이 되며 테스트하기가 힘들어진다는 것이다.
 <!-- raw HTML omitted --><!-- raw HTML omitted -->
 또한, 위의 예제와 같이, Nest standard로 제공하는 response 핸들링 기능들을 사용할 수 없다(예를 들어, @HttpCode() / @Header() 데코레이터 등). 이것을 해결하기 위해 passthrough 옵션을 사용할 수 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Get</span><span class="p">()</span>
 <span class="nx">findAll</span><span class="p">(</span><span class="kd">@Res</span><span class="p">({</span> <span class="nx">passthrough</span>: <span class="kt">true</span> <span class="p">})</span> <span class="nx">res</span>: <span class="kt">Response</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">OK</span><span class="p">);</span>
   <span class="k">return</span> <span class="p">[];</span>
 <span class="p">}</span>
 </code></pre></div>
-</div>
+
+  </div>
+
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
@@ -616,30 +619,26 @@ Controller는 항상 module에 속해있어야 하며, @Module() 데코레이터
 </script>
 </article>
     </main>
-    <footer class="footer">
+    
+<footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -686,43 +685,6 @@ Controller는 항상 module에 속해있어야 하며, @Module() 데코레이터
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerText = 'copy';
-
-        function copyingDone() {
-            copybutton.innerText = 'copied!';
-            setTimeout(() => {
-                copybutton.innerText = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        container.appendChild(copybutton);
-    });
 </script>
 </body>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on icecat471&#39;s Devlog</title>
     <link>https://icecat471.github.io/devlog/post/</link>
@@ -9,14 +9,28 @@
       <link>https://icecat471.github.io/devlog/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 06 Jun 2021 22:10:28 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Oct 2021 11:09:17 +0900</lastBuildDate><atom:link href="https://icecat471.github.io/devlog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go언어에서의 DDD</title>
+      <link>https://icecat471.github.io/devlog/post/server/ddd_in_go/</link>
+      <pubDate>Thu, 28 Oct 2021 11:09:17 +0900</pubDate>
+      
+      <guid>https://icecat471.github.io/devlog/post/server/ddd_in_go/</guid>
+      <description>Reference https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5 https://github.com/victorsteven/food-app-server
+DDD(Domain Driven Design) DDD의 4Layers   Domain : domain이 위치하고, 애플리케이션의 비즈니스로직이 정의된 곳
+  Infrastructure : 애플리케이션과 독립적인 모든 것이 존재하는 곳(외부 라이브러리, 데이터베이스 엔진 등)
+  Application : domain과 interface 사이의 통로. interface layer에서 domain layer로 요청을 보내고 응답을 반환
+  Interface : 웹 서비스, RIM 인터페이스 웹 애플리케이션, 배치 프로세스 등 다른 시스템과 상호작용 하는 모든 것이 위치
+  시작 이 프로젝트는 구조는 아래와 같다.</description>
+    </item>
+    
     <item>
       <title>[MariaDB] 외래키 제약조건</title>
       <link>https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/</link>
       <pubDate>Sun, 06 Jun 2021 22:10:28 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/</guid>
-      <description>CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다.</description>
+      <description>CREATETABLEUser(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,usernameVARCHAR(10)DEFAULTNULL,emailVARCHAR(50)DEFAULTNULL,);#외래키이름이랜덤으로만들어짐CREATETABLEUserItem(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,item_nameVARCHAR(50)DEFAULTNULL,priceINTDEFAULT0,userIdINTDEFAULTNULL,FOREIGNKEY(userId)REFERENCESUser(id));#외래키이름을지정해서만들기CREATETABLEUserItem(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,item_nameVARCHAR(50)DEFAULTNULL,priceINTDEFAULT0,userIdINTDEFAULTNULL,CONSTRAINTFK_USER_ITEM_USERFOREIGNKEY(userId)REFERENCESUser(id));아래의 쿼리로 제약조건을 확인해볼 수 있다.</description>
     </item>
     
     <item>
@@ -407,7 +421,7 @@ type Person struct { name string age int job string height float32 weight float3
       
       <guid>https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/</guid>
       <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; ) func init() { log.SetPrefix(&amp;#34;Blockchain: &amp;#34;) } func main() { fmt.Println(&amp;#34;test&amp;#34;) log.Println(&amp;#34;test&amp;#34;) } 실행시켜보면
-test Blockchain: 2021/04/15 15:04:03 test </description>
+testBlockchain: 2021/04/15 15:04:03 test</description>
     </item>
     
     <item>
@@ -449,7 +463,7 @@ command-line flag를 파싱해주는 패키지.
       
       <guid>https://icecat471.github.io/devlog/post/golang/external_module/</guid>
       <description>go.mod 파일에서
-require ( &amp;lt;모듈명&amp;gt; v0.0.0 ) replace &amp;lt;모듈명&amp;gt; v0.0.0 =&amp;gt; ../module // 이런 형태로 경로를 지정해줌 </description>
+require (&amp;lt;모듈명&amp;gt; v0.0.0)replace &amp;lt;모듈명&amp;gt; v0.0.0 =&amp;gt; ../module // 이런 형태로 경로를 지정해줌</description>
     </item>
     
     <item>

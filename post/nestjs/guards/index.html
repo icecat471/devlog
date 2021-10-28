@@ -14,7 +14,7 @@ Guards Guards guard는 @Injectable() 데코레이터로 주석된 클래스이�
 guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역할, ACL 등)에 따라 request가 route handler에 의해 수행될지 아닐지를 결정한다. 이것은 종종 authorization을 가리킨다. 전통적인 express 애플리케이션에서 authorization(혹은 authentication)은 미들웨어에서 처리된다. 토큰의 유효성을 검사하고, request 오브젝트에 프로퍼티를 추가할 수 있기때문에 미들웨어에서 인증을 구현하는 것은 좋은 선택이다.">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/guards/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.5ddba2377cef4826c901d6600bb403811fc5084e4de37bd1a967782b2b74485f.css" integrity="sha256-XduiN3zvSCbJAdZgC7QDgR/FCE5N43vRqWd4Kyt0SF8=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
@@ -24,8 +24,44 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
 <link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.82.0" />
-<meta property="og:title" content="[NestJS] (공식문서 번역) Guards" />
+<meta name="generator" content="Hugo 0.88.1" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="[NestJS] (공식문서 번역) Guards" />
 <meta property="og:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
 의역 및 오역이 있을 수 있습니다.
 https://docs.nestjs.com/guards
@@ -113,43 +149,6 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
     }
 
 </script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: #1d1e20;
-                --entry: #2e2e33;
-                --primary: rgba(255, 255, 255, 0.84);
-                --secondary: rgba(255, 255, 255, 0.56);
-                --tertiary: rgba(255, 255, 255, 0.16);
-                --content: rgba(255, 255, 255, 0.74);
-                --hljs-bg: #2e2e33;
-                --code-bg: #37383e;
-                --border: #333;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
 
 <header class="header">
     <nav class="nav">
@@ -178,7 +177,7 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
                 </button>
             </span>
         </div>
-        <ul id="menu" onscroll="menu_on_scroll()">
+        <ul id="menu">
             <li>
                 <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
                     <span>Archive</span>
@@ -211,12 +210,14 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
       [NestJS] (공식문서 번역) Guards
     </h1>
     <div class="post-meta">May 12, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;icecat471
+
 </div>
   </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
-            <div class="details">Table of Contents</div>
+            <span class="details">Table of Contents</span>
         </summary>
+
         <div class="inner"><ul>
                 <li>
                     <a href="#guards" aria-label="Guards">Guards</a><ul>
@@ -258,7 +259,7 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
 </blockquote>
 <h2 id="authorization-guard">Authorization guard<a hidden class="anchor" aria-hidden="true" href="#authorization-guard">#</a></h2>
 <p>앞서 말했듯, 특정 router들은 충분한 권한을 가진자가 호출했을 때에만 작동해야 하므로, authorization은 guard의 매우 주요한 이용 사례이다. AuthGuard는 인증된 유저를 가려낸다(request header에 첨부된 토큰을 확인). 이것은 토큰의 유효성을 확인하고, request가 진행될지 아닐지를 결정할 것이다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// auth.guard.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// auth.guard.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">ExecutionContext</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
@@ -287,7 +288,7 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
 <p>ExecutionContext는 현재 실행중인 프로세스에 대한 정보를 가져오기위해 몇개의 helper method가 추가되었다. 이러한 세부사항은 controller, methods, execution context를 걸쳐 제네릭 guard를 구축하는데 도움이 된다. ExecutionContext에 대해 더 알고싶다면 <a href="https://docs.nestjs.com/fundamentals/execution-context">이곳</a>을 참고하자.</p>
 <h2 id="role-based-authentication">Role-based authentication<a hidden class="anchor" aria-hidden="true" href="#role-based-authentication">#</a></h2>
 <p>특정 role을 가진 사용자만 허용하는 gaurd를 만들어보자. 기본 guard template에서 시작하여, 이후의 섹션에서 내용을 추가할 것이다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// roles.guard.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// roles.guard.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">ExecutionContext</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
@@ -302,22 +303,22 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
 <span class="p">}</span>
 </code></pre></div><h2 id="binding-guards">Binding guards<a hidden class="anchor" aria-hidden="true" href="#binding-guards">#</a></h2>
 <p>exception filter, pipe처럼 guard도 controller-scope, method-scope, global-scope일 수 있다. 아래에서 @UseGaurd() 데코레이터를 사용하여, controller-scope guard를 세팅하였다. 이 데코레이터는 단일 또는 여러개의 인자를 받을 수 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span>
 <span class="kd">@UseGuards</span><span class="p">(</span><span class="nx">RolesGuard</span><span class="p">)</span>
 <span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsController</span> <span class="p">{}</span>
 </code></pre></div><p>위에서 RolesGuard 클래스를 넘겨주었고, 프레임워크에서 이를 인스턴스화 한다. pipe나 exception filter와 마찬가지로 인스턴스를 바로 넘겨줄 수도 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span>
 <span class="kd">@UseGuards</span><span class="p">(</span><span class="k">new</span> <span class="nx">RolesGuard</span><span class="p">())</span>
 <span class="kr">export</span> <span class="kr">class</span> <span class="nx">CatsController</span> <span class="p">{}</span>
 </code></pre></div><p>위와 같은 구성은 해당 controller의 모든 handler에 guard가 적용된다. 특정 method에만 적용하고 싶다면, method level에서 @UseGaurds() 데코레이터를 사용하면 된다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>global guard를 세팅하기 위해서는, useGlobalGuards() method를 사용한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalGuards</span><span class="p">(</span><span class="k">new</span> <span class="nx">RolesGuard</span><span class="p">());</span>
 </code></pre></div><blockquote>
 <p>하이브리드 앱에서는 useGlobalGuards() 메서드가 동작하지 않는다.</p>
 </blockquote>
 <p>global guard는 전체 애플리케이션에서 모든 controller와 모든 route handler에 적용된다. 이 경우 모듈 외부에서 등록되기 때문에 의존성 주입에 의한 것이 아니다. 이를 해결하기 위해서, 아래처럼 모듈에 직접 등록할 수도 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">APP_GUARD</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span>
@@ -334,19 +335,19 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
 </code></pre></div><h2 id="setting-roles-per-handler">Setting roles per handler<a hidden class="anchor" aria-hidden="true" href="#setting-roles-per-handler">#</a></h2>
 <p>RolesGuards가 작동은 하지만, 아직 그렇게 똑똑하지 않다. 아직 우리는 guard의 가장 중요한 특성인 execution context를 사용하지 않았다. CatsController에서 각각의 route는 서로 다른 permission scheme을 갖고 있다. 어떤것은 admin user에게만 유효하며, 또 어떤것은 모든 유저에게 유효하다. 어떻게 route마다 role을 매칭하고, 재사용가능하게 만들 수 있을까?<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>바로 custom metadata가 필요한 때이다(자세한 내용은 <a href="https://docs.nestjs.com/fundamentals/execution-context#reflection-and-metadata">이곳</a>에서 확인). Nest는 @SetMetadata() 데코레이터를 통해 route handler에 custom metadata를 붙일 수 있다. 이 메타데이터는 guard에게 role을 제공하여 guard의 의사결정에 도움을 준다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Post</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@Post</span><span class="p">()</span>
 <span class="kd">@SetMetadata</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">])</span>
 <span class="kr">async</span> <span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span> <span class="nx">createCatDto</span>: <span class="kt">CreateCatDto</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><p>위의 예제에서, create() method에 roles 메타데이터를 붙였다(roles는 key이며 [&lsquo;admin&rsquo;]은 value). 이것은 동작하지만, @SetMetadata()의 좋은 사용법은 아니다. 대신 custom decorator를 만드는 것이 좋다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// roles.decorator.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// roles.decorator.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">SetMetadata</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 
 <span class="kr">export</span> <span class="kr">const</span> <span class="nx">Roles</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">roles</span>: <span class="kt">string</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="nx">SetMetadata</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="nx">roles</span><span class="p">);</span>
 </code></pre></div><p>위의 예제가 더욱 깔끔하고 가독성도 좋으며, 타입이 부여되어 있다. 이제 custom @Roles() 데코레이터를 create() method에 적용해보자.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.controller.ts
 </span><span class="c1"></span>
 <span class="kd">@Post</span><span class="p">()</span>
 <span class="kd">@Roles</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
@@ -355,7 +356,7 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
 <span class="p">}</span>
 </code></pre></div><h2 id="putting-it-all-together">Putting it all together<a hidden class="anchor" aria-hidden="true" href="#putting-it-all-together">#</a></h2>
 <p>이제 우리의 RolesGuard로 돌아가보자. 지금은 모든 경우에 true를 반환할 것이다. 현재의 route에서 요구하는 role과 현재 유저에게 부여된 role을 비교하여 리턴값을 결정할 것이다. route에 부여된 role(custom metadata)에 접근하기 위해, Reflector helper class를 사용한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// roles.guard.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// roles.guard.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">ExecutionContext</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Reflector</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span>
@@ -376,16 +377,18 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
 <span class="p">}</span>
 </code></pre></div><p>더 자세한 정보는 Execution Context 챕터의 <a href="https://docs.nestjs.com/fundamentals/execution-context#reflection-and-metadata">Reflection and metadata 섹션</a>을 참고하라.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>권한을 만족하지 못하는 유저가 엔드포인트로 request를 보낼 경우, Nest는 자동으로 아래의 response를 보낼 것이다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;statusCode&#34;</span><span class="p">:</span> <span class="mi">403</span><span class="p">,</span>
   <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;Forbidden resource&#34;</span><span class="p">,</span>
   <span class="nt">&#34;error&#34;</span><span class="p">:</span> <span class="s2">&#34;Forbidden&#34;</span>
 <span class="p">}</span>
 </code></pre></div><p>guard는 false를 리턴하고, 프레임워크는 ForbiddenException을 throw 하였다. 만약 다른 response를 보내고 싶은 경우, 아래처럼 원하는 예외를 throw 하면 된다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="k">throw</span> <span class="k">new</span> <span class="nx">UnauthorizedException</span><span class="p">();</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="k">throw</span> <span class="k">new</span> <span class="nx">UnauthorizedException</span><span class="p">();</span>
 </code></pre></div><p>guard에 의해 throw된 모든 예외는 <a href="https://docs.nestjs.com/exception-filters">exception layer</a>에서 처리된다.</p>
 
-</div>
+
+  </div>
+
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
@@ -413,30 +416,26 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
 </script>
 </article>
     </main>
-    <footer class="footer">
+    
+<footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -483,43 +482,6 @@ guard는 단일 책임을 갖는다. guard는 런타임 시, 조건(권한, 역�
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerText = 'copy';
-
-        function copyingDone() {
-            copybutton.innerText = 'copied!';
-            setTimeout(() => {
-                copybutton.innerText = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        container.appendChild(copybutton);
-    });
 </script>
 </body>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>golang on icecat471&#39;s Devlog</title>
     <link>https://icecat471.github.io/devlog/categories/golang/</link>
@@ -63,7 +63,7 @@ slice1: [1 2 3 4 5] slice2: [1 2 4 5] 순서가 중요하지 않은 경우 packa
       
       <guid>https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/</guid>
       <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; ) func init() { log.SetPrefix(&amp;#34;Blockchain: &amp;#34;) } func main() { fmt.Println(&amp;#34;test&amp;#34;) log.Println(&amp;#34;test&amp;#34;) } 실행시켜보면
-test Blockchain: 2021/04/15 15:04:03 test </description>
+testBlockchain: 2021/04/15 15:04:03 test</description>
     </item>
     
     <item>
@@ -95,7 +95,7 @@ command-line flag를 파싱해주는 패키지.
       
       <guid>https://icecat471.github.io/devlog/post/golang/external_module/</guid>
       <description>go.mod 파일에서
-require ( &amp;lt;모듈명&amp;gt; v0.0.0 ) replace &amp;lt;모듈명&amp;gt; v0.0.0 =&amp;gt; ../module // 이런 형태로 경로를 지정해줌 </description>
+require (&amp;lt;모듈명&amp;gt; v0.0.0)replace &amp;lt;모듈명&amp;gt; v0.0.0 =&amp;gt; ../module // 이런 형태로 경로를 지정해줌</description>
     </item>
     
   </channel>

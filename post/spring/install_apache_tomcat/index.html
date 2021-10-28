@@ -13,7 +13,7 @@ http://tomcat.apache.org/
 # 폴더를 /usr/local 경로로 이동 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/ # 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함  $ sudo rm -f /Library/Tomcat $ sudo ln -s /usr/local/apache-tomcat-9.0.45/ /Library/Tomcat # 소유자를 본인으로 변경 $ sudo chown -R &lt;userName&gt; /Library/Tomcat # 실행권한 추가 $ sudo chmod &#43;x /Library/Tomcat/bin/*.sh # Tomcat 실행 $ /Library/Tomcat/bin/startup.sh # Tomcat 종료 $ /Library/Tomcat/bin/shutdown.sh 톰캣 실행 확인">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/post/spring/install_apache_tomcat/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.5ddba2377cef4826c901d6600bb403811fc5084e4de37bd1a967782b2b74485f.css" integrity="sha256-XduiN3zvSCbJAdZgC7QDgR/FCE5N43vRqWd4Kyt0SF8=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
@@ -23,8 +23,44 @@ http://tomcat.apache.org/
 <link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.82.0" />
-<meta property="og:title" content="맥북 Tomcat9 설치" />
+<meta name="generator" content="Hugo 0.88.1" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="맥북 Tomcat9 설치" />
 <meta property="og:description" content="톰캣 홈페이지
 http://tomcat.apache.org/
 받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)
@@ -110,43 +146,6 @@ http://tomcat.apache.org/
     }
 
 </script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: #1d1e20;
-                --entry: #2e2e33;
-                --primary: rgba(255, 255, 255, 0.84);
-                --secondary: rgba(255, 255, 255, 0.56);
-                --tertiary: rgba(255, 255, 255, 0.16);
-                --content: rgba(255, 255, 255, 0.74);
-                --hljs-bg: #2e2e33;
-                --code-bg: #37383e;
-                --border: #333;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
 
 <header class="header">
     <nav class="nav">
@@ -175,7 +174,7 @@ http://tomcat.apache.org/
                 </button>
             </span>
         </div>
-        <ul id="menu" onscroll="menu_on_scroll()">
+        <ul id="menu">
             <li>
                 <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
                     <span>Archive</span>
@@ -208,23 +207,16 @@ http://tomcat.apache.org/
       맥북 Tomcat9 설치
     </h1>
     <div class="post-meta">April 30, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471
+
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <div class="details">Table of Contents</div>
-        </summary>
-        <div class="inner">
-        </div>
-    </details>
-</div>
+  </header> 
 
   <div class="post-content"><p>톰캣 홈페이지<br>
 <a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a></p>
 <p><img loading="lazy" src="../../../img/spring/install_tomcat_01.png" alt="connect to tomcat homepage to download tomcat9"  />
 </p>
 <p>받은 파일의 압축을 푼다 (다운로드 폴더 기준, apache-tomcat-9.0.45)</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 폴더를 /usr/local 경로로 이동</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 폴더를 /usr/local 경로로 이동</span>
 $ sudo mv ~/Downloads/apache-tomcat-9.0.45 /usr/local/
 
 <span class="c1"># 기존에 존재하는 /Library/Tomcat 경로를 지우고 이동한 폴더를 링크함 </span>
@@ -244,7 +236,9 @@ $ /Library/Tomcat/bin/shutdown.sh
 </code></pre></div><p>톰캣 실행 확인<br>
 http://localhost:8080</p>
 
-</div>
+
+  </div>
+
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://icecat471.github.io/devlog/tags/tomcat/">tomcat</a></li>
@@ -273,30 +267,26 @@ http://localhost:8080</p>
 </script>
 </article>
     </main>
-    <footer class="footer">
+    
+<footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -343,43 +333,6 @@ http://localhost:8080</p>
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerText = 'copy';
-
-        function copyingDone() {
-            copybutton.innerText = 'copied!';
-            setTimeout(() => {
-                copybutton.innerText = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        container.appendChild(copybutton);
-    });
 </script>
 </body>
 

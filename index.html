@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.5ddba2377cef4826c901d6600bb403811fc5084e4de37bd1a967782b2b74485f.css" integrity="sha256-XduiN3zvSCbJAdZgC7QDgR/FCE5N43vRqWd4Kyt0SF8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
@@ -18,10 +18,46 @@
 <link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/index.xml">
+<meta name="generator" content="Hugo 0.88.1" />
+<link rel="alternate" type="application/rss+xml" href="https://icecat471.github.io/devlog/index.xml">
 <link rel="alternate" type="application/json" href="https://icecat471.github.io/devlog/index.json">
-<meta property="og:title" content="icecat471&#39;s Devlog" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="icecat471&#39;s Devlog" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://icecat471.github.io/devlog/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
@@ -58,43 +94,6 @@
     }
 
 </script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: #1d1e20;
-                --entry: #2e2e33;
-                --primary: rgba(255, 255, 255, 0.84);
-                --secondary: rgba(255, 255, 255, 0.56);
-                --tertiary: rgba(255, 255, 255, 0.16);
-                --content: rgba(255, 255, 255, 0.74);
-                --hljs-bg: #2e2e33;
-                --code-bg: #37383e;
-                --border: #333;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
 
 <header class="header">
     <nav class="nav">
@@ -123,7 +122,7 @@
                 </button>
             </span>
         </div>
-        <ul id="menu" onscroll="menu_on_scroll()">
+        <ul id="menu">
             <li>
                 <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
                     <span>Archive</span>
@@ -153,7 +152,7 @@
         <h1>icecat471의 개발블로그입니다.</h1>
     </header>
     <section class="entry-content">
-        <p>신입 백엔드 개발자 icecat471의 개발블로그입니다.</p>
+        <p>back-end developer &amp; infra engineer</p>
     </section>
     <footer class="entry-footer">
         <div class="social-icons">
@@ -172,10 +171,28 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[MariaDB] 외래키 제약조건</h2>
+    <h2>Go언어에서의 DDD
+    </h2>
   </header>
   <section class="entry-content">
-    <p>CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다....</p>
+    <p>Reference https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5 https://github.com/victorsteven/food-app-server
+DDD(Domain Driven Design) DDD의 4Layers   Domain : domain이 위치하고, 애플리케이션의 비즈니스로직이 정의된 곳
+  Infrastructure : 애플리케이션과 독립적인 모든 것이 존재하는 곳(외부 라이브러리, 데이터베이스 엔진 등)
+  Application : domain과 interface 사이의 통로. interface layer에서 domain layer로 요청을 보내고 응답을 반환
+  Interface : 웹 서비스, RIM 인터페이스 웹 애플리케이션, 배치 프로세스 등 다른 시스템과 상호작용 하는 모든 것이 위치
+  시작 이 프로젝트는 구조는 아래와 같다....</p>
+  </section>
+  <footer class="entry-footer">October 28, 2021&nbsp;·&nbsp;10 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Go언어에서의 DDD" href="https://icecat471.github.io/devlog/post/server/ddd_in_go/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>[MariaDB] 외래키 제약조건
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>CREATETABLEUser(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,usernameVARCHAR(10)DEFAULTNULL,emailVARCHAR(50)DEFAULTNULL,);#외래키이름이랜덤으로만들어짐CREATETABLEUserItem(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,item_nameVARCHAR(50)DEFAULTNULL,priceINTDEFAULT0,userIdINTDEFAULTNULL,FOREIGNKEY(userId)REFERENCESUser(id));#외래키이름을지정해서만들기CREATETABLEUserItem(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,item_nameVARCHAR(50)DEFAULTNULL,priceINTDEFAULT0,userIdINTDEFAULTNULL,CONSTRAINTFK_USER_ITEM_USERFOREIGNKEY(userId)REFERENCESUser(id));아래의 쿼리로 제약조건을 확인해볼 수 있다....</p>
   </section>
   <footer class="entry-footer">June 6, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [MariaDB] 외래키 제약조건" href="https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/"></a>
@@ -183,7 +200,8 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Udemy 자막 실시간 번역</h2>
+    <h2>Udemy 자막 실시간 번역
+    </h2>
   </header>
   <section class="entry-content">
     <p> Udemy 계정 프로필 언어를 ENGLISH(EN)으로 설정한다. 강의 자막(English)을 활성화 후, “Caption setting &gt; Display under video&#34;를 활성화한다. Transcript를 활성화 후, 구글 브라우저 “이 페이지 번역하기&#34;를 눌러 한국어로 번역한다. 우측 Transcript 스크롤을 위 아래로 움직여 모든 텍스트가 번역되도록 만든다. F12 &gt; Console에 아래 코드를 붙여 넣고 엔터  if(typeof window.i!==&#39;undefined&#39;){clearInterval(window.i)}else{let lastText=&#39;&#39;;function check(){let toEl=$(&#39;.well--container--2edq4 span&#39;);let fromEl=$(&#39;p[data-purpose=&#34;transcript-cue-active&#34;] span&#39;);let currentText=fromEl.html();if(lastText!==currentText){toEl.html(currentText)}lastText=fromEl.html()}window.i=setInterval(check,200)} F12 창을 닫은 후 재생하여 자막 확인  </p>
@@ -194,7 +212,8 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[Go언어] gorilla websocket request origin 에러</h2>
+    <h2>[Go언어] gorilla websocket request origin 에러
+    </h2>
   </header>
   <section class="entry-content">
     <p>websocket: request origin not allowed by Upgrader.CheckOrigin 위 에러 발생시
@@ -207,7 +226,8 @@ upgrader.CheckOrigin = func(r *http.Request) bool { return true } 위 코드를 
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[Go언어] Closure</h2>
+    <h2>[Go언어] Closure
+    </h2>
   </header>
   <section class="entry-content">
     <p>클로저(closure) 함수를 일급객체로 취급하는 함수형 프로그래밍 언어(Erlang, Scala, Haskell 등)에서 사용되는 중요한 특성이다.클로저에 대해 MDN은 아래와 같이 정의하고 있다.
@@ -222,7 +242,8 @@ package main func outerFunc() func() { x := 10 innerFunc := func() { fmt.Println
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[NestJS] (공식문서 번역) Asynchronous providers</h2>
+    <h2>[NestJS] (공식문서 번역) Asynchronous providers
+    </h2>
   </header>
   <section class="entry-content">
     <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
@@ -234,36 +255,94 @@ Asynchronous providers 때떄로, 애플리케이션은 하나 또는 그 이상
   <footer class="entry-footer">May 23, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Asynchronous providers" href="https://icecat471.github.io/devlog/post/nestjs/asynchronous_providers/"></a>
 </article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>[Go언어] 슬라이스에서 요소 삭제
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>순서가 중요한 경우 package main import &#34;fmt&#34; func remove(slice []int, s int) []int { return append(slice[:s], slice[s&#43;1:]...) } func main() { var Slice1 = []int{1, 2, 3, 4, 5} fmt.Printf(&#34;slice1: %v\n&#34;, Slice1) Slice2 := remove(Slice1, 2) fmt.Printf(&#34;slice2: %v\n&#34;, Slice2) } 실행 결과
+slice1: [1 2 3 4 5] slice2: [1 2 4 5] 순서가 중요하지 않은 경우 package main import &#34;fmt&#34; func remove(s []int, i int) []int { s[i] = s[len(s)-1] return s[:len(s)-1] } func main() { var Slice1 = []int{1, 2, 3, 4, 5} fmt....</p>
+  </section>
+  <footer class="entry-footer">May 22, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Go언어] 슬라이스에서 요소 삭제" href="https://icecat471.github.io/devlog/post/golang/delete_item_from_slice/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>[NestJS] (공식문서 번역) Custom Providers
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/fundamentals/custom-providers
+Custom providers 앞선 챕터들에서, 다양한 측면의 의존성 주입(DI)를 어떻게 Nest에서 사용하는지 알아보았다. 하나의 예는 생성자 기반 의존성 주입이다. Nest 코어에서 기본적으로 빌드되는 의존성 주입과 한가지 메인 패턴만을 살펴보았다. 애플레케이션이 더 복잡해질수록 DI 시스템의 모든 특성들을 필요로 하게 될 것이다. 좀 더 자세히 알아보자.
+DI fundamentals 의존성 주입은 직접 코드로 작성하는 대신, 의존성의 인스턴스화를 IoC 컨테이너(여기서는 NestJS runtime system)에게 맡기는 inversion of control(IoC) 테크닉이다....</p>
+  </section>
+  <footer class="entry-footer">May 21, 2021&nbsp;·&nbsp;6 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Custom Providers" href="https://icecat471.github.io/devlog/post/nestjs/custom_providers/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>[NestJS] (공식문서 번역) Custom decorators
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/custom-decorators
+Custom decorators Custom router decorators Nest는 데코레이터라는 특성을 중심으로 만들어졌다. 데코레이터는 많은 프로그래밍 언어에서 알려진 개념이지만, 자바스크립트 세계에서는 상대적으로 새로운 편이다. 데코레이터가 어떻게 작동하는지 더 잘 이해하기 위해서는, 이 글을 읽어보는 것을 추천한다. 아래는 간단한 정의이다.
+ ES2016 데코레이터는 함수를 반환하고, 인자로 target, name, property, description을 받을 수 있는 expression이다. decorate하려고하는 것 맨 위에 @를 접두어로 붙인 데코레이터를 위치함으로써 데코레이터를 적용할 수 있다....</p>
+  </section>
+  <footer class="entry-footer">May 14, 2021&nbsp;·&nbsp;3 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Custom decorators" href="https://icecat471.github.io/devlog/post/nestjs/custom_decorators/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>[NestJS] (공식문서 번역) Interceptors
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>NestJS 공식문서 번역 겸 공부하는 글 입니다.
+의역 및 오역이 있을 수 있습니다.
+https://docs.nestjs.com/interceptors
+Interceptors Interceptors interceptor는 @Injectable() 데코레이터로 주석된 클래스이다. interceptor는 NestInterceptor 인터페이스를 구현해야 한다.
+interceptor는 Aspect Oriented Programming(AOP)에서 영감을 받은 여러가지 기능을 갖고 있다.
+ method 수행 전/후 추가 로직을 bind 함수로부터 반환된 값을 변형 함수로부터 throw된 예외를 변형 기본 함수를 확장 특정 조건들에 따라 함수를 완전히 override(e.g, 캐싱)  Basics 각각의 interceptor는 intercept() method를 구현해야하며, 이 함수는 2개의 argument를 받는다....</p>
+  </section>
+  <footer class="entry-footer">May 14, 2021&nbsp;·&nbsp;6 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [NestJS] (공식문서 번역) Interceptors" href="https://icecat471.github.io/devlog/post/nestjs/interceptors/"></a>
+</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="next" href="https://icecat471.github.io/devlog/page/2/">Next Page »</a>
   </nav>
 </footer>
     </main>
-    <footer class="footer">
+    
+<footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

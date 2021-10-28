@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.5ddba2377cef4826c901d6600bb403811fc5084e4de37bd1a967782b2b74485f.css" integrity="sha256-XduiN3zvSCbJAdZgC7QDgR/FCE5N43vRqWd4Kyt0SF8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
@@ -18,10 +18,46 @@
 <link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/index.xml">
+<meta name="generator" content="Hugo 0.88.1" />
+<link rel="alternate" type="application/rss+xml" href="https://icecat471.github.io/devlog/index.xml">
 <link rel="alternate" type="application/json" href="https://icecat471.github.io/devlog/index.json">
-<meta property="og:title" content="icecat471&#39;s Devlog" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="icecat471&#39;s Devlog" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://icecat471.github.io/devlog/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
@@ -58,43 +94,6 @@
     }
 
 </script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: #1d1e20;
-                --entry: #2e2e33;
-                --primary: rgba(255, 255, 255, 0.84);
-                --secondary: rgba(255, 255, 255, 0.56);
-                --tertiary: rgba(255, 255, 255, 0.16);
-                --content: rgba(255, 255, 255, 0.74);
-                --hljs-bg: #2e2e33;
-                --code-bg: #37383e;
-                --border: #333;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
 
 <header class="header">
     <nav class="nav">
@@ -123,7 +122,7 @@
                 </button>
             </span>
         </div>
-        <ul id="menu" onscroll="menu_on_scroll()">
+        <ul id="menu">
             <li>
                 <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
                     <span>Archive</span>
@@ -151,109 +150,96 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>ECDSA 알고리즘</h2>
+    <h2>유니티 WebGL 자바스크립트 함수 호출
+    </h2>
   </header>
   <section class="entry-content">
-    <p>ECDSA (Elliptic Curve Digital Signature Algorithm) 타원곡선암호(ECC)를 전자서명에 접목시킨 암호 알고리즘.타원곡선의 정의 일반적으로 타원 곡선 방정식은 아래와 같다.
- y2&#43; b1xy &#43; b2y = x3&#43; a1x2&#43; a2x &#43; a3 그러나, 실수상의 타원 곡선은 아래와 같은 특별한 타원 곡선을 사용한다.
- y2= x3&#43; ax &#43; b
- 타원곡선의 특징은 x축을 중심으로 대칭되며, 비 수직선에 대해 최대 3개 지점에서 곡선과 교차.
-타원곡선상의 연산 타원곡선상의 점 P와 Q의 덧셈연산은 P와 Q를 지나는 직선이 타원과 만나는 교점(-R)을 x축으로 대칭시킨 점 R에 대해...</p>
+    <p>참고: Unity Document WebGL
+Assets/Plugins 폴더를 만들고 Plugin.jslib 파일을 만든다
+// Plugin.jslib  mergeInto(LibraryManager.library, { Hello: function () { window.alert(&#34;Hello, world!&#34;); }, HelloString: function (str) { window.alert(Pointer_stringify(str)); }, PrintFloatArray: function (array, size) { for(var i = 0; i &lt; size; i&#43;&#43;) console.log(HEAPF32[(array &gt;&gt; 2) &#43; i]); }, AddNumbers: function (x, y) { return x &#43; y; }, StringReturnValueFunction: function () { var returnStr = &#34;bla&#34;; var bufferSize = lengthBytesUTF8(returnStr) &#43; 1; var buffer = _malloc(bufferSize); stringToUTF8(returnStr, buffer, bufferSize); return buffer; }, BindWebGLTexture: function (texture) { GLctx....</p>
   </section>
-  <footer class="entry-footer">April 22, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to ECDSA 알고리즘" href="https://icecat471.github.io/devlog/post/encryption/ecdsa/"></a>
+  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to 유니티 WebGL 자바스크립트 함수 호출" href="https://icecat471.github.io/devlog/post/unity/call_javascript/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Decorator 패턴</h2>
+    <h2>터미널에서 command not found: dotnet 에러
+    </h2>
   </header>
   <section class="entry-content">
-    <p>Decorator Pattern 출처: https://golangbyexample.com/decorator-pattern-golang/
-개요 개체를 변경하지 않고 기능을 추가할 수 있음.
-=&gt; 이미 테스트가 끝난 코드를 수정하면 안됨 (Open-Closed Principle에 위배됨) 두가지 피자가 존재한다고 가정해보자.
- vegge mania pizza peppy tofu pizza  UML 다이어그램 코드 pizza.go
-package main type pizza interface { getPrice() int } peppyPaneer.go
-package main type peppyPaneer struct { } func (p *peppyPaneer) getPrice() int { return 20 } veggeMania.go
-package main type veggeMania struct { } func (p *veggeMania) getPrice() int { return 15 } 토핑을 추가하기 위해 위쪽에 만들어진 구조체들은 더 이상 수정하면 안됨....</p>
+    <p>아래처럼 나올 때
+zsh: command not found: dotnet dotnet package를 설치했다면/usr/local/share/dotnet 경로에 설치되어 있는 것을 확인./usr/local/bin 경로에 링크를 만들어주면 된다.ln -s /usr/local/share/dotnet/dotnet /usr/local/bin 출처: stackoverflow</p>
   </section>
-  <footer class="entry-footer">April 21, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Decorator 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/decorator/"></a>
+  <footer class="entry-footer">April 12, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to 터미널에서 command not found: dotnet 에러" href="https://icecat471.github.io/devlog/post/unity/command_not_found_dotnet/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Composite 패턴</h2>
+    <h2>유니티 webGL 프로젝트 로컬서버에서 실행하기
+    </h2>
   </header>
   <section class="entry-content">
-    <p>Composite Pattern 출처: https://golangbyexample.com/composite-design-pattern-golang/
-개요 ‘composite’라고 불리는 개체그룹이 단일개체와 유사한 방식으로 처리되기를 원할때 사용.
-트리구조로 객체들을 엮는다. UML 다이어그램 OS의 파일시스템에는 폴더와 파일 두가지 유형의 개체가 있는데, 폴더와 파일은 동일하게 취급받는 경우가 있다.
-Mapping          Component interface component.go   Composite folder.go   Leaf file.go   client main.go    코드 component.go
-package main type component interface { search(string) } folder....</p>
+    <p>webGL “build and run” 버튼을 눌러서 실행하면 빌드가 다시 되기때문에 시간이 오래걸림로컬에서 서버를 열어서 실행해볼 수 있다.
+http-server 설치 $ npm i -g http-server 실행 // 유니티 빌드 폴더로 이동 $ http-server Starting up http-server, serving ./ Available on: http://127.0.0.1:8080 http://120.50.93.152:8080 http://192.168.2.1:8080 Hit CTRL-C to stop the server http://localhost:8080 로 접속해보면 게임이 실행된것을 확인해 볼 수 있다.</p>
   </section>
-  <footer class="entry-footer">April 20, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Composite 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/composite/"></a>
+  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to 유니티 webGL 프로젝트 로컬서버에서 실행하기" href="https://icecat471.github.io/devlog/post/unity/local_server/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Bridge 패턴</h2>
+    <h2>Docker 컨테이너 메모리 및 CPU 제한하기
+    </h2>
   </header>
   <section class="entry-content">
-    <p>Bridge Pattern 출처: https://golangbyexample.com/bridge-design-pattern-in-go/
-개요 구현부에서 추상층을 분리하여 각자 독립적으로 변형할 수 있게 하는 패턴이다.이 패턴은 큰 클래스를 두개의 개별 계층으로 나누는것을 제안한다.
- Abstraction: interface. Implementation에 대한 참조가 포함됨.
-Abstraction의 자식을 Refined Abstraction 이라고 부름. Implementation: interface.
-Implementation의 자식을 Concrete Implementation 이라고 부름.  UML 다이어그램 2가지 유형의 컴퓨터 Mac과 Windows가 있다고 가정. 2가지 유형의 프린터 epson과 hp가 있다고 가정. 2*2의 조합의 4개의 구조체를 만드는 대신 2개의 계층을 만든다....</p>
+    <p>// 512MB의 메모리와 50%의 CPU 할당 docker run -m 512m --cpu-quota=50000 &lt;image name&gt; // stat 확인 docker stats &lt;container id&gt; </p>
   </section>
-  <footer class="entry-footer">April 19, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Bridge 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bridge/"></a>
+  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Docker 컨테이너 메모리 및 CPU 제한하기" href="https://icecat471.github.io/devlog/post/docker/docker_memory_limit/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Adapter 패턴</h2>
+    <h2>Hugo로 블로그 시작하기
+    </h2>
   </header>
   <section class="entry-content">
-    <p>Adapter Pattern 한 클래스의 인터페이스를 클라이언트에서 사용하고자하는 다른 인터페이스로 변환한다.어댑터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있다.코드 출처: https://refactoring.guru/design-patterns/adapter/go/example 윈도우에는 USB, 맥북에는 thunderbolt 포트가 있다.윈도우 PC에 thunderbolt포트를 연결하기 위해 adapter가 필요하다client.go
-package main import &#34;fmt&#34; type client struct { } func (c *client) insertLightningConnectorIntoComputer(com computer) { fmt.Println(&#34;Client inserts Lightning connector into computer.&#34;) com.insertIntoLightningPort() } computer.go
-package main type computer interface { insertIntoLightningPort() } mac....</p>
+    <p>출처: IALY’s BLOG
+1. Hugo 설치  MacOS  // 설치 $ brew install hugo // 설치 확인 $ hugo version hugo v0.82.0&#43;extended darwin/amd64 BuildDate=unknown 2. Hugo Project 생성 hugo new site &lt;프로젝트명&gt; 3. Hugo 테마 다운로드 휴고 테마 사이트 위 사이트에서 원하는 테마를 확인 가능.
+원하는 테마를 찾으면 프로젝트의 /themes 폴더에서 아래 명령어로 다운
+$ git clone &lt;테마 깃허브 주소&gt; 그 후 config.toml 파일 수정 (여기서는 config.yml 파일로 변경하였다.)config 파일 예시는 각 테마 깃허브에서 확인 가능....</p>
   </section>
-  <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
-  <a class="entry-link" aria-label="post link to [디자인패턴] Adapter 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/adapter/"></a>
+  <footer class="entry-footer">April 11, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Hugo로 블로그 시작하기" href="https://icecat471.github.io/devlog/post/hugo/start_hugo/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://icecat471.github.io/devlog/page/4/">« Prev Page</a>
-    <a class="next" href="https://icecat471.github.io/devlog/page/6/">Next Page »</a>
   </nav>
 </footer>
     </main>
-    <footer class="footer">
+    
+<footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

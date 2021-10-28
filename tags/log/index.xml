@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>log on icecat471&#39;s Devlog</title>
     <link>https://icecat471.github.io/devlog/tags/log/</link>
@@ -17,7 +17,7 @@
       
       <guid>https://icecat471.github.io/devlog/post/golang/set_prefix_on_log/</guid>
       <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; ) func init() { log.SetPrefix(&amp;#34;Blockchain: &amp;#34;) } func main() { fmt.Println(&amp;#34;test&amp;#34;) log.Println(&amp;#34;test&amp;#34;) } 실행시켜보면
-test Blockchain: 2021/04/15 15:04:03 test </description>
+testBlockchain: 2021/04/15 15:04:03 test</description>
     </item>
     
   </channel>

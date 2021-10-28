@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>mariadb on icecat471&#39;s Devlog</title>
     <link>https://icecat471.github.io/devlog/tags/mariadb/</link>
@@ -16,7 +16,7 @@
       <pubDate>Sun, 06 Jun 2021 22:10:28 +0900</pubDate>
       
       <guid>https://icecat471.github.io/devlog/post/database/mariadb_foreign_key/</guid>
-      <description>CREATE TABLE User ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, username VARCHAR(10) DEFAULT NULL, email VARCHAR(50) DEFAULT NULL, ); # 외래키 이름이 랜덤으로 만들어짐 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, FOREIGN KEY(userId) REFERENCES User(id) ); # 외래키 이름을 지정해서 만들기 CREATE TABLE UserItem ( id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, item_name VARCHAR(50) DEFAULT NULL, price INT DEFAULT 0, userId INT DEFAULT NULL, CONSTRAINT FK_USER_ITEM_USER FOREIGN KEY(userId) REFERENCES User(id) ); 아래의 쿼리로 제약조건을 확인해볼 수 있다.</description>
+      <description>CREATETABLEUser(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,usernameVARCHAR(10)DEFAULTNULL,emailVARCHAR(50)DEFAULTNULL,);#외래키이름이랜덤으로만들어짐CREATETABLEUserItem(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,item_nameVARCHAR(50)DEFAULTNULL,priceINTDEFAULT0,userIdINTDEFAULTNULL,FOREIGNKEY(userId)REFERENCESUser(id));#외래키이름을지정해서만들기CREATETABLEUserItem(idINTNOTNULLPRIMARYKEYAUTO_INCREMENT,item_nameVARCHAR(50)DEFAULTNULL,priceINTDEFAULT0,userIdINTDEFAULTNULL,CONSTRAINTFK_USER_ITEM_USERFOREIGNKEY(userId)REFERENCESUser(id));아래의 쿼리로 제약조건을 확인해볼 수 있다.</description>
     </item>
     
   </channel>

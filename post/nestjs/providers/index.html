@@ -15,7 +15,7 @@ Providers Providers provider는 Nest에서 가장 근본적인 개념이다. 대
 Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 저장하고 불러오는 역할을 담당할 것이며, CatsController가 이를 시용할 것이다.">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/post/nestjs/providers/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.5ddba2377cef4826c901d6600bb403811fc5084e4de37bd1a967782b2b74485f.css" integrity="sha256-XduiN3zvSCbJAdZgC7QDgR/FCE5N43vRqWd4Kyt0SF8=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
@@ -25,8 +25,44 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
 <link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.82.0" />
-<meta property="og:title" content="[NestJS] (공식문서 번역) Providers" />
+<meta name="generator" content="Hugo 0.88.1" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="[NestJS] (공식문서 번역) Providers" />
 <meta property="og:description" content="NestJS 공식문서 번역 겸 공부하는 글 입니다.
 의역 및 오역이 있을 수 있습니다.
 https://docs.nestjs.com/providers
@@ -80,7 +116,7 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
   "keywords": [
     "NestJS", "backend"
   ],
-  "articleBody": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/providers\nProviders Providers provider는 Nest에서 가장 근본적인 개념이다. 대부분의 기본 Nest class는 provider로 취급된다(예를 들어, service, repository, factory, helper 등등). provider는 의존성을 주입할 수 있다. 이것은 오브젝트간의 서로 다양한 관계들을 만들 수 있음을 뜻한다.\n앞선 챕터에서, 우리는 CatsController를 만들었고, controller는 HTTP request를 핸들링하고 복잡한 일을 provider에게 맡긴다.\nServices 간단한 CatsService를 만들어보자. 이 service는 데이터를 저장하고 불러오는 역할을 담당할 것이며, CatsController가 이를 시용할 것이다.\n// cats.service.ts  import { Injectable } from '@nestjs/common'; import { Cat } from './interfaces/cat.interface'; @Injectable() export class CatsService { private readonly cats: Cat[] = []; create(cat: Cat) { this.cats.push(cat); } findAll(): Cat[] { return this.cats; } } @Injectable() 데코레이터는 CatService가 Nest IoC container에 의해 관리될 수 있게 메타데이터를 붙여준다. 또한 예제에서는 Cat interface를 사용중이다.\n// interfaces/cat.interface.ts  export interface Cat { name: string; age: number; breed: string; } 위에서 만든 service를 CatController에서 사용해보자.\n// cat.controller.ts  import { Controller, Get, Post, Body } from '@nestjs/common'; import { CreateCatDto } from './dto/create-cat.dto'; import { CatsService } from './cats.service'; import { Cat } from './interfaces/cat.interface'; @Controller('cats') export class CatsController { constructor(private catsService: CatsService) {} @Post() async create(@Body() createCatDto: CreateCatDto) { this.catsService.create(createCatDto); } @Get() async findAll(): PromiseCat[] { return this.catsService.findAll(); } } CatService는 생성자를 통해 injection 되었다. private를 붙여줌으로써 선언과 초기화를 동시에 실행한다.\nDependency injection Nest는 Dependency Injection(DI)라고 알려진 디자인 패턴을 적용하고 있다. Angular 공식 문서에서 이러한 개념에 대해 읽어보기를 추천한다. Nest에서는 TypeScript를 사용하는 이점으로 타입을 통해 쉽게 의존성을 관리할 수 있다. 아래의 예제처럼 Nest는 CatsService의 인스턴스를 생성하고 반환함으로써 catsService를 의존성을 주입한다(대부분의 경우는 singleton으로 이미 다른곳에서 요청되었다면 이미 존재하는 인스턴스를 반환한다). 이러한 의존성은 controller의 생성자를 통해 주입된다.\nconstructor(private catsService: CatsService) {} Scopes provider는 일반적으로 애플리케이션의 lifecycle과 일치하는 lifecycle(“scopes”)를 갖는다. 애플리케이션이 동작하면, 의존성이 주입되고, 모든 provider가 인스턴스화 된다. 애플리케이션이 종료되면, 각각의 provider들은 파괴된다. 그러나, provider의 lifecycle을 requested-scope로 만들수도 있다. 이러한 방법에 대해서는 이 곳에서 읽어볼 수 있다.\nCustom providers Nest는 provider간의 관계를 관리하는 inversion of control(“IoC”) container를 갖고 있다. 이러한 특성은 위에서 설명한 dependency injection 특성에 기반하고 있다. provider를 정의하기 위한 여러가지 방법이 있다. plain value, class, asynchronous factory 또는 synchronous factory를 사용할 수 있다. 이에 대한 예제는 이 곳에서 볼 수 있다.\nOptional providers 가끔, 반드시 주입될 필요가 없는 의존성이 있을 수 있다. 예를 들어, configuration object에 의존하는 class의 경우, configuration obejct가 사용되지 않으면 기본값이 적용된다. 이러한 경우, 의존성은 optional하다. provider를 optional로 지정하기 위해서는 @Optional() 데코레이터를 생성자에 사용한다.\nimport { Injectable, Optional, Inject } from '@nestjs/common'; @Injectable() export class HttpServiceT { constructor(@Optional() @Inject('HTTP_OPTIONS') private httpClient: T) {} } 위의 예제는 HTTP_OPTION token을 포함한 custom provider를 사용하였다.\nProperty-based injection 지금까지 우리가 사용한 기술은 생성자를 통해 provider를 주입하기 때문에 constructor-based injection이라고 불린다. 일부의 경우, property-based injection이 유용하다. 예를 들어, 하나 이상의 provider에 의존성을 가진 최상위 class의 경우, sub class로부터 super()를 호출하여 이를 주입하는 것은 좋지 못한 방법이다. 대신 @Inject() 데코레이터를 property-level 에서 사용한다.\nimport { Injectable, Inject } from '@nestjs/common'; @Injectable() export class HttpServiceT { @Inject('HTTP_OPTIONS') private readonly httpClient: T; }  class가 다른 provider를 확장하고 있는 것이 아니라면, 항상 constructor-based injection을 사용하는 것이 좋다.\n Provider registration CatsService와 CatsController를 정의하였다. 이제 service가 injection 될 수 있도록 등록해주어야 한다. Module의 @Module() 데코레이터에 providers 배열에 추가함으로써 등록할 수 있다.\n// app.module.ts  import { Module } from '@nestjs/common'; import { CatsController } from './cats/cats.controller'; import { CatsService } from './cats/cats.service'; @Module({ controllers: [CatsController], providers: [CatsService], }) export class AppModule {} Nest는 이제 CatController에 의존성을 주입할 수 있다.\n디렉토리 구조\nsrc | +-- cats | | | +-- dto | | | | | +-- create-cat.dto.ts | | | +-- interfaces | | | | | +-- cat.interface.ts | | | +-- cats.controller.ts | | | +-- cats.service.ts | +-- app.module.ts | +-- main.ts Manual instantiation 지금까지 어떤 방식으로 Nest에서 의존성을 자동으로 주입하는지에 대해 설명했다. 그러나 특정한 경우, DI system 외부에서 수동으로 의존성을 주입해야 하는 경우가 있다. 이미 존재하는 인스턴스를 가져오거나, provider를 동적으로 인스턴스화 하기 위해서는 Module reference를 사용한다. bootstrap() 함수에 포함된 provider를 가져오기 위해서는 Standalone applications 페이지를 참고하자.\n",
+  "articleBody": "NestJS 공식문서 번역 겸 공부하는 글 입니다.\n의역 및 오역이 있을 수 있습니다.\nhttps://docs.nestjs.com/providers\nProviders Providers provider는 Nest에서 가장 근본적인 개념이다. 대부분의 기본 Nest class는 provider로 취급된다(예를 들어, service, repository, factory, helper 등등). provider는 의존성을 주입할 수 있다. 이것은 오브젝트간의 서로 다양한 관계들을 만들 수 있음을 뜻한다.\n앞선 챕터에서, 우리는 CatsController를 만들었고, controller는 HTTP request를 핸들링하고 복잡한 일을 provider에게 맡긴다.\nServices 간단한 CatsService를 만들어보자. 이 service는 데이터를 저장하고 불러오는 역할을 담당할 것이며, CatsController가 이를 시용할 것이다.\n// cats.service.ts  import { Injectable } from '@nestjs/common'; import { Cat } from './interfaces/cat.interface'; @Injectable() export class CatsService { private readonly cats: Cat[] = []; create(cat: Cat) { this.cats.push(cat); } findAll(): Cat[] { return this.cats; } } @Injectable() 데코레이터는 CatService가 Nest IoC container에 의해 관리될 수 있게 메타데이터를 붙여준다. 또한 예제에서는 Cat interface를 사용중이다.\n// interfaces/cat.interface.ts  export interface Cat { name: string; age: number; breed: string; } 위에서 만든 service를 CatController에서 사용해보자.\n// cat.controller.ts  import { Controller, Get, Post, Body } from '@nestjs/common'; import { CreateCatDto } from './dto/create-cat.dto'; import { CatsService } from './cats.service'; import { Cat } from './interfaces/cat.interface'; @Controller('cats') export class CatsController { constructor(private catsService: CatsService) {} @Post() async create(@Body() createCatDto: CreateCatDto) { this.catsService.create(createCatDto); } @Get() async findAll(): PromiseCat[] { return this.catsService.findAll(); } } CatService는 생성자를 통해 injection 되었다. private를 붙여줌으로써 선언과 초기화를 동시에 실행한다.\nDependency injection Nest는 Dependency Injection(DI)라고 알려진 디자인 패턴을 적용하고 있다. Angular 공식 문서에서 이러한 개념에 대해 읽어보기를 추천한다. Nest에서는 TypeScript를 사용하는 이점으로 타입을 통해 쉽게 의존성을 관리할 수 있다. 아래의 예제처럼 Nest는 CatsService의 인스턴스를 생성하고 반환함으로써 catsService를 의존성을 주입한다(대부분의 경우는 singleton으로 이미 다른곳에서 요청되었다면 이미 존재하는 인스턴스를 반환한다). 이러한 의존성은 controller의 생성자를 통해 주입된다.\nconstructor(private catsService: CatsService) {} Scopes provider는 일반적으로 애플리케이션의 lifecycle과 일치하는 lifecycle(“scopes”)를 갖는다. 애플리케이션이 동작하면, 의존성이 주입되고, 모든 provider가 인스턴스화 된다. 애플리케이션이 종료되면, 각각의 provider들은 파괴된다. 그러나, provider의 lifecycle을 requested-scope로 만들수도 있다. 이러한 방법에 대해서는 이 곳에서 읽어볼 수 있다.\nCustom providers Nest는 provider간의 관계를 관리하는 inversion of control(“IoC”) container를 갖고 있다. 이러한 특성은 위에서 설명한 dependency injection 특성에 기반하고 있다. provider를 정의하기 위한 여러가지 방법이 있다. plain value, class, asynchronous factory 또는 synchronous factory를 사용할 수 있다. 이에 대한 예제는 이 곳에서 볼 수 있다.\nOptional providers 가끔, 반드시 주입될 필요가 없는 의존성이 있을 수 있다. 예를 들어, configuration object에 의존하는 class의 경우, configuration obejct가 사용되지 않으면 기본값이 적용된다. 이러한 경우, 의존성은 optional하다. provider를 optional로 지정하기 위해서는 @Optional() 데코레이터를 생성자에 사용한다.\nimport { Injectable, Optional, Inject } from '@nestjs/common'; @Injectable() export class HttpServiceT { constructor(@Optional() @Inject('HTTP_OPTIONS') private httpClient: T) {} } 위의 예제는 HTTP_OPTION token을 포함한 custom provider를 사용하였다.\nProperty-based injection 지금까지 우리가 사용한 기술은 생성자를 통해 provider를 주입하기 때문에 constructor-based injection이라고 불린다. 일부의 경우, property-based injection이 유용하다. 예를 들어, 하나 이상의 provider에 의존성을 가진 최상위 class의 경우, sub class로부터 super()를 호출하여 이를 주입하는 것은 좋지 못한 방법이다. 대신 @Inject() 데코레이터를 property-level 에서 사용한다.\nimport { Injectable, Inject } from '@nestjs/common'; @Injectable() export class HttpServiceT { @Inject('HTTP_OPTIONS') private readonly httpClient: T; }  class가 다른 provider를 확장하고 있는 것이 아니라면, 항상 constructor-based injection을 사용하는 것이 좋다.\n Provider registration CatsService와 CatsController를 정의하였다. 이제 service가 injection 될 수 있도록 등록해주어야 한다. Module의 @Module() 데코레이터에 providers 배열에 추가함으로써 등록할 수 있다.\n// app.module.ts  import { Module } from '@nestjs/common'; import { CatsController } from './cats/cats.controller'; import { CatsService } from './cats/cats.service'; @Module({ controllers: [CatsController], providers: [CatsService], }) export class AppModule {} Nest는 이제 CatController에 의존성을 주입할 수 있다.\n디렉토리 구조\nsrc\r|\r+-- cats\r| |\r| +-- dto\r| | |\r| | +-- create-cat.dto.ts\r| |\r| +-- interfaces\r| | |\r| | +-- cat.interface.ts\r| |\r| +-- cats.controller.ts\r| |\r| +-- cats.service.ts\r|\r+-- app.module.ts\r|\r+-- main.ts\rManual instantiation 지금까지 어떤 방식으로 Nest에서 의존성을 자동으로 주입하는지에 대해 설명했다. 그러나 특정한 경우, DI system 외부에서 수동으로 의존성을 주입해야 하는 경우가 있다. 이미 존재하는 인스턴스를 가져오거나, provider를 동적으로 인스턴스화 하기 위해서는 Module reference를 사용한다. bootstrap() 함수에 포함된 provider를 가져오기 위해서는 Standalone applications 페이지를 참고하자.\n",
   "wordCount" : "643",
   "inLanguage": "en",
   "datePublished": "2021-05-02T15:36:48+09:00",
@@ -116,43 +152,6 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
     }
 
 </script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: #1d1e20;
-                --entry: #2e2e33;
-                --primary: rgba(255, 255, 255, 0.84);
-                --secondary: rgba(255, 255, 255, 0.56);
-                --tertiary: rgba(255, 255, 255, 0.16);
-                --content: rgba(255, 255, 255, 0.74);
-                --hljs-bg: #2e2e33;
-                --code-bg: #37383e;
-                --border: #333;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
 
 <header class="header">
     <nav class="nav">
@@ -181,7 +180,7 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
                 </button>
             </span>
         </div>
-        <ul id="menu" onscroll="menu_on_scroll()">
+        <ul id="menu">
             <li>
                 <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
                     <span>Archive</span>
@@ -214,12 +213,14 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
       [NestJS] (공식문서 번역) Providers
     </h1>
     <div class="post-meta">May 2, 2021&nbsp;·&nbsp;4 min&nbsp;·&nbsp;icecat471
+
 </div>
   </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
-            <div class="details">Table of Contents</div>
+            <span class="details">Table of Contents</span>
         </summary>
+
         <div class="inner"><ul>
                 <li>
                     <a href="#providers" aria-label="Providers">Providers</a><ul>
@@ -261,7 +262,7 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
 <p>앞선 챕터에서, 우리는 CatsController를 만들었고, controller는 HTTP request를 핸들링하고 복잡한 일을 provider에게 맡긴다.</p>
 <h2 id="services">Services<a hidden class="anchor" aria-hidden="true" href="#services">#</a></h2>
 <p>간단한 CatsService를 만들어보자. 이 service는 데이터를 저장하고 불러오는 역할을 담당할 것이며, CatsController가 이를 시용할 것이다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.service.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cats.service.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Cat</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./interfaces/cat.interface&#39;</span><span class="p">;</span>
@@ -279,7 +280,7 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p><code>@Injectable()</code> 데코레이터는 CatService가 Nest IoC container에 의해 관리될 수 있게 메타데이터를 붙여준다. 또한 예제에서는 Cat interface를 사용중이다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// interfaces/cat.interface.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// interfaces/cat.interface.ts
 </span><span class="c1"></span>
 <span class="kr">export</span> <span class="kr">interface</span> <span class="nx">Cat</span> <span class="p">{</span>
   <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
@@ -287,7 +288,7 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
   <span class="nx">breed</span>: <span class="kt">string</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><p>위에서 만든 service를 CatController에서 사용해보자.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cat.controller.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// cat.controller.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Controller</span><span class="p">,</span> <span class="nx">Get</span><span class="p">,</span> <span class="nx">Post</span><span class="p">,</span> <span class="nx">Body</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">CreateCatDto</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./dto/create-cat.dto&#39;</span><span class="p">;</span>
@@ -310,10 +311,10 @@ Services 간단한 CatsService를 만들어보자. 이 service는 데이터를 �
 <span class="p">}</span>
 </code></pre></div><p>CatService는 생성자를 통해 injection 되었다. private를 붙여줌으로써 선언과 초기화를 동시에 실행한다.</p>
 <h2 id="dependency-injection">Dependency injection<a hidden class="anchor" aria-hidden="true" href="#dependency-injection">#</a></h2>
-<p>Nest는 Dependency Injection(DI)라고 알려진 디자인 패턴을 적용하고 있다. <a href="https://angular.io/guide/dependency-injection">Angular 공식 문서</a>에서 이러한 개념에 대해 읽어보기를 추천한다.
+<p>Nest는 Dependency Injection(DI)라고 알려진 디자인 패턴을 적용하고 있다. <a href="https://angular.io/guide/dependency-injection">Angular 공식 문서</a>에서 이러한 개념에 대해 읽어보기를 추천한다. 
 <!-- raw HTML omitted --><!-- raw HTML omitted -->
 Nest에서는 TypeScript를 사용하는 이점으로 타입을 통해 쉽게 의존성을 관리할 수 있다. 아래의 예제처럼 Nest는 CatsService의 인스턴스를 생성하고 반환함으로써 catsService를 의존성을 주입한다(대부분의 경우는 singleton으로 이미 다른곳에서 요청되었다면 이미 존재하는 인스턴스를 반환한다). 이러한 의존성은 controller의 생성자를 통해 주입된다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">catsService</span>: <span class="kt">CatsService</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">catsService</span>: <span class="kt">CatsService</span><span class="p">)</span> <span class="p">{}</span>
 </code></pre></div><h2 id="scopes">Scopes<a hidden class="anchor" aria-hidden="true" href="#scopes">#</a></h2>
 <p>provider는 일반적으로 애플리케이션의 lifecycle과 일치하는 lifecycle(&ldquo;scopes&rdquo;)를 갖는다. 애플리케이션이 동작하면, 의존성이 주입되고, 모든 provider가 인스턴스화 된다. 애플리케이션이 종료되면, 각각의 provider들은 파괴된다. 그러나, provider의 lifecycle을 requested-scope로 만들수도 있다. 이러한 방법에 대해서는 <a href="https://docs.nestjs.com/fundamentals/injection-scopes">이 곳</a>에서 읽어볼 수 있다.</p>
 <h2 id="custom-providers">Custom providers<a hidden class="anchor" aria-hidden="true" href="#custom-providers">#</a></h2>
@@ -322,7 +323,7 @@ Nest에서는 TypeScript를 사용하는 이점으로 타입을 통해 쉽게 �
 <p>가끔, 반드시 주입될 필요가 없는 의존성이 있을 수 있다. 예를 들어, configuration object에 의존하는 class의 경우, configuration obejct가 사용되지 않으면 기본값이 적용된다. 이러한 경우, 의존성은 optional하다.
 <!-- raw HTML omitted --><!-- raw HTML omitted -->
 provider를 optional로 지정하기 위해서는 <code>@Optional()</code> 데코레이터를 생성자에 사용한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Optional</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Optional</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 
 <span class="kd">@Injectable</span><span class="p">()</span>
 <span class="kr">export</span> <span class="kr">class</span> <span class="nx">HttpService</span><span class="p">&lt;</span><span class="nt">T</span><span class="p">&gt;</span> <span class="p">{</span>
@@ -331,7 +332,7 @@ provider를 optional로 지정하기 위해서는 <code>@Optional()</code> 데�
 </code></pre></div><p>위의 예제는 HTTP_OPTION token을 포함한 custom provider를 사용하였다.</p>
 <h2 id="property-based-injection">Property-based injection<a hidden class="anchor" aria-hidden="true" href="#property-based-injection">#</a></h2>
 <p>지금까지 우리가 사용한 기술은 생성자를 통해 provider를 주입하기 때문에 constructor-based injection이라고 불린다. 일부의 경우, property-based injection이 유용하다. 예를 들어, 하나 이상의 provider에 의존성을 가진 최상위 class의 경우, sub class로부터 super()를 호출하여 이를 주입하는 것은 좋지 못한 방법이다. 대신 <code>@Inject()</code> 데코레이터를 property-level 에서 사용한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 
 <span class="kd">@Injectable</span><span class="p">()</span>
 <span class="kr">export</span> <span class="kr">class</span> <span class="nx">HttpService</span><span class="p">&lt;</span><span class="nt">T</span><span class="p">&gt;</span> <span class="p">{</span>
@@ -343,7 +344,7 @@ provider를 optional로 지정하기 위해서는 <code>@Optional()</code> 데�
 </blockquote>
 <h2 id="provider-registration">Provider registration<a hidden class="anchor" aria-hidden="true" href="#provider-registration">#</a></h2>
 <p>CatsService와 CatsController를 정의하였다. 이제 service가 injection 될 수 있도록 등록해주어야 한다. Module의 @Module() 데코레이터에 providers 배열에 추가함으로써 등록할 수 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="c1">// app.module.ts
 </span><span class="c1"></span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Module</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">CatsController</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;./cats/cats.controller&#39;</span><span class="p">;</span>
@@ -356,7 +357,7 @@ provider를 optional로 지정하기 위해서는 <code>@Optional()</code> 데�
 <span class="kr">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
 </code></pre></div><p>Nest는 이제 CatController에 의존성을 주입할 수 있다.</p>
 <p>디렉토리 구조</p>
-<pre><code class="language-tree" data-lang="tree">src
+<pre tabindex="0"><code class="language-tree" data-lang="tree">src
  |
  +-- cats
  |    |
@@ -376,13 +377,15 @@ provider를 optional로 지정하기 위해서는 <code>@Optional()</code> 데�
  |
  +-- main.ts
 </code></pre><h2 id="manual-instantiation">Manual instantiation<a hidden class="anchor" aria-hidden="true" href="#manual-instantiation">#</a></h2>
-<p>지금까지 어떤 방식으로 Nest에서 의존성을 자동으로 주입하는지에 대해 설명했다. 그러나 특정한 경우, DI system 외부에서 수동으로 의존성을 주입해야 하는 경우가 있다.
+<p>지금까지 어떤 방식으로 Nest에서 의존성을 자동으로 주입하는지에 대해 설명했다. 그러나 특정한 경우, DI system 외부에서 수동으로 의존성을 주입해야 하는 경우가 있다. 
 <!-- raw HTML omitted --><!-- raw HTML omitted -->
 이미 존재하는 인스턴스를 가져오거나, provider를 동적으로 인스턴스화 하기 위해서는 <a href="https://docs.nestjs.com/fundamentals/module-ref">Module reference</a>를 사용한다.
 <!-- raw HTML omitted --><!-- raw HTML omitted -->
 bootstrap() 함수에 포함된 provider를 가져오기 위해서는 <a href="https://docs.nestjs.com/standalone-applications">Standalone applications 페이지</a>를 참고하자.</p>
 
-</div>
+
+  </div>
+
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://icecat471.github.io/devlog/tags/nestjs/">NestJS</a></li>
@@ -410,30 +413,26 @@ bootstrap() 함수에 포함된 provider를 가져오기 위해서는 <a href="h
 </script>
 </article>
     </main>
-    <footer class="footer">
+    
+<footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -480,43 +479,6 @@ bootstrap() 함수에 포함된 provider를 가져오기 위해서는 <a href="h
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerText = 'copy';
-
-        function copyingDone() {
-            copybutton.innerText = 'copied!';
-            setTimeout(() => {
-                copybutton.innerText = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        container.appendChild(copybutton);
-    });
 </script>
 </body>
 

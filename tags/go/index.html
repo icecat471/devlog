@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/tags/go/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.5ddba2377cef4826c901d6600bb403811fc5084e4de37bd1a967782b2b74485f.css" integrity="sha256-XduiN3zvSCbJAdZgC7QDgR/FCE5N43vRqWd4Kyt0SF8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://icecat471.github.io/devlog/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://icecat471.github.io/devlog/favicon-32x32.png">
@@ -18,9 +18,45 @@
 <link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.82.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://icecat471.github.io/devlog/tags/go/index.xml">
-<meta property="og:title" content="go" />
+<meta name="generator" content="Hugo 0.88.1" />
+<link rel="alternate" type="application/rss+xml" href="https://icecat471.github.io/devlog/tags/go/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="go" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://icecat471.github.io/devlog/tags/go/" /><meta property="og:image" content="https://icecat471.github.io/devlog/papermod-cover.png"/>
@@ -44,43 +80,6 @@
     }
 
 </script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: #1d1e20;
-                --entry: #2e2e33;
-                --primary: rgba(255, 255, 255, 0.84);
-                --secondary: rgba(255, 255, 255, 0.56);
-                --tertiary: rgba(255, 255, 255, 0.16);
-                --content: rgba(255, 255, 255, 0.74);
-                --hljs-bg: #2e2e33;
-                --code-bg: #37383e;
-                --border: #333;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
 
 <header class="header">
     <nav class="nav">
@@ -109,7 +108,7 @@
                 </button>
             </span>
         </div>
-        <ul id="menu" onscroll="menu_on_scroll()">
+        <ul id="menu">
             <li>
                 <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
                     <span>Archive</span>
@@ -140,7 +139,25 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Decorator 패턴</h2>
+    <h2>Go언어에서의 DDD
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Reference https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5 https://github.com/victorsteven/food-app-server
+DDD(Domain Driven Design) DDD의 4Layers   Domain : domain이 위치하고, 애플리케이션의 비즈니스로직이 정의된 곳
+  Infrastructure : 애플리케이션과 독립적인 모든 것이 존재하는 곳(외부 라이브러리, 데이터베이스 엔진 등)
+  Application : domain과 interface 사이의 통로. interface layer에서 domain layer로 요청을 보내고 응답을 반환
+  Interface : 웹 서비스, RIM 인터페이스 웹 애플리케이션, 배치 프로세스 등 다른 시스템과 상호작용 하는 모든 것이 위치
+  시작 이 프로젝트는 구조는 아래와 같다....</p>
+  </section>
+  <footer class="entry-footer">October 28, 2021&nbsp;·&nbsp;10 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to Go언어에서의 DDD" href="https://icecat471.github.io/devlog/post/server/ddd_in_go/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>[디자인패턴] Decorator 패턴
+    </h2>
   </header>
   <section class="entry-content">
     <p>Decorator Pattern 출처: https://golangbyexample.com/decorator-pattern-golang/
@@ -157,7 +174,8 @@ package main type veggeMania struct { } func (p *veggeMania) getPrice() int { re
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Composite 패턴</h2>
+    <h2>[디자인패턴] Composite 패턴
+    </h2>
   </header>
   <section class="entry-content">
     <p>Composite Pattern 출처: https://golangbyexample.com/composite-design-pattern-golang/
@@ -172,7 +190,8 @@ package main type component interface { search(string) } folder....</p>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Bridge 패턴</h2>
+    <h2>[디자인패턴] Bridge 패턴
+    </h2>
   </header>
   <section class="entry-content">
     <p>Bridge Pattern 출처: https://golangbyexample.com/bridge-design-pattern-in-go/
@@ -187,7 +206,8 @@ Implementation의 자식을 Concrete Implementation 이라고 부름.  UML 다�
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Adapter 패턴</h2>
+    <h2>[디자인패턴] Adapter 패턴
+    </h2>
   </header>
   <section class="entry-content">
     <p>Adapter Pattern 한 클래스의 인터페이스를 클라이언트에서 사용하고자하는 다른 인터페이스로 변환한다.어댑터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있다.코드 출처: https://refactoring.guru/design-patterns/adapter/go/example 윈도우에는 USB, 맥북에는 thunderbolt 포트가 있다.윈도우 PC에 thunderbolt포트를 연결하기 위해 adapter가 필요하다client.go
@@ -200,7 +220,8 @@ package main type computer interface { insertIntoLightningPort() } mac....</p>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>[디자인패턴] Singleton 패턴</h2>
+    <h2>[디자인패턴] Singleton 패턴
+    </h2>
   </header>
   <section class="entry-content">
     <p>Singleton 패턴 하나의 클래스에 대해 하나의 인스턴스만 존재하는 패턴go에서는 sync.Once를 통해 구현 가능하다.
@@ -209,36 +230,86 @@ package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int 
   <footer class="entry-footer">April 18, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
   <a class="entry-link" aria-label="post link to [디자인패턴] Singleton 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/singleton/"></a>
 </article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>[디자인패턴] Prototype 패턴
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>프로토타입 패턴 프로토타입 패턴(prototype pattern)은 생성할 객체들의 타입이 프로토타입인 인스턴스로부터 결정되도록 하며, 인스턴스는 새 객체를 만들기 위해 자신을 복제(clone)하게 된다.얕은 복사(shallow copy) vs 깊은 복사(deep copy) 얕은 복사 객체를 복사할때 참조값을 가진 멤버는 참조값만 복사 됨.
+type Status struct { str int dex int wis int } type Monster struct { Name string Status *Status } func main() { slime := Monster{ &#34;slime&#34;, &amp;Status{1,1,1}, } goblin := slime goblin.Name = &#34;goblin&#34; goblin....</p>
+  </section>
+  <footer class="entry-footer">April 17, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Prototype 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/prototype_pattern/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>[디자인패턴] Factory 패턴
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Factory Pattern 1. factory method pattern 객체를 생성하기 위한 인터페이스를 정의하는데, 어떤 클래스의 인스턴스를 만들지는 서브클래스에서 결정한다.
+package main import ( &#34;errors&#34; &#34;fmt&#34; ) type Character interface { Attack() } const ( warrior = iota mage ) type Warrior struct { } func (w *Warrior) Attack() { fmt.Println(&#34;sword attack&#34;) } type Mage struct { } func (m *Mage) Attack() { fmt.Println(&#34;magic attack&#34;) }  Factory struct  type CharacterFactory struct { } func (f *CharacterFactory) Create(job int) (Character, error) { switch job { case warrior: return &amp;Warrior{}, nil case mage: return &amp;Mage{}, nil default: return nil, errors....</p>
+  </section>
+  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Factory 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/factory/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>[디자인패턴] Builder 패턴
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>1. Builder Pattern Person 객체를 예로 들어보자
+type Person struct { name string age int job string height float32 weight float32 } func NewPerson(name string, age int, job string, height float32, weight float32) *Person { return &amp;Person{ name, age, job, height, weight, } } func main() { p := NewPerson(&#34;홍길동&#34;, 22, &#34;developer&#34;, 177.2, 72.9) } 위처럼 모든 정보를 입력하지 않아도 될때도 있고, 가독성도 좋지않으며 parameter의 순서도 맞춰주어야한다.또 객체에 새로운 정보가 추가된다면 NewPerson()을 계속 수정해주어야 한다....</p>
+  </section>
+  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [디자인패턴] Builder 패턴" href="https://icecat471.github.io/devlog/post/design_pattern/bulilder/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>[Go언어] VSCode에서 gopls 에러가 날때
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>vscode에서 아래와 같은 에러 발생시
+ gopls requires a module at the root of your workspace. You can work with multiple modules by opening each one as a workspace folder.
+ settings.json 파일에 아래와 같이 추가하고 vscode를 재실행한다.
+&#34;gopls&#34;: { &#34;experimentalWorkspaceModule&#34;: true, }, </p>
+  </section>
+  <footer class="entry-footer">April 16, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;icecat471</footer>
+  <a class="entry-link" aria-label="post link to [Go언어] VSCode에서 gopls 에러가 날때" href="https://icecat471.github.io/devlog/post/golang/gopls_error/"></a>
+</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="next" href="https://icecat471.github.io/devlog/tags/go/page/2/">Next Page »</a>
   </nav>
 </footer>
     </main>
-    <footer class="footer">
+    
+<footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

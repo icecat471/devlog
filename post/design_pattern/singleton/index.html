@@ -11,7 +11,7 @@
 package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int name string level int } type userDatabase struct { users map[int]*User } var once sync.Once var instance *userDatabase func (d *userDatabase) GetUser(uid int) (*User, bool) { user, ok := d.users[uid] return user, ok } func GetUserDatabase() *userDatabase { // sync.Once.Do()는 딱 한번만 실행  once.">
 <meta name="author" content="icecat471">
 <link rel="canonical" href="https://icecat471.github.io/devlog/post/design_pattern/singleton/" />
-<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.06b0e077dc7b9f0b9b5296f5053df8edb6c3f609984056a0cc5249467ca8ba72.css" integrity="sha256-BrDgd9x7nwubUpb1BT347bbD9gmYQFagzFJJRnyounI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/devlog/assets/css/stylesheet.min.5ddba2377cef4826c901d6600bb403811fc5084e4de37bd1a967782b2b74485f.css" integrity="sha256-XduiN3zvSCbJAdZgC7QDgR/FCE5N43vRqWd4Kyt0SF8=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/devlog/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://icecat471.github.io/devlog/favicon.ico">
@@ -21,8 +21,44 @@ package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int 
 <link rel="mask-icon" href="https://icecat471.github.io/devlog/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.82.0" />
-<meta property="og:title" content="[디자인패턴] Singleton 패턴" />
+<meta name="generator" content="Hugo 0.88.1" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="[디자인패턴] Singleton 패턴" />
 <meta property="og:description" content="Singleton 패턴 하나의 클래스에 대해 하나의 인스턴스만 존재하는 패턴go에서는 sync.Once를 통해 구현 가능하다.
 package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int name string level int } type userDatabase struct { users map[int]*User } var once sync.Once var instance *userDatabase func (d *userDatabase) GetUser(uid int) (*User, bool) { user, ok := d.users[uid] return user, ok } func GetUserDatabase() *userDatabase { // sync.Once.Do()는 딱 한번만 실행  once." />
 <meta property="og:type" content="article" />
@@ -68,7 +104,7 @@ package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int 
   "keywords": [
     "design pattern", "singleton pattern", "go", "golang"
   ],
-  "articleBody": "Singleton 패턴 하나의 클래스에 대해 하나의 인스턴스만 존재하는 패턴go에서는 sync.Once를 통해 구현 가능하다.\npackage main import ( \"fmt\" \"sync\" ) type User struct { uid int name string level int } type userDatabase struct { users map[int]*User } var once sync.Once var instance *userDatabase func (d *userDatabase) GetUser(uid int) (*User, bool) { user, ok := d.users[uid] return user, ok } func GetUserDatabase() *userDatabase { // sync.Once.Do()는 딱 한번만 실행  once.Do(func() { db := \u0026userDatabase{ map[int]*User{ 1: {1, \"zz\", 2}, 2: {2, \"지존도적z\", 32}, 3: {3, \"\", 21}, 4: {4, \"zz\", 27}, }, } instance = db }) return instance } func main() { db := GetUserDatabase() user2, _ := db.GetUser(2) fmt.Println(user2) } 실행결과\n\u0026{2 지존도적z 32} singleton에서 테스트 코드 작성시 문제점 전체 유저의 레벨의 합을 구하는 함수가 필요하다고 해보자.\nfunc GetUserTotalLevel(uids []int) int { total := 0 for _, uid := range uids { total += GetUserDatabase().users[uid].level } return total } 실제 라이브 db는 수치가 변경될 수 있기때문에 dummy db를 만들어서 테스트를 수행해야 한다.하지만 위 코드에서\n total += GetUserDatabase().users[uid].level\n 부분은 userDatabase에 종속적이므로 테스트를 작성하기 쉽지 않다. (종속성 반전 원칙에 위배됨)해결방법 인터페이스를 통해 단계를 추상화하여 종속성 반전을 통해 해결한다.\n// interface type Database interface { GetUser(int) (*User, bool) } type DummyDatabase struct { users map[int]*User } func (d *DummyDatabase) GetUser(uid int) (*User, bool) { if len(d.users) == 0 { d.users = map[int]*User{ 1: {1, \"zz\", 2}, 2: {2, \"지존도적z\", 32}, 3: {3, \"\", 21}, 4: {4, \"zz\", 27}, } } user, ok := d.users[uid] return user, ok } // GetUserTotalLevel() 함수 수정 func GetUserTotalLevel(db Database, uids []int) int { total := 0 for _, uid := range uids { user, _ := db.GetUser(uid) total += user.level } return total } func main() { liveDb := GetUserDatabase() liveTotalLevel := GetUserTotalLevel(liveDb, []int{1, 3, 4}) fmt.Println(liveTotalLevel == 50) // test code  db := \u0026DummyDatabase{} totalLevel := GetUserTotalLevel(db, []int{1, 3, 4}) fmt.Println(totalLevel == 50) } 실행결과\ntrue true ",
+  "articleBody": "Singleton 패턴 하나의 클래스에 대해 하나의 인스턴스만 존재하는 패턴go에서는 sync.Once를 통해 구현 가능하다.\npackage main import ( \"fmt\" \"sync\" ) type User struct { uid int name string level int } type userDatabase struct { users map[int]*User } var once sync.Once var instance *userDatabase func (d *userDatabase) GetUser(uid int) (*User, bool) { user, ok := d.users[uid] return user, ok } func GetUserDatabase() *userDatabase { // sync.Once.Do()는 딱 한번만 실행  once.Do(func() { db := \u0026userDatabase{ map[int]*User{ 1: {1, \"zz\", 2}, 2: {2, \"지존도적z\", 32}, 3: {3, \"\", 21}, 4: {4, \"zz\", 27}, }, } instance = db }) return instance } func main() { db := GetUserDatabase() user2, _ := db.GetUser(2) fmt.Println(user2) } 실행결과\n\u0026{2 지존도적z 32} singleton에서 테스트 코드 작성시 문제점 전체 유저의 레벨의 합을 구하는 함수가 필요하다고 해보자.\nfunc GetUserTotalLevel(uids []int) int { total := 0 for _, uid := range uids { total += GetUserDatabase().users[uid].level } return total } 실제 라이브 db는 수치가 변경될 수 있기때문에 dummy db를 만들어서 테스트를 수행해야 한다.하지만 위 코드에서\n total += GetUserDatabase().users[uid].level\n 부분은 userDatabase에 종속적이므로 테스트를 작성하기 쉽지 않다. (종속성 반전 원칙에 위배됨)해결방법 인터페이스를 통해 단계를 추상화하여 종속성 반전을 통해 해결한다.\n// interface type Database interface { GetUser(int) (*User, bool) } type DummyDatabase struct { users map[int]*User } func (d *DummyDatabase) GetUser(uid int) (*User, bool) { if len(d.users) == 0 { d.users = map[int]*User{ 1: {1, \"zz\", 2}, 2: {2, \"지존도적z\", 32}, 3: {3, \"\", 21}, 4: {4, \"zz\", 27}, } } user, ok := d.users[uid] return user, ok } // GetUserTotalLevel() 함수 수정 func GetUserTotalLevel(db Database, uids []int) int { total := 0 for _, uid := range uids { user, _ := db.GetUser(uid) total += user.level } return total } func main() { liveDb := GetUserDatabase() liveTotalLevel := GetUserTotalLevel(liveDb, []int{1, 3, 4}) fmt.Println(liveTotalLevel == 50) // test code  db := \u0026DummyDatabase{} totalLevel := GetUserTotalLevel(db, []int{1, 3, 4}) fmt.Println(totalLevel == 50) } 실행결과\ntrue\rtrue\r",
   "wordCount" : "313",
   "inLanguage": "en",
   "datePublished": "2021-04-18T11:53:14+09:00",
@@ -104,43 +140,6 @@ package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int 
     }
 
 </script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: #1d1e20;
-                --entry: #2e2e33;
-                --primary: rgba(255, 255, 255, 0.84);
-                --secondary: rgba(255, 255, 255, 0.56);
-                --tertiary: rgba(255, 255, 255, 0.16);
-                --content: rgba(255, 255, 255, 0.74);
-                --hljs-bg: #2e2e33;
-                --code-bg: #37383e;
-                --border: #333;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
 
 <header class="header">
     <nav class="nav">
@@ -169,7 +168,7 @@ package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int 
                 </button>
             </span>
         </div>
-        <ul id="menu" onscroll="menu_on_scroll()">
+        <ul id="menu">
             <li>
                 <a href="https://icecat471.github.io/devlog/archives/" title="Archive">
                     <span>Archive</span>
@@ -202,12 +201,14 @@ package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int 
       [디자인패턴] Singleton 패턴
     </h1>
     <div class="post-meta">April 18, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;icecat471
+
 </div>
   </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
-            <div class="details">Table of Contents</div>
+            <span class="details">Table of Contents</span>
         </summary>
+
         <div class="inner"><ul>
                 <li>
                     <a href="#singleton-%ed%8c%a8%ed%84%b4" aria-label="Singleton 패턴">Singleton 패턴</a></li>
@@ -227,7 +228,7 @@ package main import ( &#34;fmt&#34; &#34;sync&#34; ) type User struct { uid int 
   <div class="post-content"><h1 id="singleton-패턴">Singleton 패턴<a hidden class="anchor" aria-hidden="true" href="#singleton-패턴">#</a></h1>
 <p>하나의 클래스에 대해 하나의 인스턴스만 존재하는 패턴<!-- raw HTML omitted -->
 go에서는 sync.Once를 통해 구현 가능하다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
 <span class="kn">import</span> <span class="p">(</span>
     <span class="s">&#34;fmt&#34;</span>
@@ -274,11 +275,11 @@ go에서는 sync.Once를 통해 구현 가능하다.</p>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">user2</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div><p>실행결과</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="p">&amp;</span><span class="o">{</span><span class="m">2</span> 지존도적z 32<span class="o">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="p">&amp;</span><span class="o">{</span><span class="m">2</span> 지존도적z 32<span class="o">}</span>
 </code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h1 id="singleton에서-테스트-코드-작성시-문제점">singleton에서 테스트 코드 작성시 문제점<a hidden class="anchor" aria-hidden="true" href="#singleton에서-테스트-코드-작성시-문제점">#</a></h1>
 <p>전체 유저의 레벨의 합을 구하는 함수가 필요하다고 해보자.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">GetUserTotalLevel</span><span class="p">(</span><span class="nx">uids</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">GetUserTotalLevel</span><span class="p">(</span><span class="nx">uids</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="nx">total</span> <span class="o">:=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">uid</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">uids</span> <span class="p">{</span>
         <span class="nx">total</span> <span class="o">+=</span> <span class="nf">GetUserDatabase</span><span class="p">().</span><span class="nx">users</span><span class="p">[</span><span class="nx">uid</span><span class="p">].</span><span class="nx">level</span>
@@ -293,7 +294,7 @@ go에서는 sync.Once를 통해 구현 가능하다.</p>
 <p>부분은 userDatabase에 종속적이므로 테스트를 작성하기 쉽지 않다. (종속성 반전 원칙에 위배됨)<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="해결방법">해결방법<a hidden class="anchor" aria-hidden="true" href="#해결방법">#</a></h2>
 <p>인터페이스를 통해 단계를 추상화하여 종속성 반전을 통해 해결한다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// interface
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="c1">// interface
 </span><span class="c1"></span><span class="kd">type</span> <span class="nx">Database</span> <span class="kd">interface</span> <span class="p">{</span>
     <span class="nf">GetUser</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span> <span class="kt">bool</span><span class="p">)</span>
 <span class="p">}</span>
@@ -337,10 +338,12 @@ go에서는 sync.Once를 통해 구현 가능하다.</p>
     <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">totalLevel</span> <span class="o">==</span> <span class="mi">50</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div><p>실행결과</p>
-<pre><code>true
+<pre tabindex="0"><code>true
 true
 </code></pre>
-</div>
+
+  </div>
+
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://icecat471.github.io/devlog/tags/design-pattern/">design pattern</a></li>
@@ -370,30 +373,26 @@ true
 </script>
 </article>
     </main>
-    <footer class="footer">
+    
+<footer class="footer">
     <span>&copy; 2021 <a href="https://icecat471.github.io/devlog/">icecat471&#39;s Devlog</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
 </a>
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -440,43 +439,6 @@ true
         }
     })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerText = 'copy';
-
-        function copyingDone() {
-            copybutton.innerText = 'copied!';
-            setTimeout(() => {
-                copybutton.innerText = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        container.appendChild(copybutton);
-    });
 </script>
 </body>
 
